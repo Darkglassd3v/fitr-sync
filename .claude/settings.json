@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 fitr_sync.py*)",
+      "Bash(python3 fitr_sync.py --override)",
+      "Bash(cat fitr_sync_log/*)",
+      "Read(fitr_sync_log/*)",
+      "Read(CLAUDE.md)",
+      "Read(.env)"
+    ]
+  }
+}
