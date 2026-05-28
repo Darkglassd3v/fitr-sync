@@ -1,0 +1,30 @@
+name: FITR Daily Sync
+
+on:
+  schedule:
+    - cron: '1 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: Esegui sync
+        env:
+          FITR_SRC_EMAIL: ${{ secrets.FITR_SRC_EMAIL }}
+          FITR_SRC_PASS:  ${{ secrets.FITR_SRC_PASS }}
+          FITR_DST_EMAIL: ${{ secrets.FITR_DST_EMAIL }}
+          FITR_DST_PASS:  ${{ secrets.FITR_DST_PASS }}
+        run: python fitr_sync.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sync-log-${{ github.run_id }}
+          path: fitr_sync_log/
+          retention-days: 30
