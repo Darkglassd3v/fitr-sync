@@ -208,6 +208,75 @@ class FitrClient:
         print(f"    Video: [{data.get('id')}] {data.get('title','')}")
         return data.get("id")
 
+    def register_pdf(self, pdf_url, title=""):
+        """
+        Carica un PDF sull'account destinazione in 3 step:
+        1. POST /api/media/direct_upload  -> ottieni presigned S3 URL + media_id
+        2. POST su S3 con il file binario
+        3. GET /aws/upload_success        -> finalizza il record su FITR
+        """
+        # Scarica il PDF dalla CDN sorgente
+        try:
+            pdf_resp = requests.get(pdf_url, timeout=30)
+            pdf_resp.raise_for_status()
+            pdf_bytes = pdf_resp.content
+        except Exception as ex:
+            print(f"    AVVISO: impossibile scaricare PDF {pdf_url}: {ex}")
+            return None
+
+        filename = pdf_url.split("/")[-1].split("?")[0]
+        if not filename.lower().endswith(".pdf"):
+            filename += ".pdf"
+
+        # Step 1: richiedi presigned URL a FITR
+        upload_resp = self.session.post(
+            f"{BASE_URL}/api/media/direct_upload",
+            files={
+                "filePath":    (None, filename),
+                "contentType": (None, "application/pdf"),
+            }
+        )
+        if upload_resp.status_code != 200:
+            print(f"    AVVISO: direct_upload fallito ({upload_resp.status_code}) per {filename}")
+            return None
+
+        upload_data  = upload_resp.json()
+        s3_endpoint  = upload_data.get("postEndpoint")
+        signature    = upload_data.get("signature", {})
+        redirect_url = signature.get("success_action_redirect", "")
+
+        # Estrai media_id dal redirect URL (...?id=4082545&platform=web)
+        media_id = None
+        for part in redirect_url.split("?")[-1].split("&"):
+            if part.startswith("id="):
+                try:
+                    media_id = int(part.split("=")[1])
+                except ValueError:
+                    pass
+
+        if not media_id or not s3_endpoint:
+            print(f"    AVVISO: impossibile estrarre media_id da {redirect_url}")
+            return None
+
+        # Step 2: carica su S3
+        s3_fields = {k: v for k, v in signature.items()}
+        s3_resp = requests.post(
+            s3_endpoint,
+            data=s3_fields,
+            files={"file": (filename, pdf_bytes, "application/pdf")},
+            allow_redirects=False,
+            timeout=60,
+        )
+        if s3_resp.status_code not in (200, 201, 301, 302, 303):
+            print(f"    AVVISO: upload S3 fallito ({s3_resp.status_code}) per {filename}")
+            return None
+
+        # Step 3: finalizza su FITR
+        self.session.get(redirect_url, timeout=10)
+
+        print(f"    PDF:   [{media_id}] {title or filename}")
+        return media_id
+
     def create_day(self, date_iso, sections, plan_id, plan_track_id, user_id):
         sections_attrs = []
         for i, s in enumerate(sections, start=1):
@@ -215,33 +284,33 @@ class FitrClient:
             description = clean_text(s.get("description", "") or "").strip()
             attachments = s.get("attachments", [])
             attachment_with_position = []
-            extra_links = []
 
             for pos, att in enumerate(attachments):
-                kind     = att.get("kind", "")
-                att_src  = att.get("src", "")
-                att_ttl  = att.get("title", "")
-                video_id = att.get("video_id", "")
+                kind         = att.get("kind", "")
+                att_src      = att.get("src", "")
+                att_ttl      = att.get("title", "")
+                video_id     = att.get("video_id", "")
+                content_type = att.get("content_type", "")
+                media_id     = None
 
                 if kind == "youtube":
                     yt_url   = f"https://youtu.be/{video_id}" if video_id else att_src
                     media_id = self.register_youtube(yt_url)
-                    if media_id:
-                        attachment_with_position.append({
-                            "media_id":    media_id,
-                            "position":    pos,
-                            "title_media": False,
-                        })
-                    else:
-                        extra_links.append(f"Video: {att_ttl} - {yt_url}")
-                elif kind == "video" and att_src:
-                    extra_links.append(f"Video: {att_ttl} - {att_src}")
-                elif att_src:
-                    ext = "PDF" if "pdf" in att.get("content_type", "") else "Allegato"
-                    extra_links.append(f"{ext}: {att_ttl} - {att_src}")
 
-            if extra_links:
-                description = description.rstrip() + "\n\n" + "\n".join(extra_links)
+                elif kind == "other" and "pdf" in content_type and att_src:
+                    media_id = self.register_pdf(att_src, att_ttl)
+
+                elif kind == "video" and att_src:
+                    # Video MP4 CDN: non ricaricabile, aggiunge link in descrizione
+                    description = description.rstrip() + f"\n\nVideo: {att_ttl} - {att_src}"
+
+                if media_id:
+                    attachment_with_position.append({
+                        "media_id":    media_id,
+                        "position":    pos,
+                        "title_media": False,
+                    })
+
 
             sections_attrs.append({
                 "position":                i,
