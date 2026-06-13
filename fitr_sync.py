@@ -9,6 +9,7 @@ USO:       python fitr_sync.py
 OVERRIDE:  python fitr_sync.py --override   (ricarica anche giorni gia' presenti)
 """
 
+import hashlib
 import json
 import os
 import sys
@@ -83,6 +84,28 @@ def clean_text(text):
 
 def iso_to_display(date_iso):
     return datetime.strptime(date_iso, "%Y-%m-%d").strftime("%d/%m/%Y")
+
+
+def fingerprint_sections(sections: list, clean=False) -> str:
+    """
+    Crea un hash MD5 del contenuto delle sezioni per confrontare A vs B.
+    - Usa titolo + descrizione normalizzata + numero allegati per ogni sezione
+    - Se clean=True applica clean_text (per confrontare sorgente con destinazione gia' pulita)
+    """
+    parts = []
+    for s in sorted(sections, key=lambda x: x.get("position", 0)):
+        title = s.get("title", "") or ""
+        desc  = s.get("description", "") or ""
+        if clean:
+            title = clean_text(title)
+            desc  = clean_text(desc)
+        # Normalizza spazi e newline
+        title = " ".join(title.split())
+        desc  = " ".join(desc.split())
+        n_att = len(s.get("attachments", []))
+        parts.append(f"{title}|{desc}|{n_att}")
+    raw = "||".join(parts)
+    return hashlib.md5(raw.encode("utf-8")).hexdigest()
 
 
 def date_range_chunks(start: date, end: date, chunk=30):
@@ -184,6 +207,26 @@ class FitrClient:
             resp.raise_for_status()
             sections = resp.json().get("day", {}).get("sections", [])
             return [s["id"] for s in sections if s.get("id")]
+        except Exception:
+            return []
+
+    def get_day_sections_coach(self, date_iso, plan_id, plan_track_id, user_id):
+        """
+        Ritorna le sezioni complete del giorno su B (titolo, descrizione, allegati).
+        Usato per il confronto con la sorgente.
+        """
+        resp = self.session.get(
+            f"{BASE_URL}/api/coach/schedules/show",
+            params={
+                "date": date_iso, "user_id": user_id,
+                "plan_id": plan_id, "plan_track_id": plan_track_id,
+            }
+        )
+        if resp.status_code in (404, 204) or not resp.text.strip():
+            return []
+        try:
+            resp.raise_for_status()
+            return resp.json().get("day", {}).get("sections", [])
         except Exception:
             return []
 
@@ -401,16 +444,6 @@ def main():
         sched_id = info.get("schedule_id")
 
         # Controlla se gia' presente su B
-        existing_ids = dst.get_existing_section_ids(
-            target_date, DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
-        )
-
-        if existing_ids and not OVERRIDE:
-            print(f"  {target_date}: gia' presente ({len(existing_ids)} sezioni), salto.")
-            skipped += 1
-            results.append({"date": target_date, "status": "skipped"})
-            continue
-
         # Download dettaglio da A
         try:
             detail   = src.get_day_detail(sched_id)
@@ -429,10 +462,36 @@ def main():
             len([a for a in s.get("attachments", []) if a.get("kind") in ("youtube", "video")])
             for s in sections
         )
-        print(f"\n  {target_date}: {len(sections)} sezioni, {n_videos} video")
+        n_pdfs = sum(
+            len([a for a in s.get("attachments", []) if a.get("kind") == "other"])
+            for s in sections
+        )
 
-        # Cancella sezioni esistenti se override
-        if existing_ids and OVERRIDE:
+        # Controlla se gia' presente su B
+        existing_ids = dst.get_existing_section_ids(
+            target_date, DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
+        )
+
+        if existing_ids:
+            if OVERRIDE:
+                print(f"\n  {target_date}: {len(sections)} sezioni, {n_videos} video, {n_pdfs} pdf  [OVERRIDE]")
+            else:
+                # Confronta contenuto A vs B
+                b_sections = dst.get_day_sections_coach(
+                    target_date, DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
+                )
+                fp_a = fingerprint_sections(sections, clean=True)
+                fp_b = fingerprint_sections(b_sections, clean=False)
+
+                if fp_a == fp_b:
+                    print(f"  {target_date}: identico ({len(existing_ids)} sezioni), salto.")
+                    skipped += 1
+                    results.append({"date": target_date, "status": "skipped_identical"})
+                    continue
+                else:
+                    print(f"\n  {target_date}: {len(sections)} sezioni, {n_videos} video, {n_pdfs} pdf  [MODIFICATO — ricarico]")
+
+            # Cancella sezioni esistenti (override o contenuto diverso)
             try:
                 dst.delete_sections(existing_ids, DEST_PLAN_ID, DEST_USER_ID)
                 print(f"    Cancellate {len(existing_ids)} sezioni esistenti.")
@@ -441,6 +500,8 @@ def main():
                 errors += 1
                 results.append({"date": target_date, "status": "error_delete", "error": str(ex)})
                 continue
+        else:
+            print(f"\n  {target_date}: {len(sections)} sezioni, {n_videos} video, {n_pdfs} pdf")
 
         # Upload su B
         try:
