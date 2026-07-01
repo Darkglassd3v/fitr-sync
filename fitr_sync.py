@@ -437,6 +437,7 @@ def main():
     copied   = 0
     skipped  = 0
     errors   = 0
+    removed  = 0
 
     print("\n-- Inizio sync --")
 
@@ -523,12 +524,49 @@ def main():
         if PAUSE_BETWEEN_DAYS > 0:
             time.sleep(PAUSE_BETWEEN_DAYS)
 
+    # ── Fase 2: pulizia giorni orfani ──────────────────────────
+    # Giorni che su A sono vuoti/assenti ma su B hanno ancora sezioni
+    # (allenamento eliminato dalla sorgente dopo essere stato copiato).
+    # In modalita' OVERRIDE questa fase e' saltata.
+    if not OVERRIDE:
+        print("\n-- Controllo giorni eliminati su A --")
+        dates_with_content_on_a = {
+            d for d, info in src_days.items() if info["sections_count"] > 0
+        }
+
+        # Scandisce tutto il range: ogni data NON presente con contenuto su A
+        cur = scan_start
+        while cur <= scan_end:
+            d_iso = cur.isoformat()
+            cur += timedelta(days=1)
+
+            if d_iso in dates_with_content_on_a:
+                continue  # ha contenuto su A, gestito nella fase 1
+
+            # Su A e' vuoto/assente: controlla se su B esiste ancora
+            orphan_ids = dst.get_existing_section_ids(
+                d_iso, DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
+            )
+            if orphan_ids:
+                print(f"  {d_iso}: eliminato su A ma presente su B ({len(orphan_ids)} sezioni) — svuoto.")
+                try:
+                    dst.delete_sections(orphan_ids, DEST_PLAN_ID, DEST_USER_ID)
+                    removed += 1
+                    results.append({"date": d_iso, "status": "removed_orphan"})
+                except Exception as ex:
+                    print(f"    ERRORE cancellazione: {ex}")
+                    errors += 1
+                    results.append({"date": d_iso, "status": "error_delete_orphan", "error": str(ex)})
+                if PAUSE_BETWEEN_DAYS > 0:
+                    time.sleep(PAUSE_BETWEEN_DAYS)
+
     # Riepilogo finale
     print("\n" + "=" * 55)
     print(f"  Copiati:    {copied}")
-    print(f"  Saltati:    {skipped}  (gia' presenti)")
+    print(f"  Saltati:    {skipped}  (gia' presenti e identici)")
+    print(f"  Svuotati:   {removed}  (eliminati su A)")
     print(f"  Errori:     {errors}")
-    if copied == 0 and skipped == len(days_to_check):
+    if copied == 0 and removed == 0 and skipped == len(days_to_check):
         print("\n  Tutto gia' in sync. Niente da fare.")
     print("=" * 55)
 
