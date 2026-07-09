@@ -1,0 +1,4 @@
+.git-token
+.env
+fitr_sync_log/
+__pycache__/
