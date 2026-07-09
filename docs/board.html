@@ -42,10 +42,12 @@
 
   .sections { flex:1; display:grid; gap:clamp(0.6rem,1.4vw,1.2rem);
     align-content:start; grid-template-columns:1fr; }
-  @media (min-width:900px) and (orientation:landscape) {
+
+  /* TABLET/TV landscape: due colonne (tre se molte sezioni e schermo largo) */
+  @media (orientation:landscape) and (min-width:900px) {
     .sections { grid-template-columns:repeat(2,1fr); }
   }
-  @media (min-width:1600px) and (orientation:landscape) {
+  @media (orientation:landscape) and (min-width:1700px) {
     .sections[data-many="true"] { grid-template-columns:repeat(3,1fr); }
   }
 
@@ -55,7 +57,7 @@
   .section:hover { background:var(--panel-hi); }
   .section-head { display:flex; align-items:center; justify-content:space-between;
     gap:0.75rem; padding:clamp(0.6rem,1.4vw,1.1rem);
-    cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent; }
+    user-select:none; -webkit-tap-highlight-color:transparent; }
   .section-title { font-family:'Barlow Condensed',sans-serif; font-weight:700;
     font-size:clamp(1rem,2vw,1.8rem); letter-spacing:0.03em;
     text-transform:uppercase; color:var(--signal); line-height:1.05; flex:1; }
@@ -67,7 +69,7 @@
   .section.open .chevron { transform:rotate(-135deg); margin-top:0.2em; }
 
   .section-content { max-height:0; overflow:hidden; transition:max-height 0.25s ease; }
-  .section.open .section-content { max-height:6000px; }
+  .section.open .section-content { max-height:8000px; }
   .section-body { font-family:'Barlow',sans-serif; font-weight:500;
     font-size:clamp(0.9rem,1.5vw,1.4rem); line-height:1.4; white-space:pre-wrap;
     padding:0 clamp(0.6rem,1.4vw,1.1rem) clamp(0.6rem,1.4vw,1.1rem); }
@@ -84,6 +86,16 @@
     font-size:clamp(0.65rem,1vw,0.85rem); letter-spacing:0.05em;
     text-transform:uppercase; color:var(--signal);
     border:1px solid var(--signal-dim); border-radius:3px; padding:0.15em 0.5em; }
+
+  /* ── Modalita' TV: blocchi sempre aperti, niente interazione ── */
+  body.tv .section-head { cursor:default; }
+  body.tv .chevron { display:none; }
+  body.tv .section-preview { display:none; }
+  body.tv .section-content { max-height:none !important; }
+  body.tv #toggleAll { display:none !important; }
+
+  /* ── Modalita' mobile: interattiva ── */
+  body.mobile .section-head { cursor:pointer; }
 
   .actions { display:flex; gap:0.5rem; flex-shrink:0; }
   .btn { font-family:'Barlow Semi Condensed',sans-serif;
@@ -136,6 +148,23 @@
   const DATA_URL   = "board_data.json";
   const REFRESH_MS = 5 * 60 * 1000;
 
+  // ── Rileva modalita' TV (landscape+largo) vs mobile ───────
+  function isTvMode() {
+    return window.matchMedia("(orientation: landscape) and (min-width: 900px)").matches;
+  }
+  function applyMode() {
+    const tv = isTvMode();
+    document.body.classList.toggle("tv", tv);
+    document.body.classList.toggle("mobile", !tv);
+    // In modalita' TV forza tutti i blocchi aperti
+    if (tv) {
+      document.querySelectorAll(".section").forEach(el => el.classList.add("open"));
+    }
+  }
+  window.addEventListener("resize", applyMode);
+  window.addEventListener("orientationchange", applyMode);
+
+  // ── Orologio ──────────────────────────────────────────────
   function tickClock() {
     const now = new Date();
     const p = n => String(n).padStart(2, "0");
@@ -174,10 +203,14 @@
     document.getElementById("toggleAll").style.display = "";
     container.setAttribute("data-many", data.sections.length > 4);
 
+    const tv = isTvMode();
+
     data.sections.forEach((s, idx) => {
       const el = document.createElement("div");
       el.className = "section";
-      if (idx === 0) el.classList.add("open");
+      // TV: tutti aperti. Mobile: solo il primo aperto.
+      if (tv || idx === 0) el.classList.add("open");
+
       const mediaKinds = [...new Set((s.attachments || []).map(a => mediaLabel(a.kind)))];
       const media = mediaKinds.length
         ? `<div class="section-media">` +
@@ -193,11 +226,15 @@
           <div class="section-body">${escapeHtml(s.description)}</div>
           ${media}
         </div>`;
+
+      // Tap per espandere: attivo solo in modalita' mobile
       el.querySelector(".section-head").addEventListener("click", () => {
-        el.classList.toggle("open");
+        if (!isTvMode()) el.classList.toggle("open");
       });
       container.appendChild(el);
     });
+
+    applyMode();
     updateFooter(data);
   }
 
