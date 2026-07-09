@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a0b;
+    --panel:     #141416;
+    --line:      #26262b;
+    --ink:       #f4f4f2;
+    --ink-dim:   #8a8a92;
+    --signal:    #ff5b1e;   /* arancione cronometro da gara */
+    --signal-dim:#7a2e12;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Barlow', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* ── Gate (accesso negato) ─────────────────────────────── */
+  #gate {
+    position: fixed; inset: 0;
+    display: none;
+    align-items: center; justify-content: center;
+    background: var(--bg);
+    z-index: 100;
+  }
+  #gate.show { display: flex; }
+  #gate p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  /* ── Layout board ──────────────────────────────────────── */
+  .board {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: clamp(1rem, 2.5vw, 2.5rem);
+    gap: clamp(0.75rem, 1.8vw, 1.5rem);
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--signal);
+    padding-bottom: clamp(0.5rem, 1.2vw, 1rem);
+    flex-shrink: 0;
+  }
+
+  .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.4rem, 3.2vw, 2.6rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .brand span { color: var(--signal); }
+
+  .date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1rem, 2.6vw, 2rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .clock {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 2.8vw, 2.2rem);
+    color: var(--signal);
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Griglia sezioni ───────────────────────────────────── */
+  .sections {
+    flex: 1;
+    display: grid;
+    gap: clamp(0.6rem, 1.4vw, 1.2rem);
+    overflow: hidden;
+  }
+
+  /* Layout ottimizzato per TV 16:9: poche sezioni in colonna larga,
+     molte sezioni su due colonne per restare leggibili. */
+  .sections[data-count="1"] { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+  .sections[data-count="2"] { grid-template-columns: 1fr; grid-template-rows: repeat(2, 1fr); }
+  .sections[data-count="3"] { grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); }
+  .sections[data-count="4"] { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
+  .sections[data-count="5"],
+  .sections[data-count="6"] { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
+  .sections[data-count="7"],
+  .sections[data-count="8"] { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 1fr); }
+
+  .section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--signal);
+    border-radius: 4px;
+    padding: clamp(0.6rem, 1.4vw, 1.3rem);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.1vw, 1.9rem);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: clamp(0.3rem, 0.7vw, 0.6rem);
+    flex-shrink: 0;
+    line-height: 1.05;
+  }
+
+  .section-body {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.85rem, 1.55vw, 1.45rem);
+    line-height: 1.35;
+    white-space: pre-wrap;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .section-media {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+  .media-tag {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: clamp(0.6rem, 1vw, 0.85rem);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--signal);
+    border: 1px solid var(--signal-dim);
+    border-radius: 3px;
+    padding: 0.15em 0.5em;
+  }
+
+  /* ── Stato vuoto / riposo ──────────────────────────────── */
+  .rest {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .rest-mark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(4rem, 18vw, 16rem);
+    color: var(--signal);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+  }
+  .rest-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 4vw, 3rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  footer {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: clamp(0.6rem, 1vw, 0.9rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    border-top: 1px solid var(--line);
+    padding-top: clamp(0.4rem, 0.8vw, 0.8rem);
+  }
+  .stale { color: var(--signal); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .live-dot {
+      display: inline-block;
+      width: 0.5em; height: 0.5em;
+      border-radius: 50%;
+      background: var(--signal);
+      margin-right: 0.4em;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  }
+</style>
+</head>
+<body>
+
+<div id="gate"><p>Accesso non autorizzato</p></div>
+
+<div class="board" id="board" style="display:none">
+  <header>
+    <div class="brand">CROSS<span>BOARD</span></div>
+    <div class="date" id="date">—</div>
+    <div class="clock" id="clock">--:--</div>
+  </header>
+
+  <div class="sections" id="sections"></div>
+
+  <footer>
+    <div><span class="live-dot"></span><span id="status">In diretta</span></div>
+    <div id="updated">—</div>
+  </footer>
+</div>
+
+<script>
+  // ── Config ────────────────────────────────────────────────
+  // Chiave segreta: la board si apre solo con ?k=QUESTA_CHIAVE nell'URL
+  const SECRET_KEY = "b0x-cr0ss-2026-xR7k";
+  const DATA_URL   = "board_data.json";
+  const REFRESH_MS = 5 * 60 * 1000;   // ricarica dati ogni 5 min
+
+  // ── Gate ──────────────────────────────────────────────────
+  const params = new URLSearchParams(location.search);
+  if (params.get("k") !== SECRET_KEY) {
+    document.getElementById("gate").classList.add("show");
+    throw new Error("unauthorized");
+  }
+  document.getElementById("board").style.display = "flex";
+
+  // ── Orologio ──────────────────────────────────────────────
+  function tickClock() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, "0");
+    const mm = String(now.getMinutes()).padStart(2, "0");
+    const ss = String(now.getSeconds()).padStart(2, "0");
+    document.getElementById("clock").textContent = `${hh}:${mm}:${ss}`;
+  }
+  setInterval(tickClock, 1000);
+  tickClock();
+
+  // ── Rendering ─────────────────────────────────────────────
+  function mediaLabel(kind) {
+    if (kind === "youtube" || kind === "video") return "Video";
+    if (kind === "other") return "PDF";
+    return "Media";
+  }
+
+  function render(data) {
+    document.getElementById("date").textContent = data.date_label || data.date;
+
+    const container = document.getElementById("sections");
+    container.innerHTML = "";
+
+    if (data.empty || !data.sections || data.sections.length === 0) {
+      container.removeAttribute("data-count");
+      const rest = document.createElement("div");
+      rest.className = "rest";
+      rest.innerHTML = `
+        <div class="rest-mark">REST</div>
+        <div class="rest-label">Giorno di riposo</div>`;
+      container.appendChild(rest);
+    } else {
+      container.setAttribute("data-count", Math.min(data.sections.length, 8));
+      data.sections.forEach(s => {
+        const el = document.createElement("div");
+        el.className = "section";
+
+        const media = (s.attachments || []).length
+          ? `<div class="section-media">` +
+            [...new Set(s.attachments.map(a => mediaLabel(a.kind)))]
+              .map(m => `<span class="media-tag">${m}</span>`).join("") +
+            `</div>`
+          : "";
+
+        el.innerHTML = `
+          <div class="section-title">${escapeHtml(s.title)}</div>
+          <div class="section-body">${escapeHtml(s.description)}</div>
+          ${media}`;
+        container.appendChild(el);
+      });
+    }
+
+    // Footer: quando sono stati aggiornati i dati
+    const gen = data.generated_at ? new Date(data.generated_at) : null;
+    if (gen) {
+      const ageH = (Date.now() - gen.getTime()) / 36e5;
+      const upd = document.getElementById("updated");
+      upd.textContent = "Aggiornato " + gen.toLocaleString("it-IT",
+        { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+      // Se i dati sono vecchi di piu' di 26 ore, segnala
+      const status = document.getElementById("status");
+      if (ageH > 26) {
+        status.textContent = "Dati non aggiornati";
+        status.classList.add("stale");
+      } else {
+        status.textContent = "In diretta";
+        status.classList.remove("stale");
+      }
+    }
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str || "";
+    return div.innerHTML;
+  }
+
+  // ── Caricamento dati ──────────────────────────────────────
+  async function load() {
+    try {
+      const resp = await fetch(DATA_URL + "?t=" + Date.now());
+      if (!resp.ok) throw new Error("fetch failed");
+      const data = await resp.json();
+      render(data);
+    } catch (e) {
+      document.getElementById("status").textContent = "Errore caricamento";
+      document.getElementById("status").classList.add("stale");
+    }
+  }
+
+  load();
+  setInterval(load, REFRESH_MS);
+
+  // Ricarica la pagina intera a mezzanotte per cambiare giorno
+  function scheduleReloadAtMidnight() {
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24, 1, 0, 0);
+    setTimeout(() => location.reload(), midnight - now);
+  }
+  scheduleReloadAtMidnight();
+</script>
+</body>
+</html>
