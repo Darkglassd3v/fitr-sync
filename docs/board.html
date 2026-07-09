@@ -10,226 +10,122 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:        #0a0a0b;
-    --panel:     #141416;
-    --line:      #26262b;
-    --ink:       #f4f4f2;
-    --ink-dim:   #8a8a92;
-    --signal:    #ff5b1e;   /* arancione cronometro da gara */
-    --signal-dim:#7a2e12;
+    --bg:#0a0a0b; --panel:#141416; --panel-hi:#1b1b1f; --line:#26262b;
+    --ink:#f4f4f2; --ink-dim:#8a8a92; --signal:#ff5b1e; --signal-dim:#7a2e12;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { margin:0; padding:0; box-sizing:border-box; }
   html, body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Barlow', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    height: 100%;
-    overflow: hidden;
+    background:var(--bg); color:var(--ink);
+    font-family:'Barlow',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; min-height:100%;
   }
-
-  /* ── Gate (accesso negato) ─────────────────────────────── */
-  #gate {
-    position: fixed; inset: 0;
-    display: none;
-    align-items: center; justify-content: center;
-    background: var(--bg);
-    z-index: 100;
-  }
-  #gate.show { display: flex; }
-  #gate p {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-
-  /* ── Layout board ──────────────────────────────────────── */
-  .board {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    padding: clamp(1rem, 2.5vw, 2.5rem);
-    gap: clamp(0.75rem, 1.8vw, 1.5rem);
-  }
+  .board { display:flex; flex-direction:column; min-height:100vh;
+    padding:clamp(0.8rem,2vw,2.5rem); gap:clamp(0.75rem,1.8vw,1.5rem); }
 
   header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-bottom: 3px solid var(--signal);
-    padding-bottom: clamp(0.5rem, 1.2vw, 1rem);
-    flex-shrink: 0;
+    display:flex; align-items:baseline; justify-content:space-between;
+    flex-wrap:wrap; gap:0.5rem 1rem;
+    border-bottom:3px solid var(--signal);
+    padding-bottom:clamp(0.5rem,1.2vw,1rem);
+    flex-shrink:0; position:sticky; top:0; background:var(--bg); z-index:10;
+  }
+  .brand { font-family:'Barlow Condensed',sans-serif; font-weight:800;
+    font-size:clamp(1.4rem,3.2vw,2.6rem); letter-spacing:0.04em;
+    text-transform:uppercase; line-height:1; }
+  .brand span { color:var(--signal); }
+  .date { font-family:'Barlow Condensed',sans-serif; font-weight:600;
+    font-size:clamp(1rem,2.6vw,2rem); letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--ink-dim); }
+  .clock { font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:clamp(1.1rem,2.8vw,2.2rem); color:var(--signal);
+    letter-spacing:0.04em; font-variant-numeric:tabular-nums; }
+
+  .sections { flex:1; display:grid; gap:clamp(0.6rem,1.4vw,1.2rem);
+    align-content:start; grid-template-columns:1fr; }
+  @media (min-width:900px) and (orientation:landscape) {
+    .sections { grid-template-columns:repeat(2,1fr); }
+  }
+  @media (min-width:1600px) and (orientation:landscape) {
+    .sections[data-many="true"] { grid-template-columns:repeat(3,1fr); }
   }
 
-  .brand {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.4rem, 3.2vw, 2.6rem);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1;
-  }
-  .brand span { color: var(--signal); }
+  .section { background:var(--panel); border:1px solid var(--line);
+    border-left:4px solid var(--signal); border-radius:4px;
+    overflow:hidden; transition:background 0.15s ease; align-self:start; }
+  .section:hover { background:var(--panel-hi); }
+  .section-head { display:flex; align-items:center; justify-content:space-between;
+    gap:0.75rem; padding:clamp(0.6rem,1.4vw,1.1rem);
+    cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent; }
+  .section-title { font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:clamp(1rem,2vw,1.8rem); letter-spacing:0.03em;
+    text-transform:uppercase; color:var(--signal); line-height:1.05; flex:1; }
+  .chevron { flex-shrink:0; width:clamp(0.9rem,1.5vw,1.3rem);
+    height:clamp(0.9rem,1.5vw,1.3rem);
+    border-right:3px solid var(--ink-dim); border-bottom:3px solid var(--ink-dim);
+    transform:rotate(45deg); transition:transform 0.2s ease; margin-right:0.3rem;
+    margin-top:-0.3em; }
+  .section.open .chevron { transform:rotate(-135deg); margin-top:0.2em; }
 
-  .date {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: clamp(1rem, 2.6vw, 2rem);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
+  .section-content { max-height:0; overflow:hidden; transition:max-height 0.25s ease; }
+  .section.open .section-content { max-height:6000px; }
+  .section-body { font-family:'Barlow',sans-serif; font-weight:500;
+    font-size:clamp(0.9rem,1.5vw,1.4rem); line-height:1.4; white-space:pre-wrap;
+    padding:0 clamp(0.6rem,1.4vw,1.1rem) clamp(0.6rem,1.4vw,1.1rem); }
+  .section-preview { font-family:'Barlow',sans-serif; font-weight:500;
+    font-size:clamp(0.85rem,1.4vw,1.3rem); line-height:1.4; color:var(--ink-dim);
+    padding:0 clamp(0.6rem,1.4vw,1.1rem) clamp(0.6rem,1.4vw,1.1rem);
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow:hidden; white-space:pre-wrap; }
+  .section.open .section-preview { display:none; }
 
-  .clock {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.1rem, 2.8vw, 2.2rem);
-    color: var(--signal);
-    letter-spacing: 0.04em;
-    font-variant-numeric: tabular-nums;
-  }
+  .section-media { display:flex; flex-wrap:wrap; gap:0.4rem;
+    padding:0 clamp(0.6rem,1.4vw,1.1rem) clamp(0.6rem,1.4vw,1.1rem); }
+  .media-tag { font-family:'Barlow Semi Condensed',sans-serif;
+    font-size:clamp(0.65rem,1vw,0.85rem); letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--signal);
+    border:1px solid var(--signal-dim); border-radius:3px; padding:0.15em 0.5em; }
 
-  /* ── Griglia sezioni ───────────────────────────────────── */
-  .sections {
-    flex: 1;
-    display: grid;
-    gap: clamp(0.6rem, 1.4vw, 1.2rem);
-    overflow: hidden;
-  }
+  .actions { display:flex; gap:0.5rem; flex-shrink:0; }
+  .btn { font-family:'Barlow Semi Condensed',sans-serif;
+    font-size:clamp(0.7rem,1.1vw,0.95rem); letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ink-dim); background:var(--panel);
+    border:1px solid var(--line); border-radius:3px; padding:0.4em 0.9em;
+    cursor:pointer; -webkit-tap-highlight-color:transparent; }
+  .btn:hover { color:var(--signal); border-color:var(--signal-dim); }
 
-  /* Layout ottimizzato per TV 16:9: poche sezioni in colonna larga,
-     molte sezioni su due colonne per restare leggibili. */
-  .sections[data-count="1"] { grid-template-columns: 1fr; grid-template-rows: 1fr; }
-  .sections[data-count="2"] { grid-template-columns: 1fr; grid-template-rows: repeat(2, 1fr); }
-  .sections[data-count="3"] { grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); }
-  .sections[data-count="4"] { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
-  .sections[data-count="5"],
-  .sections[data-count="6"] { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
-  .sections[data-count="7"],
-  .sections[data-count="8"] { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 1fr); }
+  .rest { flex:1; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:1rem; min-height:60vh; }
+  .rest-mark { font-family:'Barlow Condensed',sans-serif; font-weight:800;
+    font-size:clamp(4rem,18vw,16rem); color:var(--signal); line-height:0.85; }
+  .rest-label { font-family:'Barlow Condensed',sans-serif; font-weight:600;
+    font-size:clamp(1.2rem,4vw,3rem); letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--ink-dim); }
 
-  .section {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--signal);
-    border-radius: 4px;
-    padding: clamp(0.6rem, 1.4vw, 1.3rem);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    min-height: 0;
-  }
-
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: clamp(1rem, 2.1vw, 1.9rem);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: var(--signal);
-    margin-bottom: clamp(0.3rem, 0.7vw, 0.6rem);
-    flex-shrink: 0;
-    line-height: 1.05;
-  }
-
-  .section-body {
-    font-family: 'Barlow', sans-serif;
-    font-weight: 500;
-    font-size: clamp(0.85rem, 1.55vw, 1.45rem);
-    line-height: 1.35;
-    white-space: pre-wrap;
-    overflow: hidden;
-    flex: 1;
-    min-height: 0;
-  }
-
-  .section-media {
-    margin-top: 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    flex-shrink: 0;
-  }
-  .media-tag {
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    font-size: clamp(0.6rem, 1vw, 0.85rem);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--signal);
-    border: 1px solid var(--signal-dim);
-    border-radius: 3px;
-    padding: 0.15em 0.5em;
-  }
-
-  /* ── Stato vuoto / riposo ──────────────────────────────── */
-  .rest {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .rest-mark {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(4rem, 18vw, 16rem);
-    color: var(--signal);
-    line-height: 0.85;
-    letter-spacing: -0.02em;
-  }
-  .rest-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: clamp(1.2rem, 4vw, 3rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-
-  footer {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    font-size: clamp(0.6rem, 1vw, 0.9rem);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    border-top: 1px solid var(--line);
-    padding-top: clamp(0.4rem, 0.8vw, 0.8rem);
-  }
-  .stale { color: var(--signal); }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .live-dot {
-      display: inline-block;
-      width: 0.5em; height: 0.5em;
-      border-radius: 50%;
-      background: var(--signal);
-      margin-right: 0.4em;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  footer { flex-shrink:0; display:flex; justify-content:space-between;
+    align-items:center; flex-wrap:wrap; gap:0.5rem;
+    font-family:'Barlow Semi Condensed',sans-serif;
+    font-size:clamp(0.65rem,1vw,0.9rem); letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-dim);
+    border-top:1px solid var(--line); padding-top:clamp(0.4rem,0.8vw,0.8rem); }
+  .stale { color:var(--signal); }
+  .live-dot { display:inline-block; width:0.5em; height:0.5em; border-radius:50%;
+    background:var(--signal); margin-right:0.4em; }
+  @media (prefers-reduced-motion:no-preference) {
+    .live-dot { animation:pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
   }
 </style>
 </head>
 <body>
 
-<div class="board" id="board" style="display:none">
+<div class="board" id="board">
   <header>
     <div class="brand">CROSS<span>BOARD</span></div>
     <div class="date" id="date">—</div>
+    <div class="actions"><button class="btn" id="toggleAll">Apri tutto</button></div>
     <div class="clock" id="clock">--:--</div>
   </header>
-
   <div class="sections" id="sections"></div>
-
   <footer>
     <div><span class="live-dot"></span><span id="status">In diretta</span></div>
     <div id="updated">—</div>
@@ -237,114 +133,110 @@
 </div>
 
 <script>
-  // ── Config ────────────────────────────────────────────────
   const DATA_URL   = "board_data.json";
-  const REFRESH_MS = 5 * 60 * 1000;   // ricarica dati ogni 5 min
+  const REFRESH_MS = 5 * 60 * 1000;
 
-  document.getElementById("board").style.display = "flex";
-
-  // ── Orologio ──────────────────────────────────────────────
   function tickClock() {
     const now = new Date();
-    const hh = String(now.getHours()).padStart(2, "0");
-    const mm = String(now.getMinutes()).padStart(2, "0");
-    const ss = String(now.getSeconds()).padStart(2, "0");
-    document.getElementById("clock").textContent = `${hh}:${mm}:${ss}`;
+    const p = n => String(n).padStart(2, "0");
+    document.getElementById("clock").textContent =
+      `${p(now.getHours())}:${p(now.getMinutes())}:${p(now.getSeconds())}`;
   }
-  setInterval(tickClock, 1000);
-  tickClock();
+  setInterval(tickClock, 1000); tickClock();
 
-  // ── Rendering ─────────────────────────────────────────────
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str || ""; return div.innerHTML;
+  }
   function mediaLabel(kind) {
     if (kind === "youtube" || kind === "video") return "Video";
     if (kind === "other") return "PDF";
     return "Media";
   }
 
+  let allOpen = false;
+
   function render(data) {
     document.getElementById("date").textContent = data.date_label || data.date;
-
     const container = document.getElementById("sections");
     container.innerHTML = "";
 
     if (data.empty || !data.sections || data.sections.length === 0) {
-      container.removeAttribute("data-count");
+      container.removeAttribute("data-many");
       const rest = document.createElement("div");
       rest.className = "rest";
-      rest.innerHTML = `
-        <div class="rest-mark">REST</div>
-        <div class="rest-label">Giorno di riposo</div>`;
+      rest.innerHTML = `<div class="rest-mark">REST</div><div class="rest-label">Giorno di riposo</div>`;
       container.appendChild(rest);
-    } else {
-      container.setAttribute("data-count", Math.min(data.sections.length, 8));
-      data.sections.forEach(s => {
-        const el = document.createElement("div");
-        el.className = "section";
+      document.getElementById("toggleAll").style.display = "none";
+      updateFooter(data); return;
+    }
 
-        const media = (s.attachments || []).length
-          ? `<div class="section-media">` +
-            [...new Set(s.attachments.map(a => mediaLabel(a.kind)))]
-              .map(m => `<span class="media-tag">${m}</span>`).join("") +
-            `</div>`
-          : "";
+    document.getElementById("toggleAll").style.display = "";
+    container.setAttribute("data-many", data.sections.length > 4);
 
-        el.innerHTML = `
+    data.sections.forEach((s, idx) => {
+      const el = document.createElement("div");
+      el.className = "section";
+      if (idx === 0) el.classList.add("open");
+      const mediaKinds = [...new Set((s.attachments || []).map(a => mediaLabel(a.kind)))];
+      const media = mediaKinds.length
+        ? `<div class="section-media">` +
+          mediaKinds.map(m => `<span class="media-tag">${m}</span>`).join("") + `</div>`
+        : "";
+      el.innerHTML = `
+        <div class="section-head">
           <div class="section-title">${escapeHtml(s.title)}</div>
+          <div class="chevron"></div>
+        </div>
+        <div class="section-preview">${escapeHtml(s.description)}</div>
+        <div class="section-content">
           <div class="section-body">${escapeHtml(s.description)}</div>
-          ${media}`;
-        container.appendChild(el);
+          ${media}
+        </div>`;
+      el.querySelector(".section-head").addEventListener("click", () => {
+        el.classList.toggle("open");
       });
-    }
+      container.appendChild(el);
+    });
+    updateFooter(data);
+  }
 
-    // Footer: quando sono stati aggiornati i dati
+  function updateFooter(data) {
     const gen = data.generated_at ? new Date(data.generated_at) : null;
-    if (gen) {
-      const ageH = (Date.now() - gen.getTime()) / 36e5;
-      const upd = document.getElementById("updated");
-      upd.textContent = "Aggiornato " + gen.toLocaleString("it-IT",
-        { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
-      // Se i dati sono vecchi di piu' di 26 ore, segnala
-      const status = document.getElementById("status");
-      if (ageH > 26) {
-        status.textContent = "Dati non aggiornati";
-        status.classList.add("stale");
-      } else {
-        status.textContent = "In diretta";
-        status.classList.remove("stale");
-      }
-    }
+    if (!gen) return;
+    const ageH = (Date.now() - gen.getTime()) / 36e5;
+    document.getElementById("updated").textContent = "Aggiornato " +
+      gen.toLocaleString("it-IT", { day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit" });
+    const status = document.getElementById("status");
+    if (ageH > 26) { status.textContent = "Dati non aggiornati"; status.classList.add("stale"); }
+    else { status.textContent = "In diretta"; status.classList.remove("stale"); }
   }
 
-  function escapeHtml(str) {
-    const div = document.createElement("div");
-    div.textContent = str || "";
-    return div.innerHTML;
-  }
+  document.getElementById("toggleAll").addEventListener("click", () => {
+    allOpen = !allOpen;
+    document.querySelectorAll(".section").forEach(el => el.classList.toggle("open", allOpen));
+    document.getElementById("toggleAll").textContent = allOpen ? "Chiudi tutto" : "Apri tutto";
+  });
 
-  // ── Caricamento dati ──────────────────────────────────────
   async function load() {
     try {
       const resp = await fetch(DATA_URL + "?t=" + Date.now());
       if (!resp.ok) throw new Error("fetch failed");
-      const data = await resp.json();
-      render(data);
+      render(await resp.json());
     } catch (e) {
       document.getElementById("status").textContent = "Errore caricamento";
       document.getElementById("status").classList.add("stale");
     }
   }
-
   load();
   setInterval(load, REFRESH_MS);
 
-  // Ricarica la pagina intera a mezzanotte per cambiare giorno
-  function scheduleReloadAtMidnight() {
+  (function reloadAtMidnight() {
     const now = new Date();
     const midnight = new Date(now);
     midnight.setHours(24, 1, 0, 0);
     setTimeout(() => location.reload(), midnight - now);
-  }
-  scheduleReloadAtMidnight();
+  })();
 </script>
 </body>
 </html>
