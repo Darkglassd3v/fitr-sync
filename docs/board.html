@@ -221,8 +221,6 @@
 </head>
 <body>
 
-<div id="gate"><p>Accesso non autorizzato</p></div>
-
 <div class="board" id="board" style="display:none">
   <header>
     <div class="brand">CROSS<span>BOARD</span></div>
@@ -240,17 +238,9 @@
 
 <script>
   // ── Config ────────────────────────────────────────────────
-  // Chiave segreta: la board si apre solo con ?k=QUESTA_CHIAVE nell'URL
-  const SECRET_KEY = "b0x-cr0ss-2026-xR7k";
   const DATA_URL   = "board_data.json";
   const REFRESH_MS = 5 * 60 * 1000;   // ricarica dati ogni 5 min
 
-  // ── Gate ──────────────────────────────────────────────────
-  const params = new URLSearchParams(location.search);
-  if (params.get("k") !== SECRET_KEY) {
-    document.getElementById("gate").classList.add("show");
-    throw new Error("unauthorized");
-  }
   document.getElementById("board").style.display = "flex";
 
   // ── Orologio ──────────────────────────────────────────────
