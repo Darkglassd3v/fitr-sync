@@ -1,32 +1,151 @@
 {
-  "date": "2026-07-09",
-  "date_label": "Giovedi 9 Luglio",
-  "generated_at": "2026-07-09T21:33:27.571928",
+  "date": "2026-07-10",
+  "date_label": "Venerdi 10 Luglio",
+  "generated_at": "2026-07-10T02:13:45.444596",
   "sections": [
     {
-      "title": "OPTION 1: FULL REST / BODYWORK",
-      "description": "Recovery is what allows athletes to train at a consistently high level and perform to the best of their abilities.\n\nThe hours outside of training play a major role in how effectively you recover from training stressors.\n\nTo get the most out of an athlete, it’s essential to find the right balance between training overload and sufficient recovery. Short periods of increased training stress can temporarily reduce performance and increase fatigue, but when paired with adequate recovery, this can lead to positive adaptation and improved performance. In sport science, this is referred to as Functional Overreaching (FOR). However, when recovery is insufficient and fatigue continues to accumulate without adequate adaptation, athletes may enter a state of Non-Functional Overreaching (NFOR), where performance begins to stagnate or decline.\n\nWe aim to create the right balance by periodizing the program appropriately while also encouraging athletes to self-regulate when needed.\n\nHere are some signs that recovery may be compromised:\n\n-Inability to sustain efforts during high-intensity exercise\n-Increased fatigue during and after training\n-Low mood or reduced motivation\n-Sleep disturbances\n-Persistent soreness or slower recovery between sessions\n\nIt’s important to understand that stressors outside of training are often the biggest obstacle to recovery. Start by analyzing and optimizing the 18–22 hours of the day spent away from training.\n\nBelow are several recovery methods that may help support overall recovery and performance:\n\n#1 Additional Sleep\nSleep remains the most effective and important recovery tool available to athletes.\n\n#2 Methods That May Support Blood Flow and Reduce Muscle Soreness\nThe following methods may help increase circulation, promote relaxation, and improve perceived recovery:\n-Professional bodywork such as physiotherapy or massage\n-Recovery boots/compression therapy\n-Self-myofascial release (foam rolling, lacrosse balls, etc.)\n-Muscle stimulation devices such as Compex\n\n#3 Additional Recovery Strategies\nThese are methods I’ve personally experimented with and occasionally use when feeling the need for some extra recovery support:\n-Epsom salt baths\n-Meditation — recovery is not only physical, but also psychological\n-Barefoot walks on grass/\"earthing\" — while scientific evidence is limited, some athletes find it relaxing and helpful for stress reduction\n-Increased sunlight exposure to support circadian rhythm, mood, and sleep quality\n-Light water movement sessions — the hydrostatic pressure and low-impact nature of water can help promote movement and recovery without adding significant stress to the body",
-      "attachments": []
-    },
-    {
-      "title": "OPTION 2: CONDITIONING - Run",
-      "description": "Conditioning, Run\n\na. Warm up\n1 length Walk on toes\n1 length  Walk on heels\n1 length  Walk on toes\n1 length Walk on heels\n2 lengths Heel to toe roll\n1 length Forward pogos\n1 length Side ways pogos\n1 length Side ways pogos (other side)\n1 length Back wards pogos\n1 length Kenyan pogos \n1 length Kenyan Forward Knee raises (Right leg)\n1 length Kenyan Forward Knee raises (Left leg)\n1 length Kenyan Side Knee raises (Right leg)\n1 length Kenyan Side Knee raises (Left leg)\n(1 length = 7.5m / 25ft)\n\nb. Main set\n20 min Run (Easy / Z2)\n\n-Rest 2 minutes-\n\n5 sets\n3 min Run (Tempo / RPE 7 / Z3 / 10k pace / Heavy intensity domain)\n1 minute Jog\n\nProgression: \nW1: \n10 min Run (Easy / Z2)\n+\n5 sets\n3 min Run (Tempo / RPE 7 / Z3 / 10k pace / Heavy intensity domain)\n1 minute Jog\n\nW2: \n15 min Run (Easy / Z2) (+5 min from last week)\n+\n5 sets\n3 min Run (Tempo / RPE 7 / 10k pace / Heavy intensity domain)\n1 minute Jog\n\nW3: (current)\n20 min Run (Easy / Z2) (+5 min from last week)\n+\n5 sets\n3 min Run (Tempo / RPE 7 / 10k pace / Heavy intensity domain)\n1 minute Jog\n\nW4: (Transition week)\n40 min Run (Easy / Z2)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "title": "S1: WARM UP",
+      "description": "Weightlifting, Warm up \n\na. Movement prep \n1 round of:\n60/60 sec Dynamic Pec Stretch\n60/60 sec Dynamic Lat Stretch\n60/60 sec Dynamic Anterior Hip stretch\n60/60 sec Dynamic Posterior Hip stretch\n\nb. Activation \n1 round of:\nMini-band Posterior prep routine (20 alt. side steps, 20 goodmornings, 20 alt. side steps, 20 glute bridges)\nA, T, W, Y, E, I banded shoulder routine (10 of each)\n\nc. Weightlifting, P.C&J specific barbell prep\n(Empty barbell)\n5 Clean Pulls + 10 Extended pulls\n-rest as needed-\n5 Muscle Clean + 10 Strict Press (Alt. presses from front/back)\n-rest as needed-\n5 Power Clean + 10 Push Jerks (Alt. from front/back)\n-rest as needed-\nStart building up in weight.",
       "attachments": [
         {
-          "title": "Pre run routine",
+          "title": "Dynamic posterior hip box stretch",
           "kind": "youtube",
-          "src": "https://youtu.be/kbG9tyTqEKk"
+          "src": "https://youtu.be/fcojabIIwNA"
+        },
+        {
+          "title": "Dynamic anterior hip stretch",
+          "kind": "youtube",
+          "src": "https://youtu.be/M5nRWGwU_f0"
+        },
+        {
+          "title": "Dynamic bent arm pec opener",
+          "kind": "youtube",
+          "src": "https://youtu.be/Fv0KnjRiLf8"
+        },
+        {
+          "title": "Lat pulsed stretching with reach through",
+          "kind": "youtube",
+          "src": "https://youtu.be/P7scr-51piE"
+        },
+        {
+          "title": "Mini-band deadlift prep (Side step, Goodmorning, Side step, Glute bridge)",
+          "kind": "youtube",
+          "src": "https://youtu.be/JLGh0CWwQ-0"
+        },
+        {
+          "title": "Banded shoulder ATWYEI routine",
+          "kind": "youtube",
+          "src": "https://youtu.be/0AyanidTrbs"
+        },
+        {
+          "title": "5 Clean pulls + 10 extended pulls",
+          "kind": "youtube",
+          "src": "https://youtu.be/jErPncLn1Hk"
+        },
+        {
+          "title": "5 Muscle Cleans + 10 Strict press (Alt. front and back)",
+          "kind": "youtube",
+          "src": "https://youtu.be/Axg1Hx8McM8"
+        },
+        {
+          "title": "5 Power Cleans + 10 Jerks (Alt. Front/Back)",
+          "kind": "youtube",
+          "src": "https://youtu.be/lasVFq8c-Mg"
         }
       ]
     },
     {
-      "title": "OPTION 3: CONDITIONING - C2 bike",
-      "description": "Conditioning, Bike\n\na. 30 min C2 bike (Easy / Z2)\n\n-Rest 2 minutes-\n\n5 sets, \n3 min C2 bike (Tempo / RPE 7 / Z3 / Approx. 85% of 20 min FTP / Heavy intensity domain)\n1 minute Easy Spin\n\nProgression: \nW1:\n20 min C2 bike (Easy / Z2)\n+\n5 sets, \n3 min C2 bike (Tempo / RPE 7 / Z3 / Approx. 85% of 20 min FTP / Heavy intensity domain)\n1 minute Easy Spin\n\nW2:\n25 min C2 bike (Easy / Z2) (+5 min from last week)\n+\n5 sets, \n3 min C2 bike (Tempo / RPE 7 / Z3 / Approx. 85% of 20 min FTP / Heavy intensity domain)\n1 minute Easy Spin\n\nW3: (current)\n30 min C2 bike (Easy / Z2) (+5 min from last week)\n+\n5 sets, \n3 min C2 bike (Tempo / RPE 7 / Z3 / Approx. 85% of 20 min FTP / Heavy intensity domain)\n1 minute Easy Spin\n\nW4: (Transition week)\n60 min C2 bike (Easy / Z2)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": []
+      "title": "S1: STRENGTH-SPEED (Clean and Jerk)",
+      "description": "Strength-Speed / \"Power\" / Weightlifting, Power Clean and Jerk\n\na. 9 sets, Going every 120 sec:\nSet 1-3: 3 x 1 Power Clean and Jerk (Push or Split Jerk) with a 2 sec pause in both the receiving position of the Power Clean and the Jerk.\nSet 4-6: 2 x 1 Power Clean and Jerk (Push or Split Jerk) with a 2 sec pause in both the receiving position of the Power Clean and the Jerk.\nSet 7-9: 1 x 1 Power Clean and Jerk (Push or Split Jerk) with a 2 sec pause in both the receiving position of the Power Clean and the Jerk.\n\nLoad: (Suggested) (+2.5% from last week)\nSet 1-3: 55-65% of 1RM Power Clean and Jerk (@55%1RM_PCLEAN_PJERK-@65%1RM_PCLEAN_PJERK)\nSet 4-6: 65-75% of 1RM Power Clean and Jerk (@65%1RM_PCLEAN_PJERK-@75%1RM_PCLEAN_PJERK)\nSet 7-9: 75-85% of 1RM Power Clean and Jerk (@75%1RM_PCLEAN_PJERK-@85%1RM_PCLEAN_PJERK)\n\nNote: In this block we are going to focus on improving your catch position in the Power Clean and in the jerk by adding a pause on all of our lifts. The pause will build positional strength and awareness, which will make you stronger and more confident in the most challenging position (the catch). \n\nProgression: \nW1: 3 sets of 3 reps, 3 sets of 2 reps, 3 sets of 1 rep \nW2: Same volume and format, aim to progress loads.\nW3: Same volume and format, aim to progress loads. (Current)\nW4: Transition week\n\n1.1.1: This means the reps are performed as singles (drop and go) and not touch and go.\n----------------------------------\nRead more about how weightlifting is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Power Clean and Jerk",
+          "kind": "youtube",
+          "src": "https://youtu.be/P12IYHPe4sQ"
+        },
+        {
+          "title": "Power Clean and Jerk",
+          "kind": "youtube",
+          "src": "https://youtu.be/kKjuPtfHpkk"
+        },
+        {
+          "title": "Split jerk",
+          "kind": "youtube",
+          "src": "https://youtu.be/JXwu0dZxxB0"
+        },
+        {
+          "title": "Power Clean",
+          "kind": "youtube",
+          "src": "https://youtu.be/AvtfJelEOhE"
+        },
+        {
+          "title": "Push jerk",
+          "kind": "youtube",
+          "src": "https://youtu.be/ZYkdY8fEW-U"
+        }
+      ]
     },
     {
-      "title": "OPTION 4: CONDITIONING - Swim",
-      "description": "Conditioning, Swim\n\na. 500m Swim (Take small breaks as needed every 50m to stay at low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n\n-Rest 3 min-\n\n5 sets:\n100m Swim* \n-60 sec Rest-\n\n10 sets:\n50m Swim*\n-30 sec Rest-\n\n*Intensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nProgression:\nW1: \n500m Swim (Take small breaks as needed every 50m to stay in at low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n\n-Rest 3 min-\n\n20 sets:\n50m Swim \n30 sec Rest\nIntensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nW2: \n“Rocket”\nComplete as many rounds as possible in 30 minutes of:\n50m Swim\n10 Push ups\n15 Air squats\n\nW3: (Current)\n500m Swim (Take small breaks as needed every 50m to stay in at low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n\n-Rest 3 min-\n\n5 sets:\n100m Swim* \n-60 sec Rest-\n+\n10 sets:\n50m Swim*\n-30 sec Rest-\n\n*Intensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nW4:\n30 minute AMRAP (“You Go, I Go”)\n50m Swim\n10 Slamball GTOH (22.5/15kg- 50/35lbs)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "title": "S1: ABSOLUTE STRENGTH + STRENGTH ENDURANCE (Squat)",
+      "description": "Strength, Anterior Lower-body (Squat) \n\na. Absolute Strength\n5 sets, Going every 3rd minute\n5 Front squats* \nLoad: (Suggested) (+2.5% from last week. Only increase if last week's sets moved well)\nSet 1: 70% of 1RM (@70%1RM_FRONTSQ)\nSet 2: 72.5% of 1RM (@72.5%1RM_FRONTSQ)\nSet 3: 75% of 1RM (@75%1RM_FRONTSQ)\nSet 4: 77.5% of 1RM (@77.5%1RM_FRONTSQ)\nSet 5: 80% of 1RM (@80%1RM_FRONTSQ)\n\nb. Strength Endurance\n5 min EMOM\n6 Thrusters\nLoad: (volume reduction from 8→6 this week, load increase by 4-5kg / 10lbs)\n[Elite] 57-61/41-45kg │ 125-135/90-100lbs\n[RX] 48-52/34-38kg │ 105-115/75-85lbs\n[Intermediate] 38-42/29-34kg │ 85-95/65-75lbs\n\n*Tempo: No tempo restrictions. \n\nProgression: \nW1: \n-5 sets of 5 Front squats (65, 67.5, 70, 72.5, 75% of 1RM)\n-5 min EMOM: 10 Thrusters\nW2: \n-5 sets of 5 Front squats (67.5, 70, 72.5, 75, 77.5% of 1RM)\n-5 min EMOM: 8 Thrusters (Heavier than last week)\nW3: (current)\n-5 sets of 5 Front squats (70, 72.5, 75, 77.5, 80% of 1RM)\n-5 min EMOM: 6 Thrusters (Heavier than last week)\nW4:\n-Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Barbell front squat",
+          "kind": "youtube",
+          "src": "https://youtu.be/RtVhWBBqDyE"
+        },
+        {
+          "title": "Thrusters",
+          "kind": "youtube",
+          "src": "https://youtu.be/tjFgEP8txDY"
+        }
+      ]
+    },
+    {
+      "title": "S1: STRENGTH ENDURANCE (Press/Pull)",
+      "description": "Strength Endurance, Anterior + Posterior Upper-body (Press/Pull) \n\na. 3 sets,\nMax Seated DB Hammer curls\n-Rest 90 sec-\nMax Banded/Cable face pulls\n-Rest 90 sec-\nMax Tricep roll backs \n-Rest 90 sec-\n\nLoad: Pick a weight that allows for 10-25 total reps on each exercise each set.\n\nTempo: Quality and control is key.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Face pull",
+          "kind": "youtube",
+          "src": "https://youtu.be/yoOsPf5O5Wc"
+        },
+        {
+          "title": "Banded face pulls",
+          "kind": "youtube",
+          "src": "https://youtu.be/rIkkxZNrwCg"
+        },
+        {
+          "title": "Double DB Seated Hammer curls",
+          "kind": "youtube",
+          "src": "https://youtu.be/EZRSIn7QQFY"
+        },
+        {
+          "title": "DB Tricep roll back",
+          "kind": "youtube",
+          "src": "https://youtu.be/F1Ifvgor6uE"
+        }
+      ]
+    },
+    {
+      "title": "S1: (OPTIONAL) STRENGTH ACCESSORY (Core)",
+      "description": "(Optional) Strength Accessory, Core\n\na. 4 sets for quality (rest as needed)\n30 sec / 30 sec Weighted Side plank hold (15+/10+kg)\n10 Alt. Saxon side bents (10/5kg)",
+      "attachments": [
+        {
+          "title": "Saxon side bents (plate)",
+          "kind": "youtube",
+          "src": "https://youtu.be/fxKgm8btYsM"
+        },
+        {
+          "title": "Side plank loaded",
+          "kind": "youtube",
+          "src": "https://youtu.be/taoQ9LA-xfI"
+        }
+      ]
+    },
+    {
+      "title": "S2: CONDITIONING",
+      "description": "Conditioning\n\na. 30 min AMRAP\n10-20-30-40 etc.\nCal Ski\nCal C2 Bike\nIntensity: \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n\n-Rest 3 min-\n\n5 sets, 2 min AMRAP / 1 min Rest\nSet 1: 250/200m Ski + Max Distance C2 bike\nSet 2: 300/250m Ski + Max Distance C2 bike\nSet 3: 350/300m Ski + Max Distance C2 bike\nSet 4: 400/350m Ski + Max Distance C2 bike\nSet 5: 450/400m Ski + Max Distance C2 bike\n\n-Rest 3 min-\n\n5 sets, 2 min AMRAP / 1 min Rest\nSet 1: 500/400m C2 bike + Max Distance Ski\nSet 2: 600/500m C2 bike + Max Distance Ski\nSet 3: 700/600m C2 bike + Max Distance Ski\nSet 4: 800/700m Ski + Max Distance Ski\nSet 5: 900/800m Ski + Max Distance Ski\nIntensity: \"Raising the ceiling\" (80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
       "attachments": []
     }
   ],
