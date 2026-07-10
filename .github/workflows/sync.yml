@@ -43,10 +43,25 @@ jobs:
         run: |
           git config user.name  "github-actions"
           git config user.email "actions@github.com"
-          git add docs/board_data.json
-          git commit -m "Aggiorna board $(date +%F)" || echo "Nessuna modifica alla board"
-          git pull --rebase origin main
-          git push
+          # board_data.json e' un file generato: salvo il contenuto nuovo,
+          # allineo il branch al remoto, riscrivo il file e committo.
+          # Un retry gestisce il caso raro di push concorrente.
+          cp docs/board_data.json /tmp/board_new.json
+          for i in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/board_new.json docs/board_data.json
+            git add docs/board_data.json
+            git commit -m "Aggiorna board $(date +%F)" || { echo "Nessuna modifica"; exit 0; }
+            if git push origin main; then
+              echo "Push riuscito"
+              exit 0
+            fi
+            echo "Push fallito, ritento ($i)..."
+            sleep 3
+          done
+          echo "Push non riuscito dopo 3 tentativi"
+          exit 1
 
       - name: Salva log come artifact
         if: always()
