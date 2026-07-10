@@ -25,10 +25,12 @@ jobs:
 
       - name: Esegui sync
         env:
-          FITR_SRC_EMAIL: ${{ secrets.FITR_SRC_EMAIL }}
-          FITR_SRC_PASS:  ${{ secrets.FITR_SRC_PASS }}
-          FITR_DST_EMAIL: ${{ secrets.FITR_DST_EMAIL }}
-          FITR_DST_PASS:  ${{ secrets.FITR_DST_PASS }}
+          FITR_SRC_EMAIL:  ${{ secrets.FITR_SRC_EMAIL }}
+          FITR_SRC_PASS:   ${{ secrets.FITR_SRC_PASS }}
+          FITR_DST_EMAIL:  ${{ secrets.FITR_DST_EMAIL }}
+          FITR_DST_PASS:   ${{ secrets.FITR_DST_PASS }}
+          FITR_DST2_EMAIL: ${{ secrets.FITR_DST2_EMAIL }}
+          FITR_DST2_PASS:  ${{ secrets.FITR_DST2_PASS }}
         run: python fitr_sync.py
 
       - name: Esporta board del giorno

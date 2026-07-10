@@ -1,10 +1,10 @@
 """
 FITR Board Export
 =================
-Estrae la programmazione di OGGI dall'account B (coach) e la salva
+Estrae la programmazione di OGGI dal primo account destinazione (coach) e la salva
 in docs/board_data.json per la visualizzazione sulla board.
 
-Riusa la stessa logica di login di fitr_sync.py.
+Ricava plan_track_id e user_id in automatico dal plan_id.
 Lanciato dopo il sync nel workflow GitHub Actions.
 """
 
@@ -14,36 +14,40 @@ import sys
 from datetime import date, datetime
 from pathlib import Path
 
-# Riusa il client dal file principale
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from fitr_sync import (
-    FitrClient, clean_text,
-    DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID,
-)
+from fitr_sync import FitrClient, clean_text, DESTINATIONS
 
-DEST_EMAIL    = os.environ.get("FITR_DST_EMAIL", "")
-DEST_PASSWORD = os.environ.get("FITR_DST_PASS",  "")
-
-# Cartella pubblicata su GitHub Pages
 DOCS_DIR = Path("docs")
 DOCS_DIR.mkdir(exist_ok=True)
 
 
 def main():
-    if not DEST_EMAIL or not DEST_PASSWORD:
-        print("Credenziali destinazione mancanti.")
+    # Usa la prima destinazione configurata per la board
+    dest = None
+    for d in DESTINATIONS:
+        if d["email"] and d["password"]:
+            dest = d
+            break
+
+    if not dest:
+        print("Nessuna destinazione con credenziali per la board.")
         sys.exit(1)
 
     dst = FitrClient("BOARD")
-    if not dst.login(DEST_EMAIL, DEST_PASSWORD):
+    if not dst.login(dest["email"], dest["password"]):
+        sys.exit(1)
+
+    # Ricava plan_track_id e user_id dal plan_id
+    plan_id = dest["plan_id"]
+    plan_track_id, user_id, plan_title = dst.discover_plan_params(plan_id)
+    if not plan_track_id or not user_id:
+        print(f"Impossibile ricavare i parametri del piano {plan_id}.")
         sys.exit(1)
 
     today = date.today().isoformat()
-    print(f"Estraggo programmazione del {today}...")
+    print(f"Estraggo programmazione del {today} da '{plan_title}'...")
 
-    sections_raw = dst.get_day_sections_coach(
-        today, DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
-    )
+    sections_raw = dst.get_day_sections_coach(today, plan_id, plan_track_id, user_id)
 
     sections = []
     for s in sorted(sections_raw, key=lambda x: x.get("position", 0)):
@@ -60,7 +64,6 @@ def main():
             "attachments": attachments,
         })
 
-    # Data leggibile in italiano
     weekdays = ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi", "Sabato", "Domenica"]
     months = ["", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
               "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"]

@@ -25,12 +25,28 @@ from pathlib import Path
 SOURCE_EMAIL    = os.environ.get("FITR_SRC_EMAIL", "")
 SOURCE_PASSWORD = os.environ.get("FITR_SRC_PASS",  "")
 
-DEST_EMAIL      = os.environ.get("FITR_DST_EMAIL", "")
-DEST_PASSWORD   = os.environ.get("FITR_DST_PASS",  "")
-
-DEST_PLAN_ID        = 371969
-DEST_PLAN_TRACK_ID  = 740801
-DEST_USER_ID        = 479154
+# ── Destinazioni ──────────────────────────────────────────────
+# Ogni destinazione e' un account coach dove copiare la programmazione.
+# Serve solo il plan_id: plan_track_id e user_id vengono ricavati da soli.
+# Le credenziali si leggono da variabili d'ambiente (vedi sotto).
+#
+# Per aggiungere una destinazione:
+#   1. aggiungi un blocco qui con label, env delle credenziali e plan_id
+#   2. su GitHub aggiungi i secret corrispondenti
+DESTINATIONS = [
+    {
+        "label":    "Account 1",
+        "email":    os.environ.get("FITR_DST_EMAIL",  ""),
+        "password": os.environ.get("FITR_DST_PASS",   ""),
+        "plan_id":  371969,
+    },
+    {
+        "label":    "Account 2",
+        "email":    os.environ.get("FITR_DST2_EMAIL", ""),
+        "password": os.environ.get("FITR_DST2_PASS",  ""),
+        "plan_id":  406569,
+    },
+]
 
 # Quanti giorni in avanti scansionare su A
 SCAN_DAYS = 90
@@ -184,6 +200,42 @@ class FitrClient:
         )
         resp.raise_for_status()
         return resp.json()
+
+    # ── Auto-discovery parametri piano destinazione ────────────
+
+    def discover_plan_params(self, plan_id):
+        """
+        Dato solo il plan_id, ricava plan_track_id e user_id (coach owner)
+        interrogando /api/coach/schedules. Ritorna (plan_track_id, user_id, plan_title)
+        oppure (None, None, None) se non trovati.
+        """
+        # Serve un range qualsiasi con date valide; usa la settimana corrente
+        today = date.today()
+        d_from = today.isoformat()
+        d_to   = (today + timedelta(days=7)).isoformat()
+
+        # user_id iniziale: quello dell'utente loggato (potrebbe differire
+        # dallo user_id "coach", ma la risposta contiene quello autorevole)
+        resp = self.session.get(
+            f"{BASE_URL}/api/coach/schedules",
+            params={
+                "from": d_from, "to": d_to,
+                "user_id": self.user_id or 0,
+                "plan_id": plan_id,
+            }
+        )
+        if resp.status_code != 200 or not resp.text.strip():
+            return None, None, None
+        try:
+            plan = resp.json().get("plan", {})
+        except Exception:
+            return None, None, None
+
+        tracks = plan.get("plan_tracks") or []
+        plan_track_id = tracks[0].get("id") if tracks else None
+        owner_id      = plan.get("user", {}).get("id")
+        plan_title    = plan.get("title", "")
+        return plan_track_id, owner_id, plan_title
 
     # ── Destinazione ───────────────────────────────────────────
 
@@ -380,138 +432,84 @@ class FitrClient:
 
 # ── Main ───────────────────────────────────────────────────────
 
-def main():
-    global SOURCE_EMAIL, SOURCE_PASSWORD, DEST_EMAIL, DEST_PASSWORD
+def sync_destination(src, dst, dest_cfg, src_days, days_to_check, scan_start, scan_end):
+    """
+    Sincronizza la programmazione sorgente su una singola destinazione.
+    Ricava plan_track_id e user_id in automatico dal plan_id.
+    Ritorna un dict con esito e conteggi. Solleva eccezione su errore fatale
+    (login o discovery falliti) per far fermare il processo.
+    """
+    plan_id = dest_cfg["plan_id"]
+    label   = dest_cfg["label"]
 
-    print("=" * 55)
-    print("  FITR Sync" + ("  [OVERRIDE]" if OVERRIDE else ""))
-    print("=" * 55)
+    print(f"\n{'='*55}")
+    print(f"  DESTINAZIONE: {label}  (plan {plan_id})")
+    print(f"{'='*55}")
 
-    if not SOURCE_EMAIL:    SOURCE_EMAIL    = ask("Email account SORGENTE: ")
-    if not SOURCE_PASSWORD: SOURCE_PASSWORD = ask("Password SORGENTE: ", secret=True)
-    if not DEST_EMAIL:      DEST_EMAIL      = ask("Email account DESTINAZIONE (coach): ")
-    if not DEST_PASSWORD:   DEST_PASSWORD   = ask("Password DESTINAZIONE: ", secret=True)
+    # Auto-discovery parametri piano
+    plan_track_id, user_id, plan_title = dst.discover_plan_params(plan_id)
+    if not plan_track_id or not user_id:
+        raise RuntimeError(
+            f"Impossibile ricavare i parametri del piano {plan_id} su '{label}'. "
+            f"Verifica che l'account sia coach e che il piano esista."
+        )
+    print(f"  Piano: {plan_title}")
+    print(f"  plan_track_id={plan_track_id}  user_id={user_id}")
 
-    # Login una sola volta per tutta l'esecuzione
-    print("\n-- Autenticazione --")
-    src = FitrClient("SORGENTE")
-    if not src.login(SOURCE_EMAIL, SOURCE_PASSWORD):
-        sys.exit(1)
+    copied = skipped = errors = removed = 0
+    results = []
 
-    dst = FitrClient("DESTINAZIONE")
-    if not dst.login(DEST_EMAIL, DEST_PASSWORD):
-        sys.exit(1)
-
-    # Scarica overview sorgente (tutti i giorni disponibili su A)
-    scan_start = date.today()
-    scan_end   = scan_start + timedelta(days=SCAN_DAYS)
-    print(f"\n-- Scan sorgente: {scan_start} → {scan_end} --")
-
-    src_days = {}
-    for chunk_from, chunk_to in date_range_chunks(scan_start, scan_end, chunk=30):
-        chunk = src.get_schedule_overview(chunk_from, chunk_to)
-        src_days.update(chunk)
-        n = sum(1 for d in chunk.values() if d["sections_count"] > 0)
-        print(f"  {chunk_from} → {chunk_to}: {n} giorni con contenuto")
-
-    # Filtra solo giorni con contenuto, in ordine cronologico
-    days_to_check = sorted(
-        [(d, info) for d, info in src_days.items() if info["sections_count"] > 0]
-    )
-
-    if not days_to_check:
-        print("\nNessun giorno con contenuto trovato su A.")
-        sys.exit(0)
-
-    print(f"\nTotale giorni disponibili su A: {len(days_to_check)}")
-    print(f"Dal {days_to_check[0][0]} al {days_to_check[-1][0]}")
-
-    if OVERRIDE:
-        confirm = ask(f"\nOVERRIDE: ricarico tutti i {len(days_to_check)} giorni. Confermi? (s/N): ")
-        if confirm.lower() != "s":
-            print("Annullato.")
-            sys.exit(0)
-
-    # Loop interno: controlla ogni giorno su B e copia se mancante
-    results  = []
-    copied   = 0
-    skipped  = 0
-    errors   = 0
-    removed  = 0
-
-    print("\n-- Inizio sync --")
-
+    print("\n  -- Sync giorni --")
     for target_date, info in days_to_check:
         sched_id = info.get("schedule_id")
 
-        # Controlla se gia' presente su B
-        # Download dettaglio da A
         try:
             detail   = src.get_day_detail(sched_id)
             sections = detail.get("day", {}).get("sections", [])
         except Exception as ex:
-            print(f"  {target_date}: ERRORE download — {ex}")
+            print(f"  {target_date}: ERRORE download da A — {ex}")
             errors += 1
             results.append({"date": target_date, "status": "error_download", "error": str(ex)})
             continue
 
         if not sections:
-            print(f"  {target_date}: vuoto su A, salto.")
             continue
 
-        n_videos = sum(
-            len([a for a in s.get("attachments", []) if a.get("kind") in ("youtube", "video")])
-            for s in sections
-        )
-        n_pdfs = sum(
-            len([a for a in s.get("attachments", []) if a.get("kind") == "other"])
-            for s in sections
-        )
+        n_videos = sum(len([a for a in s.get("attachments", []) if a.get("kind") in ("youtube","video")]) for s in sections)
+        n_pdfs   = sum(len([a for a in s.get("attachments", []) if a.get("kind") == "other"]) for s in sections)
 
-        # Controlla se gia' presente su B
-        existing_ids = dst.get_existing_section_ids(
-            target_date, DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
-        )
+        existing_ids = dst.get_existing_section_ids(target_date, plan_id, plan_track_id, user_id)
 
         if existing_ids:
             if OVERRIDE:
-                print(f"\n  {target_date}: {len(sections)} sezioni, {n_videos} video, {n_pdfs} pdf  [OVERRIDE]")
+                print(f"\n  {target_date}: {len(sections)} sez, {n_videos} video, {n_pdfs} pdf  [OVERRIDE]")
             else:
-                # Confronta contenuto A vs B
-                b_sections = dst.get_day_sections_coach(
-                    target_date, DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
-                )
+                b_sections = dst.get_day_sections_coach(target_date, plan_id, plan_track_id, user_id)
                 fp_a = fingerprint_sections(sections, clean=True)
                 fp_b = fingerprint_sections(b_sections, clean=False)
-
                 if fp_a == fp_b:
-                    print(f"  {target_date}: identico ({len(existing_ids)} sezioni), salto.")
+                    print(f"  {target_date}: identico ({len(existing_ids)} sez), salto.")
                     skipped += 1
                     results.append({"date": target_date, "status": "skipped_identical"})
                     continue
                 else:
-                    print(f"\n  {target_date}: {len(sections)} sezioni, {n_videos} video, {n_pdfs} pdf  [MODIFICATO — ricarico]")
+                    print(f"\n  {target_date}: {len(sections)} sez, {n_videos} video, {n_pdfs} pdf  [MODIFICATO]")
 
-            # Cancella sezioni esistenti (override o contenuto diverso)
             try:
-                dst.delete_sections(existing_ids, DEST_PLAN_ID, DEST_USER_ID)
-                print(f"    Cancellate {len(existing_ids)} sezioni esistenti.")
+                dst.delete_sections(existing_ids, plan_id, user_id)
+                print(f"    Cancellate {len(existing_ids)} sez esistenti.")
             except Exception as ex:
                 print(f"    ERRORE cancellazione: {ex}")
                 errors += 1
                 results.append({"date": target_date, "status": "error_delete", "error": str(ex)})
                 continue
         else:
-            print(f"\n  {target_date}: {len(sections)} sezioni, {n_videos} video, {n_pdfs} pdf")
+            print(f"\n  {target_date}: {len(sections)} sez, {n_videos} video, {n_pdfs} pdf")
 
-        # Upload su B
         try:
-            result  = dst.create_day(
-                target_date, sections,
-                DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
-            )
+            result  = dst.create_day(target_date, sections, plan_id, plan_track_id, user_id)
             created = len(result.get("schedule", {}).get("day", {}).get("sections", []))
-            print(f"    Caricato: {created} sezioni.")
+            print(f"    Caricato: {created} sez.")
             copied += 1
             results.append({"date": target_date, "status": "ok", "sections": created})
         except Exception as ex:
@@ -520,37 +518,24 @@ def main():
             results.append({"date": target_date, "status": "error_upload", "error": str(ex)})
             continue
 
-        # Pausa tra un giorno e l'altro
         if PAUSE_BETWEEN_DAYS > 0:
             time.sleep(PAUSE_BETWEEN_DAYS)
 
-    # ── Fase 2: pulizia giorni orfani ──────────────────────────
-    # Giorni che su A sono vuoti/assenti ma su B hanno ancora sezioni
-    # (allenamento eliminato dalla sorgente dopo essere stato copiato).
-    # In modalita' OVERRIDE questa fase e' saltata.
+    # Fase 2: pulizia giorni orfani (saltata in OVERRIDE)
     if not OVERRIDE:
-        print("\n-- Controllo giorni eliminati su A --")
-        dates_with_content_on_a = {
-            d for d, info in src_days.items() if info["sections_count"] > 0
-        }
-
-        # Scandisce tutto il range: ogni data NON presente con contenuto su A
+        print("\n  -- Controllo giorni eliminati su A --")
+        dates_with_content = {d for d, i in src_days.items() if i["sections_count"] > 0}
         cur = scan_start
         while cur <= scan_end:
             d_iso = cur.isoformat()
             cur += timedelta(days=1)
-
-            if d_iso in dates_with_content_on_a:
-                continue  # ha contenuto su A, gestito nella fase 1
-
-            # Su A e' vuoto/assente: controlla se su B esiste ancora
-            orphan_ids = dst.get_existing_section_ids(
-                d_iso, DEST_PLAN_ID, DEST_PLAN_TRACK_ID, DEST_USER_ID
-            )
+            if d_iso in dates_with_content:
+                continue
+            orphan_ids = dst.get_existing_section_ids(d_iso, plan_id, plan_track_id, user_id)
             if orphan_ids:
-                print(f"  {d_iso}: eliminato su A ma presente su B ({len(orphan_ids)} sezioni) — svuoto.")
+                print(f"  {d_iso}: orfano su B ({len(orphan_ids)} sez) — svuoto.")
                 try:
-                    dst.delete_sections(orphan_ids, DEST_PLAN_ID, DEST_USER_ID)
+                    dst.delete_sections(orphan_ids, plan_id, user_id)
                     removed += 1
                     results.append({"date": d_iso, "status": "removed_orphan"})
                 except Exception as ex:
@@ -560,18 +545,103 @@ def main():
                 if PAUSE_BETWEEN_DAYS > 0:
                     time.sleep(PAUSE_BETWEEN_DAYS)
 
-    # Riepilogo finale
-    print("\n" + "=" * 55)
-    print(f"  Copiati:    {copied}")
-    print(f"  Saltati:    {skipped}  (gia' presenti e identici)")
-    print(f"  Svuotati:   {removed}  (eliminati su A)")
-    print(f"  Errori:     {errors}")
-    if copied == 0 and removed == 0 and skipped == len(days_to_check):
-        print("\n  Tutto gia' in sync. Niente da fare.")
+    print(f"\n  [{label}] Copiati:{copied} Saltati:{skipped} Svuotati:{removed} Errori:{errors}")
+    return {"label": label, "copied": copied, "skipped": skipped,
+            "removed": removed, "errors": errors, "results": results}
+
+
+def main():
+    global SOURCE_EMAIL, SOURCE_PASSWORD
+
+    print("=" * 55)
+    print("  FITR Sync multi-destinazione" + ("  [OVERRIDE]" if OVERRIDE else ""))
     print("=" * 55)
 
+    if not SOURCE_EMAIL:    SOURCE_EMAIL    = ask("Email account SORGENTE: ")
+    if not SOURCE_PASSWORD: SOURCE_PASSWORD = ask("Password SORGENTE: ", secret=True)
+
+    # Prepara le destinazioni con credenziali (chiede interattivamente se mancano)
+    active_dests = []
+    for d in DESTINATIONS:
+        email = d["email"] or ask(f"Email {d['label']} (coach): ")
+        pwd   = d["password"] or ask(f"Password {d['label']}: ", secret=True)
+        if email and pwd:
+            active_dests.append({**d, "email": email, "password": pwd})
+
+    if not active_dests:
+        print("Nessuna destinazione configurata.")
+        sys.exit(1)
+
+    # Login sorgente
+    print("\n-- Autenticazione sorgente --")
+    src = FitrClient("SORGENTE")
+    if not src.login(SOURCE_EMAIL, SOURCE_PASSWORD):
+        sys.exit(1)
+
+    # Login di tutte le destinazioni PRIMA di iniziare (stop-and-report)
+    print("\n-- Autenticazione destinazioni --")
+    dest_clients = []
+    for d in active_dests:
+        c = FitrClient(d["label"])
+        if not c.login(d["email"], d["password"]):
+            print(f"\nERRORE: login fallito su '{d['label']}'. Interrompo (nessuna modifica effettuata).")
+            sys.exit(1)
+        dest_clients.append((c, d))
+
+    # Scarica overview sorgente una sola volta
+    scan_start = date.today()
+    scan_end   = scan_start + timedelta(days=SCAN_DAYS)
+    print(f"\n-- Scan sorgente: {scan_start} → {scan_end} --")
+    src_days = {}
+    for chunk_from, chunk_to in date_range_chunks(scan_start, scan_end, chunk=30):
+        chunk = src.get_schedule_overview(chunk_from, chunk_to)
+        src_days.update(chunk)
+        n = sum(1 for x in chunk.values() if x["sections_count"] > 0)
+        print(f"  {chunk_from} → {chunk_to}: {n} giorni con contenuto")
+
+    days_to_check = sorted([(d, i) for d, i in src_days.items() if i["sections_count"] > 0])
+    if not days_to_check:
+        print("\nNessun giorno con contenuto su A.")
+        sys.exit(0)
+
+    print(f"\nGiorni disponibili su A: {len(days_to_check)} (dal {days_to_check[0][0]} al {days_to_check[-1][0]})")
+
+    if OVERRIDE:
+        confirm = ask(f"\nOVERRIDE: ricarico tutti i giorni su {len(dest_clients)} account. Confermi? (s/N): ")
+        if confirm.lower() != "s":
+            print("Annullato.")
+            sys.exit(0)
+
+    # Sync su ogni destinazione. Stop-and-report: al primo errore fatale, ferma.
+    all_summaries = []
+    for c, d in dest_clients:
+        try:
+            summary = sync_destination(src, c, d, src_days, days_to_check, scan_start, scan_end)
+            all_summaries.append(summary)
+        except Exception as ex:
+            print(f"\n{'!'*55}")
+            print(f"  ERRORE FATALE su '{d['label']}': {ex}")
+            print(f"  Interrompo il processo come richiesto (stop-and-report).")
+            print(f"{'!'*55}")
+            # Salva comunque il log parziale
+            _save_log(all_summaries + [{"label": d["label"], "fatal_error": str(ex)}])
+            sys.exit(1)
+
+    # Riepilogo globale
+    print("\n" + "=" * 55)
+    print("  RIEPILOGO")
+    print("=" * 55)
+    for s in all_summaries:
+        print(f"  {s['label']}: copiati {s['copied']}, saltati {s['skipped']}, "
+              f"svuotati {s['removed']}, errori {s['errors']}")
+    print("=" * 55)
+
+    _save_log(all_summaries)
+
+
+def _save_log(summaries):
     log_path = OUTPUT_DIR / f"{datetime.now().strftime('%Y-%m-%d_%H%M')}_sync.json"
-    log_path.write_text(json.dumps(results, indent=2, ensure_ascii=False))
+    log_path.write_text(json.dumps(summaries, indent=2, ensure_ascii=False))
     print(f"\nLog: {log_path}")
 
 
