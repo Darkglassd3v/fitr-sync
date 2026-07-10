@@ -578,15 +578,22 @@ def main():
     if not src.login(SOURCE_EMAIL, SOURCE_PASSWORD):
         sys.exit(1)
 
-    # Login di tutte le destinazioni PRIMA di iniziare (stop-and-report)
+    # Login di tutte le destinazioni. Se un login fallisce, salta
+    # quella destinazione e continua con le altre.
     print("\n-- Autenticazione destinazioni --")
     dest_clients = []
+    login_failures = []
     for d in active_dests:
         c = FitrClient(d["label"])
         if not c.login(d["email"], d["password"]):
-            print(f"\nERRORE: login fallito su '{d['label']}'. Interrompo (nessuna modifica effettuata).")
-            sys.exit(1)
+            print(f"  AVVISO: login fallito su '{d['label']}', la salto.")
+            login_failures.append(d["label"])
+            continue
         dest_clients.append((c, d))
+
+    if not dest_clients:
+        print("\nNessuna destinazione con login valido. Niente da fare.")
+        sys.exit(1)
 
     # Scarica overview sorgente una sola volta
     scan_start = date.today()
@@ -612,28 +619,33 @@ def main():
             print("Annullato.")
             sys.exit(0)
 
-    # Sync su ogni destinazione. Stop-and-report: al primo errore fatale, ferma.
+    # Sync su ogni destinazione. Se una fallisce, la segnala e continua.
     all_summaries = []
+    failed_dests = list(login_failures)  # gia' falliti al login
     for c, d in dest_clients:
         try:
             summary = sync_destination(src, c, d, src_days, days_to_check, scan_start, scan_end)
             all_summaries.append(summary)
         except Exception as ex:
             print(f"\n{'!'*55}")
-            print(f"  ERRORE FATALE su '{d['label']}': {ex}")
-            print(f"  Interrompo il processo come richiesto (stop-and-report).")
+            print(f"  ERRORE su '{d['label']}': {ex}")
+            print(f"  Salto questo account e continuo con i successivi.")
             print(f"{'!'*55}")
-            # Salva comunque il log parziale
-            _save_log(all_summaries + [{"label": d["label"], "fatal_error": str(ex)}])
-            sys.exit(1)
+            failed_dests.append(d["label"])
+            all_summaries.append({"label": d["label"], "fatal_error": str(ex)})
 
     # Riepilogo globale
     print("\n" + "=" * 55)
     print("  RIEPILOGO")
     print("=" * 55)
     for s in all_summaries:
-        print(f"  {s['label']}: copiati {s['copied']}, saltati {s['skipped']}, "
-              f"svuotati {s['removed']}, errori {s['errors']}")
+        if "fatal_error" in s:
+            print(f"  {s['label']}: FALLITO — {s['fatal_error']}")
+        else:
+            print(f"  {s['label']}: copiati {s['copied']}, saltati {s['skipped']}, "
+                  f"svuotati {s['removed']}, errori {s['errors']}")
+    if failed_dests:
+        print(f"\n  Account con problemi: {', '.join(failed_dests)}")
     print("=" * 55)
 
     _save_log(all_summaries)
