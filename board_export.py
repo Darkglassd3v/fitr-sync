@@ -22,30 +22,30 @@ DOCS_DIR.mkdir(exist_ok=True)
 
 
 def main():
-    # Usa la prima destinazione configurata per la board
+    # Usa la prima destinazione abilitata per la board
     dest = None
     for d in DESTINATIONS:
-        if d["email"] and d["password"]:
+        if d.get("enabled", False) and d["email"] and d["password"]:
             dest = d
             break
 
     if not dest:
-        print("Nessuna destinazione con credenziali per la board.")
+        print("Nessuna destinazione abilitata con credenziali per la board.")
         sys.exit(1)
 
     dst = FitrClient("BOARD")
     if not dst.login(dest["email"], dest["password"]):
         sys.exit(1)
 
-    # Ricava plan_track_id e user_id dal plan_id
-    plan_id = dest["plan_id"]
-    plan_track_id, user_id, plan_title = dst.discover_plan_params(plan_id)
+    plan_id       = dest["plan_id"]
+    plan_track_id = dest["plan_track_id"]
+    user_id       = dest["user_id"]
     if not plan_track_id or not user_id:
-        print(f"Impossibile ricavare i parametri del piano {plan_id}.")
+        print(f"Parametri piano mancanti per '{dest['label']}'.")
         sys.exit(1)
 
     today = date.today().isoformat()
-    print(f"Estraggo programmazione del {today} da '{plan_title}'...")
+    print(f"Estraggo programmazione del {today}...")
 
     sections_raw = dst.get_day_sections_coach(today, plan_id, plan_track_id, user_id)
 

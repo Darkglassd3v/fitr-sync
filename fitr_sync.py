@@ -27,24 +27,33 @@ SOURCE_PASSWORD = os.environ.get("FITR_SRC_PASS",  "")
 
 # ── Destinazioni ──────────────────────────────────────────────
 # Ogni destinazione e' un account coach dove copiare la programmazione.
-# Serve solo il plan_id: plan_track_id e user_id vengono ricavati da soli.
-# Le credenziali si leggono da variabili d'ambiente (vedi sotto).
+# I parametri plan_id / plan_track_id / user_id sono cablati (presi da HAR).
 #
-# Per aggiungere una destinazione:
-#   1. aggiungi un blocco qui con label, env delle credenziali e plan_id
-#   2. su GitHub aggiungi i secret corrispondenti
+# NOTA: l'auto-discovery (ricavare track/user dal solo plan_id) non funziona
+# su tutti gli account, quindi per ora i valori sono fissi. Per aggiungere
+# un account: cattura un HAR dal suo piano, leggi i tre id da una chiamata
+# coach/schedules/show e compila un blocco qui sotto con "enabled": True.
 DESTINATIONS = [
     {
-        "label":    "Account 1",
-        "email":    os.environ.get("FITR_DST_EMAIL",  ""),
-        "password": os.environ.get("FITR_DST_PASS",   ""),
-        "plan_id":  371969,
+        "label":         "Account 1",
+        "email":         os.environ.get("FITR_DST_EMAIL",  ""),
+        "password":      os.environ.get("FITR_DST_PASS",   ""),
+        "plan_id":       371969,
+        "plan_track_id": 740801,
+        "user_id":       479154,
+        "enabled":       True,
     },
     {
-        "label":    "Account 2",
-        "email":    os.environ.get("FITR_DST2_EMAIL", ""),
-        "password": os.environ.get("FITR_DST2_PASS",  ""),
-        "plan_id":  406569,
+        # Predisposto ma DISABILITATO: mancano plan_track_id e user_id.
+        # Domani: cattura HAR dal piano 406569, compila i due valori e
+        # imposta "enabled": True.
+        "label":         "Account 2",
+        "email":         os.environ.get("FITR_DST2_EMAIL", ""),
+        "password":      os.environ.get("FITR_DST2_PASS",  ""),
+        "plan_id":       406569,
+        "plan_track_id": None,   # <-- da compilare
+        "user_id":       None,   # <-- da compilare
+        "enabled":       False,  # <-- mettere True quando compilati
     },
 ]
 
@@ -439,21 +448,19 @@ def sync_destination(src, dst, dest_cfg, src_days, days_to_check, scan_start, sc
     Ritorna un dict con esito e conteggi. Solleva eccezione su errore fatale
     (login o discovery falliti) per far fermare il processo.
     """
-    plan_id = dest_cfg["plan_id"]
-    label   = dest_cfg["label"]
+    plan_id       = dest_cfg["plan_id"]
+    plan_track_id = dest_cfg["plan_track_id"]
+    user_id       = dest_cfg["user_id"]
+    label         = dest_cfg["label"]
 
     print(f"\n{'='*55}")
     print(f"  DESTINAZIONE: {label}  (plan {plan_id})")
     print(f"{'='*55}")
 
-    # Auto-discovery parametri piano
-    plan_track_id, user_id, plan_title = dst.discover_plan_params(plan_id)
     if not plan_track_id or not user_id:
         raise RuntimeError(
-            f"Impossibile ricavare i parametri del piano {plan_id} su '{label}'. "
-            f"Verifica che l'account sia coach e che il piano esista."
+            f"Parametri piano mancanti per '{label}' (plan_track_id/user_id non impostati)."
         )
-    print(f"  Piano: {plan_title}")
     print(f"  plan_track_id={plan_track_id}  user_id={user_id}")
 
     copied = skipped = errors = removed = 0
@@ -560,9 +567,12 @@ def main():
     if not SOURCE_EMAIL:    SOURCE_EMAIL    = ask("Email account SORGENTE: ")
     if not SOURCE_PASSWORD: SOURCE_PASSWORD = ask("Password SORGENTE: ", secret=True)
 
-    # Prepara le destinazioni con credenziali (chiede interattivamente se mancano)
+    # Prepara le destinazioni ABILITATE con credenziali
     active_dests = []
     for d in DESTINATIONS:
+        if not d.get("enabled", False):
+            print(f"  (Account '{d['label']}' disabilitato, saltato)")
+            continue
         email = d["email"] or ask(f"Email {d['label']} (coach): ")
         pwd   = d["password"] or ask(f"Password {d['label']}: ", secret=True)
         if email and pwd:
