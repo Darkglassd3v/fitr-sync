@@ -1,21 +1,46 @@
 {
-  "date": "2026-07-10",
-  "date_label": "Venerdi 10 Luglio",
-  "generated_at": "2026-07-10T16:11:24.283117",
+  "date": "2026-07-11",
+  "date_label": "Sabato 11 Luglio",
+  "generated_at": "2026-07-11T01:59:52.323065",
   "sections": [
     {
       "title": "S1: WARM UP",
-      "description": "Weightlifting, Warm up \n\na. Movement prep \n1 round of:\n60/60 sec Dynamic Pec Stretch\n60/60 sec Dynamic Lat Stretch\n60/60 sec Dynamic Anterior Hip stretch\n60/60 sec Dynamic Posterior Hip stretch\n\nb. Activation \n1 round of:\nMini-band Posterior prep routine (20 alt. side steps, 20 goodmornings, 20 alt. side steps, 20 glute bridges)\nA, T, W, Y, E, I banded shoulder routine (10 of each)\n\nc. Weightlifting, P.C&J specific barbell prep\n(Empty barbell)\n5 Clean Pulls + 10 Extended pulls\n-rest as needed-\n5 Muscle Clean + 10 Strict Press (Alt. presses from front/back)\n-rest as needed-\n5 Power Clean + 10 Push Jerks (Alt. from front/back)\n-rest as needed-\nStart building up in weight.",
+      "description": "Warm up \n\na. Dynamic stretches\n1 round of:\n60/60 sec Dynamic Pec Stretch\n60/60 sec Dynamic Lat Stretch\n10/10/10 Wrist leans (forward, side to side, backward)\n\nb. Metabolic prep\n4 minutes Row performed as 40 sec Easy / 20 sec Hard\n\nc. Activation\n25 Banded Pull aparts\n25 Banded Tricep extensions\n25 Banded Bicep curls\n25 Banded Delt raises\n25 Banded Face pulls\n\nd. Ring Muscle ups and Wall walks prep\nSelf directed or use below as guideline:\n5 Inchworm push ups\n20 sec Top of Ring dip hold\n20 sec Bottom of Ring dip hold\n10 Kip swings in high rings\n20 sec Handstand hold (chest to wall)\n+ 5 minutes to practice full Ring Muscle ups, Toes to rings, Wall walks and HR Push ups.",
       "attachments": [
         {
-          "title": "Dynamic posterior hip box stretch",
+          "title": "Kipping Toes to rings (TTB series)",
           "kind": "youtube",
-          "src": "https://youtu.be/fcojabIIwNA"
+          "src": "https://youtu.be/iSysR5v0GKQ"
         },
         {
-          "title": "Dynamic anterior hip stretch",
+          "title": "Kip swings (large)",
           "kind": "youtube",
-          "src": "https://youtu.be/M5nRWGwU_f0"
+          "src": "https://youtu.be/70CUDutfeSs"
+        },
+        {
+          "title": "Banded pull apart",
+          "kind": "youtube",
+          "src": "https://youtu.be/polViRSRkyw"
+        },
+        {
+          "title": "Inchworm push up",
+          "kind": "youtube",
+          "src": "https://youtu.be/2qS9TFE7iRw"
+        },
+        {
+          "title": "Top of ring dips",
+          "kind": "youtube",
+          "src": "https://youtu.be/3jiOOisJmvU"
+        },
+        {
+          "title": "Bottom of dip",
+          "kind": "youtube",
+          "src": "https://youtu.be/piBa8E1hviQ"
+        },
+        {
+          "title": "3 way wrist warm up",
+          "kind": "youtube",
+          "src": "https://youtu.be/OWjsM7rqtlY"
         },
         {
           "title": "Dynamic bent arm pec opener",
@@ -23,92 +48,24 @@
           "src": "https://youtu.be/Fv0KnjRiLf8"
         },
         {
+          "title": "Ring Muscle ups",
+          "kind": "youtube",
+          "src": "https://youtu.be/17WLm-M4_hk"
+        },
+        {
           "title": "Lat pulsed stretching with reach through",
           "kind": "youtube",
           "src": "https://youtu.be/P7scr-51piE"
         },
         {
-          "title": "Mini-band deadlift prep (Side step, Goodmorning, Side step, Glute bridge)",
+          "title": "Banded Tricep extensions",
           "kind": "youtube",
-          "src": "https://youtu.be/JLGh0CWwQ-0"
+          "src": "https://youtu.be/jRC4vC0HVl8"
         },
         {
-          "title": "Banded shoulder ATWYEI routine",
+          "title": "Banded Bicep curls",
           "kind": "youtube",
-          "src": "https://youtu.be/0AyanidTrbs"
-        },
-        {
-          "title": "5 Clean pulls + 10 extended pulls",
-          "kind": "youtube",
-          "src": "https://youtu.be/jErPncLn1Hk"
-        },
-        {
-          "title": "5 Muscle Cleans + 10 Strict press (Alt. front and back)",
-          "kind": "youtube",
-          "src": "https://youtu.be/Axg1Hx8McM8"
-        },
-        {
-          "title": "5 Power Cleans + 10 Jerks (Alt. Front/Back)",
-          "kind": "youtube",
-          "src": "https://youtu.be/lasVFq8c-Mg"
-        }
-      ]
-    },
-    {
-      "title": "S1: STRENGTH-SPEED (Clean and Jerk)",
-      "description": "Strength-Speed / \"Power\" / Weightlifting, Power Clean and Jerk\n\na. 9 sets, Going every 120 sec:\nSet 1-3: 3 x 1 Power Clean and Jerk (Push or Split Jerk) with a 2 sec pause in both the receiving position of the Power Clean and the Jerk.\nSet 4-6: 2 x 1 Power Clean and Jerk (Push or Split Jerk) with a 2 sec pause in both the receiving position of the Power Clean and the Jerk.\nSet 7-9: 1 x 1 Power Clean and Jerk (Push or Split Jerk) with a 2 sec pause in both the receiving position of the Power Clean and the Jerk.\n\nLoad: (Suggested) (+2.5% from last week)\nSet 1-3: 55-65% of 1RM Power Clean and Jerk (@55%1RM_PCLEAN_PJERK-@65%1RM_PCLEAN_PJERK)\nSet 4-6: 65-75% of 1RM Power Clean and Jerk (@65%1RM_PCLEAN_PJERK-@75%1RM_PCLEAN_PJERK)\nSet 7-9: 75-85% of 1RM Power Clean and Jerk (@75%1RM_PCLEAN_PJERK-@85%1RM_PCLEAN_PJERK)\n\nNote: In this block we are going to focus on improving your catch position in the Power Clean and in the jerk by adding a pause on all of our lifts. The pause will build positional strength and awareness, which will make you stronger and more confident in the most challenging position (the catch). \n\nProgression: \nW1: 3 sets of 3 reps, 3 sets of 2 reps, 3 sets of 1 rep \nW2: Same volume and format, aim to progress loads.\nW3: Same volume and format, aim to progress loads. (Current)\nW4: Transition week\n\n1.1.1: This means the reps are performed as singles (drop and go) and not touch and go.\n----------------------------------\nRead more about how weightlifting is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Power Clean and Jerk",
-          "kind": "youtube",
-          "src": "https://youtu.be/P12IYHPe4sQ"
-        },
-        {
-          "title": "Power Clean and Jerk",
-          "kind": "youtube",
-          "src": "https://youtu.be/kKjuPtfHpkk"
-        },
-        {
-          "title": "Split jerk",
-          "kind": "youtube",
-          "src": "https://youtu.be/JXwu0dZxxB0"
-        },
-        {
-          "title": "Power Clean",
-          "kind": "youtube",
-          "src": "https://youtu.be/AvtfJelEOhE"
-        },
-        {
-          "title": "Push jerk",
-          "kind": "youtube",
-          "src": "https://youtu.be/ZYkdY8fEW-U"
-        }
-      ]
-    },
-    {
-      "title": "S1: ABSOLUTE STRENGTH + STRENGTH ENDURANCE (Squat)",
-      "description": "Strength, Anterior Lower-body (Squat) \n\na. Absolute Strength\n5 sets, Going every 3rd minute\n5 Front squats* \nLoad: (Suggested) (+2.5% from last week. Only increase if last week's sets moved well)\nSet 1: 70% of 1RM (@70%1RM_FRONTSQ)\nSet 2: 72.5% of 1RM (@72.5%1RM_FRONTSQ)\nSet 3: 75% of 1RM (@75%1RM_FRONTSQ)\nSet 4: 77.5% of 1RM (@77.5%1RM_FRONTSQ)\nSet 5: 80% of 1RM (@80%1RM_FRONTSQ)\n\nb. Strength Endurance\n5 min EMOM\n6 Thrusters\nLoad: (volume reduction from 8→6 this week, load increase by 4-5kg / 10lbs)\n[Elite] 57-61/41-45kg │ 125-135/90-100lbs\n[RX] 48-52/34-38kg │ 105-115/75-85lbs\n[Intermediate] 38-42/29-34kg │ 85-95/65-75lbs\n\n*Tempo: No tempo restrictions. \n\nProgression: \nW1: \n-5 sets of 5 Front squats (65, 67.5, 70, 72.5, 75% of 1RM)\n-5 min EMOM: 10 Thrusters\nW2: \n-5 sets of 5 Front squats (67.5, 70, 72.5, 75, 77.5% of 1RM)\n-5 min EMOM: 8 Thrusters (Heavier than last week)\nW3: (current)\n-5 sets of 5 Front squats (70, 72.5, 75, 77.5, 80% of 1RM)\n-5 min EMOM: 6 Thrusters (Heavier than last week)\nW4:\n-Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Barbell front squat",
-          "kind": "youtube",
-          "src": "https://youtu.be/RtVhWBBqDyE"
-        },
-        {
-          "title": "Thrusters",
-          "kind": "youtube",
-          "src": "https://youtu.be/tjFgEP8txDY"
-        }
-      ]
-    },
-    {
-      "title": "S1: STRENGTH ENDURANCE (Press/Pull)",
-      "description": "Strength Endurance, Anterior + Posterior Upper-body (Press/Pull) \n\na. 3 sets,\nMax Seated DB Hammer curls\n-Rest 90 sec-\nMax Banded/Cable face pulls\n-Rest 90 sec-\nMax Tricep roll backs \n-Rest 90 sec-\n\nLoad: Pick a weight that allows for 10-25 total reps on each exercise each set.\n\nTempo: Quality and control is key.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Face pull",
-          "kind": "youtube",
-          "src": "https://youtu.be/yoOsPf5O5Wc"
+          "src": "https://youtu.be/M_UqIiK8w1Y"
         },
         {
           "title": "Banded face pulls",
@@ -116,36 +73,113 @@
           "src": "https://youtu.be/rIkkxZNrwCg"
         },
         {
-          "title": "Double DB Seated Hammer curls",
+          "title": "Banded Delt raises",
           "kind": "youtube",
-          "src": "https://youtu.be/EZRSIn7QQFY"
+          "src": "https://youtu.be/JJoPGhsdZ5c"
         },
         {
-          "title": "DB Tricep roll back",
+          "title": "Wall facing HS hold",
           "kind": "youtube",
-          "src": "https://youtu.be/F1Ifvgor6uE"
+          "src": "https://youtu.be/Mn3p3beXPOw"
+        },
+        {
+          "title": "Wall walks",
+          "kind": "youtube",
+          "src": "https://youtu.be/EEyQzZbxj_Q"
+        },
+        {
+          "title": "Hand release push ups",
+          "kind": "youtube",
+          "src": "https://youtu.be/V6VYTJtHFDc"
         }
       ]
     },
     {
-      "title": "S1: (OPTIONAL) STRENGTH ACCESSORY (Core)",
-      "description": "(Optional) Strength Accessory, Core\n\na. 4 sets for quality (rest as needed)\n30 sec / 30 sec Weighted Side plank hold (15+/10+kg)\n10 Alt. Saxon side bents (10/5kg)",
+      "title": "S1: RELATIVE STRENGTH ENDURANCE (GYM.)",
+      "description": "(Relative) Strength Endurance / Gymnastics\n\nElite:\na. 16 min EMOM (4 rounds)\n1: 10 Toes to rings + Max Ring Muscle ups in the remaining time\n2: Rest\n3: 10 Hand release Push ups + Max Wall Walks in the remaining time\n4: Rest\n\nRX:\na. 16 min EMOM (4 rounds)\n1: 8 Toes to rings + Max Ring Muscle ups in the remaining time\n2: Rest\n3: 8 Hand release Push ups + Max Wall Walks in the remaining time\n4: Rest\n\nIntermediate:\na. 16 min EMOM (4 rounds)\n1: Ring Muscle ups / From box\n2: Wall Walks / Reduced distance \n2: Toes to rings\n4: Hand release Push ups\n*Pick a sustainable number of reps on each station to complete with high quality.\n\nScaled:\na. Spend 20 minutes practicing your Ring Muscle ups. Use attached progressions.\n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
       "attachments": [
         {
-          "title": "Saxon side bents (plate)",
+          "title": "Kipping Toes to rings (TTB series)",
           "kind": "youtube",
-          "src": "https://youtu.be/fxKgm8btYsM"
+          "src": "https://youtu.be/iSysR5v0GKQ"
         },
         {
-          "title": "Side plank loaded",
+          "title": "Ring Muscle ups",
           "kind": "youtube",
-          "src": "https://youtu.be/taoQ9LA-xfI"
+          "src": "https://youtu.be/17WLm-M4_hk"
+        },
+        {
+          "title": "Reduced distance wall walk",
+          "kind": "youtube",
+          "src": "https://youtu.be/MW3efjdbrUE"
+        },
+        {
+          "title": "Wall walks",
+          "kind": "youtube",
+          "src": "https://youtu.be/OQFjgFloKEE"
+        },
+        {
+          "title": "Jumping RMU from box (RMU series)",
+          "kind": "youtube",
+          "src": "https://youtu.be/jZGHeQY3LdA"
+        },
+        {
+          "title": "Hand release push ups",
+          "kind": "youtube",
+          "src": "https://youtu.be/V6VYTJtHFDc"
         }
       ]
+    },
+    {
+      "title": "S1: CONDITIONING",
+      "description": "Conditioning, “Raising the ceiling” (Threshold │ 80-85% effort │ Heavy-Severe intensity domain)\n\nElite:\na. 15 min EMOM\n1: 200/180m Ski \n2: 75 Double unders\n3: 200/180m Ski\n4: Max Alt. DB Snatches (32.5/22.5kg - 70/50lbs)\n5: Rest\n\nRX:\na. 15 min EMOM\n1: 200/180m Ski\n2: 50 Double Unders\n3: 200/180m Ski\n4: Max Alt. DB Snatches (22.5/15kg - 50/35lbs)\n5: Rest\n\nIntermediate:\na. 15 min EMOM\n1: 200/180m Ski\n2: 35 Double Unders / 70 Single unders\n3: 200/180m Ski\n4: Max Alt. DB Snatches (17.5/12.5kg - 40/30lbs)\n5: Rest\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Single under",
+          "kind": "youtube",
+          "src": "https://youtu.be/-fb_KBsYKwo"
+        },
+        {
+          "title": "Double Unders",
+          "kind": "youtube",
+          "src": "https://youtu.be/kJ3FTT_HbFg"
+        },
+        {
+          "title": "DB Snatch",
+          "kind": "youtube",
+          "src": "https://youtu.be/jHtY8-lM__8"
+        },
+        {
+          "title": "Ski erg",
+          "kind": "youtube",
+          "src": "https://youtu.be/WUiGW3wLp4w"
+        }
+      ]
+    },
+    {
+      "title": "S1: (OPTIONAL) CONDITIONING",
+      "description": "(Optional) Conditioning,  “Lifting the roof” (V02 max │ 90+% Effort │ Severe-Extreme intensity domain │ Z4-5)\n\na. 10 min EMOM\nMin 1: 20, 18, 16, 14, 12 Cal Row  (♀ 16, 14, 12, 10, 8)\n+ Max burpees lateral over the rower in the remaining time\nMin 2: Rest\n\nScore: Total Burpees accumulated\n\nFlow explained:\nMinute 1: 20/16 Cal Row + Max burpees over rower\nMinute 2: Rest\nMinute 3: 18/14 Cal Row + Max burpees over rower\nMinute 4: Rest\nMinute 5: 16/12 Cal Row + Max burpees over rower\nMinute 6: Rest\nMinute 7: 14/10 Cal Row + Max burpees over rower\nMinute 8: Rest\nMinute 9: 12/8 Cal Row + Max burpees over rower\nMinute 10: Rest\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Burpees over the rower",
+          "kind": "youtube",
+          "src": "https://youtu.be/vdNoPhX-_S0"
+        },
+        {
+          "title": "Rowing",
+          "kind": "youtube",
+          "src": "https://youtu.be/zfl28GvOtWk"
+        }
+      ]
+    },
+    {
+      "title": "S1: (TEAM VERSION) CONDITIONING",
+      "description": "Note: One of the reasons most of us fall in love with CrossFit is the community aspect.\nIt’s being surrounded by others whom are like minded in an environment that brings out the best in us.\nPushing hard in training with a group can for some feel more enjoyable and can often give that extra kick needed to perform better.\nThe \"Team Edition\" add-ons to the program is for those who wishes to do team competitions now and in the future.\nThis will give those of you who might consider going team a structured session that will be based around synchro coordination, team workouts, relays & worm specific training. All elements that are key in creating a successful team.\n\nIt can be hard to coordinate training with 3 others and the program is therefore build in a way that the team session fits in with the rest of the weekly program, so that we make sure you hit everything you need to weekly.\n\nThis piece is to be done instead of the original engine piece.\n_________________________________________\nConditioning\n\na. Online Semi-finals workout #3\nAs many reps as possible in 20 minutes of:\n10 synchro alternating dumbbell snatches\n15 synchro toes-to-bars\n50 synchro double-unders\n*Three athletes synchro\n♀ 50 lb (22.5 kg)\n♂ 70 lb (32.5 kg) \n\nExplanation: https://games-assets.crossfit.com/s3fs-public/2026-06/CFG26%20SF%20TEAM%20Workout%203%20Scorecard_V4_feanxsj.pdf?LZD3akYi_btUi8bOALUrQs6lG8JYBGVp",
+      "attachments": []
     },
     {
       "title": "S2: CONDITIONING",
-      "description": "Conditioning\n\na. 30 min AMRAP\n10-20-30-40 etc.\nCal Ski\nCal C2 Bike\nIntensity: \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n\n-Rest 3 min-\n\n5 sets, 2 min AMRAP / 1 min Rest\nSet 1: 250/200m Ski + Max Distance C2 bike\nSet 2: 300/250m Ski + Max Distance C2 bike\nSet 3: 350/300m Ski + Max Distance C2 bike\nSet 4: 400/350m Ski + Max Distance C2 bike\nSet 5: 450/400m Ski + Max Distance C2 bike\n\n-Rest 3 min-\n\n5 sets, 2 min AMRAP / 1 min Rest\nSet 1: 500/400m C2 bike + Max Distance Ski\nSet 2: 600/500m C2 bike + Max Distance Ski\nSet 3: 700/600m C2 bike + Max Distance Ski\nSet 4: 800/700m Ski + Max Distance Ski\nSet 5: 900/800m Ski + Max Distance Ski\nIntensity: \"Raising the ceiling\" (80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "description": "Conditioning\n\na. 20 minute EMOM\n1: Echo bike (arms only)\n2: Echo bike\nIntensity: \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n\n-Rest 3 min-\n\n50-40-30-20-10-20-30-40-50 Cal Echo bike (♀ 40-32-24-16-8-16-24-32-40)\n-Work:Rest 1:1- \n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
       "attachments": []
     }
   ],
