@@ -5,7 +5,6 @@ on:
     - cron: '1 0 * * *'
   workflow_dispatch:
 
-# Permessi per committare board_data.json aggiornato
 permissions:
   contents: write
 
@@ -16,36 +15,27 @@ jobs:
     environment: fitr
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - run: pip install requests
 
       - name: Esegui sync
         env:
-          FITR_SRC_EMAIL:  ${{ secrets.FITR_SRC_EMAIL }}
-          FITR_SRC_PASS:   ${{ secrets.FITR_SRC_PASS }}
-          FITR_DST_EMAIL:  ${{ secrets.FITR_DST_EMAIL }}
-          FITR_DST_PASS:   ${{ secrets.FITR_DST_PASS }}
-          FITR_DST2_EMAIL: ${{ secrets.FITR_DST2_EMAIL }}
-          FITR_DST2_PASS:  ${{ secrets.FITR_DST2_PASS }}
+          FITR_SRC_EMAIL:     ${{ secrets.FITR_SRC_EMAIL }}
+          FITR_SRC_PASS:      ${{ secrets.FITR_SRC_PASS }}
+          FITR_DESTINATIONS:  ${{ secrets.FITR_DESTINATIONS }}
         run: python fitr_sync.py
 
       - name: Esporta board del giorno
         env:
-          FITR_DST_EMAIL: ${{ secrets.FITR_DST_EMAIL }}
-          FITR_DST_PASS:  ${{ secrets.FITR_DST_PASS }}
+          FITR_DESTINATIONS:  ${{ secrets.FITR_DESTINATIONS }}
         run: python board_export.py
 
       - name: Commit board aggiornata
         run: |
           git config user.name  "github-actions"
           git config user.email "actions@github.com"
-          # board_data.json e' un file generato: salvo il contenuto nuovo,
-          # allineo il branch al remoto, riscrivo il file e committo.
-          # Un retry gestisce il caso raro di push concorrente.
           cp docs/board_data.json /tmp/board_new.json
           for i in 1 2 3; do
             git fetch origin main

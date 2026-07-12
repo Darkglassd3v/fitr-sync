@@ -25,37 +25,75 @@ from pathlib import Path
 SOURCE_EMAIL    = os.environ.get("FITR_SRC_EMAIL", "")
 SOURCE_PASSWORD = os.environ.get("FITR_SRC_PASS",  "")
 
-# ── Destinazioni ──────────────────────────────────────────────
-# Ogni destinazione e' un account coach dove copiare la programmazione.
-# I parametri plan_id / plan_track_id / user_id sono cablati (presi da HAR).
+# ── Destinazioni (modulari via JSON) ──────────────────────────
+# Le destinazioni si leggono da un unico secret FITR_DESTINATIONS,
+# che contiene un array JSON. Per aggiungere/rimuovere account NON serve
+# toccare il codice: basta modificare il secret su GitHub.
 #
-# NOTA: l'auto-discovery (ricavare track/user dal solo plan_id) non funziona
-# su tutti gli account, quindi per ora i valori sono fissi. Per aggiungere
-# un account: cattura un HAR dal suo piano, leggi i tre id da una chiamata
-# coach/schedules/show e compila un blocco qui sotto con "enabled": True.
-DESTINATIONS = [
-    {
-        "label":         "Account 1",
-        "email":         os.environ.get("FITR_DST_EMAIL",  ""),
-        "password":      os.environ.get("FITR_DST_PASS",   ""),
-        "plan_id":       371969,
-        "plan_track_id": 740801,
-        "user_id":       479154,
-        "enabled":       True,
-    },
-    {
-        # Predisposto ma DISABILITATO: mancano plan_track_id e user_id.
-        # Domani: cattura HAR dal piano 406569, compila i due valori e
-        # imposta "enabled": True.
-        "label":         "Account 2",
-        "email":         os.environ.get("FITR_DST2_EMAIL", ""),
-        "password":      os.environ.get("FITR_DST2_PASS",  ""),
-        "plan_id":       406569,
-        "plan_track_id": None,   # <-- da compilare
-        "user_id":       None,   # <-- da compilare
-        "enabled":       False,  # <-- mettere True quando compilati
-    },
-]
+# Formato del secret FITR_DESTINATIONS (array JSON):
+# [
+#   {
+#     "label":         "Account 1",
+#     "email":         "coach1@example.com",
+#     "password":      "password1",
+#     "plan_id":       371969,
+#     "plan_track_id": 740801,
+#     "user_id":       479154,
+#     "enabled":       true
+#   },
+#   {
+#     "label":         "Account 2",
+#     "email":         "coach2@example.com",
+#     "password":      "password2",
+#     "plan_id":       406569,
+#     "plan_track_id": 123456,
+#     "user_id":       648095,
+#     "enabled":       true
+#   }
+# ]
+#
+# In locale, per test, si puo' anche mettere il JSON in un file destinations.json
+# nella stessa cartella (ignorato da git).
+
+def load_destinations():
+    """
+    Carica le destinazioni da:
+      1. secret/env FITR_DESTINATIONS (array JSON), oppure
+      2. file locale destinations.json, oppure
+      3. fallback alle vecchie variabili FITR_DST_* (retro-compatibilita')
+    """
+    raw = os.environ.get("FITR_DESTINATIONS", "").strip()
+
+    if not raw:
+        # Prova file locale
+        local = Path(__file__).parent / "destinations.json"
+        if local.exists():
+            raw = local.read_text(encoding="utf-8").strip()
+
+    if raw:
+        try:
+            dests = json.loads(raw)
+            if isinstance(dests, dict):
+                dests = [dests]
+            return dests
+        except json.JSONDecodeError as ex:
+            print(f"ERRORE: FITR_DESTINATIONS non e' JSON valido: {ex}")
+            sys.exit(1)
+
+    # Fallback: vecchie variabili singole (retro-compatibilita')
+    fallback = []
+    if os.environ.get("FITR_DST_EMAIL"):
+        fallback.append({
+            "label":         "Account 1",
+            "email":         os.environ.get("FITR_DST_EMAIL", ""),
+            "password":      os.environ.get("FITR_DST_PASS", ""),
+            "plan_id":       371969,
+            "plan_track_id": 740801,
+            "user_id":       479154,
+            "enabled":       True,
+        })
+    return fallback
+
 
 # Quanti giorni in avanti scansionare su A
 SCAN_DAYS = 90
@@ -567,14 +605,20 @@ def main():
     if not SOURCE_EMAIL:    SOURCE_EMAIL    = ask("Email account SORGENTE: ")
     if not SOURCE_PASSWORD: SOURCE_PASSWORD = ask("Password SORGENTE: ", secret=True)
 
+    # Carica destinazioni dal secret JSON (o file locale / fallback)
+    destinations = load_destinations()
+    if not destinations:
+        print("Nessuna destinazione configurata (imposta FITR_DESTINATIONS).")
+        sys.exit(1)
+
     # Prepara le destinazioni ABILITATE con credenziali
     active_dests = []
-    for d in DESTINATIONS:
+    for d in destinations:
         if not d.get("enabled", False):
-            print(f"  (Account '{d['label']}' disabilitato, saltato)")
+            print(f"  (Account '{d.get('label','?')}' disabilitato, saltato)")
             continue
-        email = d["email"] or ask(f"Email {d['label']} (coach): ")
-        pwd   = d["password"] or ask(f"Password {d['label']}: ", secret=True)
+        email = d.get("email") or ask(f"Email {d.get('label','?')} (coach): ")
+        pwd   = d.get("password") or ask(f"Password {d.get('label','?')}: ", secret=True)
         if email and pwd:
             active_dests.append({**d, "email": email, "password": pwd})
 

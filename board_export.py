@@ -15,7 +15,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from fitr_sync import FitrClient, clean_text, DESTINATIONS
+from fitr_sync import FitrClient, clean_text, load_destinations
 
 DOCS_DIR = Path("docs")
 DOCS_DIR.mkdir(exist_ok=True)
@@ -24,8 +24,8 @@ DOCS_DIR.mkdir(exist_ok=True)
 def main():
     # Usa la prima destinazione abilitata per la board
     dest = None
-    for d in DESTINATIONS:
-        if d.get("enabled", False) and d["email"] and d["password"]:
+    for d in load_destinations():
+        if d.get("enabled", False) and d.get("email") and d.get("password"):
             dest = d
             break
 
