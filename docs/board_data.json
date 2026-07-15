@@ -1,7 +1,7 @@
 {
-  "date": "2026-07-14",
-  "date_label": "Martedi 14 Luglio",
-  "generated_at": "2026-07-14T01:49:58.767904",
+  "date": "2026-07-15",
+  "date_label": "Mercoledi 15 Luglio",
+  "generated_at": "2026-07-15T01:45:59.734199",
   "sections": [
     {
       "title": "IMPORTANT - DELOAD/TRANSITION WEEK",
@@ -10,146 +10,64 @@
     },
     {
       "title": "WARM UP",
-      "description": "Warm up \n\na. 60/60 sec Dynamic Posterior hip stretch \n\nb. 4 minutes Row (Easy-Moderate tempo)\n-Into-\n1 round for quality: (Rest as needed between movements)\n30 sec Hamstring bridge hold\n10 Barbell Good-mornings\n30 sec Mid-shin deadlift hold with barbell\n10 Romanian deadlifts\n-Into-\nBuild to starting weight for the Floating RDLs",
+      "description": "Warm up  \n\na. Dynamic stretches:\n60/60 sec Pec Stretch\n60/60 sec Lat Stretch\n60/60 sec Posterior Hip stretch\n60/60 Anterior Hip stretch\n\nb. Metabolic prep:\n2 min Ski (Easy)\n2 min Echo bike (Easy)\n1 min Ski (Moderate)\n1 min Echo bike (Moderate)\n30 sec Ski (Hard)\n30 sec Echo bike (Hard)\n\nc. Sport specific prep:\n12 V-ups\n12 Push ups\n12 Alt. Step ups (20\") (No load)\n+\n10 Bottom half TTB\n10 DB Bench press (2x15/10kg │ 2x35/25lbs)\n10 Alt. Step ups (20\") (2x15/10kg │ 2x35/25lbs)\n+\n8 Toes to bar\n8 DB Bench press (2x22.5/15kg │ 2x50/35lbs)\n8 Alt. Step ups (20\") (2x22.5/15kg │ 2x50/35lbs)",
+      "attachments": []
+    },
+    {
+      "title": "CONDITIONING #1",
+      "description": "Conditioning\n\nElite\na. For time, \n25-20-15-10-5 reps of:\nToes to bar\nDB Bench press\nDB Farmer Step ups (20”)\n♀ 2x15kg │ 2x35lbs\n♂ 2x22.5kg │ 2x50lbs\n\nRX\na. For time, \n18-15-12-9-6 reps of:\nToes to bar\nDB Bench press\nDB Farmer Step ups (20”)\n♀ 2x12.5kg │ 2x30lbs\n♂ 2x17.5kg │ 2x40lbs\n\nIntermediate\na. For time, \n18-15-12-9-6 reps of:\nKipping knees to chest\nDB Bench press\nDB Farmer Step ups (20”)\n♀ 2x10kg │ 2x25lbs\n♂ 2x15kg │ 2x35lbs\n\nScore: Time (make sure to put a comment with what level you completed it at)",
       "attachments": [
         {
-          "title": "Dynamic posterior hip box stretch",
+          "title": "DB Farmer Step ups",
           "kind": "youtube",
-          "src": "https://youtu.be/fcojabIIwNA"
+          "src": "https://youtu.be/N_zuR3-b-Ro"
         },
         {
-          "title": "Floating RDL",
+          "title": "Kipping Knees to Chest",
           "kind": "youtube",
-          "src": "https://youtu.be/6ol1_qDSB2Y"
+          "src": "https://youtu.be/7_Ofk0tcbTw"
         },
         {
-          "title": "Row",
+          "title": "DB Bench press",
           "kind": "youtube",
-          "src": "https://youtu.be/RTJ-gzhPIqU"
+          "src": "https://youtu.be/hHMJPXr5Q4o"
         },
         {
-          "title": "Goodmornings",
+          "title": "Toes to bar",
           "kind": "youtube",
-          "src": "https://youtu.be/BbjXUrQlXLg"
-        },
-        {
-          "title": "Hamstring bridge",
-          "kind": "youtube",
-          "src": "https://youtu.be/Pq3Lqwxm1PQ"
-        },
-        {
-          "title": "Mid-shin deadlift hold with barbell",
-          "kind": "youtube",
-          "src": "https://youtu.be/j4lAKmNv3nk"
-        },
-        {
-          "title": "Romanian deadlifts",
-          "kind": "youtube",
-          "src": "https://youtu.be/sliFvXcjkck"
+          "src": "https://youtu.be/CmzTTemzgpc"
         }
       ]
     },
     {
-      "title": "STRENGTH ENDURANCE / HYPERTROPHY (Hinge)",
-      "description": "Strength Endurance/Hypertrophy, Posterior Lower-body (Hinge)\n\na. 5 sets, Going every 3rd minute\n(Option #1) 10 Floating Romanian Deadlifts  \n(Option #2) 20 GHD Hip extensions\n\nWhy two options: I've listed a more taxing option (RDL), perform this one if you feel good, and a less taxing option (GHD hip extensions), perform this if your posterior chain feels affected from yesterdays hang cleans.\n\nLoad: Same load across all sets. Suggested loads below:\nFloating RDLs:\n[Elite] 100/70kg | 225/155lbs\n[RX]  80/55kg | 185/125lbs\n[Intermediate] 60/40kg | 135/95lbs\n\nGHD Hip extensions:\n[Elite] 30/20kg | 65/45lbs Plate(s)\n[RX]  20/15kg | 45/35lbs Plate\n[Intermediate] 10/5kg | 25/15lbs Plate\n \nTempo: (Floating RDLs) Controlled descent, Small pause in the bottom where the plates are right above the floor, fast up. Quality and control are key.",
+      "title": "CONDITIONING #2",
+      "description": "Conditioning\n\nElite\na. 10 min EMOM\n1: 15/12 Cal Ski\n2: 200m Run\n-Rest 3 minutes-\nFor time:\n75/60 Cal Ski\n1000m Run\n\nRX\na. 10 min EMOM\n1: 14/10 Cal Ski\n2: 200m Run\n-Rest 3 minutes-\nFor time:\n70/50 Cal Ski\n1000m Run\n\nIntermediate\na. 10 min EMOM\n1: 12/9 Cal Ski\n2: 200m Run\n-Rest 3 minutes-\nFor time:\n60/45 Cal Ski\n1000m Run\n\nScore: Completion time for the for Ski+Run for time piece after the EMOM (make sure to put a comment with what level you completed it at)",
       "attachments": [
         {
-          "title": "GHD Hip extensions",
+          "title": "Run (indoor)",
           "kind": "youtube",
-          "src": "https://youtu.be/l6eZY7tSV80"
+          "src": "https://youtu.be/5L8lAkIw8Eg"
         },
         {
-          "title": "Floating RDL",
+          "title": "Ski erg",
           "kind": "youtube",
-          "src": "https://youtu.be/6ol1_qDSB2Y"
+          "src": "https://youtu.be/WUiGW3wLp4w"
         }
       ]
     },
     {
-      "title": "STRENGTH ENDURANCE / HYPERTROPHY (Press and Pull)",
-      "description": "Strength Endurance/Hypertrophy, Anterior & Posterior Upper-body (Press and Pull)\n\na. 10 sets, Alt. Exercise every 90 sec: (15 minutes)\n1: 10 Seated DB Arnold press\n2: 10 Pendlay Rows\n\nLoad: Use the first round as a warm up round, then find a challenging weight to stick to for the last four rounds. \nEstimated loads:\nArnold press:\n[Elite] 2x22.5/15kg │ 2x50/35lbs\n[RX] 2x17.5/12.5kg │ 2x40/30lbs\n[Intermediate] 2x15/10kg │ 2x35/25lbs\n\nPendlay rows:\n[Elite] 70kg │ 155lbs\n[RX] 60kg │ 135lbs\n[Intermediate] 50kg │ 115lbs",
+      "title": "OPTIONAL EXTRA (Core)",
+      "description": "Optional Extra, Core\n\na. 9 minute EMOM (40 sec Work / 20 sec Rest)\n1: Side plank hip dips (right)\n2: Side plank hip dips  (left)\n3: Russian plate twist (10/5kg)",
       "attachments": [
         {
-          "title": "Pendlay rows",
+          "title": "Russian plate twist",
           "kind": "youtube",
-          "src": "https://youtu.be/Z-zFg2fYixA"
+          "src": "https://youtu.be/7faqboz6QEc"
         },
         {
-          "title": "Seated DB Arnold Press",
+          "title": "Side plank hip dip",
           "kind": "youtube",
-          "src": "https://youtu.be/H5ihiu7p8Jc"
-        }
-      ]
-    },
-    {
-      "title": "STRENGTH ACCESSORY (Squat)",
-      "description": "Strength Accessory, Anterior Lower-body (Squat) \n\na. 3 sets, 2 minutes on / 2 minutes off\n45 sec plate loaded prisoner wall-sit hold (hands behind head)\n-Into-\nMax-distance sled push (moderate load) or Lunges (loaded) for the remainder of the interval\n\nLoad:\n[Wall sit] 20-40/10-20kg on top of legs\n[Sled] Surface-dependent. Pick a load you can keep moving for the full interval.\n\nNo Sled? No problem: \nSimply perform walking lunges in the remaining time instead of the sled. If you have a long sandbag, GoRuck, weighted vest or a 22.5/15kg | 50/35lbs slamball/DB, then use that.",
-      "attachments": [
-        {
-          "title": "(Loaded) Wall sit",
-          "kind": "youtube",
-          "src": "https://youtu.be/RUAWD26nLkI"
-        },
-        {
-          "title": "Sled push",
-          "kind": "youtube",
-          "src": "https://youtu.be/eB1vgnXW5G8"
-        },
-        {
-          "title": "Weighted vest walking lunge",
-          "kind": "youtube",
-          "src": "https://youtu.be/cAyw4NUbBPA"
-        },
-        {
-          "title": "Bodyweight walking lunge",
-          "kind": "youtube",
-          "src": "https://youtu.be/3oIcEu_kaIg"
-        },
-        {
-          "title": "GoRuck walking lunge",
-          "kind": "youtube",
-          "src": "https://youtu.be/1tnMXeIsfGg"
-        },
-        {
-          "title": "Feedsack walking lunges",
-          "kind": "youtube",
-          "src": "https://youtu.be/cWUfP_rEarM"
-        },
-        {
-          "title": "Slamball bearhug walking lunge",
-          "kind": "youtube",
-          "src": "https://youtu.be/lm500svHnPg"
-        },
-        {
-          "title": "DB back rack walking lunges",
-          "kind": "youtube",
-          "src": "https://youtu.be/hOu_CP5IZXE"
-        }
-      ]
-    },
-    {
-      "title": "OPTIONAL EXTRA (Upper-body)",
-      "description": "Optional Extra, Upper-body\n\nOption #1 (Cables)\na. 3 sets for quality of (rest as needed between exercises)\nMax Cable bicep curls \n-Rest 90 sec-\nMax Cable Tricep extensions\n-Rest 90 sec-\n\nOption #2 (DB's + Bands)\na. 3 sets for quality of (rest as needed between exercises)\nMax DB Hammer curls (2x10-12.5/6-8kg │ 2x25-30/15-20lbs)\n-Rest 90 sec-\nMax Banded Tricep extensions (Blue/Red band)\n-Rest 90 sec-\n\nA \"Max\" set: Go to failure each set.",
-      "attachments": [
-        {
-          "title": "Banded tricep extensions",
-          "kind": "youtube",
-          "src": "https://youtu.be/isR1oxwM2uo"
-        },
-        {
-          "title": "Double DB Hammer curls",
-          "kind": "youtube",
-          "src": "https://youtu.be/6-ypZaBaOpY"
-        },
-        {
-          "title": "Cable Bicep curls",
-          "kind": "youtube",
-          "src": "https://youtu.be/MHkHyXXfkoM"
-        },
-        {
-          "title": "Cable tricep extensions",
-          "kind": "youtube",
-          "src": "https://youtu.be/__5lm4qVo0Y"
+          "src": "https://youtu.be/go81CInyTTU"
         }
       ]
     }
