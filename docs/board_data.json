@@ -1,7 +1,7 @@
 {
-  "date": "2026-07-17",
-  "date_label": "Venerdi 17 Luglio",
-  "generated_at": "2026-07-17T02:17:26.668887",
+  "date": "2026-07-19",
+  "date_label": "Domenica 19 Luglio",
+  "generated_at": "2026-07-19T02:22:23.427727",
   "sections": [
     {
       "title": "IMPORTANT - DELOAD/TRANSITION WEEK",
@@ -9,165 +9,9 @@
       "attachments": []
     },
     {
-      "title": "WARM UP",
-      "description": "Weightlifting, Warm up \n\na. Pulsed stretches\n1 round of:\n60/60 sec Dynamic Pec Stretch\n60/60 sec Dynamic Lat Stretch\n60/60 sec Dynamic Anterior Hip stretch\n60/60 sec Dynamic Posterior Hip stretch\n\nb. Activation \n1-2 rounds of:\nMini-band posterior prep routine (20 Alt. Side steps, 20 Good-mornings, 20 Alt. Side steps, 20 Glute bridges)\nBanded shoulder routine (ATWYEI x 10 of each)\n\nc. Weightlifting, Snatch specific barbell prep (Empty barbell)\n3 sets, rest as needed between sets\n2 Snatch Pulls + 2 Muscle Snatches + 2 Power Snatches + 2 Overhead squats\nPosition: \nSet 1: From High hang (Hips)\nSet 2: From Hang (Above knees)\nSet 3: From Mid shin",
-      "attachments": [
-        {
-          "title": "Snatch grip OHS",
-          "kind": "youtube",
-          "src": "https://youtu.be/kVAFFyRbP90"
-        },
-        {
-          "title": "Snatch pull",
-          "kind": "youtube",
-          "src": "https://youtu.be/kCR_MF928QU"
-        },
-        {
-          "title": "Power Snatch",
-          "kind": "youtube",
-          "src": "https://youtu.be/qwqNGGAQ1Eo"
-        },
-        {
-          "title": "Muscle Snatch",
-          "kind": "youtube",
-          "src": "https://youtu.be/q8NdJbOeSdk"
-        },
-        {
-          "title": "Posterior box hip stretch with reaches",
-          "kind": "youtube",
-          "src": "https://youtu.be/fCpcNfSh66o"
-        },
-        {
-          "title": "Couch stretch with OH reach",
-          "kind": "youtube",
-          "src": "https://youtu.be/30U_ZtfoCKo"
-        },
-        {
-          "title": "Dynamic bent arm pec opener",
-          "kind": "youtube",
-          "src": "https://youtu.be/Fv0KnjRiLf8"
-        },
-        {
-          "title": "Single arm Ring OH opener",
-          "kind": "youtube",
-          "src": "https://youtu.be/ehD_Oysz_FY"
-        },
-        {
-          "title": "Mini-band deadlift prep (Side step, Goodmorning, Side step, Glute bridge)",
-          "kind": "youtube",
-          "src": "https://youtu.be/JLGh0CWwQ-0"
-        },
-        {
-          "title": "Banded shoulder ATWYEI routine",
-          "kind": "youtube",
-          "src": "https://youtu.be/0AyanidTrbs"
-        }
-      ]
-    },
-    {
-      "title": "POWER/SPEED ENDURANCE (Snatch)",
-      "description": "Power/Speed Endurance/Hypertrophy, Snatch\n\na. 5 sets, 1 minute AMRAP / 2 minute Rest\n10-8-6-4-2 Power Snatches + Max Overhead squats in the remaining time\n\nLoad: (You can round up the numbers so that it makes the plate change simple)\n10 reps P. Snatch + Max OHS at: 35% of 1RM Power Snatch (@35%1RM_POWER_SNATCH) \n8 reps P. Snatch + Max OHS at: 45% of 1RM Power Snatch (@45%1RM_POWER_SNATCH) \n6 reps P. Snatch + Max OHS at: 55% of 1RM Power Snatch (@55%1RM_POWER_SNATCH) \n4 reps P. Snatch + Max OHS at: 65% of 1RM Power Snatch (@65%1RM_POWER_SNATCH) \n2 reps P. Snatch + Max OHS at: 75% of 1RM Power Snatch (@75%1RM_POWER_SNATCH)",
-      "attachments": [
-        {
-          "title": "Snatch grip OHS",
-          "kind": "youtube",
-          "src": "https://youtu.be/kVAFFyRbP90"
-        },
-        {
-          "title": "Power Snatch",
-          "kind": "youtube",
-          "src": "https://youtu.be/qwqNGGAQ1Eo"
-        }
-      ]
-    },
-    {
-      "title": "STRENGTH ENDURANCE / HYPERTROPHY (Press)",
-      "description": "Strength Endurance/Hypertrophy, Anterior Upper-body (Press)\n\na. 3 sets, Going every 4th minute:\nA \"Tough\" set of Incline barbell bench press\n-Into-\nA \"Tough\" set of (Deficit) Push-ups\n-Into-\nA \"Max\" set of Banded tricep extensions (Blue/Red band)\n(No rest between exercises.)\n\nA \"Tough\" set: Stop 2-4 reps before failure.\n\nA \"Max\" set: Go to failure.\n\nLoad: [Barbell Incline press] 45% of your 1RM (regular flat) bench (@45%1RM_BPRESS)\n\nPush up modifications:\n[Elite] 20kg plate deficit\n[RX] No deficit\n[Intermediate] Elevated\n\nTempo: Controlled descent on all exercises. Quality and control are key.",
-      "attachments": [
-        {
-          "title": "Push ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/tX_ha1Aj0J8"
-        },
-        {
-          "title": "Elevated Push ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/3_cnFQSSiu4"
-        },
-        {
-          "title": "Incline barbell bench press",
-          "kind": "youtube",
-          "src": "https://youtu.be/4o5p5fT2qGg"
-        },
-        {
-          "title": "Deficit push ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/rLwSktQp7Rs"
-        },
-        {
-          "title": "Banded tricep extensions",
-          "kind": "youtube",
-          "src": "https://youtu.be/isR1oxwM2uo"
-        }
-      ]
-    },
-    {
-      "title": "STRENGTH ENDURANCE / HYPERTROPHY (Pull)",
-      "description": "Strength Endurance/Hypertrophy, Posterior Upper-body (Pull)\n\na. 3 sets, Going every 4th minute:\nA \"Tough\" set of Barbell bent over rows\n-Into-\nA \"Tough\" set of Supinated ring rows\n-Into-\nA \"Max\" set of Double DB hammer curls\n(No rest between exercises.)\n\nA \"Tough\" set: Stop 2-4 reps before failure.\n\nA \"Max\" set: Go to failure.\n\nLoad:\n[Barbell bent over rows] Add 10kg  │  25lbs to what you used on the incline press.\n[Double DB hammer curl] 2x10-12.5/2x6-8kg │ 2x25-30/2x15-20lbs\n\nTempo: Controlled descent on all exercises. Quality and control are key.",
-      "attachments": [
-        {
-          "title": "Supinated Ring rows",
-          "kind": "youtube",
-          "src": "https://youtu.be/rUTNm00y9oo"
-        },
-        {
-          "title": "Bent over rows",
-          "kind": "youtube",
-          "src": "https://youtu.be/4DcH-45j7H0"
-        },
-        {
-          "title": "Double DB Hammer curls",
-          "kind": "youtube",
-          "src": "https://youtu.be/6-ypZaBaOpY"
-        }
-      ]
-    },
-    {
-      "title": "STRENGTH ACCESSORY (Hinge)",
-      "description": "Strength Accessory, Posterior Lower-body (Hinge) \n\na. 3 sets, \n30/30 sec Single leg Hamstring bridge iso hold\n-Into-\n10/10 Single leg Dynamic KB Swings\n-Rest 2 minutes between sets-\n\nSingle leg Hamstring bridge iso hold:\n-Elevate your heel on 2x20kg plates / Drop pad / Ballistic block.\n-Push heel into the plates. Keep your leg slightly bent. Drive your hips towards the ceiling. \n-Reduce to 20 sec if you can't hold for 30.\n\nSingle leg Dynamic KB Swings\n-Make sure to practice a few reps on each side with lighter weights to get into the flow here. If you haven't done KB swings in the past, then just stick to a regular KB swing (both feet on the ground) to keep it simple. \n-24-32/16-24kg \n-This is what we call an Iso-Power (contrast) super set.",
-      "attachments": [
-        {
-          "title": "Single leg KB swing",
-          "kind": "youtube",
-          "src": "https://youtu.be/4jq3aimjjfU"
-        },
-        {
-          "title": "Hamstring bridge hold",
-          "kind": "youtube",
-          "src": "https://youtu.be/CHUi2LKvVwk"
-        }
-      ]
-    },
-    {
-      "title": "OPTIONAL EXTRA (Core)",
-      "description": "Optional Extra, Core\n\na. 3 sets,\nA “Tough” set of Parallette Shoot throughs*\n-Rest 60 sec-\nA “Tough” Strict Knees to elbows\n-Rest 60 sec-\n\n*Two versions based on your level:\nVersion #1: Touch in front and back.\nVersion #2 Straight through and back without touching in front.",
-      "attachments": [
-        {
-          "title": "Strict knees to elbows",
-          "kind": "youtube",
-          "src": "https://youtu.be/AU0bQlIk32M"
-        },
-        {
-          "title": "Parallette Shoot throughs (touch front and back)",
-          "kind": "youtube",
-          "src": "https://youtu.be/ilRt9AV8NS0"
-        },
-        {
-          "title": "Parallette shoot throughs (No touch)",
-          "kind": "youtube",
-          "src": "https://youtu.be/8EJYu2-pXT8"
-        }
-      ]
+      "title": "FULL REST DAY",
+      "description": "Goals for today:\n\na. Meal prep and Snack prep to make the coming week easier. You don't have to prep for the whole week, but having prepped a few meals and making sure you have snacks/fruits to help you stay fueled can be the difference maker in having a good or bad training week.\n\nb. Take a break = Relax / don't talk about CrossFit / Get out of the gym / spend time with family and friends.\n\nc. Take care of practical things that you don't want to and don't have time to deal with during the week = Washing clothes, paying bills, cleaning the car etc.\n\nd. Give yourself a tap on the shoulder for what you have done this week training wise. Regardless of having done great or not, you have done work, and every bit counts in the process of making you fitter than you were.",
+      "attachments": []
     }
   ],
   "empty": false
