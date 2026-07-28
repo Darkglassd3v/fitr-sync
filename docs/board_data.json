@@ -1,164 +1,222 @@
 {
-  "date": "2026-07-27",
-  "date_label": "Lunedi 27 Luglio",
-  "generated_at": "2026-07-27T02:37:12.857022",
+  "date": "2026-07-28",
+  "date_label": "Martedi 28 Luglio",
+  "generated_at": "2026-07-28T02:17:15.515764",
   "sections": [
     {
-      "title": "CURRENT TRAINING BLOCK W2/4",
-      "description": "Welcome to week 2 of our current training block Team,\nIf you just joined the team, make sure to read below:\n\nI encourage you to watch the block explanation video below that will give you a deep insight into how the program is structured from a macro to micro level (Global-->Weekly-->Daily overview). \nVideo link (block explanation): https://youtu.be/eEDBjjL9vdQ\n\nIf you do not have the time to watch the block explanation video, you can as always read the detailed notes attached in each section of the program to understand the intent behind everything. Due to FITr's layout, we have added the text as attachments to have less text in each box.\n\nOur goal with this training program is to have you feel:\na. Constant progress through consistent good training weeks.\nb. Feeling good (injury free)\nc. Motivated and driven as you see and understand the intention of how the program is structured.\n\nOur training principles to have success with the program:\n#1 If you want to be good at something, you must above all else,\nbe consistent.\n#2 Minimum Effective dose: This is a principle that we use to underline the concept of more frequent good training sessions leads to better results long term. Often if we train too hard we also need a longer recovery time before we can train hard again. Rather keep 5% in the tank instead of overreaching. Typically, people who do not take the needed recovery time from the sessions where they did more than they should end up injured/hits a plateau. We do not need to go to the maximum every time to create adaptation. \n#3 Self-regulation: Listen to your body and adjust the intensity based on how you feel.\n#4 Consistently good rather than occasionally great: Many good sessions are always better than a few great. \n#5 The devil is in the detail: Be deliberate and pay attention to set up/reps/tempo/intensity described in the program. \n#6 Stay in your lane: Don’t get caught up in anybody else’s game, you focus on you and your progress.\n#7 Technique > Load\n#8 Quality > Quantity\n#9 Principles > Methods\n--------------------------------------\nHave a great training block team,\n/𝙰𝚗𝚍𝚛𝚎 𝙷𝚘𝚞𝚍𝚎𝚝\n𝙳𝚒𝚛𝚎𝚌𝚝𝚘𝚛 𝚘𝚏 𝚃𝚛𝚊𝚒𝚗𝚒𝚗𝚐.\n𝚗𝚜𝚝.",
-      "attachments": []
-    },
-    {
-      "title": "BLOCK EXPLANATION VIDEO",
-      "description": "(On YouTube, you can switch the audio track to almost any language and enable subtitles in your native language as well.)",
+      "title": "S1: WARM UP",
+      "description": "Warm up \n\na. Dynamic stretches\n1 round of:\n60/60 sec Dynamic Pec Stretch\n60/60 sec Dynamic Lat Stretch\n15 Plate Pull overs (10/5kg | 25/10lbs)\n\nb. Metabolic prep\n4 minutes Echo bike performed as 20 sec Easy / 10 sec Hard\n\nc. Activation\n25 Banded Pull aparts\n25 Banded Tricep extensions\n25 Banded Bicep curls\n25 Banded Delt raises\n25 Banded Face pulls\n\nd. Specific prep (L-sit, Pull over, Ring dip)\nSelf directed or use below as guideline:\n5 Strict Pull ups\n10 Push ups\n15 Seated Pike raises\n20 sec Top of ring dip support hold\n20 sec Bottom of ring dip support hold\n+ 5 minutes to practice full Pull overs, Strict ring dips and L-sit hold.",
       "attachments": [
         {
-          "title": "Compete, Podium Chaser, Power Hour Block Explanation video 20.07-16.08",
+          "title": "Banded pull apart",
           "kind": "youtube",
-          "src": "https://youtu.be/eEDBjjL9vdQ"
+          "src": "https://youtu.be/polViRSRkyw"
+        },
+        {
+          "title": "Bottom of ring dip hold",
+          "kind": "youtube",
+          "src": "https://youtu.be/R8oPxb-OQL0"
+        },
+        {
+          "title": "L-sit",
+          "kind": "youtube",
+          "src": "https://youtu.be/5JmuiMnPMSU"
+        },
+        {
+          "title": "Plate pull over",
+          "kind": "youtube",
+          "src": "https://youtu.be/rImleg202Uo"
+        },
+        {
+          "title": "Seated pike raises (TTB series)",
+          "kind": "youtube",
+          "src": "https://youtu.be/qxxxmSmpaBk"
+        },
+        {
+          "title": "Bottom of dip",
+          "kind": "youtube",
+          "src": "https://youtu.be/piBa8E1hviQ"
+        },
+        {
+          "title": "Strict Ring Dips",
+          "kind": "youtube",
+          "src": "https://youtu.be/P-NdNxNlODw"
+        },
+        {
+          "title": "Dynamic bent arm pec opener",
+          "kind": "youtube",
+          "src": "https://youtu.be/Fv0KnjRiLf8"
+        },
+        {
+          "title": "Lat pulsed stretching with reach through",
+          "kind": "youtube",
+          "src": "https://youtu.be/P7scr-51piE"
+        },
+        {
+          "title": "Banded Tricep extensions",
+          "kind": "youtube",
+          "src": "https://youtu.be/jRC4vC0HVl8"
+        },
+        {
+          "title": "Banded Bicep curls",
+          "kind": "youtube",
+          "src": "https://youtu.be/M_UqIiK8w1Y"
+        },
+        {
+          "title": "Banded face pulls",
+          "kind": "youtube",
+          "src": "https://youtu.be/rIkkxZNrwCg"
+        },
+        {
+          "title": "Banded Delt raises",
+          "kind": "youtube",
+          "src": "https://youtu.be/JJoPGhsdZ5c"
+        },
+        {
+          "title": "Strict Pull ups",
+          "kind": "youtube",
+          "src": "https://youtu.be/6_FPxRJMRh8"
+        },
+        {
+          "title": "Push ups",
+          "kind": "youtube",
+          "src": "https://youtu.be/RhX1qB0G-iI"
+        },
+        {
+          "title": "The Pull-Over",
+          "kind": "youtube",
+          "src": "https://youtu.be/faJDYEZmueM"
         }
       ]
     },
     {
-      "title": "S1: WARM UP - Snatch",
-      "description": "Weightlifting, Warm up \n\na. General prep  \n4 min Row (Easy-Moderate tempo)\n-Into-\n1-2 rounds of:\n15 DB Cuban Press (2x7.5-10/4-6kg | 2x15-25/10-15lbs)\n1 minute Wall sit hold\n\nb. Specific prep\n8 Snatch Grip RDL + 8 High Hang Snatch Pulls (Empty barbell)\n-Rest as needed-\n8 Good-mornings + 8 Behind the neck Snatch grip press (Empty barbell)\n-Rest as needed-\n5+5, 4+4, 3+3, 2+2, 1+1* reps of:\nMuscle Snatch + BTN Snatch grip push press (Increasing load as reps decrease)\n\n*Flow explained\n5 Muscle Snatch directly into 5 BTN Push press.\nAdd weight.\n4 Muscle Snatch directly into 4 BTN Push press.\nAdd weight.\n3 Muscle Snatch directly into 3 BTN Push press.\nAdd weight.\n2 Muscle Snatch directly into 2 BTN Push press.\nAdd weight.\n1 Muscle Snatch directly into 1 BTN Push press. \nMy numbers for reference: 40-50-60-70-75kg",
+      "title": "S1: RELATIVE STRENGTH ENDURANCE (GYM.)",
+      "description": "(Relative) Strength Endurance / Gymnastics\n\nElite:\na. 10 minute AMRAP for quality:\n10 sec L-sit in parallettes\n2 Pull overs\n4 Strict Ring dips\n\nRX:\na. 10 minute AMRAP for quality:\n10 sec L-sit in parallettes\n1 Pull over\n2 Strict Ring dips\n\nIntermediate:\na. 10 minute AMRAP for quality:\n10 sec Bent Legs L-sit in parallettes\n2 Kipping Pull ups or Chest to bar\n4 Ring Push ups (Scale by being kneeling)\n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
       "attachments": [
         {
-          "title": "Goodmornings + BTN Snatch grip press",
+          "title": "L-sit",
           "kind": "youtube",
-          "src": "https://youtu.be/ofn9ZGnDMeo"
+          "src": "https://youtu.be/5JmuiMnPMSU"
         },
         {
-          "title": "Muscle Snatch + BTN Snatch grip Push press",
+          "title": "L-sit in parallettes (Straight legs, One leg bent, Tucked)",
           "kind": "youtube",
-          "src": "https://youtu.be/vKqMJZ6jXfg"
+          "src": "https://youtu.be/nUgYPSQKh4U"
         },
         {
-          "title": "Snatch grip RDL + High Hang Snatch pull",
+          "title": "Ring Push ups",
           "kind": "youtube",
-          "src": "https://youtu.be/_HJTlmGTcw0"
+          "src": "https://youtu.be/K8yGoWjZlZM"
         },
+        {
+          "title": "Kipping Pull ups",
+          "kind": "youtube",
+          "src": "https://youtu.be/plWVwbzvqlA"
+        },
+        {
+          "title": "Strict Ring Dips",
+          "kind": "youtube",
+          "src": "https://youtu.be/P-NdNxNlODw"
+        },
+        {
+          "title": "Kipping Chest to bar (Classic kip)",
+          "kind": "youtube",
+          "src": "https://youtu.be/MIcu1-4mGDU"
+        },
+        {
+          "title": "The Pull-Over",
+          "kind": "youtube",
+          "src": "https://youtu.be/faJDYEZmueM"
+        }
+      ]
+    },
+    {
+      "title": "S1: CONDITIONING",
+      "description": "Conditioning, “Raising the ceiling” (Threshold │ 80-85% effort │ Heavy-Severe intensity domain)\n\nElite:\na. 3 sets,\n4 minute AMRAP / 2 minute Rest\n25/20 Cal Row\n20 Toes to bar\n15 Double DB Farmer Step ups (20\")\nMax Burpee deadlifts in the remaining time\n(2x22.5/15kg │ 2x50/35lbs)\n\nRX:\na. 3 sets,\n4 minute AMRAP / 2 minute Rest\n25/20 Cal Row\n15 Toes to bar\n10 Double DB Farmer Step ups (20\")\nMax Burpee deadlifts in the remaining time\n(2x22.5/15kg │ 2x50/35lbs)\n\nIntermediate:\na. 3 sets,\n4 minute AMRAP / 2 minute Rest\n25/20 Cal Row\n10 Toes to bar or 15 Kipping knees to chest\n10 Double DB Farmer Step ups (20\")\nMax Burpee deadlifts in the remaining time\n(2x15/10kg │ 2x35/25lbs)\n\nScore: Average reps burpee deadlifts across the 3 sets (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
         {
           "title": "Rowing",
           "kind": "youtube",
           "src": "https://youtu.be/nNakTNFlnQY"
         },
         {
-          "title": "(Loaded) Wall sit",
+          "title": "DB Farmer Step ups",
           "kind": "youtube",
-          "src": "https://youtu.be/RUAWD26nLkI"
+          "src": "https://youtu.be/N_zuR3-b-Ro"
         },
         {
-          "title": "DB Cuban press",
+          "title": "Kipping Knees to Chest",
           "kind": "youtube",
-          "src": "https://youtu.be/KKsJ3huMws4"
+          "src": "https://youtu.be/7_Ofk0tcbTw"
+        },
+        {
+          "title": "Burpee DB Deadlift",
+          "kind": "youtube",
+          "src": "https://youtu.be/SYr4cOZ2HcE"
+        },
+        {
+          "title": "Toes to bar",
+          "kind": "youtube",
+          "src": "https://youtu.be/CmzTTemzgpc"
         }
       ]
     },
     {
-      "title": "S1: STRENGTH-SPEED (Snatch)",
-      "description": "Strength-Speed / \"Power\" / Weightlifting, Power Snatch\n\na. 3 sets, Going every 2:00 minute\n3 (1.1.1) Power Snatch (67.5-77.5% of 1RM = @67.5%1RM_POWER_SNATCH-@77.5%1RM_POWER_SNATCH)\n\nb. 3 sets, Going every 2:00 minute\n2 (1.1) Power Snatch (72.5-82.5% of 1RM = @72.5%1RM_POWER_SNATCH-@82.5%1RM_POWER_SNATCH)\n\nc. 3 sets, Going every 2:00 minute\n1 Power Snatch (77.5-87.5% of 1RM = @77.5%1RM_POWER_SNATCH-@87.5%1RM_POWER_SNATCH)\n\nd. (Optional Speed/Power-Endurance)\nElite:\n1 minute on / 30 sec off until you have accumulated 10 rounds of:\n25 Double Unders (Heavy rope)\n5 Power Snatches (43/29kg │ 95/65lbs)\n\nRX:\n1 minute on / 30 sec off until you have accumulated 8 rounds of:\n25 Double Unders\n5 Power Snatches (43/29kg │ 95/65lbs)\n\nIntermediate:\n1 minute on / 30 sec off until you have accumulated 6 rounds of:\n25 Double Unders or 60 Single unders\n5 Power Snatches (43/29kg │ 95/65lbs)\n\nProgression:\nW1: 3 sets of 3 reps, 3 sets of 2 reps, 3 sets of 1 rep + Optional barbell cycling work\nW2: Same volume and format, aim to progress loads. (+2.5% from last week) (Current)\nW3: Same volume and format, aim to progress loads.\nW4: Transition week\n\n1.1.1: This means the reps are performed as singles (drop and go) and not touch and go.\n----------------------------------\nRead more about how weightlifting is developed in our program in attached document.",
+      "title": "S1: (OPTIONAL) CONDITIONING",
+      "description": "(Optional) Conditioning,  “Lifting the roof” (VO2 max │ 90+% Effort │ Severe-Extreme intensity domain │ Z4-5)\n\na. 4 sets,\n1 minute AMRAP / 2 minutes Rest\n5 Shuttle runs + Max Cal Echo bike\n\nShuttle run: 1 reps is 25ft/7.6m down and 25ft/7.6m back.\n\nScore: Total calories across the 4 sets (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
       "attachments": [
         {
-          "title": "Heavy Double Unders",
+          "title": "Echo bike",
           "kind": "youtube",
-          "src": "https://youtu.be/wJHHcDHdPo0"
+          "src": "https://youtu.be/ElRWDf3inoY"
         },
         {
-          "title": "TnG snatches",
+          "title": "Shuttle run",
           "kind": "youtube",
-          "src": "https://youtu.be/NNvAPn65kc0"
-        },
-        {
-          "title": "Double unders",
-          "kind": "youtube",
-          "src": "https://youtu.be/oh8IStc8tzE"
-        },
-        {
-          "title": "Power Snatch",
-          "kind": "youtube",
-          "src": "https://youtu.be/qwqNGGAQ1Eo"
+          "src": "https://youtu.be/3woWx1Xd57g"
         }
       ]
     },
     {
-      "title": "S1: ABSOLUTE STRENGTH (Squat)",
-      "description": "Strength, Anterior Lower-body (Squat)\n\na. 6 sets, Going every 3rd minute\nSet 1, 4: 6 Back Squats\nSet 2, 5: 4 Back Squats\nSet 3, 6: 2 Back Squats\n\n(Optional) Absolute Speed add-on: After each set perform:\nOption #1: 3 Seated Jumps to box.\nOption #2: 15m Sled push sprint. \nOption #3: 3 Paused DB squat jumps (2x10/7.5kg │ 2x25/15lbs)\n\nLoad: Wave load format. Suggested loads below:\nSet 1: 6 reps at 65% of 1RM (@65%1RM_BACKSQ)\nSet 2: 4 reps at 75% of 1RM (@75%1RM_BACKSQ)\nSet 3: 2 reps at 85% of 1RM (@85%1RM_BACKSQ)\nSet 4: 6 reps at 70% of 1RM (@70%1RM_BACKSQ)\nSet 5: 4 reps at 80% of 1RM (@80%1RM_BACKSQ)\nSet 6: 2 reps at 90% of 1RM (@90%1RM_BACKSQ)\n\nTempo: Controlled descent, No Pause in the bottom, As aggressive and strong upwards as possible. Rest as needed in the top. (20X1)\n\nProgression:\nW1: 7-5-3-7-5-3 Back Squats\nW2: 6-4-2-6-4-2 Back squats (Heavier than last week) (current)\nW3: 5-3-1-5-3-1 Back squats (Heavier than last week)\nW4: Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+      "title": "S1: (OPTIONAL) STRENGTH ACCESSORY (Upper-body)",
+      "description": "(Optional) Strength Accessory, Upper-body\n\na. 3 sets,\nA Max set of Incline DB Biceps curls (2x10-15/7.5-10kg | 2x25-35/2x15-25lbs)\n-Rest 60 sec-\nA Max set of Banded/Cable tricep extensions\n-Rest 60 sec-\nA Max set of Banded/Cable Face pulls\n-Rest 60 sec-",
       "attachments": [
         {
-          "title": "Back squat",
+          "title": "Incline DB Bicep curls",
           "kind": "youtube",
-          "src": "https://youtu.be/3qAXEHQaeaM"
+          "src": "https://youtu.be/O0ILrB8hgFs"
         },
         {
-          "title": "Seated Box Jump (Cue: Aggressive hip extension)",
+          "title": "Face pull",
           "kind": "youtube",
-          "src": "https://youtu.be/sMT_KbBoxa0"
+          "src": "https://youtu.be/yoOsPf5O5Wc"
         },
         {
-          "title": "DB paused jump squats",
+          "title": "Banded face pulls",
           "kind": "youtube",
-          "src": "https://youtu.be/7TQMNjuaFTw"
+          "src": "https://youtu.be/rIkkxZNrwCg"
         },
         {
-          "title": "Sled push sprint",
+          "title": "Banded tricep extensions",
           "kind": "youtube",
-          "src": "https://youtu.be/CXckuatjmiY"
+          "src": "https://youtu.be/isR1oxwM2uo"
         },
         {
-          "title": "Back squat directly into sled push sprint",
+          "title": "Cable tricep extensions",
           "kind": "youtube",
-          "src": "https://youtu.be/BepT7Wqq3II"
+          "src": "https://youtu.be/__5lm4qVo0Y"
         }
       ]
     },
     {
-      "title": "S1: STRENGTH ENDURANCE (Press/Pull)",
-      "description": "Strength Endurance, Anterior + Posterior Upper-body (Press/Pull)\n\nElite:\na. 2 sets, Rest 3 minutes between \n3 rounds of:\n10 Double DB Bench press (2x32.5/22.5kg │ 2x70/50lbs)\n10 Strict Chin ups\n\nRX:\na. 2 sets, Rest 3 minutes between \n3 rounds of:\n10 Double DB Bench press (2x22.5/15kg │ 2x50/35lbs)\n8 Strict Chin ups\n\nIntermediate\na. 2 sets, Rest 3 minutes between \n3 rounds of:\n10 Double DB Bench press (2x17.5/12.5kg │ 2x40/30lbs)\n6 Strict Chin ups (Banded)\n\nTempo: Quality and control is key.\n\nFlow explained: \n3 rounds of Bench press and Chin ups.\nRest 3 minutes.\nRepeat.\n\nIntent: Improve muscle endurance qualities in pressing and pulling exercises.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "DB Bench press",
-          "kind": "youtube",
-          "src": "https://youtu.be/hHMJPXr5Q4o"
-        },
-        {
-          "title": "Strict Chin ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/m1cv4pmn7cc"
-        }
-      ]
-    },
-    {
-      "title": "S1: (OPTIONAL) STRENGTH ACCESSORY (Core)",
-      "description": "(Optional) Strength Accessory, Core\n\na. 5 sets, Going every 90 sec (no rest between sets)\nSet 1: 30 Anchored Sit ups + Plank in the remaining time\nSet 2: 25 Anchored Sit ups + Plank in the remaining time\nSet 3: 20 Anchored Sit ups + Plank in the remaining time\nSet 4: 15 Anchored Sit ups + Plank in the remaining time\nSet 5: 10 Anchored Sit ups + Plank in the remaining time\n\n(No load on the sit ups)",
-      "attachments": [
-        {
-          "title": "Weighted (BTN) anchored sit ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/nqK64Cwpfzg"
-        },
-        {
-          "title": "Plank",
-          "kind": "youtube",
-          "src": "https://youtu.be/5Suzmvl7DmU"
-        }
-      ]
+      "title": "S1: (TEAM VERSION) CONDITIONING",
+      "description": "Note: One of the reasons most of us fall in love with CrossFit is the community aspect.\nIt’s being surrounded by others whom are like minded in an environment that brings out the best in us.\nPushing hard in training with a group can for some feel more enjoyable and can often give that extra kick needed to perform better.\nThe \"Team Edition\" add-ons to the program is for those who wishes to do team competitions now and in the future.\nThis will give those of you who might consider going team a structured session that will be based around synchro coordination, team workouts, relays & worm specific training. All elements that are key in creating a successful team.\n\nIt can be hard to coordinate training with 3 others and the program is therefore build in a way that the team session fits in with the rest of the weekly program, so that we make sure you hit everything you need to weekly.\n\nThis piece is to be done instead of the original engine piece.\n_________________________________________\nConditioning\n\na. 3 sets,\n4 minute AMRAP / 2 minute Rest\n25/20 Cal Row (All 4 on separate rowers)\n20 Sync. Toes to bar (Mix Pair #1) | 15 Sync. Double DB Farmer Step ups (20\") (Mix Pair #2) \n15 Sync. Double DB Farmer Step ups (20\") (Mix Pair #1) | 20 Sync. Toes to bar (Mix Pair #2) \nMax Worm Clean and jerks in the remaining time",
+      "attachments": []
     },
     {
       "title": "S2: CONDITIONING",
-      "description": "Conditioning, Run - “Raising the ceiling” (Threshold │ 80-85% effort │ Heavy-Severe intensity domain │ Z3-4)\n\na. Warm up\n(Part 1) Locomotion pre-run routine (see video) \n1 length Walk on toes\n1 length  Walk on heels\n1 length  Walk on toes\n1 length Walk on heels\n2 lengths Heel to toe roll\n1 length Forward pogos\n1 length Side ways pogos\n1 length Side ways pogos (other side)\n1 length Back wards pogos\n1 length Kenyan pogos \n1 length Kenyan Forward Knee raises (Right leg)\n1 length Kenyan Forward Knee raises (Left leg)\n1 length Kenyan Side Knee raises (Right leg)\n1 length Kenyan Side Knee raises (Left leg)\n(1 length = 7.5m / 25ft)\n\nb. 3 sets, \n10 minute AMRAP / Rest 5 minutes\n200m Run\n10 Line facing Burpees\n100-200-300-400m etc. Ski erg\nIntensity: \"Raising the ceiling\" (80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Pre run routine",
-          "kind": "youtube",
-          "src": "https://youtu.be/kbG9tyTqEKk"
-        },
-        {
-          "title": "Line Facing Burpees",
-          "kind": "youtube",
-          "src": "https://youtu.be/nCZxqNlFO6U"
-        }
-      ]
+      "description": "Conditioning \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n\na. 60 minute C2 Bike\nIntensity: \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": []
     }
   ],
   "empty": false
