@@ -1,222 +1,74 @@
 {
-  "date": "2026-07-28",
-  "date_label": "Martedi 28 Luglio",
-  "generated_at": "2026-07-28T02:17:15.515764",
+  "date": "2026-07-30",
+  "date_label": "Giovedi 30 Luglio",
+  "generated_at": "2026-07-30T01:57:01.983598",
   "sections": [
     {
-      "title": "S1: WARM UP",
-      "description": "Warm up \n\na. Dynamic stretches\n1 round of:\n60/60 sec Dynamic Pec Stretch\n60/60 sec Dynamic Lat Stretch\n15 Plate Pull overs (10/5kg | 25/10lbs)\n\nb. Metabolic prep\n4 minutes Echo bike performed as 20 sec Easy / 10 sec Hard\n\nc. Activation\n25 Banded Pull aparts\n25 Banded Tricep extensions\n25 Banded Bicep curls\n25 Banded Delt raises\n25 Banded Face pulls\n\nd. Specific prep (L-sit, Pull over, Ring dip)\nSelf directed or use below as guideline:\n5 Strict Pull ups\n10 Push ups\n15 Seated Pike raises\n20 sec Top of ring dip support hold\n20 sec Bottom of ring dip support hold\n+ 5 minutes to practice full Pull overs, Strict ring dips and L-sit hold.",
+      "title": "OPTION 1: FULL REST / BODYWORK",
+      "description": "Recovery is what allows athletes to train at a consistently high level and perform to the best of their abilities.\n\nThe hours outside of training play a major role in how effectively you recover from training stressors.\n\nTo get the most out of an athlete, it’s essential to find the right balance between training overload and sufficient recovery. Short periods of increased training stress can temporarily reduce performance and increase fatigue, but when paired with adequate recovery, this can lead to positive adaptation and improved performance. In sport science, this is referred to as Functional Overreaching (FOR). However, when recovery is insufficient and fatigue continues to accumulate without adequate adaptation, athletes may enter a state of Non-Functional Overreaching (NFOR), where performance begins to stagnate or decline.\n\nWe aim to create the right balance by periodizing the program appropriately while also encouraging athletes to self-regulate when needed.\n\nHere are some signs that recovery may be compromised:\n\n-Inability to sustain efforts during high-intensity exercise\n-Increased fatigue during and after training\n-Low mood or reduced motivation\n-Sleep disturbances\n-Persistent soreness or slower recovery between sessions\n\nIt’s important to understand that stressors outside of training are often the biggest obstacle to recovery. Start by analyzing and optimizing the 18–22 hours of the day spent away from training.\n\nBelow are several recovery methods that may help support overall recovery and performance:\n\n#1 Additional Sleep\nSleep remains the most effective and important recovery tool available to athletes.\n\n#2 Methods That May Support Blood Flow and Reduce Muscle Soreness\nThe following methods may help increase circulation, promote relaxation, and improve perceived recovery:\n-Professional bodywork such as physiotherapy or massage\n-Recovery boots/compression therapy\n-Self-myofascial release (foam rolling, lacrosse balls, etc.)\n-Muscle stimulation devices such as Compex\n\n#3 Additional Recovery Strategies\nThese are methods I’ve personally experimented with and occasionally use when feeling the need for some extra recovery support:\n-Epsom salt baths\n-Meditation — recovery is not only physical, but also psychological\n-Barefoot walks on grass/\"earthing\" — while scientific evidence is limited, some athletes find it relaxing and helpful for stress reduction\n-Increased sunlight exposure to support circadian rhythm, mood, and sleep quality\n-Light water movement sessions — the hydrostatic pressure and low-impact nature of water can help promote movement and recovery without adding significant stress to the body",
+      "attachments": []
+    },
+    {
+      "title": "OPTION 2: CONDITIONING - Run",
+      "description": "Conditioning, Run\n\na. Pre-run activation work:\n20 Calf raises (10 with straight legs + 10 with bent legs)\n20 Tibialis raises\n10/10 Single leg glute bridges\n10/10 Single leg RDL to knee lift\n10/10 Single leg reverse lunge to knee lift\n10/10 Forward Leg swings\n10/10 Lateral Leg swings\n\nb. Main set\n2000m Run  (“Easy” - Conversation pace / Z2 / RPE 3-4)\n\n-Rest 2 minutes-\n\n4 sets,\n1000m Run (\"Moderate\" / tempo / RPE 6-7 / Z3 / 30-50 sec slower than target 5k pace)\n-1:30 minute walk between sets-\n\nProgression: \nW1, W2, W3: Same format and volume across the 3 weeks with the goal of the 4x1000m feeling better and better week to week. (current) \nW4: (Transition week) 40 min Run (Easy / Z2)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
       "attachments": [
         {
-          "title": "Banded pull apart",
+          "title": "Side ways leg swings",
           "kind": "youtube",
-          "src": "https://youtu.be/polViRSRkyw"
+          "src": "https://youtu.be/HpEP74I5NVY"
         },
         {
-          "title": "Bottom of ring dip hold",
+          "title": "Leg swings (forward)",
           "kind": "youtube",
-          "src": "https://youtu.be/R8oPxb-OQL0"
+          "src": "https://youtu.be/UJFCvjC2Cy0"
         },
         {
-          "title": "L-sit",
+          "title": "Single leg glute bridge",
           "kind": "youtube",
-          "src": "https://youtu.be/5JmuiMnPMSU"
+          "src": "https://youtu.be/9y-OBgMIdf8"
         },
         {
-          "title": "Plate pull over",
+          "title": "Single leg reverse lunge to knee lift",
           "kind": "youtube",
-          "src": "https://youtu.be/rImleg202Uo"
+          "src": "https://youtu.be/cf5-wApf3HE"
         },
         {
-          "title": "Seated pike raises (TTB series)",
+          "title": "Single leg RDL to knee lift",
           "kind": "youtube",
-          "src": "https://youtu.be/qxxxmSmpaBk"
+          "src": "https://youtu.be/IKzaKB9PpAo"
         },
         {
-          "title": "Bottom of dip",
+          "title": "Calf raises (straight legs + bent legs)",
           "kind": "youtube",
-          "src": "https://youtu.be/piBa8E1hviQ"
+          "src": "https://youtu.be/BB6xAUtCNBE"
         },
         {
-          "title": "Strict Ring Dips",
+          "title": "Tibialis raises",
           "kind": "youtube",
-          "src": "https://youtu.be/P-NdNxNlODw"
-        },
+          "src": "https://youtu.be/NJX4BPlur1A"
+        }
+      ]
+    },
+    {
+      "title": "OPTION 3: CONDITIONING - C2 bike",
+      "description": "Conditioning, Bike\n\na. 6000m C2 Bike  (“Easy” - Conversation pace / Z2 / RPE 3-4)\n\n-Rest 2 minutes-\n\n4 sets,\n2500m C2 Bike (\"Moderate\" / tempo / RPE 6-7 / Z3 / Approx. 85-90% of 20 min FTP)\n-1:30 minute Easy spin between sets-\n\nProgression: \nW1, W2, W3: Same format and volume across the 3 weeks with the goal of the 4x2500m feeling better and better week to week. (current) \nW4: (Transition week) 60 min C2 Bike (Easy / Z2)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": []
+    },
+    {
+      "title": "OPTION 4: CONDITIONING - Swim",
+      "description": "Conditioning, Swim\n\na. 500m Swim (Take a small break every 50m to stay at a low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n\n-Rest 2 min-\n\n10 rounds fo time:\n10 Push ups\n50m Swim\n\n-Rest 5 minutes-\n\n10 rounds of:\n10 No push up, no jump burpees\n50m Swim\n\nIntensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nProgression:\nW1: \n500m Swim (Take small breaks as needed every 50m to stay in at low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n-Rest 2 min-\n10 sets, Going every 2:30-3:00 minute\n100m Swim\nIntensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nW2: (Current)\n500m Swim (Take small breaks as needed every 50m to stay in at low intensity) (“Easy”/ Z2 / RPE 3-4)\n-Rest 2 minutes-\n10 rounds of:\n10 Push ups\n50m Swim\n-Rest 5 minutes-\n10 rounds of:\n10 No push up, no jump burpees\n50m Swim\n\nW3:\n500m Swim (Take small breaks as needed every 50m to stay in at low intensity) (“Easy”/ Z2 / RPE 3-4)\n-Rest 2 minutes-\n5 sets, Going every 5-6th minute\n200m Swim\n\nW4:\n5 rounds for time:\n100m Swim\n20 Push ups\n10 Double DB Hang Squat Cleans (2x17.5/12,5kg │ 2x40/30lbs)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
         {
-          "title": "Dynamic bent arm pec opener",
+          "title": "Burpee test standard (no jump/no clap)",
           "kind": "youtube",
-          "src": "https://youtu.be/Fv0KnjRiLf8"
-        },
-        {
-          "title": "Lat pulsed stretching with reach through",
-          "kind": "youtube",
-          "src": "https://youtu.be/P7scr-51piE"
-        },
-        {
-          "title": "Banded Tricep extensions",
-          "kind": "youtube",
-          "src": "https://youtu.be/jRC4vC0HVl8"
-        },
-        {
-          "title": "Banded Bicep curls",
-          "kind": "youtube",
-          "src": "https://youtu.be/M_UqIiK8w1Y"
-        },
-        {
-          "title": "Banded face pulls",
-          "kind": "youtube",
-          "src": "https://youtu.be/rIkkxZNrwCg"
-        },
-        {
-          "title": "Banded Delt raises",
-          "kind": "youtube",
-          "src": "https://youtu.be/JJoPGhsdZ5c"
-        },
-        {
-          "title": "Strict Pull ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/6_FPxRJMRh8"
+          "src": "https://youtu.be/ekCFdvqFHfo"
         },
         {
           "title": "Push ups",
           "kind": "youtube",
           "src": "https://youtu.be/RhX1qB0G-iI"
-        },
-        {
-          "title": "The Pull-Over",
-          "kind": "youtube",
-          "src": "https://youtu.be/faJDYEZmueM"
         }
       ]
-    },
-    {
-      "title": "S1: RELATIVE STRENGTH ENDURANCE (GYM.)",
-      "description": "(Relative) Strength Endurance / Gymnastics\n\nElite:\na. 10 minute AMRAP for quality:\n10 sec L-sit in parallettes\n2 Pull overs\n4 Strict Ring dips\n\nRX:\na. 10 minute AMRAP for quality:\n10 sec L-sit in parallettes\n1 Pull over\n2 Strict Ring dips\n\nIntermediate:\na. 10 minute AMRAP for quality:\n10 sec Bent Legs L-sit in parallettes\n2 Kipping Pull ups or Chest to bar\n4 Ring Push ups (Scale by being kneeling)\n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "L-sit",
-          "kind": "youtube",
-          "src": "https://youtu.be/5JmuiMnPMSU"
-        },
-        {
-          "title": "L-sit in parallettes (Straight legs, One leg bent, Tucked)",
-          "kind": "youtube",
-          "src": "https://youtu.be/nUgYPSQKh4U"
-        },
-        {
-          "title": "Ring Push ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/K8yGoWjZlZM"
-        },
-        {
-          "title": "Kipping Pull ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/plWVwbzvqlA"
-        },
-        {
-          "title": "Strict Ring Dips",
-          "kind": "youtube",
-          "src": "https://youtu.be/P-NdNxNlODw"
-        },
-        {
-          "title": "Kipping Chest to bar (Classic kip)",
-          "kind": "youtube",
-          "src": "https://youtu.be/MIcu1-4mGDU"
-        },
-        {
-          "title": "The Pull-Over",
-          "kind": "youtube",
-          "src": "https://youtu.be/faJDYEZmueM"
-        }
-      ]
-    },
-    {
-      "title": "S1: CONDITIONING",
-      "description": "Conditioning, “Raising the ceiling” (Threshold │ 80-85% effort │ Heavy-Severe intensity domain)\n\nElite:\na. 3 sets,\n4 minute AMRAP / 2 minute Rest\n25/20 Cal Row\n20 Toes to bar\n15 Double DB Farmer Step ups (20\")\nMax Burpee deadlifts in the remaining time\n(2x22.5/15kg │ 2x50/35lbs)\n\nRX:\na. 3 sets,\n4 minute AMRAP / 2 minute Rest\n25/20 Cal Row\n15 Toes to bar\n10 Double DB Farmer Step ups (20\")\nMax Burpee deadlifts in the remaining time\n(2x22.5/15kg │ 2x50/35lbs)\n\nIntermediate:\na. 3 sets,\n4 minute AMRAP / 2 minute Rest\n25/20 Cal Row\n10 Toes to bar or 15 Kipping knees to chest\n10 Double DB Farmer Step ups (20\")\nMax Burpee deadlifts in the remaining time\n(2x15/10kg │ 2x35/25lbs)\n\nScore: Average reps burpee deadlifts across the 3 sets (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Rowing",
-          "kind": "youtube",
-          "src": "https://youtu.be/nNakTNFlnQY"
-        },
-        {
-          "title": "DB Farmer Step ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/N_zuR3-b-Ro"
-        },
-        {
-          "title": "Kipping Knees to Chest",
-          "kind": "youtube",
-          "src": "https://youtu.be/7_Ofk0tcbTw"
-        },
-        {
-          "title": "Burpee DB Deadlift",
-          "kind": "youtube",
-          "src": "https://youtu.be/SYr4cOZ2HcE"
-        },
-        {
-          "title": "Toes to bar",
-          "kind": "youtube",
-          "src": "https://youtu.be/CmzTTemzgpc"
-        }
-      ]
-    },
-    {
-      "title": "S1: (OPTIONAL) CONDITIONING",
-      "description": "(Optional) Conditioning,  “Lifting the roof” (VO2 max │ 90+% Effort │ Severe-Extreme intensity domain │ Z4-5)\n\na. 4 sets,\n1 minute AMRAP / 2 minutes Rest\n5 Shuttle runs + Max Cal Echo bike\n\nShuttle run: 1 reps is 25ft/7.6m down and 25ft/7.6m back.\n\nScore: Total calories across the 4 sets (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Echo bike",
-          "kind": "youtube",
-          "src": "https://youtu.be/ElRWDf3inoY"
-        },
-        {
-          "title": "Shuttle run",
-          "kind": "youtube",
-          "src": "https://youtu.be/3woWx1Xd57g"
-        }
-      ]
-    },
-    {
-      "title": "S1: (OPTIONAL) STRENGTH ACCESSORY (Upper-body)",
-      "description": "(Optional) Strength Accessory, Upper-body\n\na. 3 sets,\nA Max set of Incline DB Biceps curls (2x10-15/7.5-10kg | 2x25-35/2x15-25lbs)\n-Rest 60 sec-\nA Max set of Banded/Cable tricep extensions\n-Rest 60 sec-\nA Max set of Banded/Cable Face pulls\n-Rest 60 sec-",
-      "attachments": [
-        {
-          "title": "Incline DB Bicep curls",
-          "kind": "youtube",
-          "src": "https://youtu.be/O0ILrB8hgFs"
-        },
-        {
-          "title": "Face pull",
-          "kind": "youtube",
-          "src": "https://youtu.be/yoOsPf5O5Wc"
-        },
-        {
-          "title": "Banded face pulls",
-          "kind": "youtube",
-          "src": "https://youtu.be/rIkkxZNrwCg"
-        },
-        {
-          "title": "Banded tricep extensions",
-          "kind": "youtube",
-          "src": "https://youtu.be/isR1oxwM2uo"
-        },
-        {
-          "title": "Cable tricep extensions",
-          "kind": "youtube",
-          "src": "https://youtu.be/__5lm4qVo0Y"
-        }
-      ]
-    },
-    {
-      "title": "S1: (TEAM VERSION) CONDITIONING",
-      "description": "Note: One of the reasons most of us fall in love with CrossFit is the community aspect.\nIt’s being surrounded by others whom are like minded in an environment that brings out the best in us.\nPushing hard in training with a group can for some feel more enjoyable and can often give that extra kick needed to perform better.\nThe \"Team Edition\" add-ons to the program is for those who wishes to do team competitions now and in the future.\nThis will give those of you who might consider going team a structured session that will be based around synchro coordination, team workouts, relays & worm specific training. All elements that are key in creating a successful team.\n\nIt can be hard to coordinate training with 3 others and the program is therefore build in a way that the team session fits in with the rest of the weekly program, so that we make sure you hit everything you need to weekly.\n\nThis piece is to be done instead of the original engine piece.\n_________________________________________\nConditioning\n\na. 3 sets,\n4 minute AMRAP / 2 minute Rest\n25/20 Cal Row (All 4 on separate rowers)\n20 Sync. Toes to bar (Mix Pair #1) | 15 Sync. Double DB Farmer Step ups (20\") (Mix Pair #2) \n15 Sync. Double DB Farmer Step ups (20\") (Mix Pair #1) | 20 Sync. Toes to bar (Mix Pair #2) \nMax Worm Clean and jerks in the remaining time",
-      "attachments": []
-    },
-    {
-      "title": "S2: CONDITIONING",
-      "description": "Conditioning \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n\na. 60 minute C2 Bike\nIntensity: \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": []
     }
   ],
   "empty": false
