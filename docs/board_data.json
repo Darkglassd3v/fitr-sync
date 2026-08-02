@@ -1,74 +1,12 @@
 {
-  "date": "2026-07-30",
-  "date_label": "Giovedi 30 Luglio",
-  "generated_at": "2026-07-30T01:57:01.983598",
+  "date": "2026-08-02",
+  "date_label": "Domenica 2 Agosto",
+  "generated_at": "2026-08-02T02:26:29.744025",
   "sections": [
     {
-      "title": "OPTION 1: FULL REST / BODYWORK",
-      "description": "Recovery is what allows athletes to train at a consistently high level and perform to the best of their abilities.\n\nThe hours outside of training play a major role in how effectively you recover from training stressors.\n\nTo get the most out of an athlete, it’s essential to find the right balance between training overload and sufficient recovery. Short periods of increased training stress can temporarily reduce performance and increase fatigue, but when paired with adequate recovery, this can lead to positive adaptation and improved performance. In sport science, this is referred to as Functional Overreaching (FOR). However, when recovery is insufficient and fatigue continues to accumulate without adequate adaptation, athletes may enter a state of Non-Functional Overreaching (NFOR), where performance begins to stagnate or decline.\n\nWe aim to create the right balance by periodizing the program appropriately while also encouraging athletes to self-regulate when needed.\n\nHere are some signs that recovery may be compromised:\n\n-Inability to sustain efforts during high-intensity exercise\n-Increased fatigue during and after training\n-Low mood or reduced motivation\n-Sleep disturbances\n-Persistent soreness or slower recovery between sessions\n\nIt’s important to understand that stressors outside of training are often the biggest obstacle to recovery. Start by analyzing and optimizing the 18–22 hours of the day spent away from training.\n\nBelow are several recovery methods that may help support overall recovery and performance:\n\n#1 Additional Sleep\nSleep remains the most effective and important recovery tool available to athletes.\n\n#2 Methods That May Support Blood Flow and Reduce Muscle Soreness\nThe following methods may help increase circulation, promote relaxation, and improve perceived recovery:\n-Professional bodywork such as physiotherapy or massage\n-Recovery boots/compression therapy\n-Self-myofascial release (foam rolling, lacrosse balls, etc.)\n-Muscle stimulation devices such as Compex\n\n#3 Additional Recovery Strategies\nThese are methods I’ve personally experimented with and occasionally use when feeling the need for some extra recovery support:\n-Epsom salt baths\n-Meditation — recovery is not only physical, but also psychological\n-Barefoot walks on grass/\"earthing\" — while scientific evidence is limited, some athletes find it relaxing and helpful for stress reduction\n-Increased sunlight exposure to support circadian rhythm, mood, and sleep quality\n-Light water movement sessions — the hydrostatic pressure and low-impact nature of water can help promote movement and recovery without adding significant stress to the body",
+      "title": "FULL REST DAY",
+      "description": "Goals for today:\n\na. Meal prep and Snack prep to make the coming week easier. You don't have to prep for the whole week, but having prepped a few meals and making sure you have snacks/fruits to help you stay fueled can be the difference maker in having a good or bad training week.\n\nb. Take a break = Relax / don't talk about CrossFit / Get out of the gym / spend time with family and friends.\n\nc. Take care of practical things that you don't want to and don't have time to deal with during the week = Washing clothes, paying bills, cleaning the car etc.\n\nd. Give yourself a tap on the shoulder for what you have done this week training wise. Regardless of having done great or not, you have done work, and every bit counts in the process of making you fitter than you were.",
       "attachments": []
-    },
-    {
-      "title": "OPTION 2: CONDITIONING - Run",
-      "description": "Conditioning, Run\n\na. Pre-run activation work:\n20 Calf raises (10 with straight legs + 10 with bent legs)\n20 Tibialis raises\n10/10 Single leg glute bridges\n10/10 Single leg RDL to knee lift\n10/10 Single leg reverse lunge to knee lift\n10/10 Forward Leg swings\n10/10 Lateral Leg swings\n\nb. Main set\n2000m Run  (“Easy” - Conversation pace / Z2 / RPE 3-4)\n\n-Rest 2 minutes-\n\n4 sets,\n1000m Run (\"Moderate\" / tempo / RPE 6-7 / Z3 / 30-50 sec slower than target 5k pace)\n-1:30 minute walk between sets-\n\nProgression: \nW1, W2, W3: Same format and volume across the 3 weeks with the goal of the 4x1000m feeling better and better week to week. (current) \nW4: (Transition week) 40 min Run (Easy / Z2)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Side ways leg swings",
-          "kind": "youtube",
-          "src": "https://youtu.be/HpEP74I5NVY"
-        },
-        {
-          "title": "Leg swings (forward)",
-          "kind": "youtube",
-          "src": "https://youtu.be/UJFCvjC2Cy0"
-        },
-        {
-          "title": "Single leg glute bridge",
-          "kind": "youtube",
-          "src": "https://youtu.be/9y-OBgMIdf8"
-        },
-        {
-          "title": "Single leg reverse lunge to knee lift",
-          "kind": "youtube",
-          "src": "https://youtu.be/cf5-wApf3HE"
-        },
-        {
-          "title": "Single leg RDL to knee lift",
-          "kind": "youtube",
-          "src": "https://youtu.be/IKzaKB9PpAo"
-        },
-        {
-          "title": "Calf raises (straight legs + bent legs)",
-          "kind": "youtube",
-          "src": "https://youtu.be/BB6xAUtCNBE"
-        },
-        {
-          "title": "Tibialis raises",
-          "kind": "youtube",
-          "src": "https://youtu.be/NJX4BPlur1A"
-        }
-      ]
-    },
-    {
-      "title": "OPTION 3: CONDITIONING - C2 bike",
-      "description": "Conditioning, Bike\n\na. 6000m C2 Bike  (“Easy” - Conversation pace / Z2 / RPE 3-4)\n\n-Rest 2 minutes-\n\n4 sets,\n2500m C2 Bike (\"Moderate\" / tempo / RPE 6-7 / Z3 / Approx. 85-90% of 20 min FTP)\n-1:30 minute Easy spin between sets-\n\nProgression: \nW1, W2, W3: Same format and volume across the 3 weeks with the goal of the 4x2500m feeling better and better week to week. (current) \nW4: (Transition week) 60 min C2 Bike (Easy / Z2)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": []
-    },
-    {
-      "title": "OPTION 4: CONDITIONING - Swim",
-      "description": "Conditioning, Swim\n\na. 500m Swim (Take a small break every 50m to stay at a low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n\n-Rest 2 min-\n\n10 rounds fo time:\n10 Push ups\n50m Swim\n\n-Rest 5 minutes-\n\n10 rounds of:\n10 No push up, no jump burpees\n50m Swim\n\nIntensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nProgression:\nW1: \n500m Swim (Take small breaks as needed every 50m to stay in at low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n-Rest 2 min-\n10 sets, Going every 2:30-3:00 minute\n100m Swim\nIntensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nW2: (Current)\n500m Swim (Take small breaks as needed every 50m to stay in at low intensity) (“Easy”/ Z2 / RPE 3-4)\n-Rest 2 minutes-\n10 rounds of:\n10 Push ups\n50m Swim\n-Rest 5 minutes-\n10 rounds of:\n10 No push up, no jump burpees\n50m Swim\n\nW3:\n500m Swim (Take small breaks as needed every 50m to stay in at low intensity) (“Easy”/ Z2 / RPE 3-4)\n-Rest 2 minutes-\n5 sets, Going every 5-6th minute\n200m Swim\n\nW4:\n5 rounds for time:\n100m Swim\n20 Push ups\n10 Double DB Hang Squat Cleans (2x17.5/12,5kg │ 2x40/30lbs)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Burpee test standard (no jump/no clap)",
-          "kind": "youtube",
-          "src": "https://youtu.be/ekCFdvqFHfo"
-        },
-        {
-          "title": "Push ups",
-          "kind": "youtube",
-          "src": "https://youtu.be/RhX1qB0G-iI"
-        }
-      ]
     }
   ],
   "empty": false
