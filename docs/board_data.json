@@ -1,11 +1,201 @@
 {
-  "date": "2026-08-02",
-  "date_label": "Domenica 2 Agosto",
-  "generated_at": "2026-08-02T02:26:29.744025",
+  "date": "2026-08-04",
+  "date_label": "Martedi 4 Agosto",
+  "generated_at": "2026-08-04T02:14:20.862104",
   "sections": [
     {
-      "title": "FULL REST DAY",
-      "description": "Goals for today:\n\na. Meal prep and Snack prep to make the coming week easier. You don't have to prep for the whole week, but having prepped a few meals and making sure you have snacks/fruits to help you stay fueled can be the difference maker in having a good or bad training week.\n\nb. Take a break = Relax / don't talk about CrossFit / Get out of the gym / spend time with family and friends.\n\nc. Take care of practical things that you don't want to and don't have time to deal with during the week = Washing clothes, paying bills, cleaning the car etc.\n\nd. Give yourself a tap on the shoulder for what you have done this week training wise. Regardless of having done great or not, you have done work, and every bit counts in the process of making you fitter than you were.",
+      "title": "S1: WARM UP",
+      "description": "Warm up \n\na. Dynamic stretches\n1 round of:\n60/60 sec Dynamic Pec Stretch\n60/60 sec Dynamic Lat Stretch\n60 sec Anterior stretch (hands on bar)\n15 Plate Pull overs (10/5kg | 25/10lbs)\n\nb. Metabolic prep\n4 minutes Ski performed as 20 sec Easy / 10 sec Hard\n\nc. Activation\n25 Banded Pull aparts\n25 Banded Tricep extensions\n25 Banded Bicep curls\n25 Banded Delt raises\n25 Banded Face pulls\n\nd. Specific prep (Wall Walk, Wall Facing HSPU, Strict Toes to bar)\nSelf directed or use below as guideline:\n5 Inchworm push ups\n15 Seated Pike raises\n20 sec Wall facing HS hold\n15 Toe reaches\n5 Pike HSPU\n+ 5 minutes to practice full Wall Walks, Wall Facing HSPUs, Strict Toes to bar)",
+      "attachments": [
+        {
+          "title": "Banded pull apart",
+          "kind": "youtube",
+          "src": "https://youtu.be/polViRSRkyw"
+        },
+        {
+          "title": "Plate pull over",
+          "kind": "youtube",
+          "src": "https://youtu.be/rImleg202Uo"
+        },
+        {
+          "title": "Inchworm push up",
+          "kind": "youtube",
+          "src": "https://youtu.be/2qS9TFE7iRw"
+        },
+        {
+          "title": "Seated pike raises (TTB series)",
+          "kind": "youtube",
+          "src": "https://youtu.be/qxxxmSmpaBk"
+        },
+        {
+          "title": "Pike HSPU (HSPU series)",
+          "kind": "youtube",
+          "src": "https://youtu.be/Fdxwjq54fm4"
+        },
+        {
+          "title": "Dynamic bent arm pec opener",
+          "kind": "youtube",
+          "src": "https://youtu.be/Fv0KnjRiLf8"
+        },
+        {
+          "title": "Lat pulsed stretching with reach through",
+          "kind": "youtube",
+          "src": "https://youtu.be/P7scr-51piE"
+        },
+        {
+          "title": "Banded Tricep extensions",
+          "kind": "youtube",
+          "src": "https://youtu.be/jRC4vC0HVl8"
+        },
+        {
+          "title": "Banded Bicep curls",
+          "kind": "youtube",
+          "src": "https://youtu.be/M_UqIiK8w1Y"
+        },
+        {
+          "title": "Banded face pulls",
+          "kind": "youtube",
+          "src": "https://youtu.be/rIkkxZNrwCg"
+        },
+        {
+          "title": "Core piece (Rus. twist, heel tap, toe reaches)",
+          "kind": "youtube",
+          "src": "https://youtu.be/PlZvnYVTv_U"
+        },
+        {
+          "title": "Banded Delt raises",
+          "kind": "youtube",
+          "src": "https://youtu.be/JJoPGhsdZ5c"
+        },
+        {
+          "title": "Wall facing HS hold",
+          "kind": "youtube",
+          "src": "https://youtu.be/Mn3p3beXPOw"
+        },
+        {
+          "title": "Anterior stretch",
+          "kind": "youtube",
+          "src": "https://youtu.be/KIm_x7dpQAc"
+        }
+      ]
+    },
+    {
+      "title": "S1: RELATIVE STRENGTH ENDURANCE (GYM.)",
+      "description": "(Relative) Strength Endurance / Gymnastics\n\nElite:\na. 10 minute AMRAP for quality:\n1 Wall Walk\n2 Wall Facing HSPU\n4 Strict Toes to bar\n\nRX:\na. 10 minute AMRAP for quality:\n1 Wall Walk\n1 Wall Facing HSPU\n2 Strict Toes to bar\n\nIntermediate:\na. 10 minute AMRAP for quality:\n1 Wall Walk (Reduced Distance variation if needed)\n2 Pike HSPU\n4 Strict Hanging L-raises\n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Deficit pike HSPU (HSPU series)",
+          "kind": "youtube",
+          "src": "https://youtu.be/Q6BBXch6H4w"
+        },
+        {
+          "title": "Strict TTB (TTB series)",
+          "kind": "youtube",
+          "src": "https://youtu.be/EfI9QpYnYFs"
+        },
+        {
+          "title": "Hanging L-Lifts",
+          "kind": "youtube",
+          "src": "https://youtu.be/_GtKbhJgM7I"
+        },
+        {
+          "title": "Wall walks",
+          "kind": "youtube",
+          "src": "https://youtu.be/I7q6d4xVw64"
+        },
+        {
+          "title": "Reduced distance wall walk",
+          "kind": "youtube",
+          "src": "https://youtu.be/MW3efjdbrUE"
+        },
+        {
+          "title": "Wall facing HSPU",
+          "kind": "youtube",
+          "src": "https://youtu.be/sBW0Pt4byR8"
+        }
+      ]
+    },
+    {
+      "title": "S1: CONDITIONING",
+      "description": "Conditioning, “Raising the ceiling” (Threshold │ 80-85% effort │ Heavy-Severe intensity domain)\n\nElite:\na. 5 sets, Going every 5th minute\n50 Double unders \n5 Ring Muscle ups\n25 KB swings (24/16kg)\n25 Toes to rings\n+ C2 Bike at recovery pace in the remaining time\n\nRX:\na. 5 sets, Going every 5th minute\n40 Double unders \n4 Ring Muscle ups\n20 KB swings (24/16kg)\n20 Toes to rings\n+ C2 Bike at recovery pace in the remaining time\n\nIntermediate:\na. 5 sets, Going every 5th minute\n30 Double unders or 90 Single unders\n3 Ring Muscle ups or 6 Ring dips\n15 KB swings (24/16kg)\n15 Toes to rings\n+ C2 Bike at recovery pace in the remaining time\n\nScaled:\nSpend 20 minutes working through our ring muscle up progressions found in the attached files.\n\nScore: Total accumulated time across the 5 sets. (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Kipping Toes to rings (TTB series)",
+          "kind": "youtube",
+          "src": "https://youtu.be/iSysR5v0GKQ"
+        },
+        {
+          "title": "Single under",
+          "kind": "youtube",
+          "src": "https://youtu.be/-fb_KBsYKwo"
+        },
+        {
+          "title": "Double Unders",
+          "kind": "youtube",
+          "src": "https://youtu.be/kJ3FTT_HbFg"
+        },
+        {
+          "title": "Strict Ring Dips",
+          "kind": "youtube",
+          "src": "https://youtu.be/P-NdNxNlODw"
+        },
+        {
+          "title": "Ring Muscle ups",
+          "kind": "youtube",
+          "src": "https://youtu.be/17WLm-M4_hk"
+        },
+        {
+          "title": "Full KB swings",
+          "kind": "youtube",
+          "src": "https://youtu.be/eaHyyvVEaWU"
+        }
+      ]
+    },
+    {
+      "title": "S1: (OPTIONAL) CONDITIONING",
+      "description": "(Optional) Conditioning,  “Lifting the roof” (VO2 max │ 90+% Effort │ Severe-Extreme intensity domain │ Z4-5)\n\na. 1 minute on / 1 minute off until you’ve done 100 line facing burpees\n10/7 Cal Standing C2 Bike (No seat)\n+ Max Line facing burpees\n\nScore: Time on the clock when you hit your 100 burpee rep (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Line Facing Burpees",
+          "kind": "youtube",
+          "src": "https://youtu.be/nCZxqNlFO6U"
+        },
+        {
+          "title": "No Seat / Standing C2 Bike",
+          "kind": "youtube",
+          "src": "https://youtu.be/FUwEaGM_TOs"
+        }
+      ]
+    },
+    {
+      "title": "S1: (OPTIONAL) STRENGTH ACCESSORY (Mix)",
+      "description": "(Optional) Strength Accessory, Mix\n\na. 3 sets, Rest 1 minute between\n15/15 Side plank hip dips\n30 Seated plate twist (15/10kg │ 35/25lbs)\nMax Alt. Iso Supinated curls (2x10-15/6-10kg │ 2x25-35/2x15-25lbs)",
+      "attachments": [
+        {
+          "title": "Side plank hip dip",
+          "kind": "youtube",
+          "src": "https://youtu.be/go81CInyTTU"
+        },
+        {
+          "title": "Seated Plate Twist",
+          "kind": "youtube",
+          "src": "https://youtu.be/5ayd9EJy09I"
+        },
+        {
+          "title": "Alt. Supinated bicep curls with iso. hold",
+          "kind": "youtube",
+          "src": "https://youtu.be/yEpdBrXMfEQ"
+        }
+      ]
+    },
+    {
+      "title": "S1: (TEAM VERSION) CONDITIONING",
+      "description": "Note: One of the reasons most of us fall in love with CrossFit is the community aspect.\nIt’s being surrounded by others whom are like minded in an environment that brings out the best in us.\nPushing hard in training with a group can for some feel more enjoyable and can often give that extra kick needed to perform better.\nThe \"Team Edition\" add-ons to the program is for those who wishes to do team competitions now and in the future.\nThis will give those of you who might consider going team a structured session that will be based around synchro coordination, team workouts, relays & worm specific training. All elements that are key in creating a successful team.\n\nIt can be hard to coordinate training with 3 others and the program is therefore build in a way that the team session fits in with the rest of the weekly program, so that we make sure you hit everything you need to weekly.\n\nThis piece is to be done instead of the original engine piece.\n_________________________________________\nConditioning\n\na. 5 sets, Going every 5th minute\n50 Double unders (each) (Mix Pair #1) | 5 Sync. Ring Muscle ups (Mix Pair #2) \n5 Sync. Ring Muscle ups (Mix Pair #1) | 50 Double unders (each) (Mix Pair #2)\n25 Sync. KB swings (24/16kg) (Mix Pair #1) | 25 Sync. Toes to rings  (Mix Pair #2)\n25 Sync. Toes to rings  (Mix Pair #1) | 25 Sync. KB swings (24/16kg) (Mix Pair #2)",
+      "attachments": []
+    },
+    {
+      "title": "S2: CONDITIONING",
+      "description": "Conditioning \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n\na. 5-4-3-2-1k C2 Bike (♀ 4-3.2-2.4-1.6-0.8k)\n50/40 Cal Ski between each set\nIntensity: \"Building the basement\" (60-65% effort / “Easy” / Moderate intensity domain / Z2)\n\nFlow explained:\n5/4k C2 bike, 50/40 Cal Ski, 4/3.2k C2 Bike, 50/40 Cal Ski, 3/2.4k C2 Bike, 50/40 Cal Ski, 2/1.6k C2 Bike, 50/40 Cal Ski, 1/0.8k C2 Bike.\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
       "attachments": []
     }
   ],
