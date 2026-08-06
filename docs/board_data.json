@@ -1,122 +1,74 @@
 {
-  "date": "2026-08-05",
-  "date_label": "Mercoledi 5 Agosto",
-  "generated_at": "2026-08-05T02:08:34.907044",
+  "date": "2026-08-06",
+  "date_label": "Giovedi 6 Agosto",
+  "generated_at": "2026-08-06T02:03:16.642400",
   "sections": [
     {
-      "title": "S1: WARM UP - Jerks",
-      "description": "Weightlifting, Warm up \n\na. General prep  \n4 min Ski (Easy-Moderate tempo)\n-Into-\n1-2 rounds of:\nBanded ATWYEI routine (10 of each)\n1 minute Anterior stretch \n30 sec Back Bridge hold\n\nb. Specific prep\n10 Alt. Front and Back Strict press (empty barbell)\n-Rest as needed-\n10 Alt. Front and Back Push press (empty barbell)\n-Rest as needed-\n10 Alt. Front and Back Push Jerk (empty barbell)\n-Rest as needed-\n10 Alt. Front and Back Split Jerk (empty barbell)",
-      "attachments": [
-        {
-          "title": "Strict Press from the back + Strict press from the front",
-          "kind": "youtube",
-          "src": "https://youtu.be/PkcQ_ZnL4c0"
-        },
-        {
-          "title": "Push Press from the back + Push press from the front",
-          "kind": "youtube",
-          "src": "https://youtu.be/ZtK6yHyIJ5Q"
-        },
-        {
-          "title": "Push Jerks from the back + Push Jerks from the front",
-          "kind": "youtube",
-          "src": "https://youtu.be/811xj1SUD-E"
-        },
-        {
-          "title": "Split Jerks from the back + Split Jerks from the front",
-          "kind": "youtube",
-          "src": "https://youtu.be/CHDDO5miClA"
-        },
-        {
-          "title": "Banded shoulder ATWYEI routine",
-          "kind": "youtube",
-          "src": "https://youtu.be/0AyanidTrbs"
-        },
-        {
-          "title": "Anterior stretch",
-          "kind": "youtube",
-          "src": "https://youtu.be/KIm_x7dpQAc"
-        },
-        {
-          "title": "Back bridge",
-          "kind": "youtube",
-          "src": "https://youtu.be/JPRIeYgDslg"
-        }
-      ]
-    },
-    {
-      "title": "S1: STRENGTH-SPEED (Jerks)",
-      "description": "Strength-Speed / \"Power\" / Weightlifting, Jerks\n\na. 3 sets, Going every 2:00 minute\n3 Split Jerks (70-80% of 1RM = @70%1RM_SPLIT_JERK-@80%1RM_SPLIT_JERK)\n\nb. 3 sets, Going every 2:00 minute\n2 Split Jerks (75-85% of 1RM = @75%1RM_SPLIT_JERK-@85%1RM_SPLIT_JERK)\n\nc. 3 sets, Going every 2:00 minute\n1 Split Jerk (80-90% of 1RM = @80%1RM_SPLIT_JERK-@90%1RM_SPLIT_JERK)\n\nd. (Optional Speed/Power-Endurance)\n10 minute EMOM\n1: 10 Single arm DB STOH (right arm)\n2: 10 Single arm DB STOH (left arm)\n\nLoad:\n[Elite] 1x32.5/22.5kg │ 1x70/50lbs\n[RX] 1x25/17.5kg │ 1x60/40lbs\n[Intermediate] 1x22.5/15kg │ 1x50/35lbs\n\nProgression:\nW1: 3 sets of 3 reps, 3 sets of 2 reps, 3 sets of 1 rep + Optional barbell cycling work \nW2: Same volume and format, aim to progress loads. (+2.5% from last week)\nW3: Same volume and format, aim to progress loads.(+2.5% from last week) (Current) \nW4: Transition week\n----------------------------------\nRead more about how weightlifting is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Split jerk",
-          "kind": "youtube",
-          "src": "https://youtu.be/JXwu0dZxxB0"
-        }
-      ]
-    },
-    {
-      "title": "S1: ABSOLUTE STRENGTH (Hinge)",
-      "description": "Strength, Posterior Lower-body (Hinge)\n\na. 6 sets, Going every 3rd minute\nSet 1, 4: 5 Deadlifts\nSet 2, 5: 3 Deadlifts\nSet 3, 6: 1 Deadlift\n\n*(Optional) Absolute Speed add-on: After each set perform:\nOption #1: 3 Seated Broad jumps onto a box.\nOption #2: 6 Banded KB swings (24-32/16-24kg + Blue band)\nOption #3: 3 Sandbag KB or Slamball overhead tosses for distance (10-24/8-16kg │ 25-54/15-35lbs)\n\nLoad: Wave load format. Suggested loads below:\nSet 1: 5 reps at 70% of 1RM (@70%1RM_DEADLIFT)\nSet 2: 3 reps at 80% of 1RM (@80%1RM_DEADLIFT)\nSet 3: 1 rep at 90% of 1RM (@90%1RM_DEADLIFT)\nSet 4: 5 reps at 75% of 1RM (@75%1RM_DEADLIFT)\nSet 5: 3 reps at 85% of 1RM (@85%1RM_DEADLIFT)\nSet 6: 1 rep at 95% of 1RM (@95%1RM_DEADLIFT)\n\nTempo: As aggressive and strong upwards as possible, Controlled descent, No Pause in the bottom.\n\nDeadlift tips: https://www.instagram.com/p/DZ-0wgoRYz2/?hl=en\n\nProgression:\nW1: 7-5-3-7-5-3 Deadlifts \nW2: 6-4-2-6-4-2 Deadlifts (Heavier than last week) \nW3: 5-3-1-5-3-1 Deadlifts (Heavier than last week) (current)\nW4: Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "Deadlifts",
-          "kind": "youtube",
-          "src": "https://youtu.be/5GYRWDmjuZQ"
-        },
-        {
-          "title": "Seated broad jump to box",
-          "kind": "youtube",
-          "src": "https://youtu.be/7k654rfdmCQ"
-        },
-        {
-          "title": "Banded KB Swings",
-          "kind": "youtube",
-          "src": "https://youtu.be/B8leX-Jl_Io"
-        },
-        {
-          "title": "Backwards OH tosses",
-          "kind": "youtube",
-          "src": "https://youtu.be/hdJLi1ipt0E"
-        }
-      ]
-    },
-    {
-      "title": "S1: STRENGTH ENDURANCE (Lunge/Pull)",
-      "description": "Strength Endurance, Unilateral lower body + Posterior Upper-body (Lunge & Pull)\n\na. 3-4 sets,\n8-12 Double DB Bent over rows\n-Rest 60 sec-\n8/8 Bulgarian split squats\n-Rest 60 sec-\n\nLoad: (You can use the same weight for both. Below are suggestions)\n[Elite] 2x32.5/22.5kg | 2x70/50lbs\n[RX]  2x22.5/15kg | 2x50/35lbs\n[Intermediate] 2x17.5/12.5kg | 2x40/30lbs\n\nIntent: Improve muscle endurance qualities in unilateral lower-body and pulling exercises.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
-      "attachments": [
-        {
-          "title": "DB Bulgarian split squats",
-          "kind": "youtube",
-          "src": "https://youtu.be/AXk3rszvfa8"
-        },
-        {
-          "title": "Bent over DB Rows",
-          "kind": "youtube",
-          "src": "https://youtu.be/hcauVly_11o"
-        }
-      ]
-    },
-    {
-      "title": "S1: (OPTIONAL) STRENGTH ACCESSORY (Strongman)",
-      "description": "(Optional) Strength Accessory, Strongman\n\na. 3 sets, Rets 2 minutes between\n100ft (30m) Chaos Suitcase carry (right)\n100ft (30m) Chaos Suitcase carry (left)\n100ft (30m) Single arm DB OH carry (right)\n100ft (30m) Single arm DB OH carry (left)\n\nLoad: Pick a challenging weight for each. Below are suggestions for each level:\n[Elite]\n-KB's: 32/24kg hanging from a green band\n-DB's: 32.5/22.5kg | 70/50lbs\n\n[RX]\n-KB's: 28/20kg hanging from a green band\n-DB's: 27.5/20kg | 60/45lbs\n\n[Intermediate]\n-KB's: 24/16kg hanging from a green band\n-DB's: 22.5/15kg | 50/35lbs",
-      "attachments": [
-        {
-          "title": "Single arm DB OH Carry",
-          "kind": "youtube",
-          "src": "https://youtu.be/PfA3JgtNo9s"
-        },
-        {
-          "title": "Single arm \"Chaos\" Suit case carry (green band double wrapped and used as handle)",
-          "kind": "youtube",
-          "src": "https://youtu.be/ZIEzqazG47k"
-        }
-      ]
-    },
-    {
-      "title": "S2: CONDITIONING",
-      "description": "Conditioning, “Raising the ceiling” (Threshold │ 80-85% effort │ Heavy-Severe intensity domain │ Z3-4)\n\na. Warm up\n2 minute Ski (Easy)\n2 minute Echo bike (Easy)\n2 minute Row (Easy)\n+\n1 minute Ski (Moderate)\n1 minute Echo bike (Moderate)\n1 minute Row (Moderate)\n+\n30 sec Ski (Hard)\n30 sec Echo bike (Hard)\n30 sec Row (Hard)\n\nb. Threshold intervals\n-On 0:00-\n5 sets, \n3 minute AMRAP / 2 minute rest\n21/16 Cal Ski\n15/12 Cal Echo\nMax Cal Row in the remaining time\nIntensity: \"Raising the ceiling\" (80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.)\n\n-Rest 5 minutes-\n\n5 sets, \n3 minute AMRAP / 2 minute rest\n21/16 Cal Row\n15/12 Cal Echo\nMax Cal Ski in the remaining time\nIntensity: \"Raising the ceiling\" (80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "title": "OPTION 1: FULL REST / BODYWORK",
+      "description": "Recovery is what allows athletes to train at a consistently high level and perform to the best of their abilities.\n\nThe hours outside of training play a major role in how effectively you recover from training stressors.\n\nTo get the most out of an athlete, it’s essential to find the right balance between training overload and sufficient recovery. Short periods of increased training stress can temporarily reduce performance and increase fatigue, but when paired with adequate recovery, this can lead to positive adaptation and improved performance. In sport science, this is referred to as Functional Overreaching (FOR). However, when recovery is insufficient and fatigue continues to accumulate without adequate adaptation, athletes may enter a state of Non-Functional Overreaching (NFOR), where performance begins to stagnate or decline.\n\nWe aim to create the right balance by periodizing the program appropriately while also encouraging athletes to self-regulate when needed.\n\nHere are some signs that recovery may be compromised:\n\n-Inability to sustain efforts during high-intensity exercise\n-Increased fatigue during and after training\n-Low mood or reduced motivation\n-Sleep disturbances\n-Persistent soreness or slower recovery between sessions\n\nIt’s important to understand that stressors outside of training are often the biggest obstacle to recovery. Start by analyzing and optimizing the 18–22 hours of the day spent away from training.\n\nBelow are several recovery methods that may help support overall recovery and performance:\n\n#1 Additional Sleep\nSleep remains the most effective and important recovery tool available to athletes.\n\n#2 Methods That May Support Blood Flow and Reduce Muscle Soreness\nThe following methods may help increase circulation, promote relaxation, and improve perceived recovery:\n-Professional bodywork such as physiotherapy or massage\n-Recovery boots/compression therapy\n-Self-myofascial release (foam rolling, lacrosse balls, etc.)\n-Muscle stimulation devices such as Compex\n\n#3 Additional Recovery Strategies\nThese are methods I’ve personally experimented with and occasionally use when feeling the need for some extra recovery support:\n-Epsom salt baths\n-Meditation — recovery is not only physical, but also psychological\n-Barefoot walks on grass/\"earthing\" — while scientific evidence is limited, some athletes find it relaxing and helpful for stress reduction\n-Increased sunlight exposure to support circadian rhythm, mood, and sleep quality\n-Light water movement sessions — the hydrostatic pressure and low-impact nature of water can help promote movement and recovery without adding significant stress to the body",
       "attachments": []
+    },
+    {
+      "title": "OPTION 2: CONDITIONING - Run",
+      "description": "Conditioning, Run\n\na. Pre-run activation work:\n20 Calf raises (10 with straight legs + 10 with bent legs)\n20 Tibialis raises\n10/10 Single leg glute bridges\n10/10 Single leg RDL to knee lift\n10/10 Single leg reverse lunge to knee lift\n10/10 Forward Leg swings\n10/10 Lateral Leg swings\n\nb. Main set\n2000m Run  (“Easy” - Conversation pace / Z2 / RPE 3-4)\n\n-Rest 2 minutes-\n\n4 sets,\n1000m Run (\"Moderate\" / tempo / RPE 6-7 / Z3 / 30-50 sec slower than target 5k pace)\n-1:30 minute walk between sets-\n\nProgression: \nW1, W2, W3: Same format and volume across the 3 weeks with the goal of the 4x1000m feeling better and better week to week. (current) \nW4: (Transition week) 40 min Run (Easy / Z2)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Side ways leg swings",
+          "kind": "youtube",
+          "src": "https://youtu.be/HpEP74I5NVY"
+        },
+        {
+          "title": "Leg swings (forward)",
+          "kind": "youtube",
+          "src": "https://youtu.be/UJFCvjC2Cy0"
+        },
+        {
+          "title": "Single leg glute bridge",
+          "kind": "youtube",
+          "src": "https://youtu.be/9y-OBgMIdf8"
+        },
+        {
+          "title": "Single leg reverse lunge to knee lift",
+          "kind": "youtube",
+          "src": "https://youtu.be/cf5-wApf3HE"
+        },
+        {
+          "title": "Single leg RDL to knee lift",
+          "kind": "youtube",
+          "src": "https://youtu.be/IKzaKB9PpAo"
+        },
+        {
+          "title": "Calf raises (straight legs + bent legs)",
+          "kind": "youtube",
+          "src": "https://youtu.be/BB6xAUtCNBE"
+        },
+        {
+          "title": "Tibialis raises",
+          "kind": "youtube",
+          "src": "https://youtu.be/NJX4BPlur1A"
+        }
+      ]
+    },
+    {
+      "title": "OPTION 3: CONDITIONING - C2 bike",
+      "description": "Conditioning, Bike\n\na. 6000m C2 Bike  (“Easy” - Conversation pace / Z2 / RPE 3-4)\n\n-Rest 2 minutes-\n\n4 sets,\n2500m C2 Bike (\"Moderate\" / tempo / RPE 6-7 / Z3 / Approx. 85-90% of 20 min FTP)\n-1:30 minute Easy spin between sets-\n\nProgression: \nW1, W2, W3: Same format and volume across the 3 weeks with the goal of the 4x2500m feeling better and better week to week. (current) \nW4: (Transition week) 60 min C2 Bike (Easy / Z2)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": []
+    },
+    {
+      "title": "OPTION 4: CONDITIONING - Swim",
+      "description": "Conditioning, Swim\n\na. 500m Swim (Take a small break every 50m to stay at a low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n\n-Rest 2 min-\n\n5 sets, Going every 5-6th minutes\n200m Swim\nIntensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nProgression:\nW1: \n500m Swim (Take small breaks as needed every 50m to stay in at low intensity)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n-Rest 2 min-\n10 sets, Going every 2:30-3:00 minute\n100m Swim\nIntensity: 80-85% effort / “Threshold” / Highest repeatable effort / Heavy-Severe Intensity domain / Z4.\n\nW2: \n500m Swim (Take small breaks as needed every 50m to stay in at low intensity) (“Easy”/ Z2 / RPE 3-4)\n-Rest 2 minutes-\n10 rounds of:\n10 Push ups\n50m Swim\n-Rest 5 minutes-\n10 rounds of:\n10 No push up, no jump burpees\n50m Swim\n\nW3: (Current)\n500m Swim (Take small breaks as needed every 50m to stay in at low intensity) (“Easy”/ Z2 / RPE 3-4)\n-Rest 2 minutes-\n5 sets, Going every 5-6th minute\n200m Swim\n\nW4:\n5 rounds for time:\n100m Swim\n20 Push ups\n10 Double DB Hang Squat Cleans (2x17.5/12,5kg │ 2x40/30lbs)\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+      "attachments": [
+        {
+          "title": "Burpee test standard (no jump/no clap)",
+          "kind": "youtube",
+          "src": "https://youtu.be/ekCFdvqFHfo"
+        },
+        {
+          "title": "Push ups",
+          "kind": "youtube",
+          "src": "https://youtu.be/RhX1qB0G-iI"
+        }
+      ]
     }
   ],
   "empty": false
