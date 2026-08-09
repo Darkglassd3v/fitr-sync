@@ -99,7 +99,7 @@ def load_destinations():
 SCAN_DAYS = 90
 
 # Pausa in secondi tra un giorno e l'altro (evita rate limit)
-PAUSE_BETWEEN_DAYS = 2
+PAUSE_BETWEEN_DAYS = 0.5
 
 # ==============================================================
 
@@ -185,6 +185,9 @@ class FitrClient:
     def __init__(self, label=""):
         self.label   = label
         self.user_id = None
+        # Cache dei media gia' registrati in questa sessione: evita di
+        # ricaricare lo stesso video/PDF quando ricorre in piu' giorni.
+        self._media_cache = {}
         self.session = requests.Session()
         self.session.headers.update({
             "api-version":     "3",
@@ -339,6 +342,8 @@ class FitrClient:
         resp.raise_for_status()
 
     def register_youtube(self, youtube_url):
+        if youtube_url in self._media_cache:
+            return self._media_cache[youtube_url]
         resp = self.session.post(
             f"{BASE_URL}/api/media",
             json={"media": {"video_url": youtube_url}, "scope": "current"}
@@ -347,8 +352,10 @@ class FitrClient:
             print(f"    AVVISO: impossibile registrare {youtube_url}: HTTP {resp.status_code}")
             return None
         data = resp.json()
-        print(f"    Video: [{data.get('id')}] {data.get('title','')}")
-        return data.get("id")
+        media_id = data.get("id")
+        print(f"    Video: [{media_id}] {data.get('title','')}")
+        self._media_cache[youtube_url] = media_id
+        return media_id
 
     def register_pdf(self, pdf_url, title=""):
         """
@@ -610,6 +617,16 @@ def main():
     if not destinations:
         print("Nessuna destinazione configurata (imposta FITR_DESTINATIONS).")
         sys.exit(1)
+
+    # Filtro opzionale: sincronizza solo l'account indicato da FITR_ONLY
+    # (usato dai job paralleli del workflow). Accetta la label esatta.
+    only = os.environ.get("FITR_ONLY", "").strip()
+    if only:
+        destinations = [d for d in destinations if d.get("label") == only]
+        if not destinations:
+            print(f"Nessuna destinazione con label '{only}'.")
+            sys.exit(1)
+        print(f"Filtro attivo: solo '{only}'")
 
     # Prepara le destinazioni ABILITATE con credenziali
     active_dests = []

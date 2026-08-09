@@ -9,10 +9,20 @@ permissions:
   contents: write
 
 jobs:
+  # Un job separato per ogni account: girano in parallelo, ognuno con
+  # il proprio timeout. Se uno fallisce, gli altri proseguono.
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     environment: fitr
+    strategy:
+      fail-fast: false
+      matrix:
+        account:
+          - "Account 1"
+          - "Account 2"
+          - "Account 3"
+    name: Sync ${{ matrix.account }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -22,14 +32,39 @@ jobs:
 
       - name: Esegui sync
         env:
-          FITR_SRC_EMAIL:     ${{ secrets.FITR_SRC_EMAIL }}
-          FITR_SRC_PASS:      ${{ secrets.FITR_SRC_PASS }}
-          FITR_DESTINATIONS:  ${{ secrets.FITR_DESTINATIONS }}
+          FITR_SRC_EMAIL:    ${{ secrets.FITR_SRC_EMAIL }}
+          FITR_SRC_PASS:     ${{ secrets.FITR_SRC_PASS }}
+          FITR_DESTINATIONS: ${{ secrets.FITR_DESTINATIONS }}
+          FITR_ONLY:         ${{ matrix.account }}
         run: python fitr_sync.py
+
+      - name: Salva log come artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-log-${{ github.run_id }}-${{ strategy.job-index }}
+          path: fitr_sync_log/
+          retention-days: 30
+          if-no-files-found: ignore
+
+  # La board si aggiorna dopo che i sync sono finiti.
+  # Gira anche se qualche account e' fallito.
+  board:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: fitr
+    needs: sync
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
 
       - name: Esporta board del giorno
         env:
-          FITR_DESTINATIONS:  ${{ secrets.FITR_DESTINATIONS }}
+          FITR_DESTINATIONS: ${{ secrets.FITR_DESTINATIONS }}
         run: python board_export.py
 
       - name: Commit board aggiornata
@@ -52,11 +87,3 @@ jobs:
           done
           echo "Push non riuscito dopo 3 tentativi"
           exit 1
-
-      - name: Salva log come artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: sync-log-${{ github.run_id }}
-          path: fitr_sync_log/
-          retention-days: 30
