@@ -13,7 +13,7 @@ jobs:
   # il proprio timeout. Se uno fallisce, gli altri proseguono.
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 180
     environment: fitr
     strategy:
       fail-fast: false
@@ -51,7 +51,7 @@ jobs:
   # Gira anche se qualche account e' fallito.
   board:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     environment: fitr
     needs: sync
     if: always()
