@@ -1,0 +1,11 @@
+# Configurazione Cloudflare Worker per servire la board come sito statico.
+# La cartella docs/ contiene board.html e board_data.json.
+
+name = "fitr-sync"
+compatibility_date = "2026-01-01"
+
+# Serve i file statici della cartella docs/ senza codice server.
+[assets]
+directory = "./docs"
+# board.html diventa la pagina di ingresso
+not_found_handling = "single-page-application"
