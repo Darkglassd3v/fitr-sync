@@ -1,7 +1,1103 @@
 {
   "week_start": "2026-08-10",
   "week_end": "2026-08-16",
-  "today": "2026-08-12",
-  "generated_at": "2026-08-12T00:00:00",
-  "days": []
+  "today": "2026-08-11",
+  "generated_at": "2026-08-11T23:27:19.612587",
+  "days": [
+    {
+      "date": "2026-08-10",
+      "weekday": "LUN",
+      "day_number": 10,
+      "date_label": "Lunedi 10 Agosto",
+      "is_today": false,
+      "sections": [
+        {
+          "title": "IMPORTANT - NEW UPDATE",
+          "description": "Hi Team,\n\nThis week we're kicking off a new training block instead of our traditional transition week. \nThe reason is that we're introducing a new program structure to complement the format we've been using over the past year. Because this new design provides a different training stimulus than what you have been used to, it serves the same purpose as a traditional transition week.\nThat said, make sure to ease into Week 1 of this new block. Give your body time to adapt to the new structure before increasing the intensity and loads. From Week 2 onwards, you can begin ramping things up.\n\nFor more than a year, we've used our highly effective Heavy/Light design (Alt. between Strength/WL days and Gym/Conditioning days). In this block, we're introducing a new approach: an Upper/Lower design (Alt. between Upper-body and Lower-body biased sessions/days).\n\nGoing forward, we'll alternate between our Heavy/Light design and the Upper/Lower design from block to block (4 weeks per block). \nBy undulating between these two systems, we expose you to a different training stimuli, continue driving progress, reduce the risk of stagnation, and build the most well-rounded fitness possible. The goal is simple: to help you keep improving as quickly as possible while making that progress sustainable over the long term.\n\nSo to nail this first week, make sure that intensity is self-regulated. \nIf you feel great, push. If you don’t, dial it back.\n_______________________\nHave a great training week!\n– André Houdet\nnst",
+          "attachments": []
+        },
+        {
+          "title": "NEW TRAINING BLOCK W1/4",
+          "description": "Welcome to week 1 of our new training block Team,\nIf you just joined the team, make sure to read below:\n\nI encourage you to watch the block explanation video below that will give you a deep insight into how the program is structured from a macro to micro level (Global-->Weekly-->Daily overview). \nVideo link (block explanation): https://youtu.be/qGrVz4srDHw\n\nIf you do not have the time to watch the block explanation video, you can as always read the detailed notes attached in each section of the program to understand the intent behind everything. Due to FITr's layout, we have added the text as attachments to have less text in each box.\n\nOur goal with this training program is to have you feel:\na. Constant progress through consistent good training weeks.\nb. Feeling good (injury free)\nc. Motivated and driven as you see and understand the intention of how the program is structured.\n\nOur training principles to have success with the program:\n#1 If you want to be good at something, you must above all else,\nbe consistent.\n#2 Minimum Effective dose: This is a principle that we use to underline the concept of more frequent good training sessions leads to better results long term. Often if we train too hard we also need a longer recovery time before we can train hard again. Rather keep 5% in the tank instead of overreaching. Typically, people who do not take the needed recovery time from the sessions where they did more than they should end up injured/hits a plateau. We do not need to go to the maximum every time to create adaptation. \n#3 Self-regulation: Listen to your body and adjust the intensity based on how you feel.\n#4 Consistently good rather than occasionally great: Many good sessions are always better than a few great. \n#5 The devil is in the detail: Be deliberate and pay attention to set up/reps/tempo/intensity described in the program. \n#6 Stay in your lane: Don’t get caught up in anybody else’s game, you focus on you and your progress.\n#7 Technique > Load\n#8 Quality > Quantity\n#9 Principles > Methods\n--------------------------------------\nHave a great training block team,\n/𝙰𝚗𝚍𝚛𝚎 𝙷𝚘𝚞𝚍𝚎𝚝\n𝙳𝚒𝚛𝚎𝚌𝚝𝚘𝚛 𝚘𝚏 𝚃𝚛𝚊𝚒𝚗𝚒𝚗𝚐.\n𝚗𝚜𝚝.",
+          "attachments": []
+        },
+        {
+          "title": "BLOCK EXPLANATION VIDEO",
+          "description": "*On YouTube, you can switch the audio track to almost any language and enable subtitles in your native language as well.",
+          "attachments": [
+            {
+              "title": "Block explanation - Compete, Podium Chaser, Power hour (10.08-06.09)",
+              "kind": "youtube",
+              "src": "https://youtu.be/qGrVz4srDHw"
+            }
+          ]
+        },
+        {
+          "title": "S1: WARM UP",
+          "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n\nb. 4 min Ski (Performed as 20 sec Easy / 10 sec Hard)\n-Into-\n40 Bench press (Empty barbell)\n20 Ring Rows\n20 Bench press (40/25kg - 95/65lbs)\n20 Ring rows\n-Into-\nStart building up in Bench press.",
+          "attachments": [
+            {
+              "title": "Ring rows",
+              "kind": "youtube",
+              "src": "https://youtu.be/IUDhLzxpwwU"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
+            },
+            {
+              "title": "Bench press",
+              "kind": "youtube",
+              "src": "https://youtu.be/GXMQbdu52LU"
+            },
+            {
+              "title": "Ski erg",
+              "kind": "youtube",
+              "src": "https://youtu.be/WUiGW3wLp4w"
+            }
+          ]
+        },
+        {
+          "title": "S1: ABSOLUTE STRENGTH (Press)",
+          "description": "Absolute Strength, Anterior Upper-body (Press)\n\na. Build to a 5RM Bench press\n\nb. 3 sets, Going every 3rd minute\nSet 1: 5 Bench press at 85% of 5RM\nSet 2: 5 Bench press at 85% of 5RM\nSet 3: Max Bench press at 85% of 5RM\n\nTempo: Controlled decent, As aggressive and strong upwards as possible. Rest as needed in the top. (20X1)\n\nOptional -- > Bands / Chains (accomodating resistance): If you’re up for it and have access to either 1-2 bands or chains, I’d recommend incorporating accommodating resistance. It’s an effective tool for addressing sticking points and creating a more even resistance profile throughout the lift. This matches the strength curve - making the lift harder where you are strongest (the top) and lighter where you are weakest (the bottom). \nBands/chains are not mandatory though, so no stress if you don't want to bother setting it up.\n\nProgression:\nW1: 5RM Bench press + 5/5/5+ at 85% of 5RM (current)\nW2: 3RM Bench press + 3/3/3+ at 85% of 3RM\nW3: 1RM Bench press + 1/1/1+ at 85% of 1RM\nW4: Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Bench Press",
+              "kind": "youtube",
+              "src": "https://youtu.be/TqDLF82CTRU"
+            },
+            {
+              "title": "Banded Bench press",
+              "kind": "youtube",
+              "src": "https://youtu.be/PGYP7Lvkcr4"
+            },
+            {
+              "title": "Bench press (chains)",
+              "kind": "youtube",
+              "src": "https://youtu.be/2iT5uZZY6hU"
+            },
+            {
+              "title": "Banded bench press",
+              "kind": "youtube",
+              "src": "https://youtu.be/37lyOURNlDw"
+            },
+            {
+              "title": "Banded Bench press (double band pin set up)",
+              "kind": "youtube",
+              "src": "https://youtu.be/vywRSqJ_Pqs"
+            }
+          ]
+        },
+        {
+          "title": "S1: STRENGTH ENDURANCE (Press/Pull)",
+          "description": "Strength Endurance, Anterior + Posterior Upper-body (Press/Pull)\n\na. 4 sets,\n8 Strict Pull ups\n-Rest 90 sec-\n8 Strict Ring Dips\n-Rest 90 sec-\n\nDifficulty level:\n[Elite] Add load via weight belt attachment or weighted vest.\n[RX] Body weight.\n[Intermediate] Band Assisted Strict pull ups and dips.\n\nTempo: Quality and control is key.\n\nIntent: Improve muscle endurance and strength qualities in pressing and pulling exercises.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Strict Ring Dips",
+              "kind": "youtube",
+              "src": "https://youtu.be/P-NdNxNlODw"
+            },
+            {
+              "title": "Strict Pull ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/6_FPxRJMRh8"
+            },
+            {
+              "title": "Banded Ring dips",
+              "kind": "youtube",
+              "src": "https://youtu.be/F4sXjvcaRFE"
+            },
+            {
+              "title": "Banded Pull ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/NbLbYS6lmNg"
+            }
+          ]
+        },
+        {
+          "title": "S1: RELATIVE STRENGTH ENDURANCE / GYMNASTICS (Press)",
+          "description": "(Relative) Strength Endurance / Gymnastics, Press (Drop set)\n\nElite:\na. 4 sets,\nA “tough” set of Strict HSPU\n-Into-\nA “tough” set of Banded Seated shoulder press*\n-Into-\nA “Max” set of Banded tricep extensions\n-3 minute rest-\n\nRX:\na. 4 sets,\nA “tough” set of Strict HSPU (Elevated head with 1x abmat + 0-2x10kg plates to get more than 8 each time if needed)\n-Into-\nA “tough” set of Banded Seated shoulder press*\n-Into-\nA “Max” set of Banded tricep extensions\n-3 minute rest-\n\nIntermediate:\na. 4 sets,\nA “tough” set of Pike HSPU (Hands on plates to create deficit if you are at ease)\n-Into-\nA “tough” set of Banded Seated shoulder press*\n-Into-\nA “Max” set of Banded tricep extensions\n-3 minute rest-\n\n*Alternative (if you struggle to set this up): Seated Double DB Strict press Pick a weight where you can do 10+ reps each time. Suggested loads are around: 2x15/10kg - 2x35/25lbs\n\nA \"Tough\" set: Stop 2-4 reps before failure.\n\nA \"Max\" set: Go to failure.\n\nDrop set intent:\nAccumulate a high volume of pressing work by progressively reducing the mechanical demands of the movement while continuing to fatigue the same primary muscle groups. This allows us to build strength-endurance, increase hypertrophy, and improve fatigue resistance in gymnastics pressing movements effectively. \n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Head elevated SHSPU (HSPU series)",
+              "kind": "youtube",
+              "src": "https://youtu.be/lHCoEeO5AAo"
+            },
+            {
+              "title": "Deficit pike HSPU (HSPU series)",
+              "kind": "youtube",
+              "src": "https://youtu.be/Q6BBXch6H4w"
+            },
+            {
+              "title": "Pike HSPU (HSPU series)",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fdxwjq54fm4"
+            },
+            {
+              "title": "Banded tricep extensions",
+              "kind": "youtube",
+              "src": "https://youtu.be/isR1oxwM2uo"
+            },
+            {
+              "title": "Seated DB shoulder press",
+              "kind": "youtube",
+              "src": "https://youtu.be/HPOcIQd7MC4"
+            },
+            {
+              "title": "Strict HSPU",
+              "kind": "youtube",
+              "src": "https://youtu.be/8jFtpr0kGQo"
+            },
+            {
+              "title": "Seated Banded Shoulder press",
+              "kind": "youtube",
+              "src": "https://youtu.be/64nJScqtMHY"
+            }
+          ]
+        },
+        {
+          "title": "S1: CONDITIONING (Threshold)",
+          "description": "Conditioning, “Raising the ceiling” (Threshold intervals │ 75-85% effort │ Heavy-Severe intensity domain)\n\nElite:\na. In a 20 minute window complete as many sets as possible of:\n60 Double Unders* \n6 Lengths Farmer carry (1 length: 25ft/7.6m)\n6 Bar Muscle ups\nRest 1 minute after each round\n♀ 2x22.5kg │ 2x50lbs\n♂ 2x32.5kg │ 2x70lbs\n(*Use a \"Beaded\" rope if you have that available)\n\nRX:\na. In a 20 minute window complete as many sets as possible of:\n50 Double Unders\n4 Lengths Farmer carry (1 length: 25ft/7.6m)\n3 Bar Muscle ups\nRest 1 minute after each round\n♀ 2x22.5kg │ 2x50lbs\n♂ 2x32.5kg │ 2x70lbs\n\nIntermediate:\na. In a 20 minute window complete as many sets as possible of:\n60 Single Unders\n6 Lengths Farmer carry (1 length: 25ft/7.6m)\n6 Kipping Chest to bar\nRest 1 minute after each round\n♀ 2x15kg │ 2x35lbs\n♂ 2x22.5kg │ 2x50lbs\n\nScaled:\n(Option #1)\nIn a 20 minute window complete as many sets as possible of:\n60 Single Unders\n6 Lengths Farmer carry (1 length: 25ft/7.6m)\n6 Kipping Pull ups\nRest 1 minute after each round\n♀ 2x15kg │ 2x35lbs\n♂ 2x22.5kg │ 2x50lbs\n\n(Option #2)\nSpend 20 minutes learning Bar Muscle ups using the progressions found in the attached files.\n\nScore: Total number of reps accumulated within the 20 minute window (Make sure to put a comment with what level you completed the workout at)\n\nFlow explained: (Elite example)\n60 Double unders, 6 lengths farmer carry, 6 BMU, Rest 1 minute. Repeat for as many rounds as possible until the 20 minutes are up.\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Single under",
+              "kind": "youtube",
+              "src": "https://youtu.be/-fb_KBsYKwo"
+            },
+            {
+              "title": "Double Unders",
+              "kind": "youtube",
+              "src": "https://youtu.be/kJ3FTT_HbFg"
+            },
+            {
+              "title": "Kipping Pull ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/plWVwbzvqlA"
+            },
+            {
+              "title": "Double DB Farmer carry",
+              "kind": "youtube",
+              "src": "https://youtu.be/IKxo8qx88TQ"
+            },
+            {
+              "title": "Kipping Chest to bar (Classic kip)",
+              "kind": "youtube",
+              "src": "https://youtu.be/MIcu1-4mGDU"
+            },
+            {
+              "title": "Bar Muscle ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/VutrV0gMazM"
+            }
+          ]
+        },
+        {
+          "title": "S1: (OPTIONAL) STRENGTH ACCESSORY",
+          "description": "(Optional) Strength Accessory\n\na.  2-3 sets for quality: (rest as needed between)\nA “Max” set of Incline DB bicep curls (2x10-15/6-10kg - 2x25-35/15-25lbs)\nA “Max” set of Banded Anchored sit ups",
+          "attachments": [
+            {
+              "title": "Incline bicep curls",
+              "kind": "youtube",
+              "src": "https://youtu.be/Skm3E_8oxR0"
+            },
+            {
+              "title": "Banded Anchored sit ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/iTSJT1VfEaw"
+            }
+          ]
+        },
+        {
+          "title": "S2: CONDITIONING",
+          "description": "Conditioning, Run (Threshold)\n\na. Warm up \n10 min Easy Jog\n-Into-\n3 sets, 15 sec Strides* / 45 sec Walk\n\n*Strides are a few short, progressive accelerations to “wake up” your legs and nervous system before the main workout, fast but relaxed, with full recovery.\n\nb. Main set\n5km completed as:\n2 min Run (\"Moderate-Hard\" / Threshold / RPE 7-8 / Z4 / 10-20 sec slower than target 5k min/km pace)\n-1 min Walk between-\n\nc. Cool down\n5-10 minute Easy Jog/Walk\n\nProgression: (Threshold Density progression)\nW1: 5km completed as:\n2 min Run (\"Moderate-Hard\" / Threshold / RPE 7-8 / Z4 / 10-20 sec slower than target 5k pace)\n-1 min Walk between-\nW2:  5km completed as:\n3 min Run (\"Moderate-Hard\" / Threshold / RPE 7-8 / Z4 / 10-20 sec slower than target 5k pace)\n-1 min Walk between-\nW3: 5km completed as:\n4 min Run (\"Moderate-Hard\" / Threshold / RPE 7-8 / Z4 / 10-20 sec slower than target 5k pace)\n-1 min Walk between-\nW4: Transition week.\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": []
+        }
+      ],
+      "empty": false
+    },
+    {
+      "date": "2026-08-11",
+      "weekday": "MAR",
+      "day_number": 11,
+      "date_label": "Martedi 11 Agosto",
+      "is_today": true,
+      "sections": [
+        {
+          "title": "S1: WARM UP",
+          "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n60/60 sec Dynamic Anterior hip stretch \n60/60 sec Dynamic Posterior hip stretch\n \nb. 4 min Echo bike (Easy-Moderate tempo)\n\nc. 1 round of:\nMini-band hinge prep routine (20 Alt. Side steps, 20 Goodmornings, 20 Glute bridges)\n20 Alt. Front rack shoot throughs\n10 Good-mornings\n\nd. Clean barbell prep:\nFrom High hang: 3 Clean Pulls + 3 Muscle Clean + 3 Power clean\n-Rest as needed-\nFrom Low Hang: 3 Clean Pulls + 3 Muscle Clean + 3 Power clean\n-Rest as needed-\nFrom Mid shin: 3 Clean Pulls + 3 Muscle Clean + 3 Power clean",
+          "attachments": [
+            {
+              "title": "Dynamic posterior hip box stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/fcojabIIwNA"
+            },
+            {
+              "title": "From Low hang: (Below knees) 3 Clean Pulls + 3 Muscle Cleans + 3 Power Cleans",
+              "kind": "youtube",
+              "src": "https://youtu.be/x-HdoQ5mr8I"
+            },
+            {
+              "title": "From high hang: (Mid thigh) 3 Clean Pulls + 3 Muscle Cleans + 3 Power Cleans",
+              "kind": "youtube",
+              "src": "https://youtu.be/VzXzlQGB6CM"
+            },
+            {
+              "title": "From Mid shin:3 Clean Pulls + 3 Muscle Cleans +3 Power Cleans",
+              "kind": "youtube",
+              "src": "https://youtu.be/p7Ha3fq6dXc"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
+              "title": "Dynamic anterior hip stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
+            },
+            {
+              "title": "Echo bike",
+              "kind": "youtube",
+              "src": "https://youtu.be/0ZzJDs7OB54"
+            },
+            {
+              "title": "Mini-band deadlift prep (Side step, Goodmorning, Side step, Glute bridge)",
+              "kind": "youtube",
+              "src": "https://youtu.be/JLGh0CWwQ-0"
+            },
+            {
+              "title": "Front rack shoot through",
+              "kind": "youtube",
+              "src": "https://youtu.be/8Fg4OIGfV8U"
+            },
+            {
+              "title": "Goodmornings",
+              "kind": "youtube",
+              "src": "https://youtu.be/BbjXUrQlXLg"
+            }
+          ]
+        },
+        {
+          "title": "S1: STRENGTH-SPEED (Clean)",
+          "description": "Strength-Speed / \"Power\" / Weightlifting, Power Clean\n\na. Build to a heavy 3 Position Power Clean of the day: \n1 Power Clean from the floor + 1 Power Clean from below the knees + 1 Power clean from above the knees.\n\nb. 3 sets, Going every 2nd minute\n3 Position Power clean at 85% of heaviest set in part “a”.\n\nProgression:\nW1: 3 Position Power Clean + Back off sets (3x3)  (Current)\nW2: 2 Position Power Clean + Back off sets (4x2)\nW3: 1 Power Clean + Back off sets (5x1)\nW4: Transition week\n----------------------------------\nRead more about how weightlifting is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "3 position power clean",
+              "kind": "youtube",
+              "src": "https://youtu.be/lhS8pOwL6UU"
+            }
+          ]
+        },
+        {
+          "title": "S1: ABSOLUTE STRENGTH (Front Squat)",
+          "description": "Absolute Strength, Anterior Lower-body (Squat)\n\na. Build to a 5RM Front Squat\n\nb. 3 sets, Going every 3rd minute\nSet 1: 5 Front Squats at 85% of 5RM\nSet 2: 5 Front Squats at 85% of 5RM\nSet 3: Max Front Squats at 85% of 5RM \n\nTempo: Controlled decent, As aggressive and strong upwards as possible. Rest as needed in the top. (20X1)\n\nOptional -- > Bands / Chains (accomodating resistance): If you’re up for it and have access to either 2 bands or chains, I’d recommend incorporating accommodating resistance. It’s an effective tool for addressing sticking points and creating a more even resistance profile throughout the lift. This matches the strength curve - making the lift harder where you are strongest (the top) and lighter where you are weakest (the bottom). \nBands/chains are not mandatory though, so no stress if you don't want to bother setting it up.\n\nProgression:\nW1: 5RM Front Squats + 5/5/5+ at 85% of 5RM (current)\nW2: 3RM Front Squats + 3/3/3+ at 85% of 3RM\nW3: 1RM Front Squats + 1/1/1+ at 85% of 1RM\nW4: Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Barbell front squat",
+              "kind": "youtube",
+              "src": "https://youtu.be/RtVhWBBqDyE"
+            },
+            {
+              "title": "How to set up bands for barbell squatting",
+              "kind": "youtube",
+              "src": "https://youtu.be/aicVvoHF4lQ"
+            },
+            {
+              "title": "Banded Front squats",
+              "kind": "youtube",
+              "src": "https://youtu.be/XIUHp1OidqE"
+            }
+          ]
+        },
+        {
+          "title": "S1: STRENGTH ENDURANCE (Hinge)",
+          "description": "Strength Endurance, Posterior Lower-body (hinge) (+Absolute speed touches)\n\na. 3 sets, Rest 2 minutes between\n8 Deficit Romanian deadlifts (Stand on a 20kg plate)\n\nOptional -- > Absolute speed add-on: 2 Seated Broad jumps to box after each set of RDL's. (Sit on a bench and jump onto a 20inch box place 1.5-3m away from you)\n\nTarget / Suggested loads to aim for: Suggested loads below:\n[Elite] 100-120+/70-85+kg | 225-265+/155-185+lbs\n[RX]  80-100/55-70kg | 185-225/125-155lbs\n[Intermediate] 60-80/40-55kg | 135-185/95-125lbs\n\nTempo: Controlled descent, stop right before the bar hits the floor, fast up. Quality and control are key. Straps are if grip is being a limiter\n\nIntent: Improve muscle endurance and strength qualities in hinging exercises.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Seated broad jump to box",
+              "kind": "youtube",
+              "src": "https://youtu.be/7k654rfdmCQ"
+            },
+            {
+              "title": "Deficit RDL",
+              "kind": "youtube",
+              "src": "https://youtu.be/7Ox4tO0UE4A"
+            }
+          ]
+        },
+        {
+          "title": "S1: CONDITIONING (VO2 max)",
+          "description": "Conditioning, “Lifting the roof” (V02 max │ 90+% Effort │ Severe-Extreme intensity domain │ Z4-5)\n\nElite:\na. 3-4 sets, Work:Rest 1:1 (“You Go, I Go”)\n15 Hang Squat Cleans\n15/11 Cal Row\n15m (50ft) Front rack walking lunges\n15 Bar facing Burpees\n♀ 36kg │ 80lbs\n♂ 52kg │ 115lbs\n\nRX \na. 3-4 sets, Work:Rest 1:1 (“You Go, I Go”)\n15 Hang Squat Cleans\n15/11 Cal Row\n15m (50ft) Front rack walking lunges\n15 Bar facing Burpees\n♀ 29kg │ 65lbs\n♂ 43kg │ 95lbs\n\nIntermediate\na. 3-4 sets, Work:Rest 1:1 (“You Go, I Go”)\n10 Hang Squat Cleans\n15/11 Cal Row\n10m (50ft) Front rack walking lunges\n15 Bar facing Burpees\n♀ 29kg │ 65lbs\n♂ 43kg │ 95lbs\n\nScore: Slowest set of the 3-4 (Make sure to put a comment with what level you completed the workout at)\n\nWork:Rest 1:1 (“You Go, I Go”) = Rest as long as it took you to complete the work or do it with a partner and start as soon as your teammate is done. \n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Rowing",
+              "kind": "youtube",
+              "src": "https://youtu.be/nNakTNFlnQY"
+            },
+            {
+              "title": "Bar facing burpees",
+              "kind": "youtube",
+              "src": "https://youtu.be/-VTIT9Wbun8"
+            },
+            {
+              "title": "Hang Squat Cleans",
+              "kind": "youtube",
+              "src": "https://youtu.be/tkSUn9GsEAg"
+            },
+            {
+              "title": "Front rack walking lunges (barbell)",
+              "kind": "youtube",
+              "src": "https://youtu.be/ZDgn74P6akY"
+            }
+          ]
+        },
+        {
+          "title": "S1: (OPTIONAL) STRENGTH ACCESSORY",
+          "description": "(Optional) Strength Accessory\n\na.  2-3 sets for quality: (rest as needed between)\nA “Tough” set of Loaded GHD hip extensions\nA “Tough” set of Banded Hamstring curls\n\nA \"tough\" set: Stop 2-4 reps before failure.\nThe goal is to get 10+ reps on the GHD hip extensions (load accordingly) and hit 20+ reps on the hamstring curls.",
+          "attachments": [
+            {
+              "title": "GHD Hip extensions (DB loaded)",
+              "kind": "youtube",
+              "src": "https://youtu.be/I3PxdhBnOe4"
+            },
+            {
+              "title": "Banded hamstring curls",
+              "kind": "youtube",
+              "src": "https://youtu.be/vv3BnVwzuGg"
+            },
+            {
+              "title": "GHD Hip extensions",
+              "kind": "youtube",
+              "src": "https://youtu.be/l6eZY7tSV80"
+            }
+          ]
+        },
+        {
+          "title": "S2: CONDITIONING",
+          "description": "Conditioning, Ski and Echo bike (Increasing effort sets)\n\na. 5 rounds of (20 minutes)\n2 minute Ski\n2 minute Echo bike\n(“Easy” - Conversation pace / Z2 / RPE 3-4 / Moderate\n\nb. 3 sets, (30 minutes)\n90 sec Ski (Easy - 6 RPE)\n60 sec Ski (Moderate - 7.5 RPE)\n30 sec Ski (Hard - 9 RPE)\n-Rest 2 minutes-\n90 sec Echo bike (Easy - 6 RPE)\n60 sec Echo bike (Moderate - 7.5 RPE)\n30 sec Echo bike (Hard - 9 RPE)\n-Rest 2 minutes-\n\nProgression: (Intensity Density progression)\nW1: 90 sec Easy, 60 sec Moderate, 30 sec Hard (current)\nW2: 75 sec Easy, 60 sec Moderate, 45 sec Hard\nW3: 60 sec Easy, 60 sec Moderate, 60 sec Hard\nW4: Transition week.\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": []
+        }
+      ],
+      "empty": false
+    },
+    {
+      "date": "2026-08-12",
+      "weekday": "MER",
+      "day_number": 12,
+      "date_label": "Mercoledi 12 Agosto",
+      "is_today": false,
+      "sections": [
+        {
+          "title": "S1: WARM UP",
+          "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n\nb. 1000/900m Ski performed as 30 sec Easy / 30 sec Moderate\n-Into-\nBanded shoulder prep:\n10 x \"A\"\n10 x \"T\"\n10 x \"W\"\n10 x \"External rotations\"\n10 x \"Internal rotations\"\n-Into-\n15 DB Cuban Press (2x7.5-10/4-6kg | 2x15-25/10-15lbs)\n-Into-\n10 Strict Press (Alt. between pressing from the front and from the back on each rep) (empty bar)\n10 Push Press (Alt. between pressing from the front and from the back on each rep) (empty bar)",
+          "attachments": [
+            {
+              "title": "Push Press from the back + Push press from the front",
+              "kind": "youtube",
+              "src": "https://youtu.be/ZtK6yHyIJ5Q"
+            },
+            {
+              "title": "Strict Press from the back + Strict press from the front",
+              "kind": "youtube",
+              "src": "https://youtu.be/PkcQ_ZnL4c0"
+            },
+            {
+              "title": "Banded shoulder ATWYEI routine",
+              "kind": "youtube",
+              "src": "https://youtu.be/0AyanidTrbs"
+            },
+            {
+              "title": "Ski erg",
+              "kind": "youtube",
+              "src": "https://youtu.be/WUiGW3wLp4w"
+            },
+            {
+              "title": "DB Cuban press",
+              "kind": "youtube",
+              "src": "https://youtu.be/KKsJ3huMws4"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
+            }
+          ]
+        },
+        {
+          "title": "S1: ABSOLUTE STRENGTH (Press)",
+          "description": "Absolute Strength, Anterior Upper-body (Press)\n\na. Build to a 5RM Push press\n\nb. 3 sets, Going every 3rd minute\nSet 1: 5 Push press at 85% of 5RM\nSet 2: 5 Push press at 85% of 5RM\nSet 3: Max Push press at 85% of 5RM\n\nOptional -- > Bands (accomodating resistance): If you’re up for it and have access to either 2 bands of the same strength, I’d recommend incorporating accommodating resistance. It’s an effective tool for addressing sticking points and creating a more even resistance profile throughout the lift. This matches the strength curve - making the lift harder where you are strongest (the top) and lighter where you are weakest (the bottom). \nBands/chains are not mandatory though, so no stress if you don't want to bother setting it up.\n\nProgression:\nW1: 5RM Push press + 5/5/5+ at 85% of 5RM (current)\nW2: 3RM Push press + 3/3/3+ at 85% of 3RM\nW3: 1RM Push press + 1/1/1+ at 85% of 1RM\nW4: Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Barbell Push press",
+              "kind": "youtube",
+              "src": "https://youtu.be/43ARQei0kj8"
+            },
+            {
+              "title": "Banded Push Press",
+              "kind": "youtube",
+              "src": "https://youtu.be/eacihQ7ajvo"
+            }
+          ]
+        },
+        {
+          "title": "S1: STRENGTH ENDURANCE (Press/Pull)",
+          "description": "Strength Endurance, Anterior + Posterior Upper-body (Press/Pull)\n\na. 3 sets,\n8 Pendlay Rows\n-Rest 90 sec-\n8 DB Incline bench press\n-Rest 90 sec-\n\nTarget / Suggested loads to aim for:\n[Elite] \nPendlay rows: 80/55kg - 185/125lbs\nDB incline bench press: 2x32.5/22.5kg - 2x70/50lbs\n[RX]\nPendlay rows: 70/45kg - 155/105lbs\nDB incline bench press: 2x25/17.5kg - 2x60/40lbs\n[Intermediate]\nPendlay rows: 50-60/35-40kg - 115-135/85-95lbs\nDB incline bench press: 2x17.5-20/12.5-15kg - 2x40-45/30-35lbs\n\nTempo: Quality and control is key.\n\nIntent: Improve muscle endurance and strength qualities in pressing and pulling exercises.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Pendlay rows",
+              "kind": "youtube",
+              "src": "https://youtu.be/Z-zFg2fYixA"
+            },
+            {
+              "title": "Incline Bench press",
+              "kind": "youtube",
+              "src": "https://youtu.be/OnULTeCObTo"
+            }
+          ]
+        },
+        {
+          "title": "S1: RELATIVE STRENGTH ENDURANCE / GYMNASTICS (Pull)",
+          "description": "(Relative) Strength Endurance / Gymnastics, Pull (Drop set)\n\nElite:\na. 3-4 sets,\nA “tough” set of Ring Muscle ups\n-Into-\nA “tough” set of Ring rows\n-Into-\nA “Max” set of Barbell bicep curls\n-3 minute rest- \n\nRX:\n(Option #1 - Same as for Elite. Use this if your max Unbroken RMU set is 7+/5+ reps.)\na. 3-4 sets,\nA “tough” set of Ring Muscle ups\n-Into-\nA “tough” set of Ring rows\n-Into-\nA “Max” set of Barbell bicep curls\n-3 minute rest- \n\n(Option #2 - Use this option if your max Unbroken RMU set is less than 7/5 reps.)\na. 10 minute EMOM\n\"X\" Ring Muscle ups\n-Into-\n4 minute AMRAP \n10 Ring rows\n10 Barbell Bicep curls\n\n\"X\" = Pick a sustainable number of reps that allows you to practice the Ring Muscle ups without adding excessive fatigue.\n\nIntermediate:\n(Option #1)\na. 3-4 sets,\nA “tough” set of Strict Ring Pull ups\n-Into-\nA “tough” set of Ring rows\n-Into-\nA “Max” set of Barbell bicep curls\n-3 minute rest- \n\n(Option #2)\nSpend 20 minutes learning Ring Muscle ups using the progressions found in the attached files.\n\nA \"Tough\" set: Stop 2-4 reps before failure.\n\nA \"Max\" set: Go to failure.\n\nDrop set intent:\nAccumulate a high volume of pulling work by progressively reducing the mechanical demands of the movement while continuing to fatigue the same primary muscle groups. This allows us to build strength-endurance, increase hypertrophy, and improve fatigue resistance in gymnastics pulling movements effectively. \n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Ring Muscle ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/17WLm-M4_hk"
+            },
+            {
+              "title": "Barbell bicep curls",
+              "kind": "youtube",
+              "src": "https://youtu.be/M75xYbBmDW8"
+            },
+            {
+              "title": "Ring Rows",
+              "kind": "youtube",
+              "src": "https://youtu.be/TY4jHSrPTdg"
+            }
+          ]
+        },
+        {
+          "title": "S1: CONDITIONING (Threshold)",
+          "description": "Conditioning, “Raising the ceiling” (Threshold intervals │ 75-85% effort │ Heavy-Severe intensity domain)\n\nElite:\n-On 0:00-\n4 sets, Going every 3rd minute\n500/440m C2 bike\n50ft (15m) Handstand walk (1 Pirouette every 25ft/7.6m)\n5 Sandbag to shoulder\n♀ 45kg │ 100lbs Sandbag or D-ball\n♂ 68 │ 150lbs Sandbag or D-ball\n\n-On 15:00-\n4 sets, Going every 3rd minute\n500/440m C2 bike\n20 Toes to bar\n15 Box Jump overs w. step down\n♀ 20\" box\n♂ 24\" box\n\nRX:\n-On 0:00-\n4 sets, Going every 3rd minute\n500/440m C2 bike\n40ft (12m) Handstand walk\n4 Sandbag to shoulder\n♀ 45kg │ 100lbs Sandbag or D-ball\n♂ 68 │ 150lbs Sandbag or D-ball\n\n-On 15:00-\n4 sets, Going every 3rd minute\n500/440m C2 bike\n15 Toes to bar\n15 Box Jump overs w. step down\n♀ 20\" box\n♂ 24\" box\n\nIntermediate:\n-On 0:00-\n4 sets, Going every 3rd minute\n500/440m C2 bike\n30ft (9m) Handstand walk (or 3 Wall Walks)\n3 Sandbag to shoulder (or 5 reps with a lighter bag)\n♀ 45kg │ 100lbs Sandbag or D-ball\n♂ 68 │ 150lbs Sandbag or D-ball\n\n-On 15:00-\n4 sets, Going every 3rd minute\n500/440m C2 bike\n10 Toes to bar (or 15 Kipping Knees to Chest)\n10-15 Box Jump overs w. step down\n♀ 20\" box\n♂ 24\" box\n\nScaled:\nSpend 20 minutes learning Toes to bar or Handstand walk using the progressions found in the attached files.\n\nTime cap: 2:30 minute per set to guarantee at least 30 sec rest. \n\nScore: Total set time across the 8 sets. (Make sure to put a comment with what level you completed the workout at)\n\nSandbag Alternative:\n10-15 KB Swings at 32/24kg.\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "D-ball/sandbag to shoulder",
+              "kind": "youtube",
+              "src": "https://youtu.be/_s39NWSCz6w"
+            },
+            {
+              "title": "Kipping Knees to Chest",
+              "kind": "youtube",
+              "src": "https://youtu.be/7_Ofk0tcbTw"
+            },
+            {
+              "title": "Wall walks",
+              "kind": "youtube",
+              "src": "https://youtu.be/OQFjgFloKEE"
+            },
+            {
+              "title": "Full KB swings",
+              "kind": "youtube",
+              "src": "https://youtu.be/eaHyyvVEaWU"
+            },
+            {
+              "title": "Sandbag to shoulder",
+              "kind": "youtube",
+              "src": "https://youtu.be/sQ7qc722pww"
+            },
+            {
+              "title": "Toes to bar",
+              "kind": "youtube",
+              "src": "https://youtu.be/CmzTTemzgpc"
+            },
+            {
+              "title": "Handstand walk",
+              "kind": "youtube",
+              "src": "https://youtu.be/DTme3Nxvmnw"
+            },
+            {
+              "title": "Box Jump overs",
+              "kind": "youtube",
+              "src": "https://youtu.be/3Puil6bknHM"
+            }
+          ]
+        },
+        {
+          "title": "S1: (OPTIONAL) STRENGTH ACCESSORY",
+          "description": "(Optional) Strength Accessory\n\na.  2-3 sets for quality: (rest as needed between)\nA “Max” set of Chest supported reverse fly (2x2.5-5/1.5-2.5kg - 2x5-10/2.5-5lbs)\n15/15 Seated DB side bents (2x10-22.5/6-15kg - 2x25-50/15-35lbs)",
+          "attachments": [
+            {
+              "title": "Chest supported reverse fly",
+              "kind": "youtube",
+              "src": "https://youtu.be/_w04cSasGEI"
+            },
+            {
+              "title": "Seated side bents",
+              "kind": "youtube",
+              "src": "https://youtu.be/-W-Kz_LNvO4"
+            }
+          ]
+        },
+        {
+          "title": "S2: CONDITIONING",
+          "description": "Conditioning, Row and C2 bike (Threshold)\n\na 24 minutes completed as 2 rounds of:\n8 min C2 bike \n4 min Row\n(“Easy” - Conversation pace / Z2 / RPE 3-4 / Moderate\n\nb. Main set\n2 sets of: (36 min)\n6 minute EMOM [40 sec work / 20 sec rest]\nMax Calories Row\n-Rest 3 min-\n6 minute EMOM [40 sec work / 20 sec rest]\nMax Calories C2 bike\n-Rest 3 min-\n\nProgression: \nW1: 4x6/3 (24 min) (current)\nW2: 6x5/2:30 (30 min)\nW3: 4x8/4 (32 min)\nW4: Transition week.",
+          "attachments": [
+            {
+              "title": "Rowing",
+              "kind": "youtube",
+              "src": "https://youtu.be/zfl28GvOtWk"
+            },
+            {
+              "title": "Rowing technique: Hip extension+Arm pull",
+              "kind": "youtube",
+              "src": "https://youtu.be/cEXkELeuQog"
+            },
+            {
+              "title": "Rowing technique: Leg drive + Hip extension",
+              "kind": "youtube",
+              "src": "https://youtu.be/86Kv_fpUd0M"
+            },
+            {
+              "title": "Rowing technique: Leg drive+Hip extension+Arm pull",
+              "kind": "youtube",
+              "src": "https://youtu.be/cyolYS12aEI"
+            }
+          ]
+        }
+      ],
+      "empty": false
+    },
+    {
+      "date": "2026-08-13",
+      "weekday": "GIO",
+      "day_number": 13,
+      "date_label": "Giovedi 13 Agosto",
+      "is_today": false,
+      "sections": [
+        {
+          "title": "OPTION 1: FULL REST / BODYWORK",
+          "description": "Recovery is what allows athletes to train at a consistently high level and perform to the best of their abilities.\n\nThe hours outside of training play a major role in how effectively you recover from training stressors.\n\nTo get the most out of an athlete, it’s essential to find the right balance between training overload and sufficient recovery. Short periods of increased training stress can temporarily reduce performance and increase fatigue, but when paired with adequate recovery, this can lead to positive adaptation and improved performance. In sport science, this is referred to as Functional Overreaching (FOR). However, when recovery is insufficient and fatigue continues to accumulate without adequate adaptation, athletes may enter a state of Non-Functional Overreaching (NFOR), where performance begins to stagnate or decline.\n\nWe aim to create the right balance by periodizing the program appropriately while also encouraging athletes to self-regulate when needed.\n\nHere are some signs that recovery may be compromised:\n\n-Inability to sustain efforts during high-intensity exercise\n-Increased fatigue during and after training\n-Low mood or reduced motivation\n-Sleep disturbances\n-Persistent soreness or slower recovery between sessions\n\nIt’s important to understand that stressors outside of training are often the biggest obstacle to recovery. Start by analyzing and optimizing the 18–22 hours of the day spent away from training.\n\nBelow are several recovery methods that may help support overall recovery and performance:\n\n#1 Additional Sleep\nSleep remains the most effective and important recovery tool available to athletes.\n\n#2 Methods That May Support Blood Flow and Reduce Muscle Soreness\nThe following methods may help increase circulation, promote relaxation, and improve perceived recovery:\n-Professional bodywork such as physiotherapy or massage\n-Recovery boots/compression therapy\n-Self-myofascial release (foam rolling, lacrosse balls, etc.)\n-Muscle stimulation devices such as Compex\n\n#3 Additional Recovery Strategies\nThese are methods I’ve personally experimented with and occasionally use when feeling the need for some extra recovery support:\n-Epsom salt baths\n-Meditation — recovery is not only physical, but also psychological\n-Barefoot walks on grass/\"earthing\" — while scientific evidence is limited, some athletes find it relaxing and helpful for stress reduction\n-Increased sunlight exposure to support circadian rhythm, mood, and sleep quality\n-Light water movement sessions — the hydrostatic pressure and low-impact nature of water can help promote movement and recovery without adding significant stress to the body",
+          "attachments": []
+        },
+        {
+          "title": "OPTION 2: CONDITIONING - Run",
+          "description": "Conditioning, Run (Tempo)\n\na. (Optional) 1 round of:\n20 Calf raises (10 with straight legs + 10 with bent legs)\n20 Tibialis raises\n10/10 Single leg glute bridges\n10/10 Single leg RDL to knee lift\n10/10 Single leg reverse lunge to knee lift\n10/10 Forward Leg swings\n10/10 Lateral Leg swings\n\nb. (Optional) 2 rounds of:\n20 Plate Pogos (double to single leg) (Forward/Backwards)\n10/10 Alt. Double Switch with hands on wall\n\nc. 15 min Run (“Easy” - Conversation pace / Z2 / RPE 3-4 / Moderate intensity domain)\n\nd. 4 sets,\n5 min Tempo Run (RPE 7 / Tempo / Z3 / Approx. 30-40 sec slower than 5k pace)\n-1:30 min Walk/Jog between-\n\ne. Cool down\n5 minute Easy Jog\n\nProgression: (Tempo progression)\nW1: (Current)\n4 sets, \n5 min Run at RPE 7 / Tempo / Z3 / Approx. 30 sec slower than 5k pace\n-1:30 min Walk/Jog between-\nW2: 3 sets, \n7 min Run at RPE 7 / Tempo / Z3 / Approx. 30 sec slower than 5k pace\n-2:00 min Walk/Jog between-\nW3: 2 sets, \n12 min Run at RPE 7 / Tempo / Z3 / Approx. 30 sec slower than 5k pace\n-3:00 min Walk/Jog between-\nW4: 45 minute Easy run\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Side ways leg swings",
+              "kind": "youtube",
+              "src": "https://youtu.be/HpEP74I5NVY"
+            },
+            {
+              "title": "Leg swings (forward)",
+              "kind": "youtube",
+              "src": "https://youtu.be/UJFCvjC2Cy0"
+            },
+            {
+              "title": "Single leg glute bridge",
+              "kind": "youtube",
+              "src": "https://youtu.be/9y-OBgMIdf8"
+            },
+            {
+              "title": "Single leg reverse lunge to knee lift",
+              "kind": "youtube",
+              "src": "https://youtu.be/cf5-wApf3HE"
+            },
+            {
+              "title": "Single leg RDL to knee lift",
+              "kind": "youtube",
+              "src": "https://youtu.be/IKzaKB9PpAo"
+            },
+            {
+              "title": "Calf raises (straight legs + bent legs)",
+              "kind": "youtube",
+              "src": "https://youtu.be/BB6xAUtCNBE"
+            },
+            {
+              "title": "Tibialis raises",
+              "kind": "youtube",
+              "src": "https://youtu.be/NJX4BPlur1A"
+            },
+            {
+              "title": "Plate pogo (back/forward) (double leg)",
+              "kind": "youtube",
+              "src": "https://youtu.be/1l-6xOHJ6OU"
+            },
+            {
+              "title": "Double switch wall drill",
+              "kind": "youtube",
+              "src": "https://youtu.be/HzTOk5tCSiw"
+            }
+          ]
+        },
+        {
+          "title": "OPTION 3: CONDITIONING - C2 bike",
+          "description": "Conditioning, C2 bike\n\na. 15 min C2 Bike (Easy / Conversation pace / Z2 / RPE 3-4 / Approx. 70-75% of 20-minute FTP)\n\nb. 4-5 sets,\n5 min C2 Bike (\"Moderate\" / RPE 6-7 / Z3 / Approx. 85-95% of 20 min FTP)\n-1:30 min Easy Spin between-\n\nc. Cool down\n5 minute Easy Spin\n\nProgression:\nW1: (Current)\n4-5 sets,\n5 min C2 Bike (\"Moderate\" / RPE 6-7 / Z3 / Approx. 85-95% of 20 min FTP)\n-1:30 min Easy Spin between-\nW2: 3-4 sets, \n7 min C2 Bike (\"Moderate\" / RPE 6-7 / Z3 / Approx. 85-95% of 20 min FTP)\n-2:00 min Easy Spin between-\nW3: 2-3 sets, \n12 min C2 Bike (\"Moderate\" / RPE 6-7 / Z3 / Approx. 85-95% of 20 min FTP)\n-3:00 min Easy Spin between-\nW4: 60 minute Easy C2 bike\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": []
+        },
+        {
+          "title": "OPTION 4: CONDITIONING - Swim",
+          "description": "Conditioning, Swim\n\na. 300m Swim (Take a small break every 50m to stay at a low intensity and really dial in technique)\nIntensity: 60-65% effort / “Easy” / Moderate intensity domain / Z2\n\nb. \"Over/Under\" Intervals\n5 sets, 4 rounds of: (200m non stop)\n25m Swim (Hard, but sustainable)\n25m Swim (Recovery pace)\n-Rest 2 min after 4 rounds/between sets-\nIntensity: Intensity is waving between a hard, but repeatable effort, and a very easy recovery swim. \n\nProgression:\nW1: (Current)\n5 sets, 4 rounds of: (200m non stop)\n25m Swim (Hard, but sustainable)\n25m Swim (Recovery pace)\n-Rest 2 min after 4 rounds/between sets-\nW2: Same as week 1.\nW3: 5 sets, 2 rounds of: (200m non stop)\n50m Swim (Hard, but sustainable)\n50m Swim (Recovery pace)\n-Rest 2 min after 2 rounds/between sets-\nW4: Same as week 3.\n------------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": []
+        }
+      ],
+      "empty": false
+    },
+    {
+      "date": "2026-08-14",
+      "weekday": "VEN",
+      "day_number": 14,
+      "date_label": "Venerdi 14 Agosto",
+      "is_today": false,
+      "sections": [
+        {
+          "title": "S1: WARM UP",
+          "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n60/60 sec Dynamic Anterior hip stretch \n60/60 sec Dynamic Posterior hip stretch\n \nb. 4 min Echo bike (Easy-Moderate tempo)\n\nc. 1 round of:\nMini-band squat prep routine (3x5 Air squats + 5 sec iso hold at parallel on the last rep each time, 3x5 Glute bridges + 5 sec iso hold at the top on the last rep each time)\nBanded ATWYEI shoulder routine (10 of each)\n\nd. Snatch barbell prep:\nFrom High hang: 3 Snatch Pulls + 3 Squat Snatch + 3 Overhead squats\n-Rest as needed-\nFrom Hang: 3 Snatch Pulls + 3 Squat Snatch + 3 Overhead squats\n-Rest as needed-\nFrom Mid shin: 3 Snatch Pulls + 3 Squat Snatch + 3 Overhead squats",
+          "attachments": [
+            {
+              "title": "Snatch grip OHS",
+              "kind": "youtube",
+              "src": "https://youtu.be/kVAFFyRbP90"
+            },
+            {
+              "title": "Mini band routine (iso hold + squat, iso hold + glute bridge)",
+              "kind": "youtube",
+              "src": "https://youtu.be/lkt1EVCpXDc"
+            },
+            {
+              "title": "Snatch pull",
+              "kind": "youtube",
+              "src": "https://youtu.be/kCR_MF928QU"
+            },
+            {
+              "title": "Muscle Snatch",
+              "kind": "youtube",
+              "src": "https://youtu.be/q8NdJbOeSdk"
+            },
+            {
+              "title": "Squat Snatch",
+              "kind": "youtube",
+              "src": "https://youtu.be/2SsF1kJu0Xg"
+            },
+            {
+              "title": "Banded shoulder ATWYEI routine",
+              "kind": "youtube",
+              "src": "https://youtu.be/0AyanidTrbs"
+            },
+            {
+              "title": "Dynamic posterior hip box stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/fcojabIIwNA"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
+              "title": "Dynamic anterior hip stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
+            },
+            {
+              "title": "Echo bike",
+              "kind": "youtube",
+              "src": "https://youtu.be/0ZzJDs7OB54"
+            }
+          ]
+        },
+        {
+          "title": "S1: STRENGTH-SPEED (Snatch)",
+          "description": "Strength-Speed / \"Power\" / Weightlifting, Squat Snatch\n\na. Build to a heavy 3 Position Squat Snatch of the day: \n1 Squat Snatch from the floor + 1 Squat Snatch from below the knees + 1 Squat Snatch from above the knees.\n\nb. 3 sets, Going every 2nd minute\n3 Position Squat Snatch at 85% of heaviest set in part “a”.\n\nProgression:\nW1: 3 Position Squat Snatch + Back off sets (3x3)  (Current)\nW2: 2 Position Squat Snatch + Back off sets (4x2)\nW3: 1 Squat Snatch + Back off sets (5x1)\nW4: Transition week\n----------------------------------\nRead more about how weightlifting is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "3 pos. Squat snatch",
+              "kind": "youtube",
+              "src": "https://youtu.be/y60STU61DeI"
+            }
+          ]
+        },
+        {
+          "title": "S1: ABSOLUTE STRENGTH (Deadlift)",
+          "description": "Absolute Strength, Posterior Lower-body (Hinge)\n\na. Build to a 5RM Deadlift\n\nb. 3 sets, Going every 3rd minute\nSet 1: 5 Deadlifts at 85% of 5RM\nSet 2: 5 Deadlifts at 85% of 5RM\nSet 3: Max Deadlifts at 85% of 5RM \n\nTempo: Controlled decent, As aggressive and strong upwards as possible. Rest as needed in the top. (20X1)\n\nOptional -- > Bands / Chains (accomodating resistance): If you’re up for it and have access to either bands or chains, I’d recommend incorporating accommodating resistance. It’s an effective tool for addressing sticking points and creating a more even resistance profile throughout the lift. This matches the strength curve - making the lift harder where you are strongest (the top) and lighter where you are weakest (the bottom). \nBands/chains are not mandatory though, so no stress if you don't want to bother setting it up.\n\nProgression:\nW1: 5RM Deadlifts + 5/5/5+ at 85% of 5RM (current)\nW2: 3RM Deadlifts + 3/3/3+ at 85% of 3RM\nW3: 1RM Deadlifts + 1/1/1+ at 85% of 1RM\nW4: Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Banded deadlifts",
+              "kind": "youtube",
+              "src": "https://youtu.be/-q0YIc6VJAY"
+            },
+            {
+              "title": "Deadlift (chains)",
+              "kind": "youtube",
+              "src": "https://youtu.be/nooMu2AAa88"
+            },
+            {
+              "title": "Deadlift (no tempo restriction)",
+              "kind": "youtube",
+              "src": "https://youtu.be/an3ztDSWLkk"
+            },
+            {
+              "title": "Banded Deadlifts",
+              "kind": "youtube",
+              "src": "https://youtu.be/_HdCCKTP19o"
+            }
+          ]
+        },
+        {
+          "title": "S1: STRENGTH ENDURANCE (Unilateral Lower)",
+          "description": "Strength Endurance, Unilateral Lower-body (Lunge/Split squat) (+Absolute speed touches)\n\na. 3 sets, Rest 2 minutes between\n6/6 Back rack Rear foot elevated split squats \n\nOptional -- > Absolute speed add-on: 2 Seated box jumps after each set of RFESS. \n\nTarget / Suggested loads to aim for: Suggested loads below:\n[Elite] 80/55kg | 185/125lbs\n[RX]  70/45kg | 155/105lbs\n[Intermediate] 50-60/35-45kg | 115-135/80-95lbs\n\nTempo: Quality and control are key. \n\nIntent: Improve muscle endurance and strength qualities in unilateral lower-body exercises.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Seated Box Jump (Cue: Aggressive hip extension)",
+              "kind": "youtube",
+              "src": "https://youtu.be/sMT_KbBoxa0"
+            },
+            {
+              "title": "Rear foot elevated split squats (barbell back rack)",
+              "kind": "youtube",
+              "src": "https://youtu.be/-InWcna-ekk"
+            },
+            {
+              "title": "Barbell rear foot elevated Split squats",
+              "kind": "youtube",
+              "src": "https://youtu.be/LzZrT12MCK4"
+            }
+          ]
+        },
+        {
+          "title": "S1: CONDITIONING (VO2 max)",
+          "description": "Conditioning, “Lifting the roof” (V02 max │ 90+% Effort │ Severe-Extreme intensity domain │ Z4-5)\n\nElite:\na. 2-3 sets, 4 minute AMRAP / 4 minute Rest\n25/20 Cal Echo bike\n15 Overhead squats\n5 Rope-climbs\nMax Cal Echo bike in the remaining time\n♀ 36kg │ 80lbs\n♂ 52kg │ 115lbs\n\nRX \na. 2-3 sets, 4 minute AMRAP / 4 minute Rest\n25/20 Cal Echo bike\n15 Overhead squats\n4 Rope-climbs\nMax Cal Echo bike in the remaining time\n♀ 29kg │ 65lbs\n♂ 43kg │ 95lbs\n\nIntermediate\na. 2-3 sets, 4 minute AMRAP / 4 minute Rest\n25/20 Cal Echo bike\n10 Overhead squats\n3 Rope-climbs\nMax Cal Echo bike in the remaining time\n♀ 29kg │ 65lbs\n♂ 43kg │ 95lbs\n\nScore: Total calories Echo bike accumulated at the end of each interval combined (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Rope-climbs",
+              "kind": "youtube",
+              "src": "https://youtu.be/-t0e4DW6_Yg"
+            },
+            {
+              "title": "Echo bike",
+              "kind": "youtube",
+              "src": "https://youtu.be/6QUewmGEhDs"
+            },
+            {
+              "title": "Overhead squats",
+              "kind": "youtube",
+              "src": "https://youtu.be/_eslbOQNWHk"
+            }
+          ]
+        },
+        {
+          "title": "S1: (OPTIONAL) STRENGTH ACCESSORY",
+          "description": "(Optional) Strength Accessory\n\na.  2-3 sets for quality: (rest as needed between)\nA “tough” set of GHD Glute ham raises\n15/15 Banded wood chops\n\nA \"tough\" set: Stop 2-4 reps before failure.",
+          "attachments": [
+            {
+              "title": "Banded wood chops",
+              "kind": "youtube",
+              "src": "https://youtu.be/OBKiZJeop4A"
+            },
+            {
+              "title": "Glute ham raise",
+              "kind": "youtube",
+              "src": "https://youtu.be/AZDDmro9TH4"
+            },
+            {
+              "title": "Glute ham raise assisted",
+              "kind": "youtube",
+              "src": "https://youtu.be/JHh33XAwgO0"
+            }
+          ]
+        },
+        {
+          "title": "S2: CONDITIONING",
+          "description": "Conditioning, Row (Threshold)\n\na.  (Optional)  Technique (Rowing economy and efficiency work)\n6 minute EMOM (40 sec work/20 sec rest)\nMin 1-2: Hip extension + Arm pull\nMin 3-4: Leg drive + Hip extension\nMin 5-6: Full stroke [Leg drive + Hip extension + Arm pull]\n\nNote: A lot of our training focuses on improving your physiology, but that's only one side of what determines performance. It's not just about how much work you can do, but how efficiently you can do it.\nThis is where economy and efficiency come into play. Our goal is to optimize the relationship between the power or speed you produce and the amount of oxygen and energy it costs to produce it. If you can row at the same pace or power as someone else while using less energy, you're the more efficient athlete.\nThat's why we practice technique. The objective is to minimize the energy cost of every stroke while maximizing the work produced. Over time, even small improvements in rowing economy can translate into better performance across workouts and competitions.\nPractice doesn't make perfect. Perfect practice makes perfect.\n\nb. Main set\n12 sets of: \n500m Row (Target 5k pace)\n-Rest 1 min b/w sets-\nProgression:\nW1: Straight sets (current)\nW2: Gradual desaturation sets\nW3: Hard start sets\nW4: Transition week.\n\nc. Cool down\n5 minute Easy Spin C2 Bike\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Rowing",
+              "kind": "youtube",
+              "src": "https://youtu.be/zfl28GvOtWk"
+            },
+            {
+              "title": "Rowing technique: Hip extension+Arm pull",
+              "kind": "youtube",
+              "src": "https://youtu.be/cEXkELeuQog"
+            },
+            {
+              "title": "Rowing technique: Leg drive + Hip extension",
+              "kind": "youtube",
+              "src": "https://youtu.be/86Kv_fpUd0M"
+            },
+            {
+              "title": "Rowing technique: Leg drive+Hip extension+Arm pull",
+              "kind": "youtube",
+              "src": "https://youtu.be/cyolYS12aEI"
+            }
+          ]
+        }
+      ],
+      "empty": false
+    },
+    {
+      "date": "2026-08-15",
+      "weekday": "SAB",
+      "day_number": 15,
+      "date_label": "Sabato 15 Agosto",
+      "is_today": false,
+      "sections": [
+        {
+          "title": "S1: WARM UP",
+          "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n\nb. 1000/900m Row performed as 30 sec Easy / 30 sec Moderate\n-Into-\nBanded Prep routine\n25 Banded triceps extensions\n25 Banded Face pulls\n25 Banded Delt raises\n25 Banded Bicep curls\n25 Banded rows\n-Into-\n1-2 sets of:\n10 sec Top of Chin up hold\n5 Supinated Ring rows",
+          "attachments": [
+            {
+              "title": "Loaded chin over bar hold + strict chin ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/NrXVuBjhKZs"
+            },
+            {
+              "title": "Banded Tricep extensions",
+              "kind": "youtube",
+              "src": "https://youtu.be/jRC4vC0HVl8"
+            },
+            {
+              "title": "Banded Bicep curls",
+              "kind": "youtube",
+              "src": "https://youtu.be/M_UqIiK8w1Y"
+            },
+            {
+              "title": "Banded Rows",
+              "kind": "youtube",
+              "src": "https://youtu.be/GF1a0Fw0VS8"
+            },
+            {
+              "title": "Banded face pulls",
+              "kind": "youtube",
+              "src": "https://youtu.be/rIkkxZNrwCg"
+            },
+            {
+              "title": "Banded Delt raises",
+              "kind": "youtube",
+              "src": "https://youtu.be/JJoPGhsdZ5c"
+            },
+            {
+              "title": "Supinated Ring rows",
+              "kind": "youtube",
+              "src": "https://youtu.be/rUTNm00y9oo"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
+            }
+          ]
+        },
+        {
+          "title": "S1: ABSOLUTE STRENGTH (Pull)",
+          "description": "Absolute Strength, Posterior Upper-body (Pull)\n\na. Build to a 5RM Strict Chin ups\n\nb. 3 sets, Going every 3rd minute\nSet 1: 5 Strict Chin ups at 85% of 5RM\nSet 2: 5 Strict Chin ups at 85% of 5RM\nSet 3: Max Strict Chin ups at 85% of 5RM\n\nScale: Band assisted Strict chin ups\n\nProgression:\nW1: 5RM Strict Chin ups + 5/5/5+ at 85% of 5RM (current)\nW2: 3RM Strict Chin ups + 3/3/3+ at 85% of 3RM\nW3: 1RM Strict Chin ups + 1/1/1+ at 85% of 1RM\nW4: Transition week.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Weighted Chin up",
+              "kind": "youtube",
+              "src": "https://youtu.be/Wo53hPKbaEk"
+            },
+            {
+              "title": "Banded Strict Chin up",
+              "kind": "youtube",
+              "src": "https://youtu.be/5p13-QWhGSg"
+            }
+          ]
+        },
+        {
+          "title": "S1: STRENGTH ENDURANCE (Press/Pull)",
+          "description": "Strength Endurance, Anterior + Posterior Upper-body (Press/Pull)\n\na. 3 sets,\n8/8 Single arm Banded DB Rows\n-Rest 90 sec-\n8 Barbell Strict press\n-Rest 90 sec-\n\nTarget / Suggested loads to aim for:\n[Elite] \nSingle arm Banded DB Rows: 32.5/22.5kg - 70/50lbs + Blue band\nBarbell Strict press: 50-60% of 1RM Strict press (@55%1RM_STPRESS-@65%1RM_STPRESS) \n[RX]\nSingle arm Banded DB Rows: 27.5/20kg - 65/45lbs + Blue band\nBarbell Strict press: 50-60% of 1RM Strict press (@55%1RM_STPRESS-@65%1RM_STPRESS) \n[Intermediate]\nSingle arm Banded DB Rows: 22.5/15kg - 50/35lbs + Blue band\nBarbell Strict press: 50-60% of 1RM Strict press (@55%1RM_STPRESS-@65%1RM_STPRESS) \n\nTempo: Quality and control is key.\n\nIntent: Improve muscle endurance and strength qualities in pressing and pulling exercises.\n----------------------------------\nRead more about how strength is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Strict press",
+              "kind": "youtube",
+              "src": "https://youtu.be/foiSQDBr0ks"
+            },
+            {
+              "title": "Banded DB Lat rows",
+              "kind": "youtube",
+              "src": "https://youtu.be/qbFg9z2Cv5o"
+            }
+          ]
+        },
+        {
+          "title": "S1: RELATIVE STRENGTH ENDURANCE / GYMNASTICS (Compression)",
+          "description": "(Relative) Strength Endurance / Gymnastics, Compression (Drop set)\n\nElite:\na. 3-4 sets,\nA “tough” set of L-sit hold\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nRX:\na. 3-4 sets,\nA “tough” set of L-sit hold (Tuck legs if this is less than 20 sec)\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nIntermediate:\na. 3-4 sets,\nA “tough” set of Tucked L-sit hold\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nDrop set intent:\nAccumulate a high volume of compression work by progressively reducing the mechanical demands of the movement while continuing to fatigue the same primary muscle groups. This allows us to build strength-endurance, increase hypertrophy, and improve fatigue resistance in gymnastics compression movements effectively. \n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "L-sit",
+              "kind": "youtube",
+              "src": "https://youtu.be/5JmuiMnPMSU"
+            },
+            {
+              "title": "L-sit in parallettes (Straight legs, One leg bent, Tucked)",
+              "kind": "youtube",
+              "src": "https://youtu.be/nUgYPSQKh4U"
+            },
+            {
+              "title": "GHD sit ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/B7XWWba0RFQ"
+            },
+            {
+              "title": "Toes to rig",
+              "kind": "youtube",
+              "src": "https://youtu.be/lJg9B8FJZEA"
+            }
+          ]
+        },
+        {
+          "title": "S1: CONDITIONING (Threshold)",
+          "description": "Conditioning, “Raising the ceiling” (Threshold intervals │ 75-85% effort │ Heavy-Severe intensity domain)\n\nElite:\na. 20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 6-10 Wall Facing HSPU + 6-10 Chest to bar\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nRX:\na. 20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 4-8 Wall Facing HSPU + 4-8 Chest to bar\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nIntermediate:\na. 20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 4-8 Kipping HSPU + 4-8 Kipping Pull ups \nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nScaled:\n(Option #1)\na. 20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 6-10 Push ups + 6-10 Ring Rows\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\n(Option #2)\nSpend 20 minutes learning Chest to bar or Kipping HSPU using the progressions found in the attached files.\n\nScore: Total amount calories accumulated across the 5 rounds. (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Butterfly C2B demo",
+              "kind": "youtube",
+              "src": "https://youtu.be/WKsmeehz_JA"
+            },
+            {
+              "title": "Kipping Pull ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/plWVwbzvqlA"
+            },
+            {
+              "title": "Butterfly C2B (slow mo)",
+              "kind": "youtube",
+              "src": "https://youtu.be/nbO0mlj0XZA"
+            },
+            {
+              "title": "Kipping HSPU",
+              "kind": "youtube",
+              "src": "https://youtu.be/4XXUn94t4zI"
+            },
+            {
+              "title": "Kipping Chest to bar (Classic kip)",
+              "kind": "youtube",
+              "src": "https://youtu.be/MIcu1-4mGDU"
+            },
+            {
+              "title": "Wall facing HSPU",
+              "kind": "youtube",
+              "src": "https://youtu.be/sBW0Pt4byR8"
+            },
+            {
+              "title": "Push ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/RhX1qB0G-iI"
+            },
+            {
+              "title": "Ring Rows",
+              "kind": "youtube",
+              "src": "https://youtu.be/TY4jHSrPTdg"
+            },
+            {
+              "title": "Ski erg",
+              "kind": "youtube",
+              "src": "https://youtu.be/WUiGW3wLp4w"
+            }
+          ]
+        },
+        {
+          "title": "S1: (OPTIONAL) STRENGTH ACCESSORY",
+          "description": "(Optional) Strength Accessory\n\na.  2-3 sets for quality: (rest as needed between)\nA “Max” set DB tricep roll backs (2x10-15/6-10kg - 2x25-35/15-25lbs)\nA “Max” set Plate around the world (20-25/15-25kg - 45-55/35-45lbs)",
+          "attachments": [
+            {
+              "title": "Plate Around the world",
+              "kind": "youtube",
+              "src": "https://youtu.be/qAPevvcDu-k"
+            },
+            {
+              "title": "DB Tricep roll back",
+              "kind": "youtube",
+              "src": "https://youtu.be/F1Ifvgor6uE"
+            }
+          ]
+        },
+        {
+          "title": "S2: CONDITIONING",
+          "description": "Conditioning, Run session (LSD - Long Slow Distance)\n\na. Warm up \n (Optional) 1 round of:\n60/60 sec Dynamic anterior hip stretch\n20 Calf raises (10 with straight legs + 10 with bent legs)\n20 Tibialis raises\n10/10 Leg swings (forward)\n10/10 Leg swings (side ways)\n+ \n(Optional)  2 rounds of:\n20 Plate Pogos (double leg) (Forward/Backwards)\nA “Tough” set of Banded Alt. High knees (target is around 10-15 sec)\n\nb. Main set\n30-50 min Run (“Easy” - Conversation pace / Z2 / RPE 3-4 / Moderate intensity domain)\n\nNote: To excel at running, it's largely about building your tolerance for it, and Zone 2 light runs are the best way to do that. It's practically the foundation of it all (aerobic capacity and tissue tolerance without excessive fatigue).\nWe have 2 primary runs a week and one optional extra. They range from easy to mod-hard and aims to build the most well-rounded running capacity we can in a hybrid training setting. \nRun session #1: Threshold (Monday)\nRun session #2: Moderate pace (Tempo) (Thursday - Optional)\nRun session #3 Easy (Saturday)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "attachments": [
+            {
+              "title": "Banded High knees",
+              "kind": "youtube",
+              "src": "https://youtu.be/2hUHvmWBeqU"
+            },
+            {
+              "title": "Side ways leg swings",
+              "kind": "youtube",
+              "src": "https://youtu.be/HpEP74I5NVY"
+            },
+            {
+              "title": "Leg swings (forward)",
+              "kind": "youtube",
+              "src": "https://youtu.be/UJFCvjC2Cy0"
+            },
+            {
+              "title": "Calf raises (straight legs + bent legs)",
+              "kind": "youtube",
+              "src": "https://youtu.be/BB6xAUtCNBE"
+            },
+            {
+              "title": "Tibialis raises",
+              "kind": "youtube",
+              "src": "https://youtu.be/NJX4BPlur1A"
+            },
+            {
+              "title": "Plate pogo (back/forward) (double leg)",
+              "kind": "youtube",
+              "src": "https://youtu.be/1l-6xOHJ6OU"
+            },
+            {
+              "title": "Dynamic anterior hip stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/M5nRWGwU_f0"
+            }
+          ]
+        }
+      ],
+      "empty": false
+    },
+    {
+      "date": "2026-08-16",
+      "weekday": "DOM",
+      "day_number": 16,
+      "date_label": "Domenica 16 Agosto",
+      "is_today": false,
+      "sections": [
+        {
+          "title": "FULL REST DAY",
+          "description": "Goals for today:\n\na. Meal prep and Snack prep to make the coming week easier. You don't have to prep for the whole week, but having prepped a few meals and making sure you have snacks/fruits to help you stay fueled can be the difference maker in having a good or bad training week.\n\nb. Take a break = Relax / don't talk about CrossFit / Get out of the gym / spend time with family and friends.\n\nc. Take care of practical things that you don't want to and don't have time to deal with during the week = Washing clothes, paying bills, cleaning the car etc.\n\nd. Give yourself a tap on the shoulder for what you have done this week training wise. Regardless of having done great or not, you have done work, and every bit counts in the process of making you fitter than you were.",
+          "attachments": []
+        }
+      ],
+      "empty": false
+    }
+  ]
 }
