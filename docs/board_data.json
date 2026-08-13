@@ -1,8 +1,8 @@
 {
   "week_start": "2026-08-10",
   "week_end": "2026-08-16",
-  "today": "2026-08-12",
-  "generated_at": "2026-08-12T01:24:49.780487",
+  "today": "2026-08-13",
+  "generated_at": "2026-08-13T01:26:09.179644",
   "days": [
     {
       "date": "2026-08-10",
@@ -397,7 +397,7 @@
       "weekday": "MER",
       "day_number": 12,
       "date_label": "Mercoledi 12 Agosto",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM UP",
@@ -589,7 +589,7 @@
       "weekday": "GIO",
       "day_number": 13,
       "date_label": "Giovedi 13 Agosto",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "OPTION 1: FULL REST / BODYWORK",
@@ -682,9 +682,19 @@
               "src": "https://youtu.be/fcojabIIwNA"
             },
             {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
               "title": "Dynamic anterior hip stretch",
               "kind": "youtube",
               "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
             },
             {
               "title": "Echo bike",
@@ -695,6 +705,11 @@
               "title": "Mini band routine (iso hold + squat, iso hold + glute bridge)",
               "kind": "youtube",
               "src": "https://youtu.be/lkt1EVCpXDc"
+            },
+            {
+              "title": "Banded shoulder ATWYEI routine",
+              "kind": "youtube",
+              "src": "https://youtu.be/0AyanidTrbs"
             },
             {
               "title": "Snatch pull",
@@ -710,21 +725,6 @@
               "title": "Squat Snatch",
               "kind": "youtube",
               "src": "https://youtu.be/2SsF1kJu0Xg"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
-            },
-            {
-              "title": "Lat pulsed stretching with reach through",
-              "kind": "youtube",
-              "src": "https://youtu.be/P7scr-51piE"
-            },
-            {
-              "title": "Banded shoulder ATWYEI routine",
-              "kind": "youtube",
-              "src": "https://youtu.be/0AyanidTrbs"
             }
           ]
         },
@@ -949,7 +949,7 @@
         },
         {
           "title": "S1: RELATIVE STRENGTH ENDURANCE / GYMNASTICS (Compression)",
-          "description": "(Relative) Strength Endurance / Gymnastics, Compression (Drop set)\n\nElite:\na. 3-4 sets,\nA “tough” set of L-sit hold\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nRX:\na. 3-4 sets,\nA “tough” set of L-sit hold (Tuck legs if this is less than 20 sec)\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nIntermediate:\na. 3-4 sets,\nA “tough” set of Tucked L-sit hold\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nDrop set intent:\nAccumulate a high volume of compression work by progressively reducing the mechanical demands of the movement while continuing to fatigue the same primary muscle groups. This allows us to build strength-endurance, increase hypertrophy, and improve fatigue resistance in gymnastics compression movements effectively. \n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "description": "(Relative) Strength Endurance / Gymnastics, Compression (Drop set)\n\nElite:\na. 3 sets,\nA “tough” set of L-sit hold\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nRX:\na. 3 sets,\nA “tough” set of L-sit hold (Tuck legs if this is less than 20 sec)\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nIntermediate:\na. 3 sets,\nA “tough” set of Tucked L-sit hold\n-Into-\nA “tough” set of GHD sit ups\n-Into-\nA “Max” set of Toes to rig\n-3 minute rest- \n\nDrop set intent:\nAccumulate a high volume of compression work by progressively reducing the mechanical demands of the movement while continuing to fatigue the same primary muscle groups. This allows us to build strength-endurance, increase hypertrophy, and improve fatigue resistance in gymnastics compression movements effectively. \n----------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
           "attachments": [
             {
               "title": "L-sit",
@@ -975,7 +975,7 @@
         },
         {
           "title": "S1: CONDITIONING (Threshold)",
-          "description": "Conditioning, “Raising the ceiling” (Threshold intervals │ 75-85% effort │ Heavy-Severe intensity domain)\n\nElite:\na. 20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 6-10 Wall Facing HSPU + 6-10 Chest to bar\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nRX:\na. 20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 4-8 Wall Facing HSPU + 4-8 Chest to bar\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nIntermediate:\na. 20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 4-8 Kipping HSPU + 4-8 Kipping Pull ups \nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nScaled:\n(Option #1)\na. 20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 6-10 Push ups + 6-10 Ring Rows\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\n(Option #2)\nSpend 20 minutes learning Chest to bar or Kipping HSPU using the progressions found in the attached files.\n\nScore: Total amount calories accumulated across the 5 rounds. (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
+          "description": "Conditioning, “Raising the ceiling” (Threshold intervals │ 75-85% effort │ Heavy-Severe intensity domain)\n\nElite:\na. 16-20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 6-10 Wall Facing HSPU + 6-10 Chest to bar\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nRX:\na. 16-20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 4-8 Wall Facing HSPU + 4-8 Chest to bar\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nIntermediate:\na. 16-20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 4-8 Kipping HSPU + 4-8 Kipping Pull ups \nMinute 3: Max Cal Ski\nMinute 4: Rest\n\nScaled:\n(Option #1)\na. 16-20 minute EMOM\nMinute 1: 200m Run\nMinute 2: 6-10 Push ups + 6-10 Ring Rows\nMinute 3: Max Cal Ski\nMinute 4: Rest\n\n(Option #2)\nSpend 20 minutes learning Chest to bar or Kipping HSPU using the progressions found in the attached files.\n\nScore: Total amount calories accumulated across the 5 rounds. (Make sure to put a comment with what level you completed the workout at)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
           "attachments": [
             {
               "title": "Butterfly C2B demo",
@@ -1013,14 +1013,14 @@
               "src": "https://youtu.be/RhX1qB0G-iI"
             },
             {
-              "title": "Ring Rows",
-              "kind": "youtube",
-              "src": "https://youtu.be/TY4jHSrPTdg"
-            },
-            {
               "title": "Ski erg",
               "kind": "youtube",
               "src": "https://youtu.be/WUiGW3wLp4w"
+            },
+            {
+              "title": "Ring Rows",
+              "kind": "youtube",
+              "src": "https://youtu.be/TY4jHSrPTdg"
             }
           ]
         },
