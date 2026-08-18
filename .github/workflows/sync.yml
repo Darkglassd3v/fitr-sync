@@ -67,16 +67,25 @@ jobs:
           FITR_DESTINATIONS: ${{ secrets.FITR_DESTINATIONS }}
         run: python board_export.py
 
+      - name: Ruota password del mese
+        env:
+          FITR_BOARD_SECRET: ${{ secrets.FITR_BOARD_SECRET }}
+        run: python rotate_password.py
+
       - name: Commit board aggiornata
         run: |
           git config user.name  "github-actions"
           git config user.email "actions@github.com"
           cp docs/board_data.json /tmp/board_new.json
+          cp docs/index.html     /tmp/index_new.html
+          cp docs/board.html     /tmp/board_new.html
           for i in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/board_new.json docs/board_data.json
-            git add docs/board_data.json
+            cp /tmp/index_new.html docs/index.html
+            cp /tmp/board_new.html docs/board.html
+            git add docs/board_data.json docs/index.html docs/board.html
             git commit -m "Aggiorna board $(date +%F)" || { echo "Nessuna modifica"; exit 0; }
             if git push origin main; then
               echo "Push riuscito"

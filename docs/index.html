@@ -217,33 +217,74 @@
 
 <script>
   // ── Config ────────────────────────────────────────────────
-  const PASSWORD   = "crossboard2026";   // <-- cambia qui la password
+  // La password non e' mai nel sorgente: qui c'e' solo il suo hash
+  // PBKDF2. Valori riscritti ogni mese da rotate_password.py.
+  const PWD_HASH   = "SEGNAPOSTO_HASH";
+  const PWD_SALT   = "SEGNAPOSTO_SALT";
+  const PWD_PERIOD = "SEGNAPOSTO_PERIODO";
+  const PBKDF2_ITER = 100000;
+
   const DATA_URL   = "board_data.json";
   const REFRESH_MS = 5 * 60 * 1000;
-  const STORE_KEY  = "cb_auth";
+  const STORE_KEY  = "cb_auth_" + PWD_PERIOD;   // il login scade col mese
 
   // ── Gate ──────────────────────────────────────────────────
+  function hexToBytes(hex) {
+    const out = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < out.length; i++) out[i] = parseInt(hex.substr(i * 2, 2), 16);
+    return out;
+  }
+  function bytesToHex(buf) {
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function hashPassword(password) {
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      "raw", enc.encode(password), "PBKDF2", false, ["deriveBits"]
+    );
+    const bits = await crypto.subtle.deriveBits(
+      { name: "PBKDF2", salt: hexToBytes(PWD_SALT), iterations: PBKDF2_ITER, hash: "SHA-256" },
+      key, 256
+    );
+    return bytesToHex(bits);
+  }
+
   function unlock() {
     document.getElementById("gate").classList.add("hidden");
     document.getElementById("board").classList.add("show");
     applyMode();
     load();
   }
-  function tryLogin() {
+
+  async function tryLogin() {
+    const btn = document.getElementById("enter");
+    const err = document.getElementById("err");
     const val = document.getElementById("pwd").value;
-    if (val === PASSWORD) {
-      try { sessionStorage.setItem(STORE_KEY, "1"); } catch (e) {}
-      unlock();
-    } else {
-      document.getElementById("err").textContent = "Password errata";
-      document.getElementById("pwd").value = "";
+    if (!val) return;
+
+    btn.disabled = true;
+    err.textContent = "Verifica...";
+    try {
+      const h = await hashPassword(val);
+      if (h === PWD_HASH) {
+        try { sessionStorage.setItem(STORE_KEY, "1"); } catch (e) {}
+        unlock();
+      } else {
+        err.textContent = "Password errata";
+        document.getElementById("pwd").value = "";
+      }
+    } catch (e) {
+      err.textContent = "Errore di verifica";
     }
+    btn.disabled = false;
   }
+
   document.getElementById("enter").addEventListener("click", tryLogin);
   document.getElementById("pwd").addEventListener("keydown", e => {
     if (e.key === "Enter") tryLogin();
   });
-  // Se gia' autenticato in questa sessione, salta il gate
+  // Se gia' autenticato in questa sessione e nello stesso mese, salta il gate
   try { if (sessionStorage.getItem(STORE_KEY) === "1") unlock(); } catch (e) {}
 
   // ── Modalita' TV / mobile ─────────────────────────────────
