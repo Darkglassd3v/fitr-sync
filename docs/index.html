@@ -260,33 +260,22 @@
     return bytesToHex(bits);
   }
 
-  // ── Avviso scadenza password ──────────────────────────────
-  // La password cambia il 1 del mese: avvisa negli ultimi 3 giorni.
+  // ── Avviso cambio password ────────────────────────────────
+  // La password si rinnova da sola il 1 del mese: avvisa negli ultimi giorni.
   (function checkExpiry() {
     const note = document.getElementById("note");
     const now  = new Date();
-    const currentPeriod = now.getFullYear() + "-" +
-                          String(now.getMonth() + 1).padStart(2, "0");
-
-    // Se la pagina porta l'hash di un mese passato, la password mostrata
-    // non e' ancora stata ruotata dal deploy notturno.
-    if (PWD_PERIOD !== "SEGNAPOSTO_PERIODO" && PWD_PERIOD !== currentPeriod) {
-      note.innerHTML = "<strong>Password del mese precedente.</strong> " +
-        "Vale ancora finche' il prossimo aggiornamento notturno non la ruota.";
-      note.classList.add("show");
-      return;
-    }
 
     // Giorni rimanenti nel mese corrente
     const lastDay  = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysLeft = lastDay - now.getDate();
 
     if (daysLeft <= 3) {
-      const quando = daysLeft === 0 ? "oggi"
-                   : daysLeft === 1 ? "domani"
-                   : `tra ${daysLeft} giorni`;
-      note.innerHTML = `<strong>La password scade ${quando}.</strong> ` +
-        "Dal 1 del mese ne serve una nuova: chiedila a chi gestisce la board.";
+      const quando = daysLeft === 0 ? "domani"
+                   : daysLeft === 1 ? "dopodomani"
+                   : `tra ${daysLeft + 1} giorni`;
+      note.innerHTML = `<strong>La password cambia ${quando}.</strong> ` +
+        "Si rinnova da sola il 1 del mese: da quel giorno serve quella nuova.";
       note.classList.add("show");
     }
   })();
