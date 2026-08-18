@@ -52,15 +52,6 @@
     font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase;
     margin-top:0.8rem; min-height:1.2em;
   }
-  .gate-note {
-    display:none; margin-top:1.4rem; padding:0.7rem 0.9rem;
-    border:1px solid var(--line); border-left:3px solid var(--signal);
-    border-radius:4px; background:var(--panel);
-    font-family:'Barlow',sans-serif; font-size:0.82rem; line-height:1.4;
-    color:var(--ink-dim); text-align:left;
-  }
-  .gate-note.show { display:block; }
-  .gate-note strong { color:var(--signal); font-weight:600; }
 
   .board { display:none; flex-direction:column; min-height:100vh;
     padding:clamp(0.8rem,2vw,2.5rem); gap:clamp(0.6rem,1.4vw,1.2rem); }
@@ -205,7 +196,6 @@
     <input type="password" class="gate-input" id="pwd" placeholder="PASSWORD" autocomplete="current-password">
     <button class="gate-btn" id="enter">Entra</button>
     <div class="gate-err" id="err"></div>
-    <div class="gate-note" id="note"></div>
   </div>
 </div>
 
@@ -229,9 +219,9 @@
   // ── Config ────────────────────────────────────────────────
   // La password non e' mai nel sorgente: qui c'e' solo il suo hash
   // PBKDF2. Valori riscritti ogni mese da rotate_password.py.
-  const PWD_HASH   = "SEGNAPOSTO_HASH";
-  const PWD_SALT   = "SEGNAPOSTO_SALT";
-  const PWD_PERIOD = "SEGNAPOSTO_PERIODO";
+  const PWD_HASH = "0041e63010bb858b01a17fc54735f37e29c2993e19ff581f77bbc93b98bf6d13";
+  const PWD_SALT = "b167351a90b65b7988ac4e821eb62ea3";
+  const PWD_PERIOD = "2026-08";
   const PBKDF2_ITER = 100000;
 
   const DATA_URL   = "board_data.json";
@@ -259,26 +249,6 @@
     );
     return bytesToHex(bits);
   }
-
-  // ── Avviso cambio password ────────────────────────────────
-  // La password si rinnova da sola il 1 del mese: avvisa negli ultimi giorni.
-  (function checkExpiry() {
-    const note = document.getElementById("note");
-    const now  = new Date();
-
-    // Giorni rimanenti nel mese corrente
-    const lastDay  = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-    const daysLeft = lastDay - now.getDate();
-
-    if (daysLeft <= 3) {
-      const quando = daysLeft === 0 ? "domani"
-                   : daysLeft === 1 ? "dopodomani"
-                   : `tra ${daysLeft + 1} giorni`;
-      note.innerHTML = `<strong>La password cambia ${quando}.</strong> ` +
-        "Si rinnova da sola il 1 del mese: da quel giorno serve quella nuova.";
-      note.classList.add("show");
-    }
-  })();
 
   function unlock() {
     document.getElementById("gate").classList.add("hidden");
