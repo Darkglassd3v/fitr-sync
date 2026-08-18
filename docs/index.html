@@ -52,6 +52,15 @@
     font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase;
     margin-top:0.8rem; min-height:1.2em;
   }
+  .gate-note {
+    display:none; margin-top:1.4rem; padding:0.7rem 0.9rem;
+    border:1px solid var(--line); border-left:3px solid var(--signal);
+    border-radius:4px; background:var(--panel);
+    font-family:'Barlow',sans-serif; font-size:0.82rem; line-height:1.4;
+    color:var(--ink-dim); text-align:left;
+  }
+  .gate-note.show { display:block; }
+  .gate-note strong { color:var(--signal); font-weight:600; }
 
   .board { display:none; flex-direction:column; min-height:100vh;
     padding:clamp(0.8rem,2vw,2.5rem); gap:clamp(0.6rem,1.4vw,1.2rem); }
@@ -196,6 +205,7 @@
     <input type="password" class="gate-input" id="pwd" placeholder="PASSWORD" autocomplete="current-password">
     <button class="gate-btn" id="enter">Entra</button>
     <div class="gate-err" id="err"></div>
+    <div class="gate-note" id="note"></div>
   </div>
 </div>
 
@@ -249,6 +259,37 @@
     );
     return bytesToHex(bits);
   }
+
+  // ── Avviso scadenza password ──────────────────────────────
+  // La password cambia il 1 del mese: avvisa negli ultimi 3 giorni.
+  (function checkExpiry() {
+    const note = document.getElementById("note");
+    const now  = new Date();
+    const currentPeriod = now.getFullYear() + "-" +
+                          String(now.getMonth() + 1).padStart(2, "0");
+
+    // Se la pagina porta l'hash di un mese passato, la password mostrata
+    // non e' ancora stata ruotata dal deploy notturno.
+    if (PWD_PERIOD !== "SEGNAPOSTO_PERIODO" && PWD_PERIOD !== currentPeriod) {
+      note.innerHTML = "<strong>Password del mese precedente.</strong> " +
+        "Vale ancora finche' il prossimo aggiornamento notturno non la ruota.";
+      note.classList.add("show");
+      return;
+    }
+
+    // Giorni rimanenti nel mese corrente
+    const lastDay  = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    const daysLeft = lastDay - now.getDate();
+
+    if (daysLeft <= 3) {
+      const quando = daysLeft === 0 ? "oggi"
+                   : daysLeft === 1 ? "domani"
+                   : `tra ${daysLeft} giorni`;
+      note.innerHTML = `<strong>La password scade ${quando}.</strong> ` +
+        "Dal 1 del mese ne serve una nuova: chiedila a chi gestisce la board.";
+      note.classList.add("show");
+    }
+  })();
 
   function unlock() {
     document.getElementById("gate").classList.add("hidden");
