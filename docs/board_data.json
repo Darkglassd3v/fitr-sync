@@ -1,15 +1,15 @@
 {
   "week_start": "2026-08-17",
   "week_end": "2026-08-23",
-  "today": "2026-08-17",
-  "generated_at": "2026-08-17T00:55:32.625164",
+  "today": "2026-08-18",
+  "generated_at": "2026-08-18T00:53:37.580853",
   "days": [
     {
       "date": "2026-08-17",
       "weekday": "LUN",
       "day_number": 17,
       "date_label": "Lunedi 17 Agosto",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "IMPORTANT - UPDATE",
@@ -191,7 +191,7 @@
       "weekday": "MAR",
       "day_number": 18,
       "date_label": "Martedi 18 Agosto",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM UP",
@@ -218,9 +218,19 @@
               "src": "https://youtu.be/p7Ha3fq6dXc"
             },
             {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
               "title": "Dynamic anterior hip stretch",
               "kind": "youtube",
               "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
             },
             {
               "title": "Echo bike",
@@ -241,16 +251,6 @@
               "title": "Goodmornings",
               "kind": "youtube",
               "src": "https://youtu.be/BbjXUrQlXLg"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
-            },
-            {
-              "title": "Lat pulsed stretching with reach through",
-              "kind": "youtube",
-              "src": "https://youtu.be/P7scr-51piE"
             }
           ]
         },
@@ -379,6 +379,11 @@
               "src": "https://youtu.be/0AyanidTrbs"
             },
             {
+              "title": "Ski erg",
+              "kind": "youtube",
+              "src": "https://youtu.be/WUiGW3wLp4w"
+            },
+            {
               "title": "DB Cuban press",
               "kind": "youtube",
               "src": "https://youtu.be/KKsJ3huMws4"
@@ -392,11 +397,6 @@
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
-            },
-            {
-              "title": "Ski erg",
-              "kind": "youtube",
-              "src": "https://youtu.be/WUiGW3wLp4w"
             }
           ]
         },
@@ -632,24 +632,24 @@
               "src": "https://youtu.be/fcojabIIwNA"
             },
             {
-              "title": "Dynamic anterior hip stretch",
-              "kind": "youtube",
-              "src": "https://youtu.be/M5nRWGwU_f0"
-            },
-            {
-              "title": "Echo bike",
-              "kind": "youtube",
-              "src": "https://youtu.be/0ZzJDs7OB54"
-            },
-            {
               "title": "Dynamic bent arm pec opener",
               "kind": "youtube",
               "src": "https://youtu.be/Fv0KnjRiLf8"
             },
             {
+              "title": "Dynamic anterior hip stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
+            },
+            {
+              "title": "Echo bike",
+              "kind": "youtube",
+              "src": "https://youtu.be/0ZzJDs7OB54"
             }
           ]
         },
