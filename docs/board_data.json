@@ -1,8 +1,8 @@
 {
   "week_start": "2026-08-17",
   "week_end": "2026-08-23",
-  "today": "2026-08-20",
-  "generated_at": "2026-08-20T00:55:03.609165",
+  "today": "2026-08-21",
+  "generated_at": "2026-08-21T01:00:28.456796",
   "days": [
     {
       "date": "2026-08-17",
@@ -514,7 +514,7 @@
       "weekday": "GIO",
       "day_number": 20,
       "date_label": "Giovedi 20 Agosto",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "OPTION 1: FULL REST / BODYWORK",
@@ -590,7 +590,7 @@
       "weekday": "VEN",
       "day_number": 21,
       "date_label": "Venerdi 21 Agosto",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM UP",
@@ -940,16 +940,6 @@
           "description": "Conditioning, Run session (LSD - Long Slow Distance)\n\na. Warm up \n (Optional) 1 round of:\n60/60 sec Dynamic anterior hip stretch\n20 Calf raises (10 with straight legs + 10 with bent legs)\n20 Tibialis raises\n10/10 Leg swings (forward)\n10/10 Leg swings (side ways)\n+ \n(Optional)  2 rounds of:\n20 Plate Pogos (double leg) (Forward/Backwards)\nA “Tough” set of Banded Alt. High knees (target is around 10-15 sec)\n\nb. Main set\n30-50 min Run (“Easy” - Conversation pace / Z2 / RPE 3-4 / Moderate intensity domain)\n\nNote: To excel at running, it's largely about building your tolerance for it, and Zone 2 light runs are the best way to do that. It's practically the foundation of it all (aerobic capacity and tissue tolerance without excessive fatigue).\nWe have 2 primary runs a week and one optional extra. They range from easy to mod-hard and aims to build the most well-rounded running capacity we can in a hybrid training setting. \nRun session #1: Threshold (Monday)\nRun session #2: Moderate pace (Tempo) (Thursday - Optional)\nRun session #3 Easy (Saturday)\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
           "attachments": [
             {
-              "title": "Banded High knees",
-              "kind": "youtube",
-              "src": "https://youtu.be/2hUHvmWBeqU"
-            },
-            {
-              "title": "Dynamic anterior hip stretch",
-              "kind": "youtube",
-              "src": "https://youtu.be/M5nRWGwU_f0"
-            },
-            {
               "title": "Side ways leg swings",
               "kind": "youtube",
               "src": "https://youtu.be/HpEP74I5NVY"
@@ -973,6 +963,16 @@
               "title": "Plate pogo (back/forward) (double leg)",
               "kind": "youtube",
               "src": "https://youtu.be/1l-6xOHJ6OU"
+            },
+            {
+              "title": "Banded High knees",
+              "kind": "youtube",
+              "src": "https://youtu.be/2hUHvmWBeqU"
+            },
+            {
+              "title": "Dynamic anterior hip stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/M5nRWGwU_f0"
             }
           ]
         }
