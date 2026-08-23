@@ -1,8 +1,8 @@
 {
   "week_start": "2026-08-17",
   "week_end": "2026-08-23",
-  "today": "2026-08-22",
-  "generated_at": "2026-08-22T00:55:43.818111",
+  "today": "2026-08-23",
+  "generated_at": "2026-08-23T01:00:22.030676",
   "days": [
     {
       "date": "2026-08-17",
@@ -792,7 +792,7 @@
       "weekday": "SAB",
       "day_number": 22,
       "date_label": "Sabato 22 Agosto",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM UP",
@@ -984,7 +984,7 @@
       "weekday": "DOM",
       "day_number": 23,
       "date_label": "Domenica 23 Agosto",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "FULL REST DAY",
