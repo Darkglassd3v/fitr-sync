@@ -118,6 +118,11 @@
   .daybtn.active .wd,
   .daybtn.active .dn { color:#0a0a0b; }
   .daybtn.active .dot { background:#0a0a0b; }
+  /* Cursore telecomando sui giorni */
+  .daybtn.focused {
+    box-shadow:0 0 0 2px var(--signal);
+    border-color:var(--signal);
+  }
 
   .daylabel {
     font-family:'Barlow Condensed',sans-serif; font-weight:600;
@@ -437,11 +442,15 @@
       b.className = "daybtn";
       if (d.is_today) b.classList.add("today");
       if (i === selected) b.classList.add("active");
+      if (zone === "days" && i === dayFocus) b.classList.add("focused");
       if (!d.empty) b.classList.add("has-content");
       b.innerHTML = `<span class="wd">${d.weekday}</span>
                      <span class="dn">${d.day_number}</span>
                      <span class="dot"></span>`;
-      b.addEventListener("click", () => { selected = i; renderWeek(); renderDay(); });
+      b.addEventListener("click", () => {
+        selected = i; dayFocus = i; zone = "days";
+        renderWeek(); renderDay();
+      });
       strip.appendChild(b);
     });
   }
@@ -497,6 +506,9 @@
       rest.innerHTML = `<div class="rest-mark">REST</div>
                         <div class="rest-label">Giorno di riposo</div>`;
       container.appendChild(rest);
+      // Nessun blocco: il cursore resta sulla striscia dei giorni
+      zone = "days";
+      updateFocus();
       return;
     }
 
@@ -546,7 +558,10 @@
   }
 
   // ── Navigazione con telecomando / frecce ──────────────────
-  let focusIndex = 0;
+  // Due zone: "days" = striscia dei giorni, "sections" = blocchi del giorno.
+  let focusIndex = 0;   // blocco selezionato
+  let dayFocus   = 0;   // giorno selezionato con il cursore
+  let zone       = "sections";
 
   function allSections() {
     return [...document.querySelectorAll("#sections .section")];
@@ -554,35 +569,71 @@
 
   function updateFocus() {
     const secs = allSections();
-    secs.forEach((s, i) => s.classList.toggle("focused", i === focusIndex));
-    const cur = secs[focusIndex];
+    secs.forEach((s, i) => {
+      s.classList.toggle("focused", zone === "sections" && i === focusIndex);
+    });
+    const btns = [...document.querySelectorAll("#week .daybtn")];
+    btns.forEach((b, i) => {
+      b.classList.toggle("focused", zone === "days" && i === dayFocus);
+    });
+
+    const cur = zone === "sections" ? secs[focusIndex] : btns[dayFocus];
     if (cur) cur.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
-  function moveFocus(delta) {
-    const secs = allSections();
-    if (!secs.length) return;
-    focusIndex = (focusIndex + delta + secs.length) % secs.length;
-    updateFocus();
-  }
-
   document.addEventListener("keydown", e => {
-    // Attiva solo quando la board e' visibile
     if (!document.getElementById("board").classList.contains("show")) return;
+    if (VIEW_WEEK) return;   // la vista settimana non ha blocchi navigabili
 
-    const secs = allSections();
-    if (!secs.length) return;
+    const secs  = allSections();
+    const nDays = weekData && weekData.days ? weekData.days.length : 0;
+
+    // ── Zona giorni ──
+    if (zone === "days") {
+      switch (e.key) {
+        case "ArrowRight":
+          e.preventDefault();
+          dayFocus = (dayFocus + 1) % nDays; updateFocus(); break;
+        case "ArrowLeft":
+          e.preventDefault();
+          dayFocus = (dayFocus - 1 + nDays) % nDays; updateFocus(); break;
+        case "ArrowDown":
+          e.preventDefault();
+          if (secs.length) { zone = "sections"; focusIndex = 0; updateFocus(); }
+          break;
+        case "Enter":
+        case " ":
+          e.preventDefault();
+          selected = dayFocus;
+          renderWeek(); renderDay();
+          zone = "days";           // resta sui giorni per continuare a sfogliare
+          updateFocus();
+          break;
+      }
+      return;
+    }
+
+    // ── Zona blocchi ──
+    if (!secs.length) { zone = "days"; updateFocus(); return; }
 
     switch (e.key) {
       case "ArrowDown":
       case "ArrowRight":
-        e.preventDefault(); moveFocus(1); break;
+        e.preventDefault();
+        focusIndex = Math.min(focusIndex + 1, secs.length - 1);
+        updateFocus(); break;
       case "ArrowUp":
       case "ArrowLeft":
-        e.preventDefault(); moveFocus(-1); break;
+        e.preventDefault();
+        if (focusIndex === 0) {
+          // Dal primo blocco si risale alla striscia dei giorni
+          zone = "days"; dayFocus = selected;
+        } else {
+          focusIndex--;
+        }
+        updateFocus(); break;
       case "Enter":
       case " ":
-      case "Spacebar":
         e.preventDefault();
         if (secs[focusIndex]) toggleSection(secs[focusIndex]);
         break;
@@ -622,6 +673,7 @@
         if (selected === null) {
           const idx = weekData.days.findIndex(d => d.is_today);
           selected = idx >= 0 ? idx : 0;
+          dayFocus = selected;
         }
         renderWeek();
         renderDay();
