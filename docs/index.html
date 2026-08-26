@@ -12,6 +12,7 @@
   :root {
     --bg:#0a0a0b; --panel:#141416; --panel-hi:#1b1b1f; --line:#26262b;
     --ink:#f4f4f2; --ink-dim:#8a8a92; --signal:#ff5b1e; --signal-dim:#7a2e12;
+    --focus:#d8ff00;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body {
@@ -87,6 +88,8 @@
     border-bottom:3px solid var(--signal);
     padding-bottom:clamp(0.5rem,1.2vw,1rem);
     flex-shrink:0;
+    position:sticky; top:0; z-index:9;
+    background:var(--bg);
   }
   .daybtn {
     background:var(--panel); border:1px solid var(--line);
@@ -120,8 +123,8 @@
   .daybtn.active .dot { background:#0a0a0b; }
   /* Cursore telecomando sui giorni */
   .daybtn.focused {
-    box-shadow:0 0 0 2px var(--signal);
-    border-color:var(--signal);
+    box-shadow:0 0 0 3px var(--focus);
+    border-color:var(--focus);
   }
 
   .daylabel {
@@ -175,8 +178,8 @@
   /* Blocco selezionato con telecomando/tastiera */
   .section-head:focus { outline:none; }
   .section.focused {
-    border-color:var(--signal);
-    box-shadow:0 0 0 2px var(--signal);
+    border-color:var(--focus);
+    box-shadow:0 0 0 3px var(--focus);
   }
   .section-head { cursor:pointer; }
 
@@ -291,10 +294,10 @@
   // ── Config ────────────────────────────────────────────────
   // La password non e' mai nel sorgente: qui c'e' solo il suo hash
   // PBKDF2. Valori riscritti ogni mese da rotate_password.py.
-  const PWD_HASH   = "0041e63010bb858b01a17fc54735f37e29c2993e19ff581f77bbc93b98bf6d13";
-  const PWD_SALT   = "b167351a90b65b7988ac4e821eb62ea3";
-  const PWD_PERIOD = "2026-08";
-  const KIOSK_HASH = "ad2729a251722009b97054de9dd1bc2474d9e1ea2e01926ddea4029f6197215d";
+  const PWD_HASH   = "SEGNAPOSTO_HASH";
+  const PWD_SALT   = "SEGNAPOSTO_SALT";
+  const PWD_PERIOD = "SEGNAPOSTO_PERIODO";
+  const KIOSK_HASH = "SEGNAPOSTO_KIOSK";
   const PBKDF2_ITER = 100000;
 
   // Parametri URL: ?kiosk=TOKEN salta il login, &view=week mostra la settimana
@@ -535,7 +538,13 @@
           ${media}
         </div>`;
 
-      el.querySelector(".section-head").addEventListener("click", () => toggleSection(el));
+      el.querySelector(".section-head").addEventListener("click", () => {
+        // Il cursore segue il blocco toccato
+        zone = "sections";
+        focusIndex = idx;
+        updateFocus();
+        toggleSection(el);
+      });
       container.appendChild(el);
     });
 
@@ -545,15 +554,23 @@
   }
 
   // ── Apertura a fisarmonica ────────────────────────────────
+  // Porta il blocco in cima, appena sotto la striscia dei giorni.
+  function scrollToBlock(el) {
+    const week   = document.getElementById("week");
+    const offset = (week ? week.getBoundingClientRect().height : 0) + 10;
+    const top    = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+  }
+
   function toggleSection(el) {
     const container = document.getElementById("sections");
     const eraAperto = el.classList.contains("open");
     container.querySelectorAll(".section").forEach(s => s.classList.remove("open"));
     if (!eraAperto) {
       el.classList.add("open");
-      requestAnimationFrame(() => {
-        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      });
+      // Attende la fine della transizione (gli altri blocchi si chiudono)
+      // prima di calcolare la posizione, altrimenti il layout e' ancora in movimento.
+      setTimeout(() => scrollToBlock(el), 280);
     }
   }
 
