@@ -182,6 +182,7 @@
     box-shadow:0 0 0 3px var(--focus);
   }
   .section-head { cursor:pointer; }
+  .section { cursor:pointer; }
 
   /* ── Vista settimana intera (TV) ────────────────────────── */
   .weekgrid {
@@ -538,12 +539,15 @@
           ${media}
         </div>`;
 
-      el.querySelector(".section-head").addEventListener("click", () => {
-        // Il cursore segue il blocco toccato
+      // Tutto il rettangolo apre il blocco. Quando e' gia' aperto,
+      // solo l'intestazione lo richiude (cosi' non si chiude leggendo).
+      el.addEventListener("click", ev => {
         zone = "sections";
         focusIndex = idx;
         updateFocus();
-        toggleSection(el);
+        const eraAperto = el.classList.contains("open");
+        const suHeader  = !!ev.target.closest(".section-head");
+        if (!eraAperto || suHeader) toggleSection(el);
       });
       container.appendChild(el);
     });
@@ -568,7 +572,9 @@
     container.querySelectorAll(".section").forEach(s => s.classList.remove("open"));
     if (!eraAperto) {
       el.classList.add("open");
-      requestAnimationFrame(() => scrollToBlock(el));
+      // Attende la fine della transizione (gli altri blocchi si chiudono)
+      // prima di calcolare la posizione, altrimenti il layout e' ancora in movimento.
+      setTimeout(() => scrollToBlock(el), 280);
     }
   }
 
