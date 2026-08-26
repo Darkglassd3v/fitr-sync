@@ -182,7 +182,6 @@
     box-shadow:0 0 0 3px var(--focus);
   }
   .section-head { cursor:pointer; }
-  .section { cursor:pointer; }
 
   /* ── Vista settimana intera (TV) ────────────────────────── */
   .weekgrid {
@@ -295,10 +294,10 @@
   // ── Config ────────────────────────────────────────────────
   // La password non e' mai nel sorgente: qui c'e' solo il suo hash
   // PBKDF2. Valori riscritti ogni mese da rotate_password.py.
-  const PWD_HASH   = "SEGNAPOSTO_HASH";
-  const PWD_SALT   = "SEGNAPOSTO_SALT";
-  const PWD_PERIOD = "SEGNAPOSTO_PERIODO";
-  const KIOSK_HASH = "SEGNAPOSTO_KIOSK";
+  const PWD_HASH   = "0041e63010bb858b01a17fc54735f37e29c2993e19ff581f77bbc93b98bf6d13";
+  const PWD_SALT   = "b167351a90b65b7988ac4e821eb62ea3";
+  const PWD_PERIOD = "2026-08";
+  const KIOSK_HASH = "ad2729a251722009b97054de9dd1bc2474d9e1ea2e01926ddea4029f6197215d";
   const PBKDF2_ITER = 100000;
 
   // Parametri URL: ?kiosk=TOKEN salta il login, &view=week mostra la settimana
@@ -539,15 +538,12 @@
           ${media}
         </div>`;
 
-      // Tutto il rettangolo apre il blocco. Quando e' gia' aperto,
-      // solo l'intestazione lo richiude (cosi' non si chiude leggendo).
-      el.addEventListener("click", ev => {
+      el.querySelector(".section-head").addEventListener("click", () => {
+        // Il cursore segue il blocco toccato
         zone = "sections";
         focusIndex = idx;
         updateFocus();
-        const eraAperto = el.classList.contains("open");
-        const suHeader  = !!ev.target.closest(".section-head");
-        if (!eraAperto || suHeader) toggleSection(el);
+        toggleSection(el);
       });
       container.appendChild(el);
     });
@@ -572,9 +568,7 @@
     container.querySelectorAll(".section").forEach(s => s.classList.remove("open"));
     if (!eraAperto) {
       el.classList.add("open");
-      // Attende la fine della transizione (gli altri blocchi si chiudono)
-      // prima di calcolare la posizione, altrimenti il layout e' ancora in movimento.
-      setTimeout(() => scrollToBlock(el), 280);
+      requestAnimationFrame(() => scrollToBlock(el));
     }
   }
 
