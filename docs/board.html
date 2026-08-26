@@ -167,11 +167,13 @@
     text-transform:uppercase; color:var(--signal);
     border:1px solid var(--signal-dim); border-radius:3px; padding:0.15em 0.5em; }
 
-  /* Modalita' TV: tutto aperto */
-  body.tv .section-head { cursor:default; }
-  body.tv .chevron, body.tv .section-preview { display:none; }
-  body.tv .section-content { max-height:none !important; }
-  body.mobile .section-head { cursor:pointer; }
+  /* Blocco selezionato con telecomando/tastiera */
+  .section-head:focus { outline:none; }
+  .section.focused {
+    border-color:var(--signal);
+    box-shadow:0 0 0 2px var(--signal);
+  }
+  .section-head { cursor:pointer; }
 
   /* ── Vista settimana intera (TV) ────────────────────────── */
   .weekgrid {
@@ -400,7 +402,6 @@
     const tv = isTvMode();
     document.body.classList.toggle("tv", tv);
     document.body.classList.toggle("mobile", !tv);
-    if (tv) document.querySelectorAll(".section").forEach(el => el.classList.add("open"));
   }
   window.addEventListener("resize", applyMode);
   window.addEventListener("orientationchange", applyMode);
@@ -500,19 +501,19 @@
     }
 
     container.setAttribute("data-many", day.sections.length > 4);
-    const tv = isTvMode();
 
     day.sections.forEach((s, idx) => {
       const el = document.createElement("div");
       el.className = "section";
-      if (tv || idx === 0) el.classList.add("open");
+      // Primo blocco aperto di default su qualsiasi dispositivo
+      if (idx === 0) el.classList.add("open");
       const kinds = [...new Set((s.attachments || []).map(a => mediaLabel(a.kind)))];
       const media = kinds.length
         ? `<div class="section-media">` +
           kinds.map(m => `<span class="media-tag">${m}</span>`).join("") + `</div>`
         : "";
       el.innerHTML = `
-        <div class="section-head">
+        <div class="section-head" tabindex="0" role="button">
           <div class="section-title">${escapeHtml(s.title)}</div>
           <div class="chevron"></div>
         </div>
@@ -521,22 +522,72 @@
           <div class="section-body">${escapeHtml(s.description)}</div>
           ${media}
         </div>`;
-      el.querySelector(".section-head").addEventListener("click", () => {
-        if (isTvMode()) return;
-        const eraAperto = el.classList.contains("open");
-        // Accordion: chiude tutti gli altri, resta aperto solo questo
-        container.querySelectorAll(".section").forEach(s => s.classList.remove("open"));
-        if (!eraAperto) {
-          el.classList.add("open");
-          // Il blocco aperto resta visibile anche se gli altri si comprimono
-          requestAnimationFrame(() => {
-            el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          });
-        }
-      });
+
+      el.querySelector(".section-head").addEventListener("click", () => toggleSection(el));
       container.appendChild(el);
     });
+
+    // Cursore del telecomando sul primo blocco
+    focusIndex = 0;
+    updateFocus();
   }
+
+  // ── Apertura a fisarmonica ────────────────────────────────
+  function toggleSection(el) {
+    const container = document.getElementById("sections");
+    const eraAperto = el.classList.contains("open");
+    container.querySelectorAll(".section").forEach(s => s.classList.remove("open"));
+    if (!eraAperto) {
+      el.classList.add("open");
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    }
+  }
+
+  // ── Navigazione con telecomando / frecce ──────────────────
+  let focusIndex = 0;
+
+  function allSections() {
+    return [...document.querySelectorAll("#sections .section")];
+  }
+
+  function updateFocus() {
+    const secs = allSections();
+    secs.forEach((s, i) => s.classList.toggle("focused", i === focusIndex));
+    const cur = secs[focusIndex];
+    if (cur) cur.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function moveFocus(delta) {
+    const secs = allSections();
+    if (!secs.length) return;
+    focusIndex = (focusIndex + delta + secs.length) % secs.length;
+    updateFocus();
+  }
+
+  document.addEventListener("keydown", e => {
+    // Attiva solo quando la board e' visibile
+    if (!document.getElementById("board").classList.contains("show")) return;
+
+    const secs = allSections();
+    if (!secs.length) return;
+
+    switch (e.key) {
+      case "ArrowDown":
+      case "ArrowRight":
+        e.preventDefault(); moveFocus(1); break;
+      case "ArrowUp":
+      case "ArrowLeft":
+        e.preventDefault(); moveFocus(-1); break;
+      case "Enter":
+      case " ":
+      case "Spacebar":
+        e.preventDefault();
+        if (secs[focusIndex]) toggleSection(secs[focusIndex]);
+        break;
+    }
+  });
 
   function updateFooter() {
     const gen = weekData.generated_at ? new Date(weekData.generated_at) : null;
