@@ -41,6 +41,14 @@ def month_password(master: str, period: str) -> str:
     return "".join(ALPHABET[b % len(ALPHABET)] for b in digest[:PWD_LEN])
 
 
+def kiosk_token(master: str) -> str:
+    """
+    Token per la modalita' kiosk (TV in palestra): salta il login.
+    NON dipende dal mese, cosi' la TV non va riconfigurata ogni volta.
+    """
+    return hmac.new(master.encode(), b"kiosk-v1", hashlib.sha256).hexdigest()[:24]
+
+
 def pbkdf2_hash(password: str, salt_hex: str) -> str:
     """Hash PBKDF2-SHA256 della password, in esadecimale."""
     salt = bytes.fromhex(salt_hex)
@@ -55,11 +63,15 @@ def main():
 
     period   = date.today().strftime("%Y-%m")
     password = month_password(MASTER, period)
+    kiosk    = kiosk_token(MASTER)
 
-    # --show: stampa la password (solo in locale, MAI nel workflow)
+    # --show: stampa password e link kiosk (solo in locale, MAI nel workflow)
     if "--show" in sys.argv:
         print(f"Periodo:  {period}")
         print(f"Password: {password}")
+        print()
+        print("Link per la TV in palestra (nessun login, vista settimana):")
+        print(f"  ?kiosk={kiosk}&view=week")
         return
 
     # Salt deterministico dal master secret + periodo: non serve
@@ -69,6 +81,8 @@ def main():
     ).hexdigest()[:32]
 
     pwd_hash = pbkdf2_hash(password, salt_hex)
+    # Hash del token kiosk: nemmeno questo appare in chiaro nella pagina
+    kiosk_hash = hashlib.sha256(("kiosk:" + kiosk).encode()).hexdigest()
 
     updated = 0
     for page in PAGES:
@@ -79,17 +93,22 @@ def main():
 
         html, n1 = re.subn(
             r'const PWD_HASH\s*=\s*"[^"]*";',
-            f'const PWD_HASH = "{pwd_hash}";',
+            f'const PWD_HASH   = "{pwd_hash}";',
             html,
         )
         html, n2 = re.subn(
             r'const PWD_SALT\s*=\s*"[^"]*";',
-            f'const PWD_SALT = "{salt_hex}";',
+            f'const PWD_SALT   = "{salt_hex}";',
             html,
         )
         html, n3 = re.subn(
             r'const PWD_PERIOD\s*=\s*"[^"]*";',
             f'const PWD_PERIOD = "{period}";',
+            html,
+        )
+        html, n4 = re.subn(
+            r'const KIOSK_HASH\s*=\s*"[^"]*";',
+            f'const KIOSK_HASH = "{kiosk_hash}";',
             html,
         )
 

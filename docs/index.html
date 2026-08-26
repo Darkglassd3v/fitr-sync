@@ -52,6 +52,15 @@
     font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase;
     margin-top:0.8rem; min-height:1.2em;
   }
+  .gate-note {
+    display:none; margin-top:1.4rem; padding:0.7rem 0.9rem;
+    border:1px solid var(--line); border-left:3px solid var(--signal);
+    border-radius:4px; background:var(--panel);
+    font-family:'Barlow',sans-serif; font-size:0.82rem; line-height:1.4;
+    color:var(--ink-dim); text-align:left;
+  }
+  .gate-note.show { display:block; }
+  .gate-note strong { color:var(--signal); font-weight:600; }
 
   .board { display:none; flex-direction:column; min-height:100vh;
     padding:clamp(0.8rem,2vw,2.5rem); gap:clamp(0.6rem,1.4vw,1.2rem); }
@@ -164,6 +173,61 @@
   body.tv .section-content { max-height:none !important; }
   body.mobile .section-head { cursor:pointer; }
 
+  /* ── Vista settimana intera (TV) ────────────────────────── */
+  .weekgrid {
+    flex:1; display:grid; grid-template-columns:repeat(7,1fr);
+    gap:clamp(0.3rem,0.6vw,0.7rem); align-items:stretch;
+    min-height:0; overflow:hidden;
+  }
+  .wcol {
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:4px; display:flex; flex-direction:column;
+    overflow:hidden; min-height:0;
+  }
+  .wcol.today { border-color:var(--signal); }
+  .wcol-head {
+    background:var(--line); padding:0.35rem 0.2rem; text-align:center;
+    flex-shrink:0;
+  }
+  .wcol.today .wcol-head { background:var(--signal); }
+  .wcol-wd {
+    display:block; font-family:'Barlow Semi Condensed',sans-serif;
+    font-weight:600; font-size:clamp(0.55rem,0.85vw,0.8rem);
+    letter-spacing:0.1em; color:var(--ink-dim);
+  }
+  .wcol.today .wcol-wd { color:#0a0a0b; }
+  .wcol-dn {
+    display:block; font-family:'Barlow Condensed',sans-serif;
+    font-weight:700; font-size:clamp(0.9rem,1.6vw,1.4rem); line-height:1.1;
+  }
+  .wcol.today .wcol-dn { color:#0a0a0b; }
+  .wcol-body { flex:1; overflow:hidden; padding:0.3rem; min-height:0; }
+  .wsec { margin-bottom:0.45rem; }
+  .wsec-title {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:clamp(0.62rem,1vw,0.95rem); letter-spacing:0.02em;
+    text-transform:uppercase; color:var(--signal); line-height:1.1;
+    margin-bottom:0.1rem;
+  }
+  .wsec-body {
+    font-family:'Barlow',sans-serif; font-weight:500;
+    font-size:clamp(0.55rem,0.85vw,0.82rem); line-height:1.25;
+    white-space:pre-wrap; color:var(--ink);
+  }
+  .wcol-rest {
+    font-family:'Barlow Condensed',sans-serif; font-weight:800;
+    font-size:clamp(1rem,2vw,1.8rem); color:var(--signal-dim);
+    text-align:center; padding-top:1.5rem;
+  }
+  /* Su schermo stretto la settimana torna a scorrere in verticale */
+  @media (orientation:portrait), (max-width:800px) {
+    .weekgrid { grid-template-columns:1fr; overflow:visible; }
+    .wcol-body { overflow:visible; }
+  }
+
+  /* Kiosk: nasconde elementi non necessari sulla TV */
+  body.kiosk .clock { }
+
   .rest { flex:1; display:flex; flex-direction:column; align-items:center;
     justify-content:center; gap:1rem; min-height:40vh; }
   .rest-mark { font-family:'Barlow Condensed',sans-serif; font-weight:800;
@@ -196,6 +260,7 @@
     <input type="password" class="gate-input" id="pwd" placeholder="PASSWORD" autocomplete="current-password">
     <button class="gate-btn" id="enter">Entra</button>
     <div class="gate-err" id="err"></div>
+    <div class="gate-note" id="note"></div>
   </div>
 </div>
 
@@ -219,10 +284,15 @@
   // ── Config ────────────────────────────────────────────────
   // La password non e' mai nel sorgente: qui c'e' solo il suo hash
   // PBKDF2. Valori riscritti ogni mese da rotate_password.py.
-  const PWD_HASH = "0041e63010bb858b01a17fc54735f37e29c2993e19ff581f77bbc93b98bf6d13";
-  const PWD_SALT = "b167351a90b65b7988ac4e821eb62ea3";
-  const PWD_PERIOD = "2026-08";
+  const PWD_HASH   = "SEGNAPOSTO_HASH";
+  const PWD_SALT   = "SEGNAPOSTO_SALT";
+  const PWD_PERIOD = "SEGNAPOSTO_PERIODO";
+  const KIOSK_HASH = "SEGNAPOSTO_KIOSK";
   const PBKDF2_ITER = 100000;
+
+  // Parametri URL: ?kiosk=TOKEN salta il login, &view=week mostra la settimana
+  const urlParams = new URLSearchParams(location.search);
+  const VIEW_WEEK = urlParams.get("view") === "week";
 
   const DATA_URL   = "board_data.json";
   const REFRESH_MS = 5 * 60 * 1000;
@@ -249,6 +319,26 @@
     );
     return bytesToHex(bits);
   }
+
+  // ── Avviso cambio password ────────────────────────────────
+  // La password si rinnova da sola il 1 del mese: avvisa negli ultimi giorni.
+  (function checkExpiry() {
+    const note = document.getElementById("note");
+    const now  = new Date();
+
+    // Giorni rimanenti nel mese corrente
+    const lastDay  = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    const daysLeft = lastDay - now.getDate();
+
+    if (daysLeft <= 3) {
+      const quando = daysLeft === 0 ? "domani"
+                   : daysLeft === 1 ? "dopodomani"
+                   : `tra ${daysLeft + 1} giorni`;
+      note.innerHTML = `<strong>La password cambia ${quando}.</strong> ` +
+        "Si rinnova da sola il 1 del mese: da quel giorno serve quella nuova.";
+      note.classList.add("show");
+    }
+  })();
 
   function unlock() {
     document.getElementById("gate").classList.add("hidden");
@@ -286,6 +376,21 @@
   });
   // Se gia' autenticato in questa sessione e nello stesso mese, salta il gate
   try { if (sessionStorage.getItem(STORE_KEY) === "1") unlock(); } catch (e) {}
+
+  // ── Modalita' kiosk (TV in palestra) ──────────────────────
+  // ?kiosk=TOKEN valido -> nessun login richiesto.
+  (async function checkKiosk() {
+    const token = urlParams.get("kiosk");
+    if (!token) return;
+    try {
+      const enc  = new TextEncoder();
+      const buf  = await crypto.subtle.digest("SHA-256", enc.encode("kiosk:" + token));
+      if (bytesToHex(buf) === KIOSK_HASH) {
+        document.body.classList.add("kiosk");
+        unlock();
+      }
+    } catch (e) {}
+  })();
 
   // ── Modalita' TV / mobile ─────────────────────────────────
   function isTvMode() {
@@ -337,6 +442,42 @@
                      <span class="dot"></span>`;
       b.addEventListener("click", () => { selected = i; renderWeek(); renderDay(); });
       strip.appendChild(b);
+    });
+  }
+
+  // ── Vista settimana intera (per TV) ───────────────────────
+  function renderWeekView() {
+    document.getElementById("week").style.display = "none";
+    document.getElementById("daylabel").textContent =
+      `Settimana ${weekData.week_start.split("-").reverse().slice(0,2).join("/")}` +
+      ` - ${weekData.week_end.split("-").reverse().slice(0,2).join("/")}`;
+
+    const container = document.getElementById("sections");
+    container.className = "weekgrid";
+    container.innerHTML = "";
+
+    weekData.days.forEach(d => {
+      const col = document.createElement("div");
+      col.className = "wcol" + (d.is_today ? " today" : "");
+
+      const head = `<div class="wcol-head">
+          <span class="wcol-wd">${d.weekday}</span>
+          <span class="wcol-dn">${d.day_number}</span>
+        </div>`;
+
+      let body = "";
+      if (d.empty) {
+        body = `<div class="wcol-rest">REST</div>`;
+      } else {
+        body = d.sections.map(s => `
+          <div class="wsec">
+            <div class="wsec-title">${escapeHtml(s.title)}</div>
+            <div class="wsec-body">${escapeHtml(s.description)}</div>
+          </div>`).join("");
+      }
+
+      col.innerHTML = head + `<div class="wcol-body">${body}</div>`;
+      container.appendChild(col);
     });
   }
 
@@ -413,13 +554,17 @@
         return;
       }
 
-      // Seleziona di default il giorno di oggi
-      if (selected === null) {
-        const idx = weekData.days.findIndex(d => d.is_today);
-        selected = idx >= 0 ? idx : 0;
+      if (VIEW_WEEK) {
+        renderWeekView();
+      } else {
+        // Seleziona di default il giorno di oggi
+        if (selected === null) {
+          const idx = weekData.days.findIndex(d => d.is_today);
+          selected = idx >= 0 ? idx : 0;
+        }
+        renderWeek();
+        renderDay();
       }
-      renderWeek();
-      renderDay();
       updateFooter();
       applyMode();
     } catch (e) {
