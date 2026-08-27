@@ -3,3 +3,5 @@
 fitr_sync_log/
 __pycache__/
 destinations.json
+.claude-flow/
+.idea/
