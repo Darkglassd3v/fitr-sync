@@ -503,7 +503,6 @@
     container.innerHTML = "";
 
     if (day.empty || !day.sections.length) {
-      container.removeAttribute("data-many");
       const rest = document.createElement("div");
       rest.className = "rest";
       rest.innerHTML = `<div class="rest-mark">REST</div>
@@ -514,8 +513,6 @@
       updateFocus();
       return;
     }
-
-    container.setAttribute("data-many", day.sections.length > 4);
 
     day.sections.forEach((s, idx) => {
       const el = document.createElement("div");
@@ -572,15 +569,35 @@
     window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
   }
 
+  // Aspetta che il layout smetta di muoversi, poi allinea il blocco.
+  // Un ritardo fisso non basta: chiudendo un blocco lungo (le descrizioni
+  // arrivano a 6.000+ caratteri) tutto quello sotto risale di migliaia di
+  // pixel, e misurando troppo presto lo scroll finisce fuori bersaglio.
+  function settleThenScroll(el) {
+    let last = null, stabili = 0, frame = 0, fatto = false;
+    const esegui = () => { if (fatto) return; fatto = true; scrollToBlock(el); };
+    const tick = () => {
+      if (fatto) return;
+      // Posizione nel documento: non cambia quando si scorre.
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      stabili = (last !== null && Math.abs(top - last) < 1) ? stabili + 1 : 0;
+      last = top;
+      if (stabili >= 2 || ++frame > 60) { esegui(); return; }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    // Con la pagina nascosta requestAnimationFrame non gira: rete di
+    // sicurezza a tempo, cosi' non si comporta mai peggio di prima.
+    setTimeout(esegui, 400);
+  }
+
   function toggleSection(el) {
     const container = document.getElementById("sections");
     const eraAperto = el.classList.contains("open");
     container.querySelectorAll(".section").forEach(s => s.classList.remove("open"));
     if (!eraAperto) {
       el.classList.add("open");
-      // Attende la fine della transizione (gli altri blocchi si chiudono)
-      // prima di calcolare la posizione, altrimenti il layout e' ancora in movimento.
-      setTimeout(() => scrollToBlock(el), 280);
+      settleThenScroll(el);
     }
   }
 

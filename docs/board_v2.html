@@ -883,21 +883,33 @@
   // Porta il blocco in alto lasciando visibile quello precedente
   // (gia' chiuso), cosi' si torna indietro con un tap.
   // scroll-margin-top fa il lavoro: niente calcoli a mano.
+  // Aspetta che il layout smetta di muoversi prima di misurare: chiudendo
+  // un blocco lungo (fino a 6.000+ caratteri) tutto quello sotto risale di
+  // migliaia di pixel, e un ritardo fisso misurerebbe a meta' movimento
+  // mandando lo scroll fuori bersaglio.
   function scrollToBlock(el) {
-    const prev = el.previousElementSibling;
-    const ph = prev && prev.classList.contains("section")
-      ? prev.getBoundingClientRect().height : 0;
-    el.style.setProperty("--prev-h", ph + "px");
-    const go = () => el.scrollIntoView({ behavior: SMOOTH, block: "start" });
-    const content = el.querySelector(".section-content");
-    if (!REDUCED && content) {
-      let done = false;
-      const fire = () => { if (!done) { done = true; go(); } };
-      content.addEventListener("transitionend", fire, { once:true });
-      setTimeout(fire, 320);              // rete di sicurezza
-    } else {
-      go();
-    }
+    let last = null, stabili = 0, frame = 0, fatto = false;
+    const esegui = () => {
+      if (fatto) return;
+      fatto = true;
+      const prev = el.previousElementSibling;
+      const ph = prev && prev.classList.contains("section")
+        ? prev.getBoundingClientRect().height : 0;
+      el.style.setProperty("--prev-h", ph + "px");
+      el.scrollIntoView({ behavior: SMOOTH, block: "start" });
+    };
+    const tick = () => {
+      if (fatto) return;
+      // Posizione nel documento: non cambia quando si scorre.
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      stabili = (last !== null && Math.abs(top - last) < 1) ? stabili + 1 : 0;
+      last = top;
+      if (stabili >= 2 || ++frame > 60) { esegui(); return; }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    // Con la pagina nascosta requestAnimationFrame non gira: rete di sicurezza.
+    setTimeout(esegui, 400);
   }
 
   // ═══ Render ═════════════════════════════════════════════════
