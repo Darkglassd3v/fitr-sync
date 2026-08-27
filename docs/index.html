@@ -133,14 +133,13 @@
     text-transform:uppercase; color:var(--ink-dim); flex-shrink:0;
   }
 
+  /* Sempre una colonna sola, anche su tablet e TV. Con due o tre
+     colonne la fisarmonica non ha piu' senso: "lascia visibile il
+     blocco precedente" presuppone che il precedente stia SOPRA, e
+     scrollToBlock usa previousElementSibling, che in una griglia non
+     e' l'elemento visivamente sopra. */
   .sections { flex:1; display:grid; gap:clamp(0.6rem,1.4vw,1.2rem);
     align-content:start; grid-template-columns:1fr; }
-  @media (orientation:landscape) and (min-width:900px) {
-    .sections { grid-template-columns:repeat(2,1fr); }
-  }
-  @media (orientation:landscape) and (min-width:1700px) {
-    .sections[data-many="true"] { grid-template-columns:repeat(3,1fr); }
-  }
 
   .section { background:var(--panel); border:1px solid var(--line);
     border-left:4px solid var(--signal); border-radius:4px;
