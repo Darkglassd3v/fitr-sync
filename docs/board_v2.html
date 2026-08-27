@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Board v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600&display=swap" rel="stylesheet">
+<style>
+  /* ═══ Token ═══════════════════════════════════════════════
+     Palette CROSSBOARD invariata. Corretti solo i valori che
+     fallivano il contrasto: --signal-muted sostituisce
+     --signal-dim come colore TESTO (4.46:1 contro 2.1:1),
+     --line-strong da' un bordo visibile a distanza (3.25:1). */
+  :root {
+    --bg:#0a0a0b; --panel:#141416; --panel-hi:#1b1b1f;
+    --line:#26262b; --line-strong:#666673;
+    --ink:#f4f4f2; --ink-dim:#8a8a92;
+    --signal:#ff5b1e; --signal-dim:#7a2e12; --signal-muted:#c05a28;
+    --sel-surface:#241207;
+    --focus:#d8ff00;
+
+    --pad:clamp(0.7rem,2.4vw,1.4rem);
+    --gap:clamp(0.5rem,1.6vw,0.9rem);
+    --radius:6px;
+
+    /* Tipografia: mobile */
+    --fs-body:17px;
+    --fs-title:19px;
+    --fs-readtitle:22px;
+    --fs-brand:22px;
+    --fs-daynum:26px;
+    --fs-wd:13px;
+    --fs-meta:12px;
+
+    --ring:3px;
+    --dur:0.18s;
+  }
+
+  /* Modalita' TV: tipografia 10-foot (niente sotto i 18px) e
+     padding generoso per non farsi tagliare dall'overscan. */
+  body.tv {
+    --ink-dim:#9a9aa3;
+    --fs-body:20px;
+    --fs-title:21px;
+    --fs-readtitle:26px;
+    --fs-brand:26px;
+    --fs-daynum:32px;
+    --fs-wd:15px;
+    --fs-meta:15px;
+    --ring:5px;
+    --pad:max(2.5vh, 2.5vw);
+    --gap:1.2vw;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  html, body {
+    background:var(--bg); color:var(--ink);
+    font-family:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body { min-height:100dvh; }
+
+  /* Cursore telecomando: classe esplicita (non dipende
+     dall'euristica :focus-visible, che su Silk e' inaffidabile)
+     piu' il focus nativo come rete di sicurezza. */
+  .is-cursor,
+  .daybtn:focus-visible,
+  .rail-item:focus-visible,
+  .section:focus-visible {
+    outline:var(--ring) solid var(--focus);
+    outline-offset:2px;
+  }
+  /* Il lettore fa eccezione: un outline sul contenitore scrollabile
+     verrebbe tagliato dall'overflow del pannello e si vedrebbe solo
+     come una barra sotto l'intestazione. Il fuoco lo segnala il
+     bordo dell'intero pannello: e' anche piu' leggibile a distanza. */
+  .reader-scroll:focus { outline:none; }
+  .reader.cursor {
+    border-color:var(--focus);
+    box-shadow:inset 0 0 0 var(--ring) var(--focus);
+  }
+
+  /* ═══ Gate password ═══════════════════════════════════════ */
+  #gate {
+    position:fixed; inset:0; z-index:100;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--bg); padding:1.5rem;
+  }
+  #gate.hidden { display:none; }
+  .gate-box { width:100%; max-width:340px; text-align:center; }
+  .gate-brand {
+    font-family:'Barlow Condensed',sans-serif; font-weight:800;
+    font-size:clamp(1.8rem,6vw,2.6rem); letter-spacing:0.04em;
+    text-transform:uppercase; line-height:1; margin-bottom:1.8rem;
+  }
+  .gate-brand span { color:var(--signal); }
+  .gate-input {
+    width:100%; background:var(--panel); border:1px solid var(--line-strong);
+    border-radius:4px; padding:0.85em 1em; color:var(--ink);
+    font-family:'Barlow',sans-serif; font-size:1rem; text-align:center;
+    letter-spacing:0.1em; margin-bottom:0.8rem;
+  }
+  .gate-input:focus {
+    border-color:var(--signal);
+    outline:2px solid var(--signal); outline-offset:1px;
+  }
+  .gate-btn {
+    width:100%; min-height:48px; background:var(--signal); border:none;
+    border-radius:4px; padding:0.8em; color:#0a0a0b; cursor:pointer;
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:600;
+    font-size:0.95rem; letter-spacing:0.1em; text-transform:uppercase;
+  }
+  .gate-btn:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+  .gate-err {
+    color:var(--signal); font-family:'Barlow Semi Condensed',sans-serif;
+    font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase;
+    margin-top:0.8rem; min-height:1.2em;
+  }
+  .gate-note {
+    display:none; margin-top:1.4rem; padding:0.7rem 0.9rem;
+    border:1px solid var(--line-strong); border-left:3px solid var(--signal);
+    border-radius:4px; background:var(--panel);
+    font-size:0.82rem; line-height:1.4; color:var(--ink-dim); text-align:left;
+  }
+  .gate-note.show { display:block; }
+  .gate-note strong { color:var(--signal); font-weight:600; }
+
+  /* ═══ Telaio ══════════════════════════════════════════════ */
+  .board { display:none; flex-direction:column; gap:var(--gap);
+    padding-top:max(var(--pad), env(safe-area-inset-top));
+    padding-right:max(var(--pad), env(safe-area-inset-right));
+    padding-bottom:max(var(--pad), env(safe-area-inset-bottom));
+    padding-left:max(var(--pad), env(safe-area-inset-left)); }
+  .board.show { display:flex; }
+  /* Su TV la pagina non scorre mai: scorre solo il lettore. */
+  body.tv    .board { height:100dvh; overflow:hidden; }
+  body.mobile .board { min-height:100dvh; }
+
+  header {
+    display:flex; align-items:baseline; justify-content:space-between;
+    flex-wrap:wrap; gap:0.3rem 1rem; flex-shrink:0;
+  }
+  .brand { font-family:'Barlow Condensed',sans-serif; font-weight:800;
+    font-size:var(--fs-brand); letter-spacing:0.04em;
+    text-transform:uppercase; line-height:1; order:1; }
+  .brand span { color:var(--signal); }
+  .clock { font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:var(--fs-brand); color:var(--signal);
+    letter-spacing:0.04em; font-variant-numeric:tabular-nums; order:2; }
+  /* Mobile: la data va a capo su una riga sua. TV: sta in linea. */
+  .daylabel { font-family:'Barlow Condensed',sans-serif; font-weight:600;
+    font-size:var(--fs-title); letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--ink-dim);
+    order:3; flex-basis:100%; }
+  body.tv .daylabel { order:2; flex-basis:auto; flex:1; text-align:center; }
+  body.tv .clock { order:3; }
+
+  /* ═══ Strip settimana ═════════════════════════════════════ */
+  .week {
+    display:grid; grid-template-columns:repeat(7,1fr); gap:var(--gap);
+    border-bottom:3px solid var(--signal);
+    padding-bottom:var(--gap); flex-shrink:0;
+  }
+  body.mobile .week { position:sticky; top:0; z-index:9; background:var(--bg); }
+  .daybtn {
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:var(--radius); padding:0.45rem 0.2rem 0.35rem;
+    min-height:48px; cursor:pointer; text-align:center; color:inherit;
+    font:inherit; -webkit-tap-highlight-color:transparent;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:background var(--dur) ease, border-color var(--dur) ease;
+  }
+  body.tv .daybtn { min-height:0; padding:0.4rem 0.2rem; }
+  .daybtn:hover { background:var(--panel-hi); }
+  .daybtn .wd {
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:600;
+    font-size:var(--fs-wd); letter-spacing:0.08em; color:var(--ink-dim);
+  }
+  .daybtn .dn {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:var(--fs-daynum); line-height:1.1;
+  }
+  .daybtn .dot {
+    width:6px; height:6px; border-radius:50%; background:var(--signal);
+    margin-top:0.2rem; opacity:0;
+  }
+  .daybtn.has-content .dot { opacity:1; }
+  /* "Oggi": sottolineatura piena invece del vecchio bordo scuro,
+     che a distanza era invisibile. */
+  .daybtn.today { border-bottom:3px solid var(--signal); }
+  .daybtn.active { background:var(--signal); border-color:var(--signal); }
+  .daybtn.active .wd,
+  .daybtn.active .dn { color:#0a0a0b; }
+  .daybtn.active .dot { background:#0a0a0b; }
+
+  /* ═══ Palcoscenico ════════════════════════════════════════ */
+  #stage { flex:1; min-height:0; display:flex; flex-direction:column; }
+
+  /* ── TV: rail dei titoli + lettore ─────────────────────── */
+  .tv-layout {
+    flex:1; min-height:0; display:grid;
+    grid-template-columns:minmax(15rem,26%) 1fr; gap:var(--gap);
+  }
+  .rail, .reader {
+    background:var(--panel); border:1px solid var(--line-strong);
+    border-radius:var(--radius); display:flex; flex-direction:column;
+    min-height:0; overflow:hidden;
+  }
+  .rail-list { flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain;
+    scrollbar-width:none; }
+  .rail-list::-webkit-scrollbar { display:none; }
+  .rail-item {
+    display:block; width:100%; text-align:left; cursor:pointer;
+    background:transparent; border:0; border-left:6px solid transparent;
+    border-bottom:1px solid var(--line);
+    padding:0.5em 0.7em; color:var(--ink-dim);
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:var(--fs-title); letter-spacing:0.02em; text-transform:uppercase;
+    line-height:1.15;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow:hidden;
+    transition:background var(--dur) ease, color var(--dur) ease;
+  }
+  /* Riga selezionata: superficie + barra, non solo l'anello di focus. */
+  .rail-item.sel {
+    background:var(--sel-surface); border-left-color:var(--signal);
+    color:var(--signal);
+  }
+  .rail-foot {
+    flex-shrink:0; border-top:1px solid var(--line-strong);
+    padding:0.35em 0.7em; display:flex; justify-content:space-between;
+    font-family:'Barlow Semi Condensed',sans-serif; font-size:var(--fs-meta);
+    letter-spacing:0.08em; color:var(--ink-dim); font-variant-numeric:tabular-nums;
+  }
+
+  .reader { position:relative; }
+  .reader-head {
+    flex-shrink:0; display:flex; align-items:baseline; justify-content:space-between;
+    gap:1rem; padding:0.5em 0.7em; border-bottom:2px solid var(--signal);
+  }
+  .reader-title {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:var(--fs-readtitle); letter-spacing:0.02em;
+    text-transform:uppercase; color:var(--signal); line-height:1.05;
+  }
+  .reader-pos {
+    flex-shrink:0; font-family:'Barlow Semi Condensed',sans-serif;
+    font-size:var(--fs-meta); letter-spacing:0.08em; color:var(--ink-dim);
+    font-variant-numeric:tabular-nums;
+  }
+  .reader-scroll {
+    flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain;
+    padding:0.7em; scrollbar-width:none;
+  }
+  .reader-scroll::-webkit-scrollbar { display:none; }
+  .reader-body {
+    font-size:var(--fs-body); line-height:1.5;
+    white-space:pre-wrap; overflow-wrap:anywhere;
+    max-width:68ch;
+  }
+  /* Sfumatura + freccia: senza barra di scorrimento, a 3 m serve
+     un segnale esplicito che sotto c'e' dell'altro. */
+  .reader-fade {
+    position:absolute; left:0; right:0; bottom:0; height:4.5rem;
+    pointer-events:none; opacity:0; transition:opacity var(--dur) ease;
+    background:linear-gradient(to bottom, transparent, var(--panel) 80%);
+    display:flex; align-items:flex-end; justify-content:center;
+    padding-bottom:0.3rem; color:var(--signal); font-size:var(--fs-meta);
+  }
+  .reader.more .reader-fade { opacity:1; }
+
+  /* ── Mobile: fisarmonica a colonna singola ──────────────── */
+  .accordion { display:flex; flex-direction:column; gap:var(--gap); }
+  .section {
+    background:var(--panel); border:1px solid var(--line);
+    border-left:4px solid var(--signal); border-radius:var(--radius);
+    cursor:pointer; -webkit-tap-highlight-color:transparent;
+    /* Ancora lo scroll sotto la strip fissa lasciando visibile
+       il blocco precedente: niente piu' matematica a mano. */
+    scroll-margin-top:calc(var(--strip-h,0px) + var(--prev-h,0px) + 12px);
+  }
+  .section-head {
+    display:flex; align-items:center; justify-content:space-between;
+    gap:0.75rem; padding:0.7em; user-select:none;
+  }
+  .section-title {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:var(--fs-title); letter-spacing:0.03em; text-transform:uppercase;
+    color:var(--signal); line-height:1.05; flex:1;
+  }
+  .chevron {
+    flex-shrink:0; width:0.85em; height:0.85em;
+    border-right:3px solid var(--ink-dim); border-bottom:3px solid var(--ink-dim);
+    transform:rotate(45deg); margin-top:-0.3em;
+    transition:transform var(--dur) ease;
+  }
+  .section.open .chevron { transform:rotate(-135deg); margin-top:0.2em; }
+  .section-preview {
+    font-size:var(--fs-body); line-height:1.4; color:var(--ink-dim);
+    padding:0 0.7em 0.7em; white-space:pre-wrap; overflow-wrap:anywhere;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow:hidden;
+  }
+  .section.open .section-preview { display:none; }
+  /* Base senza animazione: nessun max-height, quindi nessun
+     troncamento silenzioso dei blocchi lunghi. */
+  .section-content { display:none; }
+  .section.open .section-content { display:block; }
+  @media (prefers-reduced-motion:no-preference) {
+    .section-content { display:grid; grid-template-rows:0fr;
+      transition:grid-template-rows var(--dur) ease-out; }
+    .section.open .section-content { grid-template-rows:1fr; }
+    .sc-inner { overflow:hidden; min-height:0; }
+  }
+  .section-body {
+    font-size:var(--fs-body); line-height:1.5; white-space:pre-wrap;
+    overflow-wrap:anywhere; padding:0 0.7em 0.7em;
+  }
+
+  /* ── Allegati ───────────────────────────────────────────── */
+  .media { padding:0 0.7em 0.7em; }
+  body.tv .media { padding:0.7em 0 0; border-top:1px solid var(--line); }
+  .media-label {
+    font-family:'Barlow Semi Condensed',sans-serif; font-size:var(--fs-meta);
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim);
+    display:block; margin-bottom:0.4em;
+  }
+  .media-list { display:flex; flex-wrap:wrap; gap:8px; list-style:none; }
+  .media-item, .media-link {
+    display:inline-flex; align-items:center; min-height:44px;
+    padding:0.3em 0.7em; border-radius:4px;
+    border:1px solid var(--signal-dim); color:var(--signal);
+    font-family:'Barlow Semi Condensed',sans-serif; font-size:var(--fs-meta);
+    letter-spacing:0.04em; text-decoration:none; line-height:1.2;
+  }
+  body.tv .media-item { min-height:0; }
+  .media-link:hover { background:var(--sel-surface); }
+  .media-link:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+
+  /* ── Riposo ─────────────────────────────────────────────── */
+  .rest { flex:1; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:1rem; min-height:40vh; }
+  .rest-mark { font-family:'Barlow Condensed',sans-serif; font-weight:800;
+    font-size:clamp(3.5rem,15vw,13rem); color:var(--signal); line-height:0.85; }
+  .rest-label { font-family:'Barlow Condensed',sans-serif; font-weight:600;
+    font-size:clamp(1rem,3.5vw,2.5rem); letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--signal-muted); }
+
+  /* ── Footer ─────────────────────────────────────────────── */
+  footer { flex-shrink:0; display:flex; justify-content:space-between;
+    align-items:center; flex-wrap:wrap; gap:0.5rem;
+    font-family:'Barlow Semi Condensed',sans-serif; font-size:var(--fs-meta);
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim);
+    border-top:1px solid var(--line); padding-top:0.5em; }
+  .stale { color:var(--signal); }
+  .live-dot { display:inline-block; width:0.5em; height:0.5em; border-radius:50%;
+    background:var(--signal); margin-right:0.4em; }
+  @media (prefers-reduced-motion:no-preference) {
+    .live-dot { animation:pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  }
+
+  /* Avviso "premi di nuovo Indietro per uscire" */
+  .toast {
+    position:fixed; left:50%; bottom:6vh; transform:translateX(-50%);
+    background:var(--panel); border:1px solid var(--line-strong);
+    border-left:4px solid var(--signal); border-radius:var(--radius);
+    padding:0.6em 1em; font-size:var(--fs-meta); letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--ink); z-index:50;
+    opacity:0; pointer-events:none; transition:opacity var(--dur) ease;
+  }
+  .toast.show { opacity:1; }
+</style>
+</head>
+<body>
+
+<!-- Gate password (protezione base lato client) -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-brand">CROSS<span>BOARD</span></div>
+    <input type="password" class="gate-input" id="pwd" placeholder="PASSWORD"
+           autocomplete="current-password" autocapitalize="characters"
+           autocorrect="off" spellcheck="false" enterkeyhint="go">
+    <button class="gate-btn" id="enter">Entra</button>
+    <div class="gate-err" id="err" role="status" aria-live="polite"></div>
+    <div class="gate-note" id="note"></div>
+  </div>
+</div>
+
+<div class="board" id="board">
+  <header>
+    <div class="brand">CROSS<span>BOARD</span></div>
+    <div class="daylabel" id="daylabel">&mdash;</div>
+    <div class="clock" id="clock">--:--</div>
+  </header>
+
+  <div class="week" id="week" role="tablist" aria-label="Giorni della settimana"></div>
+  <div id="stage"></div>
+
+  <footer>
+    <div><span class="live-dot"></span><span id="status">In diretta</span></div>
+    <div id="updated">&mdash;</div>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  // ═══ Config ═════════════════════════════════════════════════
+  // La password non e' mai nel sorgente: qui c'e' solo il suo hash
+  // PBKDF2. Valori riscritti ogni mese da rotate_password.py.
+  const PWD_HASH   = "0041e63010bb858b01a17fc54735f37e29c2993e19ff581f77bbc93b98bf6d13";
+  const PWD_SALT   = "b167351a90b65b7988ac4e821eb62ea3";
+  const PWD_PERIOD = "2026-08";
+  const KIOSK_HASH = "ad2729a251722009b97054de9dd1bc2474d9e1ea2e01926ddea4029f6197215d";
+  const PBKDF2_ITER = 100000;
+
+  const DATA_URL   = "board_data.json";
+  const REFRESH_MS = 5 * 60 * 1000;
+  const STORE_KEY  = "cb_auth_" + PWD_PERIOD;   // il login scade col mese
+  const KIOSK_KEY  = "cb_kiosk_v2";             // il kiosk no: la TV non ha tastiera
+  const CACHE_KEY  = "cb_data_v2";
+
+  // ?kiosk=TOKEN salta il login. ?mode=tv|mobile forza il layout (per i test).
+  // Il parametro ?view viene deliberatamente IGNORATO: la vista settimana
+  // non esiste in v2 (liste troppo lunghe per 7 colonne).
+  const urlParams  = new URLSearchParams(location.search);
+  const MODE_FORCE = urlParams.get("mode");
+
+  const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const SMOOTH  = REDUCED ? "auto" : "smooth";
+
+  const $ = id => document.getElementById(id);
+  const els = {
+    gate:$("gate"), pwd:$("pwd"), enter:$("enter"), err:$("err"), note:$("note"),
+    board:$("board"), week:$("week"), stage:$("stage"), daylabel:$("daylabel"),
+    clock:$("clock"), status:$("status"), updated:$("updated"), toast:$("toast"),
+  };
+
+  // ═══ Stato condiviso ════════════════════════════════════════
+  // Dichiarato prima di tutto: applyMode() e unlock() possono girare
+  // durante la valutazione dello script, e leggerebbero variabili
+  // ancora in temporal dead zone.
+  const tvQuery = window.matchMedia("(min-width: 900px) and (orientation: landscape)");
+  const state = { day:0, block:0, zone:"days", readerScroll:0, dayPicked:false };
+  let MODE     = "mobile";
+  let weekData = null;
+  let lastRaw  = null;
+  let unlocked = false;
+  let isKiosk  = false;
+  let armed    = false;
+
+  // ═══ Cripto ═════════════════════════════════════════════════
+  function hexToBytes(hex) {
+    const out = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < out.length; i++) out[i] = parseInt(hex.substr(i * 2, 2), 16);
+    return out;
+  }
+  function bytesToHex(buf) {
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+  async function hashPassword(password) {
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      "raw", enc.encode(password), "PBKDF2", false, ["deriveBits"]
+    );
+    const bits = await crypto.subtle.deriveBits(
+      { name: "PBKDF2", salt: hexToBytes(PWD_SALT), iterations: PBKDF2_ITER, hash: "SHA-256" },
+      key, 256
+    );
+    return bytesToHex(bits);
+  }
+
+  // ═══ Avviso cambio password ═════════════════════════════════
+  (function checkExpiry() {
+    const now = new Date();
+    const lastDay  = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    const daysLeft = lastDay - now.getDate();
+    if (daysLeft > 3) return;
+    const quando = daysLeft === 0 ? "domani"
+                 : daysLeft === 1 ? "dopodomani"
+                 : `tra ${daysLeft + 1} giorni`;
+    els.note.innerHTML = `<strong>La password cambia ${quando}.</strong> ` +
+      "Si rinnova da sola il 1 del mese: da quel giorno serve quella nuova.";
+    els.note.classList.add("show");
+  })();
+
+  // ═══ Gate ═══════════════════════════════════════════════════
+  function unlock() {
+    if (unlocked) return;          // idempotente: gate e kiosk possono coincidere
+    unlocked = true;
+    els.gate.classList.add("hidden");
+    els.board.classList.add("show");
+    applyMode();
+    armBack();
+    load();
+  }
+
+  async function tryLogin() {
+    const val = els.pwd.value;
+    if (!val) return;
+    els.enter.disabled = true;
+    els.err.textContent = "Verifica...";
+    try {
+      if (await hashPassword(val) === PWD_HASH) {
+        try { sessionStorage.setItem(STORE_KEY, "1"); } catch (e) {}
+        unlock();
+      } else {
+        els.err.textContent = "Password errata";
+        els.pwd.value = "";
+      }
+    } catch (e) {
+      els.err.textContent = "Errore di verifica";
+    }
+    els.enter.disabled = false;
+  }
+
+  els.enter.addEventListener("click", tryLogin);
+  els.pwd.addEventListener("keydown", e => { if (e.key === "Enter") tryLogin(); });
+
+  let hadSession = false;
+  try { hadSession = sessionStorage.getItem(STORE_KEY) === "1"; } catch (e) {}
+  if (hadSession) unlock();
+
+  // ═══ Kiosk (TV in palestra) ═════════════════════════════════
+  // Il grant viene salvato in localStorage: la TV deve restare
+  // sbloccata anche dopo un riavvio o se perde la query string.
+  (async function checkKiosk() {
+    let stored = null;
+    try { stored = localStorage.getItem(KIOSK_KEY); } catch (e) {}
+    if (stored === KIOSK_HASH) { isKiosk = true; document.body.classList.add("kiosk"); unlock(); }
+
+    const token = urlParams.get("kiosk");
+    if (!token) return;
+    try {
+      const enc = new TextEncoder();
+      const buf = await crypto.subtle.digest("SHA-256", enc.encode("kiosk:" + token));
+      if (bytesToHex(buf) === KIOSK_HASH) {
+        isKiosk = true;
+        document.body.classList.add("kiosk");
+        try { localStorage.setItem(KIOSK_KEY, KIOSK_HASH); } catch (e) {}
+        applyMode();
+        unlock();
+      } else if (!unlocked) {
+        els.err.textContent = "Token kiosk non valido";
+      }
+    } catch (e) {}
+  })();
+
+  // ═══ Modalita' TV / mobile ══════════════════════════════════
+  function detectMode() {
+    if (MODE_FORCE === "tv" || MODE_FORCE === "mobile") return MODE_FORCE;
+    if (isKiosk) return "tv";                 // la TV e' TV anche se riporta 720p
+    return tvQuery.matches ? "tv" : "mobile";
+  }
+  function applyMode() {
+    const next = detectMode();
+    const changed = next !== MODE;
+    MODE = next;
+    document.body.classList.toggle("tv", MODE === "tv");
+    document.body.classList.toggle("mobile", MODE === "mobile");
+    if (changed && weekData) render();          // conserva lo stato
+  }
+  window.addEventListener("resize", applyMode);
+  window.addEventListener("orientationchange", applyMode);
+  applyMode();
+
+  // Altezza della strip: serve a scroll-margin-top sul mobile.
+  if (window.ResizeObserver) {
+    new ResizeObserver(entries => {
+      const h = entries[0].target.getBoundingClientRect().height;
+      document.documentElement.style.setProperty("--strip-h", h + "px");
+    }).observe(els.week);
+  }
+
+  // ═══ Orologio ═══════════════════════════════════════════════
+  function tickClock() {
+    const now = new Date(), p = n => String(n).padStart(2, "0");
+    els.clock.textContent = `${p(now.getHours())}:${p(now.getMinutes())}:${p(now.getSeconds())}`;
+  }
+  setInterval(tickClock, 1000); tickClock();
+
+  let toastTimer = null;
+  function toast(msg) {
+    els.toast.textContent = msg;
+    els.toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => els.toast.classList.remove("show"), 2200);
+  }
+
+  function mediaLabel(kind) {
+    if (kind === "youtube" || kind === "video") return "Video";
+    if (kind === "other") return "PDF";
+    return "Media";
+  }
+
+  // ═══ Stato ══════════════════════════════════════════════════
+  // Un solo oggetto: sopravvive al refresh dei dati e al cambio
+  // di modalita'. zone: "days" | "rail" | "blocks" | "reader".
+  const curDay    = () => (weekData && weekData.days[state.day]) || null;
+  const curBlocks = () => { const d = curDay(); return (d && d.sections) || []; };
+
+  function clampState() {
+    const n = weekData && weekData.days ? weekData.days.length : 0;
+    if (!n) return;
+    state.day = Math.min(Math.max(state.day, 0), n - 1);
+    const b = curBlocks().length;
+    state.block = b ? Math.min(Math.max(state.block, 0), b - 1) : 0;
+    if (!b && state.zone !== "days") state.zone = "days";
+    if (MODE === "mobile" && state.zone === "rail")   state.zone = "blocks";
+    if (MODE === "mobile" && state.zone === "reader") state.zone = "blocks";
+    if (MODE === "tv"     && state.zone === "blocks") state.zone = "rail";
+  }
+
+  // ═══ Strip settimana ════════════════════════════════════════
+  function renderWeek() {
+    els.week.textContent = "";
+    weekData.days.forEach((d, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "daybtn";
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", String(i === state.day));
+      b.setAttribute("aria-label", d.date_label);
+      b.tabIndex = -1;
+      if (d.is_today) b.classList.add("today");
+      if (i === state.day) b.classList.add("active");
+      if (!d.empty) b.classList.add("has-content");
+      const wd = document.createElement("span"); wd.className = "wd"; wd.textContent = d.weekday;
+      const dn = document.createElement("span"); dn.className = "dn"; dn.textContent = d.day_number;
+      const dt = document.createElement("span"); dt.className = "dot";
+      b.append(wd, dn, dt);
+      b.addEventListener("click", () => {
+        state.day = i; state.block = 0; state.readerScroll = 0; state.zone = "days";
+        render();
+      });
+      els.week.appendChild(b);
+    });
+  }
+
+  // ═══ Allegati ═══════════════════════════════════════════════
+  // Su mobile sono link tappabili. Su TV restano testo: aprire
+  // YouTube sul Firestick vuol dire perdere la board.
+  function buildMedia(section) {
+    const atts = (section.attachments || []).filter(a => a.title || a.src);
+    if (!atts.length) return null;
+    const wrap = document.createElement("div");
+    wrap.className = "media";
+    const lab = document.createElement("span");
+    lab.className = "media-label";
+    lab.textContent = [...new Set(atts.map(a => mediaLabel(a.kind)))].join(" / ");
+    wrap.appendChild(lab);
+    const ul = document.createElement("ul");
+    ul.className = "media-list";
+    atts.forEach(a => {
+      const li = document.createElement("li");
+      const txt = a.title || mediaLabel(a.kind);
+      if (MODE === "mobile" && a.src) {
+        const link = document.createElement("a");
+        link.className = "media-link";
+        link.href = a.src; link.target = "_blank"; link.rel = "noopener noreferrer";
+        link.textContent = txt;
+        li.appendChild(link);
+      } else {
+        const sp = document.createElement("span");
+        sp.className = "media-item";
+        sp.textContent = txt;
+        li.appendChild(sp);
+      }
+      ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+    return wrap;
+  }
+
+  function restPanel() {
+    const rest = document.createElement("div");
+    rest.className = "rest";
+    const m = document.createElement("div"); m.className = "rest-mark";  m.textContent = "REST";
+    const l = document.createElement("div"); l.className = "rest-label"; l.textContent = "Giorno di riposo";
+    rest.append(m, l);
+    return rest;
+  }
+
+  // ═══ TV: rail dei titoli + lettore ══════════════════════════
+  let readerScrollEl = null, readerPosEl = null, readerEl = null;
+
+  function renderTv() {
+    els.stage.textContent = "";
+    const blocks = curBlocks();
+    if (!blocks.length) { els.stage.appendChild(restPanel()); readerScrollEl = null; return; }
+
+    const layout = document.createElement("div");
+    layout.className = "tv-layout";
+
+    // ── Rail
+    const rail = document.createElement("div");
+    rail.className = "rail";
+    const list = document.createElement("div");
+    list.className = "rail-list";
+    list.setAttribute("role", "tablist");
+    list.setAttribute("aria-orientation", "vertical");
+    blocks.forEach((s, i) => {
+      const it = document.createElement("button");
+      it.type = "button";
+      it.className = "rail-item" + (i === state.block ? " sel" : "");
+      it.setAttribute("role", "tab");
+      it.setAttribute("aria-selected", String(i === state.block));
+      it.tabIndex = -1;
+      it.textContent = s.title || `Blocco ${i + 1}`;
+      it.addEventListener("click", () => {
+        state.block = i; state.readerScroll = 0; state.zone = "rail"; render();
+      });
+      list.appendChild(it);
+    });
+    const foot = document.createElement("div");
+    foot.className = "rail-foot";
+    const fl = document.createElement("span"); fl.textContent = "Blocchi";
+    const fr = document.createElement("span"); fr.textContent = `${state.block + 1}/${blocks.length}`;
+    foot.append(fl, fr);
+    rail.append(list, foot);
+
+    // ── Lettore
+    const sec = blocks[state.block];
+    readerEl = document.createElement("div");
+    readerEl.className = "reader";
+
+    const head = document.createElement("div");
+    head.className = "reader-head";
+    const title = document.createElement("div");
+    title.className = "reader-title";
+    title.textContent = sec.title || "";
+    readerPosEl = document.createElement("div");
+    readerPosEl.className = "reader-pos";
+    head.append(title, readerPosEl);
+
+    readerScrollEl = document.createElement("div");
+    readerScrollEl.className = "reader-scroll";
+    readerScrollEl.tabIndex = -1;
+    readerScrollEl.setAttribute("role", "tabpanel");
+    const body = document.createElement("div");
+    body.className = "reader-body";
+    body.textContent = sec.description || "";
+    readerScrollEl.appendChild(body);
+    const media = buildMedia(sec);
+    if (media) readerScrollEl.appendChild(media);
+
+    const fade = document.createElement("div");
+    fade.className = "reader-fade";
+    fade.textContent = "▼";
+
+    readerEl.append(head, readerScrollEl, fade);
+    layout.append(rail, readerEl);
+    els.stage.appendChild(layout);
+
+    readerScrollEl.addEventListener("scroll", updateReaderPos, { passive:true });
+    readerScrollEl.scrollTop = state.readerScroll;
+    requestAnimationFrame(updateReaderPos);
+    setTimeout(updateReaderPos, 120);   // dopo il caricamento dei font
+  }
+
+  // Indicatore di posizione: senza barra di scorrimento, a 3 m
+  // non si capirebbe quanto testo manca.
+  function updateReaderPos() {
+    if (!readerScrollEl || !readerPosEl) return;
+    const sc = readerScrollEl;
+    const h  = sc.clientHeight || 1;
+    const pages = Math.max(1, Math.ceil(sc.scrollHeight / h));
+    // Sulla frazione di scorrimento, non su floor(top/h): cosi'
+    // l'indicatore e' monotono e tocca sempre l'ultima pagina.
+    const max   = sc.scrollHeight - h;
+    const frac  = max > 0 ? Math.min(1, sc.scrollTop / max) : 0;
+    const cur   = Math.round(frac * (pages - 1)) + 1;
+    readerPosEl.textContent = pages > 1 ? `▊ ${cur}/${pages}` : "";
+    const more = sc.scrollTop + h < sc.scrollHeight - 2;
+    if (readerEl) readerEl.classList.toggle("more", more);
+    state.readerScroll = sc.scrollTop;
+  }
+
+  // Avanza di ~80% di schermata: sui blocchi da 6.000+ caratteri lo
+  // scroll a pixel richiederebbe decine di pressioni.
+  // Lo scatto e' istantaneo di proposito: con lo scorrimento morbido
+  // ogni pressione ripartiva dalla posizione a meta' animazione, quindi
+  // tenendo premuto il tasto il testo avanzava di pochi pixel. Sulla
+  // GPU del Firestick l'animazione su un contenitore lungo e' anche
+  // il punto in cui si vedono gli scatti.
+  // Torna true se si e' effettivamente mosso.
+  function readerPage(dir) {
+    if (!readerScrollEl) return false;
+    const sc = readerScrollEl;
+    const before = sc.scrollTop;
+    const max = Math.max(0, sc.scrollHeight - sc.clientHeight);
+    const next = Math.min(Math.max(before + dir * sc.clientHeight * 0.8, 0), max);
+    if (Math.abs(next - before) < 2) return false;
+    sc.scrollTop = next;
+    updateReaderPos();
+    return true;
+  }
+
+  // ═══ Mobile: fisarmonica a colonna singola ══════════════════
+  function renderMobile() {
+    els.stage.textContent = "";
+    const blocks = curBlocks();
+    if (!blocks.length) { els.stage.appendChild(restPanel()); return; }
+
+    const acc = document.createElement("div");
+    acc.className = "accordion";
+
+    blocks.forEach((s, i) => {
+      const el = document.createElement("div");
+      el.className = "section" + (i === state.block ? " open" : "");
+      el.tabIndex = -1;
+
+      const head = document.createElement("div");
+      head.className = "section-head";
+      const t = document.createElement("div");
+      t.className = "section-title";
+      t.textContent = s.title || `Blocco ${i + 1}`;
+      const ch = document.createElement("div");
+      ch.className = "chevron";
+      head.append(t, ch);
+
+      const prev = document.createElement("div");
+      prev.className = "section-preview";
+      prev.textContent = s.description || "";
+
+      const content = document.createElement("div");
+      content.className = "section-content";
+      const inner = document.createElement("div");
+      inner.className = "sc-inner";
+      const body = document.createElement("div");
+      body.className = "section-body";
+      body.textContent = s.description || "";
+      inner.appendChild(body);
+      const media = buildMedia(s);
+      if (media) inner.appendChild(media);
+      content.appendChild(inner);
+
+      el.append(head, prev, content);
+
+      // Si apre toccando ovunque nel rettangolo. Quando e' gia'
+      // aperto solo l'intestazione lo richiude: cosi' non si
+      // chiude leggendo o toccando un link.
+      el.addEventListener("click", ev => {
+        if (ev.target.closest("a")) return;      // i link video passano
+        const aperto   = el.classList.contains("open");
+        const suHeader = !!ev.target.closest(".section-head");
+        if (aperto && !suHeader) return;
+        if (aperto && suHeader) { closeBlock(); return; }
+        openBlock(i);
+      });
+
+      acc.appendChild(el);
+    });
+
+    els.stage.appendChild(acc);
+  }
+
+  const sectionEls = () => [...els.stage.querySelectorAll(".section")];
+
+  function openBlock(i, scroll = true) {
+    const secs = sectionEls();
+    if (!secs[i]) return;
+    state.block = i;
+    state.zone  = "blocks";
+    secs.forEach((s, k) => s.classList.toggle("open", k === i));
+    updateCursor();
+    if (scroll) scrollToBlock(secs[i]);
+  }
+
+  function closeBlock() {
+    sectionEls().forEach(s => s.classList.remove("open"));
+  }
+
+  // Porta il blocco in alto lasciando visibile quello precedente
+  // (gia' chiuso), cosi' si torna indietro con un tap.
+  // scroll-margin-top fa il lavoro: niente calcoli a mano.
+  function scrollToBlock(el) {
+    const prev = el.previousElementSibling;
+    const ph = prev && prev.classList.contains("section")
+      ? prev.getBoundingClientRect().height : 0;
+    el.style.setProperty("--prev-h", ph + "px");
+    const go = () => el.scrollIntoView({ behavior: SMOOTH, block: "start" });
+    const content = el.querySelector(".section-content");
+    if (!REDUCED && content) {
+      let done = false;
+      const fire = () => { if (!done) { done = true; go(); } };
+      content.addEventListener("transitionend", fire, { once:true });
+      setTimeout(fire, 320);              // rete di sicurezza
+    } else {
+      go();
+    }
+  }
+
+  // ═══ Render ═════════════════════════════════════════════════
+  function render() {
+    if (!weekData || !weekData.days || !weekData.days.length) return;
+    clampState();
+    const day = curDay();
+    els.daylabel.textContent = day ? day.date_label : "—";
+    renderWeek();
+    if (MODE === "tv") renderTv(); else renderMobile();
+    updateCursor();
+  }
+
+  // ═══ Cursore telecomando ════════════════════════════════════
+  // Roving tabindex: un solo elemento focalizzabile per zona.
+  // Il focus DOM segue il cursore, cosi' Silk smette di disegnare
+  // un secondo cursore tutto suo.
+  function zoneEls() {
+    if (state.zone === "days")   return [...els.week.querySelectorAll(".daybtn")];
+    if (state.zone === "rail")   return [...els.stage.querySelectorAll(".rail-item")];
+    if (state.zone === "blocks") return sectionEls();
+    if (state.zone === "reader") return readerScrollEl ? [readerScrollEl] : [];
+    return [];
+  }
+  function cursorIndex() {
+    if (state.zone === "days")   return state.day;
+    if (state.zone === "reader") return 0;
+    return state.block;
+  }
+
+  function focusEl(el) {
+    try { el.focus({ preventScroll:true }); } catch (e) { el.focus(); }
+  }
+
+  function updateCursor() {
+    document.querySelectorAll(".is-cursor").forEach(e => e.classList.remove("is-cursor"));
+    document.querySelectorAll(".reader.cursor").forEach(e => e.classList.remove("cursor"));
+    [...document.querySelectorAll(".daybtn, .rail-item, .section")]
+      .forEach(e => { e.tabIndex = -1; });
+
+    const el = zoneEls()[cursorIndex()];
+    if (!el) return;
+
+    if (state.zone === "reader") {
+      if (readerEl) readerEl.classList.add("cursor");
+      focusEl(el);
+      return;
+    }
+
+    el.classList.add("is-cursor");
+    el.tabIndex = 0;
+    focusEl(el);
+    el.scrollIntoView({ behavior: SMOOTH, block: "nearest" });
+  }
+
+  function setDay(i) {
+    const n = weekData.days.length;
+    state.day = (i + n) % n;
+    state.block = 0;
+    state.readerScroll = 0;
+    render();
+  }
+
+  function setBlock(i) {
+    const blocks = curBlocks();
+    if (!blocks.length) return;
+    state.block = Math.min(Math.max(i, 0), blocks.length - 1);
+    state.readerScroll = 0;
+    if (MODE === "tv") { render(); }        // il lettore segue il cursore
+    else { updateCursor(); }
+  }
+
+  function enterBlocks() {
+    if (!curBlocks().length) return;
+    state.zone = (MODE === "tv") ? "rail" : "blocks";
+    pushDepth();
+    updateCursor();
+  }
+
+  // ═══ Tasti ══════════════════════════════════════════════════
+  const BACK_KEYS = ["Escape", "Backspace", "GoBack", "BrowserBack"];
+
+  function onKey(e) {
+    if (!els.board.classList.contains("show")) return;
+    if (!weekData || !weekData.days || !weekData.days.length) return;
+    if (e.target === els.pwd) return;
+
+    const k = e.key;
+    if (BACK_KEYS.includes(k) || e.keyCode === 461) {
+      e.preventDefault();
+      if (!goBack()) toast("Premi di nuovo Indietro per uscire");
+      return;
+    }
+
+    // ── Zona giorni ──
+    if (state.zone === "days") {
+      switch (k) {
+        case "ArrowRight": e.preventDefault(); setDay(state.day + 1); break;
+        case "ArrowLeft":  e.preventDefault(); setDay(state.day - 1); break;
+        case "ArrowDown":
+        case "Enter":
+        case " ":          e.preventDefault(); enterBlocks(); break;
+      }
+      return;
+    }
+
+    // ── Zona lettore (solo TV) ──
+    if (state.zone === "reader") {
+      switch (k) {
+        case "ArrowDown":
+        case "PageDown":
+          e.preventDefault(); readerPage(1); break;
+        case "ArrowUp":
+        case "PageUp":
+          e.preventDefault(); readerPage(-1); break;
+        case "ArrowLeft":
+          e.preventDefault(); goBack(); break;
+      }
+      return;
+    }
+
+    // ── Zona blocchi (rail su TV, fisarmonica su mobile) ──
+    const blocks = curBlocks();
+    if (!blocks.length) { state.zone = "days"; updateCursor(); return; }
+
+    switch (k) {
+      case "ArrowDown":
+        e.preventDefault();
+        if (state.block < blocks.length - 1) setBlock(state.block + 1);
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        if (state.block === 0) { state.zone = "days"; updateCursor(); }
+        else setBlock(state.block - 1);
+        break;
+      case "ArrowRight":
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        if (MODE === "tv") {
+          state.zone = "reader"; pushDepth(); updateCursor();
+        } else {
+          openBlock(state.block);          // apre e basta: non chiude mai
+        }
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        goBack();
+        break;
+    }
+  }
+  document.addEventListener("keydown", onKey);
+
+  // ═══ Tasto Indietro del Firestick ═══════════════════════════
+  // Si arma una voce sentinella nella cronologia a ogni discesa di
+  // zona: il tasto Indietro risale invece di uscire dalla board.
+  function armBack() {
+    if (armed) return;
+    armed = true;
+    try { history.pushState({ cb:0 }, ""); } catch (e) {}
+  }
+  function pushDepth() {
+    try { history.pushState({ cb:1 }, ""); } catch (e) {}
+  }
+  // true = consumato (si risale di una zona), false = si esce.
+  function goBack() {
+    if (state.zone === "reader") { state.zone = "rail"; updateCursor(); return true; }
+    if (state.zone === "blocks") {
+      const open = sectionEls().some(s => s.classList.contains("open"));
+      if (open) { closeBlock(); return true; }
+      state.zone = "days"; updateCursor(); return true;
+    }
+    if (state.zone === "rail") { state.zone = "days"; updateCursor(); return true; }
+    return false;
+  }
+  window.addEventListener("popstate", () => {
+    if (goBack()) pushDepth();
+    else { armed = false; toast("Premi di nuovo Indietro per uscire"); }
+  });
+
+  // ═══ Footer ═════════════════════════════════════════════════
+  function updateFooter(fromCache) {
+    const gen = weekData && weekData.generated_at ? new Date(weekData.generated_at) : null;
+    if (gen) {
+      els.updated.textContent = "Aggiornato " + gen.toLocaleString("it-IT",
+        { day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit" });
+    }
+    const ageH = gen ? (Date.now() - gen.getTime()) / 36e5 : 0;
+    if (fromCache) {
+      els.status.textContent = "Dati non aggiornati (offline)";
+      els.status.classList.add("stale");
+    } else if (ageH > 26) {
+      els.status.textContent = "Dati non aggiornati";
+      els.status.classList.add("stale");
+    } else {
+      els.status.textContent = "In diretta";
+      els.status.classList.remove("stale");
+    }
+  }
+
+  // ═══ Caricamento ════════════════════════════════════════════
+  function applyRaw(txt, fromCache) {
+    // Se il JSON non e' cambiato non si ridisegna nulla: altrimenti
+    // il refresh ogni 5 minuti azzererebbe blocco, cursore e scroll.
+    if (txt === lastRaw) { updateFooter(fromCache); return true; }
+    let parsed;
+    try { parsed = JSON.parse(txt); } catch (e) { return false; }
+    if (!parsed.days || !parsed.days.length) {
+      els.daylabel.textContent = "In attesa del primo aggiornamento";
+      els.week.textContent = ""; els.stage.textContent = "";
+      weekData = parsed; updateFooter(fromCache);
+      return true;
+    }
+    lastRaw  = txt;
+    weekData = parsed;
+    if (!state.dayPicked) {
+      const idx = weekData.days.findIndex(d => d.is_today);
+      state.day = idx >= 0 ? idx : 0;
+      state.dayPicked = true;
+    }
+    render();
+    updateFooter(fromCache);
+    return true;
+  }
+
+  async function load() {
+    try {
+      const resp = await fetch(DATA_URL + "?t=" + Date.now(), { cache:"no-store" });
+      if (!resp.ok) throw new Error("fetch failed");
+      const txt = await resp.text();
+      if (!applyRaw(txt, false)) throw new Error("parse failed");
+      try { localStorage.setItem(CACHE_KEY, txt); } catch (e) {}
+    } catch (e) {
+      // Wifi della palestra assente: meglio l'ultimo dato buono
+      // che una board vuota.
+      let cached = null;
+      try { cached = localStorage.getItem(CACHE_KEY); } catch (e2) {}
+      if (cached && applyRaw(cached, true)) return;
+      els.status.textContent = "Errore caricamento";
+      els.status.classList.add("stale");
+    }
+  }
+
+  setInterval(() => { if (unlocked) load(); }, REFRESH_MS);
+
+  // Ricarica a mezzanotte per cambiare giorno/settimana
+  (function reloadAtMidnight() {
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24, 1, 0, 0);
+    setTimeout(() => location.reload(), midnight - now);
+  })();
+</script>
+</body>
+</html>

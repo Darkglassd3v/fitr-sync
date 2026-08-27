@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 180
     environment: fitr
     strategy:
+
       fail-fast: false
       matrix:
         account:
@@ -76,16 +77,21 @@ jobs:
         run: |
           git config user.name  "github-actions"
           git config user.email "actions@github.com"
+          # Si mette al riparo prima del ciclo: ogni tentativo fa
+          # reset --hard, che altrimenti butterebbe via le pagine
+          # appena rigenerate e ruotate.
           cp docs/board_data.json /tmp/board_new.json
-          cp docs/index.html     /tmp/index_new.html
-          cp docs/board.html     /tmp/board_new.html
+          cp docs/index.html      /tmp/index_new.html
+          cp docs/board.html      /tmp/board_new.html
+          cp docs/board_v2.html   /tmp/board_v2_new.html
           for i in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/board_new.json docs/board_data.json
-            cp /tmp/index_new.html docs/index.html
-            cp /tmp/board_new.html docs/board.html
-            git add docs/board_data.json docs/index.html docs/board.html
+            cp /tmp/board_new.json    docs/board_data.json
+            cp /tmp/index_new.html    docs/index.html
+            cp /tmp/board_new.html    docs/board.html
+            cp /tmp/board_v2_new.html docs/board_v2.html
+            git add docs/board_data.json docs/index.html docs/board.html docs/board_v2.html
             git commit -m "Aggiorna board $(date +%F)" || { echo "Nessuna modifica"; exit 0; }
             if git push origin main; then
               echo "Push riuscito"

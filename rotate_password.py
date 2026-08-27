@@ -29,7 +29,7 @@ ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
 PWD_LEN  = 10
 
 PBKDF2_ITERATIONS = 100_000
-PAGES = ["docs/index.html", "docs/board.html"]
+PAGES = ["docs/index.html", "docs/board.html", "docs/board_v2.html"]
 
 
 def month_password(master: str, period: str) -> str:
@@ -70,8 +70,9 @@ def main():
         print(f"Periodo:  {period}")
         print(f"Password: {password}")
         print()
-        print("Link per la TV in palestra (nessun login, vista settimana):")
-        print(f"  ?kiosk={kiosk}&view=week")
+        print("Link per la TV in palestra (nessun login):")
+        print(f"  board.html?kiosk={kiosk}&view=week     (v1, vista settimana)")
+        print(f"  board_v2.html?kiosk={kiosk}            (v2)")
         return
 
     # Salt deterministico dal master secret + periodo: non serve
