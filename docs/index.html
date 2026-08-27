@@ -174,13 +174,11 @@
     text-transform:uppercase; color:var(--signal);
     border:1px solid var(--signal-dim); border-radius:3px; padding:0.15em 0.5em; }
 
-  /* Blocco selezionato con telecomando/tastiera.
-     Niente anello attorno al blocco: da aperto un blocco e' alto piu'
-     schermate, quindi la cornice correva lungo tutti i bordi dello
-     schermo e passava sotto la strip, sembrando un bordo sbordato.
-     Lo segnala solo l'intestazione, che ha dimensioni note. */
-  .section.focused .section-head {
-    box-shadow:inset 0 0 0 3px var(--focus);
+  /* Blocco selezionato con telecomando/tastiera */
+  .section-head:focus { outline:none; }
+  .section.focused {
+    border-color:var(--focus);
+    box-shadow:0 0 0 3px var(--focus);
   }
   .section-head { cursor:pointer; }
   .section { cursor:pointer; }

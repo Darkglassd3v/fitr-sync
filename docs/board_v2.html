@@ -78,17 +78,6 @@
     outline:var(--ring) solid var(--focus);
     outline-offset:2px;
   }
-  /* Il blocco della fisarmonica fa eccezione: da aperto e' alto piu'
-     schermate e l'anello diventa una cornice gialla che corre lungo i
-     bordi dello schermo. Lo segnala solo l'intestazione. */
-  .section.is-cursor,
-  .section:focus-visible {
-    outline:none;
-  }
-  .section.is-cursor .section-head,
-  .section:focus-visible .section-head {
-    box-shadow:inset 0 0 0 var(--ring) var(--focus);
-  }
   /* Il lettore fa eccezione: un outline sul contenitore scrollabile
      verrebbe tagliato dall'overflow del pannello e si vedrebbe solo
      come una barra sotto l'intestazione. Il fuoco lo segnala il
@@ -773,8 +762,6 @@
     els.stage.appendChild(layout);
 
     readerScrollEl.addEventListener("scroll", updateReaderPos, { passive:true });
-    attachEdgeScroll(readerScrollEl, updateReaderPos);
-    attachEdgeScroll(list, null);
     readerScrollEl.scrollTop = state.readerScroll;
     requestAnimationFrame(updateReaderPos);
     setTimeout(updateReaderPos, 120);   // dopo il caricamento dei font
@@ -816,47 +803,6 @@
     sc.scrollTop = next;
     updateReaderPos();
     return true;
-  }
-
-  // ── Scorrimento col puntatore del telecomando ──────────────
-  // Il telecomando Fire TV muove un cursore sullo schermo. Portandolo
-  // sul bordo basso (o alto) dell'area il testo scorre da solo, con
-  // velocita' proporzionale a quanto ci si spinge dentro: cosi' non
-  // serve martellare la freccia sui blocchi lunghi.
-  // Solo su TV: con un mouse vero l'auto-scorrimento a sfioramento
-  // sarebbe una scocciatura.
-  const EDGE_FRAC  = 0.18;   // fascia sensibile: 18% dell'altezza...
-  const EDGE_MAX   = 90;     // ...ma al massimo 90px
-  const EDGE_SPEED = 22;     // px per frame a fondo corsa
-
-  function attachEdgeScroll(el, onScroll) {
-    if (MODE !== "tv" || !el) return;
-    let dir = 0, forza = 0, attivo = false;
-
-    const step = () => {
-      if (!dir) { attivo = false; return; }
-      const prima = el.scrollTop;
-      el.scrollTop = prima + dir * EDGE_SPEED * forza;
-      if (onScroll) onScroll();
-      if (el.scrollTop === prima) { attivo = false; return; }   // fine corsa
-      requestAnimationFrame(step);
-    };
-
-    el.addEventListener("mousemove", e => {
-      const r = el.getBoundingClientRect();
-      const fascia = Math.min(r.height * EDGE_FRAC, EDGE_MAX);
-      const daSopra = e.clientY - r.top;
-      const daSotto = r.bottom - e.clientY;
-      if (daSotto < fascia)      { dir = 1;  forza = quanto(fascia, daSotto); }
-      else if (daSopra < fascia) { dir = -1; forza = quanto(fascia, daSopra); }
-      else dir = 0;
-      if (dir && !attivo) { attivo = true; requestAnimationFrame(step); }
-    });
-    el.addEventListener("mouseleave", () => { dir = 0; });
-  }
-  // Mai zero al limite della fascia, altrimenti il bordo ha un punto morto.
-  function quanto(fascia, distanza) {
-    return 0.15 + 0.85 * Math.min(1, Math.max(0, (fascia - distanza) / fascia));
   }
 
   // ═══ Mobile: fisarmonica a colonna singola ══════════════════
