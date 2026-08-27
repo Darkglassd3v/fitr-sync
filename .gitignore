@@ -5,3 +5,6 @@ __pycache__/
 destinations.json
 .claude-flow/
 .idea/
+graphify-out/
+.claude/proven-config*.json
+.claude/.proven-config-version
