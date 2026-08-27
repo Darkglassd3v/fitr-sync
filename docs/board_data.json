@@ -1,8 +1,8 @@
 {
   "week_start": "2026-08-24",
   "week_end": "2026-08-30",
-  "today": "2026-08-26",
-  "generated_at": "2026-08-26T19:09:55.093068",
+  "today": "2026-08-27",
+  "generated_at": "2026-08-27T06:29:39.450016",
   "days": [
     {
       "date": "2026-08-24",
@@ -392,7 +392,7 @@
       "weekday": "MER",
       "day_number": 26,
       "date_label": "Mercoledi 26 Agosto",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM UP",
@@ -549,7 +549,7 @@
       "weekday": "GIO",
       "day_number": 27,
       "date_label": "Giovedi 27 Agosto",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "OPTION 1: FULL REST / BODYWORK",
@@ -642,9 +642,19 @@
               "src": "https://youtu.be/fcojabIIwNA"
             },
             {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
               "title": "Dynamic anterior hip stretch",
               "kind": "youtube",
               "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
             },
             {
               "title": "Echo bike",
@@ -655,6 +665,11 @@
               "title": "Mini band routine (iso hold + squat, iso hold + glute bridge)",
               "kind": "youtube",
               "src": "https://youtu.be/lkt1EVCpXDc"
+            },
+            {
+              "title": "Banded shoulder ATWYEI routine",
+              "kind": "youtube",
+              "src": "https://youtu.be/0AyanidTrbs"
             },
             {
               "title": "Snatch pull",
@@ -670,21 +685,6 @@
               "title": "Squat Snatch",
               "kind": "youtube",
               "src": "https://youtu.be/2SsF1kJu0Xg"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
-            },
-            {
-              "title": "Lat pulsed stretching with reach through",
-              "kind": "youtube",
-              "src": "https://youtu.be/P7scr-51piE"
-            },
-            {
-              "title": "Banded shoulder ATWYEI routine",
-              "kind": "youtube",
-              "src": "https://youtu.be/0AyanidTrbs"
             }
           ]
         },
@@ -756,6 +756,11 @@
               "src": "https://youtu.be/H3yKQ8WreNs"
             },
             {
+              "title": "Ski erg",
+              "kind": "youtube",
+              "src": "https://youtu.be/WUiGW3wLp4w"
+            },
+            {
               "title": "Lying to standing Rope-climbs",
               "kind": "youtube",
               "src": "https://youtu.be/V8uAjXtPCIU"
@@ -764,11 +769,6 @@
               "title": "Overhead squats",
               "kind": "youtube",
               "src": "https://youtu.be/_eslbOQNWHk"
-            },
-            {
-              "title": "Ski erg",
-              "kind": "youtube",
-              "src": "https://youtu.be/WUiGW3wLp4w"
             }
           ]
         },
