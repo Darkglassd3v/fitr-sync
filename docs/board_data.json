@@ -1,15 +1,15 @@
 {
   "week_start": "2026-08-31",
   "week_end": "2026-09-06",
-  "today": "2026-08-31",
-  "generated_at": "2026-08-31T02:47:18.110468",
+  "today": "2026-09-01",
+  "generated_at": "2026-09-01T03:02:56.443482",
   "days": [
     {
       "date": "2026-08-31",
       "weekday": "LUN",
       "day_number": 31,
       "date_label": "Lunedi 31 Agosto",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -185,7 +185,7 @@
       "weekday": "MAR",
       "day_number": 1,
       "date_label": "Martedi 1 Settembre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -322,24 +322,14 @@
           "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n\nb. 1000/900m Ski or Row performed as 30 sec Easy / 30 sec Moderate\n-Into-\nBanded shoulder prep:\n10 x \"A\"\n10 x \"T\"\n10 x \"W\"\n10 x \"External rotations\"\n10 x \"Internal rotations\"\n-Into-\n15 DB Cuban Press (2x7.5-10/4-6kg | 2x15-25/10-15lbs)\n-Into-\n10 Seated Strict Press (Alt. between pressing from the front and from the back on each rep) (empty bar)\n-Into-\nStart building up in load for the (banded) seated strict press",
           "attachments": [
             {
-              "title": "Strict Press from the back + Strict press from the front",
-              "kind": "youtube",
-              "src": "https://youtu.be/PkcQ_ZnL4c0"
-            },
-            {
-              "title": "Banded shoulder ATWYEI routine",
-              "kind": "youtube",
-              "src": "https://youtu.be/0AyanidTrbs"
-            },
-            {
-              "title": "DB Cuban press",
-              "kind": "youtube",
-              "src": "https://youtu.be/KKsJ3huMws4"
-            },
-            {
               "title": "Dynamic bent arm pec opener",
               "kind": "youtube",
               "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
+              "title": "Strict Press from the back + Strict press from the front",
+              "kind": "youtube",
+              "src": "https://youtu.be/PkcQ_ZnL4c0"
             },
             {
               "title": "Lat pulsed stretching with reach through",
@@ -347,9 +337,19 @@
               "src": "https://youtu.be/P7scr-51piE"
             },
             {
+              "title": "Banded shoulder ATWYEI routine",
+              "kind": "youtube",
+              "src": "https://youtu.be/0AyanidTrbs"
+            },
+            {
               "title": "Ski erg",
               "kind": "youtube",
               "src": "https://youtu.be/WUiGW3wLp4w"
+            },
+            {
+              "title": "DB Cuban press",
+              "kind": "youtube",
+              "src": "https://youtu.be/KKsJ3huMws4"
             }
           ]
         },
