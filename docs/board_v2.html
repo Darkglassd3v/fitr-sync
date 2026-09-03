@@ -652,7 +652,8 @@
       stage.className = "video-stage";
       ytFrameEl = document.createElement("iframe");
       ytFrameEl.tabIndex = -1;
-      ytFrameEl.setAttribute("allow", "autoplay");
+      ytFrameEl.setAttribute("allow", "autoplay; encrypted-media");
+      ytFrameEl.setAttribute("allowfullscreen", "");
       ytFrameEl.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
       ytFrameEl.setAttribute("title", "Video");
       stage.appendChild(ytFrameEl);
@@ -672,8 +673,8 @@
       ytTimer = setTimeout(() => {
         if (!ytFrameEl) return;
         ytCurrentId = v.id;
-        ytFrameEl.src = "https://www.youtube-nocookie.com/embed/" + v.id +
-          "?autoplay=1&mute=1&controls=0&disablekb=1&playsinline=1" +
+        ytFrameEl.src = "https://www.youtube.com/embed/" + v.id +
+          "?autoplay=1&mute=1&controls=1&playsinline=1" +
           "&rel=0&modestbranding=1&loop=1&playlist=" + v.id;
       }, 350);
     }
