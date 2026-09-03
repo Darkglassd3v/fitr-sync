@@ -89,7 +89,7 @@ jobs:
             # la rotazione della password, che e' l'unica cosa che il job
             # deve davvero scrivere dentro l'HTML.
             python rotate_password.py
-            git add docs/board_data.json docs/index.html docs/board.html docs/board_v2.html
+            git add docs/board_data.json docs/index.html docs/board.html docs/board_v2.html docs/logo.png
             git commit -m "Aggiorna board $(date +%F)" || { echo "Nessuna modifica"; exit 0; }
             if git push origin main; then
               echo "Push riuscito"
