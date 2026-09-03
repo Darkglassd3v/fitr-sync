@@ -341,6 +341,36 @@
         .media-link:hover { background:var(--sel-surface); }
         .media-link:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
 
+        .video-panel {
+          flex-shrink:0; height:34vh; margin-top:var(--gap);
+          display:grid; grid-template-columns:1fr auto; gap:var(--gap);
+          background:var(--panel); border:1px solid var(--line-strong);
+          border-radius:var(--radius); overflow:hidden;
+        }
+        .video-list { overflow-y:auto; overscroll-behavior:contain; scrollbar-width:none; }
+        .video-list::-webkit-scrollbar { display:none; }
+        .video-item {
+          display:block; width:100%; text-align:left; cursor:pointer;
+          background:transparent; border:0; border-left:6px solid transparent;
+          border-bottom:1px solid var(--line);
+          padding:0.5em 0.7em; color:var(--ink-dim);
+          font-family:'Barlow Condensed',sans-serif; font-weight:700;
+          font-size:var(--fs-title); letter-spacing:0.02em; text-transform:uppercase;
+          line-height:1.15;
+          display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+          overflow:hidden;
+          transition:background var(--dur) ease, color var(--dur) ease;
+        }
+        .video-item.is-cursor {
+          background:var(--sel-surface); border-left-color:var(--signal);
+          color:var(--signal); outline:var(--ring) solid var(--focus); outline-offset:calc(var(--ring) * -1);
+        }
+        .video-stage {
+          height:100%; aspect-ratio:16/9; background:#000;
+          border-left:1px solid var(--line-strong);
+        }
+        .video-stage iframe { width:100%; height:100%; border:0; display:block; }
+
         .rest { flex:1; display:flex; flex-direction:column; align-items:center;
           justify-content:center; gap:1rem; min-height:40vh; }
         .rest-mark { font-family:'Barlow Condensed',sans-serif; font-weight:800;
@@ -441,7 +471,7 @@
     };
 
     const tvQuery = window.matchMedia("(min-width: 900px) and (orientation: landscape)");
-    const state = { day:0, block:0, zone:"days", readerScroll:0, dayPicked:false };
+    const state = { day:0, block:0, zone:"days", readerScroll:0, dayPicked:false, media:0 };
     let MODE     = "mobile";
     let weekData = null;
     let lastRaw  = null;
@@ -574,6 +604,78 @@
       }));
     }
 
+    // ═══ Pannello video (solo TV) ═══════════════════════════════
+    // Un solo player, mai focusabile: la riproduzione e' la posizione
+    // del cursore. Cosi' il focus resta sempre su un <button> della
+    // lista e il D-pad continua ad arrivare a onKey.
+    let videoPanelEl = null;
+    let ytFrameEl    = null;
+    let ytCurrentId  = null;
+    let ytTimer      = null;
+
+    function openVideoPanel() {
+      const vids = blockVideos();
+      if (!vids.length || videoPanelEl) return;
+
+      videoPanelEl = document.createElement("div");
+      videoPanelEl.className = "video-panel";
+
+      const list = document.createElement("div");
+      list.className = "video-list";
+      vids.forEach((v, i) => {
+        const b = document.createElement("button");
+        b.className = "video-item";
+        b.type = "button";
+        b.tabIndex = -1;
+        b.textContent = v.title;
+        b.addEventListener("click", () => {
+          state.media = i;
+          updateCursor();
+        });
+        list.appendChild(b);
+      });
+
+      const stage = document.createElement("div");
+      stage.className = "video-stage";
+      ytFrameEl = document.createElement("iframe");
+      ytFrameEl.tabIndex = -1;
+      ytFrameEl.setAttribute("allow", "autoplay");
+      ytFrameEl.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      ytFrameEl.setAttribute("title", "Video");
+      stage.appendChild(ytFrameEl);
+
+      videoPanelEl.append(list, stage);
+      els.stage.appendChild(videoPanelEl);
+      updateReaderPos();
+    }
+
+    // Debounce: scorrendo veloce la lista non deve partire un
+    // caricamento YouTube per ogni titolo attraversato.
+    function syncPlayer() {
+      if (!ytFrameEl) return;
+      const v = blockVideos()[state.media];
+      if (!v || v.id === ytCurrentId) return;
+      clearTimeout(ytTimer);
+      ytTimer = setTimeout(() => {
+        if (!ytFrameEl) return;
+        ytCurrentId = v.id;
+        ytFrameEl.src = "https://www.youtube-nocookie.com/embed/" + v.id +
+          "?autoplay=1&mute=1&controls=0&disablekb=1&playsinline=1" +
+          "&rel=0&modestbranding=1&loop=1&playlist=" + v.id;
+      }, 350);
+    }
+
+    function closeVideoPanel() {
+      clearTimeout(ytTimer);
+      ytTimer = null;
+      // Rimuovere il nodo uccide l'iframe: il video si ferma davvero.
+      if (videoPanelEl) videoPanelEl.remove();
+      videoPanelEl = null;
+      ytFrameEl    = null;
+      ytCurrentId  = null;
+      updateReaderPos();
+    }
+
     function tickClock() {
       const now = new Date(), p = n => String(n).padStart(2, "0");
       els.clock.textContent = `${p(now.getHours())}:${p(now.getMinutes())}:${p(now.getSeconds())}`;
@@ -597,6 +699,21 @@
     const curDay    = () => (weekData && weekData.days[state.day]) || null;
     const curBlocks = () => { const d = curDay(); return (d && d.sections) || []; };
 
+    function youtubeId(src) {
+      if (!src) return null;
+      const m = String(src).match(/(?:youtu\.be\/|[?&]v=|\/embed\/)([A-Za-z0-9_-]{11})/);
+      return m ? m[1] : null;
+    }
+
+    // I video del blocco corrente: sorgente della lista e condizione
+    // d'ingresso nella zona "media".
+    function blockVideos() {
+      const sec = curBlocks()[state.block];
+      return ((sec && sec.attachments) || [])
+        .map(a => ({ id: youtubeId(a.src), title: a.title || mediaLabel(a.kind) }))
+        .filter(v => v.id);
+    }
+
     function clampState() {
       const n = weekData && weekData.days ? weekData.days.length : 0;
       if (!n) return;
@@ -606,7 +723,13 @@
       if (!b && state.zone !== "days") state.zone = "days";
       if (MODE === "mobile" && state.zone === "rail")   state.zone = "blocks";
       if (MODE === "mobile" && state.zone === "reader") state.zone = "blocks";
+      if (MODE === "mobile" && state.zone === "media")  state.zone = "blocks";
       if (MODE === "tv"     && state.zone === "blocks") state.zone = "rail";
+      if (state.zone === "media") {
+        const v = blockVideos().length;
+        if (!v) state.zone = "reader";
+        else state.media = Math.min(Math.max(state.media, 0), v - 1);
+      }
     }
 
     function renderWeek() {
@@ -645,6 +768,17 @@
       wrap.appendChild(lab);
       const ul = document.createElement("ul");
       ul.className = "media-list";
+      const nVideo = atts.filter(a => youtubeId(a.src)).length;
+      if (MODE === "tv" && nVideo) {
+        const li = document.createElement("li");
+        const sp = document.createElement("span");
+        sp.className = "media-item";
+        sp.textContent = "\u25B6 " + nVideo + " video \u2014 premi OK";
+        li.appendChild(sp);
+        ul.appendChild(li);
+        wrap.appendChild(ul);
+        return wrap;
+      }
       atts.forEach(a => {
         const li = document.createElement("li");
         const txt = a.title || mediaLabel(a.kind);
@@ -906,6 +1040,11 @@
 
     function render() {
       if (!weekData || !weekData.days || !weekData.days.length) return;
+      // Lo stage viene svuotato piu' sotto: il pannello video muore con
+      // esso, quindi qui si lasciano andare i riferimenti e il timer.
+      clearTimeout(ytTimer); ytTimer = null;
+      videoPanelEl = null; ytFrameEl = null; ytCurrentId = null;
+      if (state.zone === "media") state.zone = "reader";
       clampState();
       const day = curDay();
       setDayLabel(day ? day.date_label : "—");
@@ -919,11 +1058,13 @@
       if (state.zone === "rail")   return [...els.stage.querySelectorAll(".rail-item")];
       if (state.zone === "blocks") return sectionEls();
       if (state.zone === "reader") return readerScrollEl ? [readerScrollEl] : [];
+      if (state.zone === "media")  return [...els.stage.querySelectorAll(".video-item")];
       return [];
     }
     function cursorIndex() {
       if (state.zone === "days")   return state.day;
       if (state.zone === "reader") return 0;
+      if (state.zone === "media")  return state.media;
       return state.block;
     }
 
@@ -934,7 +1075,7 @@
     function updateCursor() {
       document.querySelectorAll(".is-cursor").forEach(e => e.classList.remove("is-cursor"));
       document.querySelectorAll(".reader.cursor").forEach(e => e.classList.remove("cursor"));
-      [...document.querySelectorAll(".daybtn, .rail-item, .section")]
+      [...document.querySelectorAll(".daybtn, .rail-item, .section, .video-item")]
         .forEach(e => { e.tabIndex = -1; });
 
       const el = zoneEls()[cursorIndex()];
@@ -950,6 +1091,7 @@
       el.tabIndex = 0;
       focusEl(el);
       el.scrollIntoView({ behavior: SMOOTH, block: "nearest" });
+      if (state.zone === "media") syncPlayer();
     }
 
     function setDay(i) {
@@ -957,6 +1099,7 @@
       state.day = (i + n) % n;
       state.block = 0;
       state.readerScroll = 0;
+      state.media = 0;
       render();
     }
 
@@ -965,6 +1108,7 @@
       if (!blocks.length) return;
       state.block = Math.min(Math.max(i, 0), blocks.length - 1);
       state.readerScroll = 0;
+      state.media = 0;
       if (MODE === "tv") { render(); }
       else { updateCursor(); }
     }
@@ -1011,6 +1155,36 @@
             e.preventDefault(); readerPage(-1); break;
           case "ArrowLeft":
             e.preventDefault(); goBack(); break;
+          case "ArrowRight":
+          case "Enter":
+          case " ":
+            e.preventDefault();
+            if (blockVideos().length) {
+              openVideoPanel();
+              state.zone = "media";
+              state.media = 0;
+              pushDepth();
+              updateCursor();
+            }
+            break;
+        }
+        return;
+      }
+
+      if (state.zone === "media") {
+        const vids = blockVideos();
+        switch (k) {
+          case "ArrowDown":
+            e.preventDefault();
+            if (state.media < vids.length - 1) { state.media++; updateCursor(); }
+            break;
+          case "ArrowUp":
+            e.preventDefault();
+            if (state.media === 0) goBack();
+            else { state.media--; updateCursor(); }
+            break;
+          case "ArrowLeft":
+            e.preventDefault(); goBack(); break;
         }
         return;
       }
@@ -1055,6 +1229,10 @@
       try { history.pushState({ cb:1 }, ""); } catch (e) {}
     }
     function goBack() {
+      if (state.zone === "media") {
+        closeVideoPanel();
+        state.zone = "reader"; updateCursor(); return true;
+      }
       if (state.zone === "reader") { state.zone = "rail"; updateCursor(); return true; }
       if (state.zone === "blocks") {
         const open = sectionEls().some(s => s.classList.contains("open"));
