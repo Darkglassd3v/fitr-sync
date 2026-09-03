@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Test focus iframe YouTube</title>
+<style>
+  body { margin:0; background:#0a0a0b; color:#f4f4f2;
+         font-family:system-ui,sans-serif; display:grid;
+         grid-template-columns:1fr 1fr; gap:16px; padding:16px; }
+  iframe { width:100%; aspect-ratio:16/9; border:2px solid #26262b; }
+  #log { font-size:22px; line-height:1.5; }
+  b { color:#df1815; font-size:40px; }
+  code { color:#d8ff00; word-break:break-all; }
+</style>
+</head>
+<body>
+
+<iframe id="yt" tabindex="-1" allow="autoplay"
+        referrerpolicy="strict-origin-when-cross-origin"
+        src="https://www.youtube-nocookie.com/embed/Fv0KnjRiLf8?autoplay=1&mute=1&controls=0&disablekb=1&playsinline=1&rel=0&modestbranding=1&loop=1&playlist=Fv0KnjRiLf8"></iframe>
+
+<div id="log">
+  Premi le frecce del telecomando mentre il video gira.<br><br>
+  Tasti ricevuti: <b id="n">0</b><br>
+  Ultimo: <code id="k">&mdash;</code><br>
+  Focus su: <code id="a">&mdash;</code>
+</div>
+
+<script>
+  var n = 0;
+  var elN = document.getElementById("n"),
+      elK = document.getElementById("k"),
+      elA = document.getElementById("a");
+
+  document.addEventListener("keydown", function (e) {
+    e.preventDefault();
+    elN.textContent = ++n;
+    elK.textContent = 'key="' + e.key + '"  keyCode=' + e.keyCode;
+  });
+
+  setInterval(function () {
+    var el = document.activeElement;
+    elA.textContent = el ? (el.tagName + (el.id ? "#" + el.id : "")) : "null";
+  }, 300);
+</script>
+
+</body>
+</html>
