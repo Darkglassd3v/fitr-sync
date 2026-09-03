@@ -234,6 +234,14 @@
           overflow:hidden;
           transition:background var(--dur) ease, color var(--dur) ease;
         }
+        /* Il segnalino sta in una colonnina sua: i titoli restano
+           incolonnati anche quando un blocco non ha video. */
+        .rail-item { position:relative; padding-left:1.9em; }
+        .rail-video {
+          position:absolute; left:0.6em; top:0.55em;
+          color:var(--signal); font-size:0.85em; line-height:1;
+        }
+        .rail-item.sel .rail-video { color:inherit; }
         .rail-item.sel {
           background:var(--sel-surface); border-left-color:var(--signal);
           color:var(--signal);
@@ -705,13 +713,16 @@
       return m ? m[1] : null;
     }
 
-    // I video del blocco corrente: sorgente della lista e condizione
-    // d'ingresso nella zona "media".
-    function blockVideos() {
-      const sec = curBlocks()[state.block];
+    function sectionVideos(sec) {
       return ((sec && sec.attachments) || [])
         .map(a => ({ id: youtubeId(a.src), title: a.title || mediaLabel(a.kind) }))
         .filter(v => v.id);
+    }
+
+    // I video del blocco corrente: sorgente della lista e condizione
+    // d'ingresso nella zona "media".
+    function blockVideos() {
+      return sectionVideos(curBlocks()[state.block]);
     }
 
     function clampState() {
@@ -832,7 +843,15 @@
         it.setAttribute("role", "tab");
         it.setAttribute("aria-selected", String(i === state.block));
         it.tabIndex = -1;
-        it.textContent = s.title || `Blocco ${i + 1}`;
+        const nv = sectionVideos(s).length;
+        if (nv) {
+          const mark = document.createElement("span");
+          mark.className = "rail-video";
+          mark.textContent = "\u25B6";
+          mark.setAttribute("aria-label", nv + " video");
+          it.appendChild(mark);
+        }
+        it.appendChild(document.createTextNode(s.title || `Blocco ${i + 1}`));
         it.addEventListener("click", () => {
           state.block = i; state.readerScroll = 0; state.zone = "rail"; render();
         });
