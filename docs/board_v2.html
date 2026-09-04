@@ -383,6 +383,23 @@
         }
         .video-stage iframe { width:100%; height:100%; border:0; display:block; }
 
+        /* A schermo intero (Fire TV): il pannello riempie tutto il
+           viewport invece dei 34vh normali, lo stage abbandona
+           l'aspect-ratio fissa per occupare lo spazio rimasto. */
+        .video-panel:fullscreen, .video-panel:-webkit-full-screen {
+          width:100%; height:100%; max-width:100vw; max-height:100vh;
+          grid-template-columns:minmax(220px,26%) 1fr;
+          background:var(--bg);
+        }
+        .video-panel:fullscreen .video-stage,
+        .video-panel:-webkit-full-screen .video-stage {
+          aspect-ratio:auto; width:100%;
+        }
+        .video-panel:fullscreen .video-list,
+        .video-panel:-webkit-full-screen .video-list {
+          height:100%;
+        }
+
         .rest { flex:1; display:flex; flex-direction:column; align-items:center;
           justify-content:center; gap:1rem; min-height:40vh; }
         .rest-mark { font-family:'Barlow Condensed',sans-serif; font-weight:800;
@@ -660,6 +677,18 @@
       videoPanelEl.append(list, stage);
       els.stage.appendChild(videoPanelEl);
       updateReaderPos();
+
+      // Schermo intero automatico (solo TV): su Fire TV il video
+      // embeddato in pagina resta nero/bianco, l'overlay hardware
+      // compone solo in vero fullscreen. Nessun pulsante da toccare:
+      // scatta da solo, si esce con "indietro" (vedi goBack/closeVideoPanel).
+      if (MODE === "tv") {
+        const req = videoPanelEl.requestFullscreen || videoPanelEl.webkitRequestFullscreen;
+        if (req) {
+          const p = req.call(videoPanelEl);
+          if (p && p.catch) p.catch(() => {});
+        }
+      }
     }
 
     // Debounce: scorrendo veloce la lista non deve partire un
@@ -681,6 +710,14 @@
     function closeVideoPanel() {
       clearTimeout(ytTimer);
       ytTimer = null;
+      if (document.fullscreenElement === videoPanelEl ||
+          document.webkitFullscreenElement === videoPanelEl) {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (exit) {
+          const p = exit.call(document);
+          if (p && p.catch) p.catch(() => {});
+        }
+      }
       // Rimuovere il nodo uccide l'iframe: il video si ferma davvero.
       if (videoPanelEl) videoPanelEl.remove();
       videoPanelEl = null;
@@ -688,6 +725,18 @@
       ytCurrentId  = null;
       updateReaderPos();
     }
+
+    // Rete di sicurezza: se il telecomando esce dal fullscreen senza
+    // passare da goBack() (es. tasto indietro intercettato dal browser
+    // stesso), il pannello video non deve restare "fantasma" aperto.
+    function onFullscreenExit() {
+      if (!videoPanelEl) return;
+      if (document.fullscreenElement || document.webkitFullscreenElement) return;
+      closeVideoPanel();
+      if (state.zone === "media") { state.zone = "reader"; updateCursor(); }
+    }
+    document.addEventListener("fullscreenchange", onFullscreenExit);
+    document.addEventListener("webkitfullscreenchange", onFullscreenExit);
 
     function tickClock() {
       const now = new Date(), p = n => String(n).padStart(2, "0");
