@@ -1,8 +1,8 @@
 {
   "week_start": "2026-08-31",
   "week_end": "2026-09-06",
-  "today": "2026-09-04",
-  "generated_at": "2026-09-04T15:11:39.635721",
+  "today": "2026-09-05",
+  "generated_at": "2026-09-05T02:25:49.628680",
   "days": [
     {
       "date": "2026-08-31",
@@ -551,7 +551,7 @@
       "weekday": "VEN",
       "day_number": 4,
       "date_label": "Venerdi 4 Settembre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -676,7 +676,7 @@
       "weekday": "SAB",
       "day_number": 5,
       "date_label": "Sabato 5 Settembre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "TRANSITION WEEK",
