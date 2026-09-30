@@ -1,8 +1,8 @@
 {
   "week_start": "2026-09-28",
   "week_end": "2026-10-04",
-  "today": "2026-09-29",
-  "generated_at": "2026-09-29T03:41:49.517333",
+  "today": "2026-09-30",
+  "generated_at": "2026-09-30T03:28:04.170177",
   "days": [
     {
       "date": "2026-09-28",
@@ -160,7 +160,7 @@
       "weekday": "MAR",
       "day_number": 29,
       "date_label": "Martedi 29 Settembre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -300,7 +300,7 @@
       "weekday": "MER",
       "day_number": 30,
       "date_label": "Mercoledi 30 Settembre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -652,6 +652,16 @@
               "src": "https://youtu.be/P7scr-51piE"
             },
             {
+              "title": "Anterior stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/KIm_x7dpQAc"
+            },
+            {
+              "title": "DB Pull overs",
+              "kind": "youtube",
+              "src": "https://youtu.be/wuegk_Qh4Xk"
+            },
+            {
               "title": "Supinated Ring rows",
               "kind": "youtube",
               "src": "https://youtu.be/rUTNm00y9oo"
@@ -670,16 +680,6 @@
               "title": "Single arm hang",
               "kind": "youtube",
               "src": "https://youtu.be/nQ6PzuDm-vU"
-            },
-            {
-              "title": "Anterior stretch",
-              "kind": "youtube",
-              "src": "https://youtu.be/KIm_x7dpQAc"
-            },
-            {
-              "title": "DB Pull overs",
-              "kind": "youtube",
-              "src": "https://youtu.be/wuegk_Qh4Xk"
             }
           ]
         },
