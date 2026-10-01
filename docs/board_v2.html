@@ -36,6 +36,10 @@
           --fs-wd:13px;
           --fs-meta:12px;
 
+          --lv-elite:#ff5a4d; --lv-rx:#5bc8ff;
+          --lv-inter:#c08cff;  --lv-scaled:#5fd49b;
+          --load:#ff8a3d; --pct:#d8ff00;
+
           --ring:3px;
           --dur:0.18s;
         }
@@ -283,6 +287,32 @@
           white-space:pre-wrap; overflow-wrap:anywhere;
           max-width:68ch;
         }
+        /* ─── Evidenza di livelli e carichi ──────────────────────
+           Il testo resta esattamente com'e': stesso corpo, stessi a capo,
+           stessa misura. Cambiano solo i colori. Il gruppo e' delimitato da
+           una riga vuota o da un marcatore di livello, entrambi gia' scritti
+           nel testo a monte: niente viene dedotto, niente viene nascosto. */
+        .grp { white-space:pre-wrap; overflow-wrap:anywhere; }
+        .grp + .grp { margin-top:1.5em; }   /* la riga vuota che c'era */
+        .grp + .grp.tight { margin-top:0; } /* qui la riga vuota non c'era */
+        /* La barra sta sul bordo interno del pannello e il testo non si
+           muove di un pixel: il rientro negativo vale esattamente quanto
+           il padding del contenitore piu' lo spessore della barra. */
+        /* La barra entra nel padding del contenitore (0.7em a 16px = 11px)
+           invece di sbordare: il testo resta allineato a quello dei gruppi
+           senza livello. In px perche' l'em qui vale 23, non 16. */
+        .grp.lv {
+          border-left:5px solid var(--lv);
+          padding-left:6px; margin-left:-11px;
+        }
+        .grp.lv[data-l="elite"],  .hl-lvm[data-l="elite"]  { --lv:var(--lv-elite); }
+        .grp.lv[data-l="rx"],     .hl-lvm[data-l="rx"]     { --lv:var(--lv-rx); }
+        .grp.lv[data-l="inter"],  .hl-lvm[data-l="inter"]  { --lv:var(--lv-inter); }
+        .grp.lv[data-l="scaled"], .hl-lvm[data-l="scaled"] { --lv:var(--lv-scaled); }
+        .lvname, .hl-lvm { color:var(--lv); font-weight:700; }
+        .hl-load { color:var(--load); font-weight:700; font-variant-numeric:tabular-nums; }
+        .hl-pct  { color:var(--pct);  font-weight:700; font-variant-numeric:tabular-nums; }
+
         .reader-fade {
           position:absolute; left:0; right:0; bottom:0; height:4.5rem;
           pointer-events:none; opacity:0; transition:opacity var(--dur) ease;
@@ -890,6 +920,158 @@
 
     let readerScrollEl = null, readerPosEl = null, readerEl = null;
 
+    // ═══ Livelli e carichi ══════════════════════════════════════
+    // Il testo FITR porta gia' i suoi confini: righe vuote e marcatori di
+    // livello. Qui non si deduce niente, non si nasconde niente e non si
+    // riordina niente: il testo reso e' carattere per carattere l'originale.
+    const LV_NOMI = "Elite|Rx|RX|Scaled|Regular|Intermediate|Beginner|Advanced|Masters|Teens";
+    // marcatore da solo su una riga: "Elite", "(Rx)", "[Intermediate]", "Elite + RX:"
+    const LV_SOLO = new RegExp(
+      "^\\s*[\\[(]?(?:" + LV_NOMI + ")(?:\\s*[/+&]\\s*(?:" + LV_NOMI + "))*[\\])]?\\s*:?\\s*$", "i");
+    // marcatore a inizio riga seguito da contenuto: "[RX] Body weight."
+    // Le parentesi sono obbligatorie, altrimenti "Elite athletes often..."
+    // verrebbe scambiato per un marcatore.
+    const LV_PREFIX = new RegExp(
+      "^[ \\t]*([\\[(](?:" + LV_NOMI + ")(?:\\s*[/+&]\\s*(?:" + LV_NOMI + "))*[\\])])", "gim");
+    // Carichi. La prima alternativa copre "68 | 150lbs", dove il valore in kg
+    // e' scritto nudo e l'unita' compare solo sul gemello in libbre. Il resto
+    // prende la catena intera: 40/25kg e 2x7.5-10/4-6kg sono un valore solo,
+    // non la loro coda.
+    const LOAD_RE = /\b\d[\d.,]*\+?\s*[│|⎸]\s*\d[\d.,]*\+?\s*(?:kg|lbs?)\b|\b\d[\d.,]*\+?(?:\s*[-–\/x×]\s*\d[\d.,]*\+?)*\s*(?:kg|lbs?)\b/gi;
+    const PCT_RE  = /\b\d+(?:[.,]\d+)?\s*(?:[-–]\s*\d+(?:[.,]\d+)?\s*)?%(?:\s*of\s+[\w"“”' ]{0,24})?/g;
+    // Una percentuale si evidenzia solo se dice di cosa: un XRM, un "of ...",
+    // o un carico sulla stessa riga. Senza questo, "keep 5% in the tank"
+    // verrebbe acceso come se fosse una prescrizione.
+    const PCT_PRESCR = /\d+\s*RM\b|%\s*of\b|\b(?:kg|lbs?)\b/i;
+
+    function lvChiave(nome) {
+      const t = String(nome).replace(/[\[\]():]/g, "").trim().toLowerCase();
+      if (t.indexOf("elite") === 0) return "elite";
+      if (/^(rx|regular)/.test(t)) return "rx";
+      if (t.indexOf("scaled") === 0) return "scaled";
+      return "inter";
+    }
+
+    // Un gruppo finisce su una riga vuota o su un marcatore di livello.
+    function lvGruppi(desc) {
+      const out = [];
+      let cur = null;
+      const chiudi = () => { if (cur && cur.righe.some(l => l.trim())) out.push(cur); };
+      String(desc || "").split("\n").forEach(l => {
+        if (!l.trim())      { chiudi(); cur = null; return; }
+        if (LV_SOLO.test(l)) { chiudi(); cur = { righe:[l], lv:true, attaccato: !!cur }; return; }
+        if (!cur) cur = { righe:[], lv:false, attaccato:false };
+        cur.righe.push(l);
+      });
+      chiudi();
+      return out;
+    }
+
+    // Evidenze dentro il testo. Niente innerHTML: il testo viene da FITR.
+    function lvRich(text) {
+      const hits = [];
+      let m;
+      LV_PREFIX.lastIndex = 0;
+      while ((m = LV_PREFIX.exec(text))) {
+        const a = m.index + m[0].indexOf(m[1]);
+        hits.push({ k:"lvm", a:a, b:a + m[1].length, lv:lvChiave(m[1]) });
+      }
+      LOAD_RE.lastIndex = 0;
+      while ((m = LOAD_RE.exec(text))) hits.push({ k:"load", a:m.index, b:m.index + m[0].length });
+      PCT_RE.lastIndex = 0;
+      while ((m = PCT_RE.exec(text))) {
+        const da = text.lastIndexOf("\n", m.index) + 1;
+        const a  = text.indexOf("\n", m.index);
+        if (PCT_PRESCR.test(text.slice(da, a < 0 ? text.length : a)))
+          hits.push({ k:"pct", a:m.index, b:m.index + m[0].length });
+      }
+      hits.sort((x, y) => x.a - y.a);
+      const frag = document.createDocumentFragment();
+      let at = 0;
+      hits.forEach(h => {
+        if (h.a < at) return;                    // scarta le sovrapposizioni
+        if (h.a > at) frag.appendChild(document.createTextNode(text.slice(at, h.a)));
+        const sp = document.createElement("span");
+        sp.className = "hl-" + h.k;
+        if (h.lv) sp.dataset.l = h.lv;
+        sp.textContent = text.slice(h.a, h.b);
+        frag.appendChild(sp);
+        at = h.b;
+      });
+      if (at < text.length) frag.appendChild(document.createTextNode(text.slice(at)));
+      return frag;
+    }
+
+    // Riempie un contenitore con la descrizione resa. Se il testo non ha
+    // confini da usare, torna al testo piano: il peggio che puo' capitare
+    // e' il comportamento di prima.
+    function fillDescription(host, desc) {
+      host.textContent = "";
+      const gs = lvGruppi(desc);
+      if (gs.length < 2) { host.textContent = desc || ""; return; }
+      gs.forEach(g => {
+        const testo = g.righe.join("\n");
+        const d = document.createElement("div");
+        d.className = "grp" + (g.lv ? " lv" : "") + (g.attaccato ? " tight" : "");
+        if (g.lv) {
+          const nome = g.righe[0].trim();
+          d.dataset.l = lvChiave(nome);
+          const h = document.createElement("span");
+          h.className = "lvname";
+          h.textContent = nome;
+          d.appendChild(h);
+          d.appendChild(lvRich(testo.slice(testo.indexOf(nome) + nome.length)));
+        } else {
+          d.appendChild(lvRich(testo));
+        }
+        host.appendChild(d);
+      });
+    }
+
+    // Controllo eseguibile: apri la board con ?selfcheck=1 e guarda la
+    // console. Le forme qui sotto sono righe vere prese dallo storico; se
+    // una regexp regredisce, falliscono invece di sbagliare in silenzio.
+    function lvSelfCheck() {
+      if (location.search.indexOf("selfcheck=1") < 0) return;
+      const casi = [
+        ["[Elite]", "lv-solo", true],  ["(Rx)", "lv-solo", true],
+        ["Elite + RX:", "lv-solo", true], ["Progression:", "lv-solo", false],
+        ["Pendlay rows: 80/55kg - 185/125lbs", "lv-solo", false],
+        ["10 Cuban Press (2x7.5-10/4-6kg | 2x15-25/10-15lbs)", "load",
+          ["2x7.5-10/4-6kg", "2x15-25/10-15lbs"]],
+        ["heavier weight (40/25kg | 95/65lbs)", "load", ["40/25kg", "95/65lbs"]],
+        ["[Elite] 100-120+/70-85+kg | 225-265+/155-185+lbs", "load",
+          ["100-120+/70-85+kg", "225-265+/155-185+lbs"]],
+        ["♂ 68 │ 150lbs Sandbag or D-ball", "load", ["68 │ 150lbs"]],
+        ["Week 4/4 will be what I call a transition week.", "load", []],
+        ["Set 1: 5 Bench press at 85% of 5RM", "pct", true],
+        ["Rather keep 5% in the tank instead of overreaching.", "pct", false],
+      ];
+      let rotti = 0;
+      casi.forEach(c => {
+        const riga = c[0], tipo = c[1], atteso = c[2];
+        let ok;
+        if (tipo === "lv-solo") ok = LV_SOLO.test(riga) === atteso;
+        else if (tipo === "load") {
+          LOAD_RE.lastIndex = 0;
+          ok = (riga.match(LOAD_RE) || []).join("|") === atteso.join("|");
+        } else ok = PCT_PRESCR.test(riga) === atteso;
+        if (!ok) { rotti++; console.error("selfcheck FALLITO:", tipo, riga); }
+      });
+      // nessun carattere perso: il testo reso deve coincidere con l'originale
+      const host = document.createElement("div");
+      let diversi = 0;
+      ((weekData && weekData.days) || []).forEach(d => (d.sections || []).forEach(sec => {
+        fillDescription(host, sec.description);
+        const pulisci = t => String(t || "").replace(/\s+/g, "");
+        if (pulisci(host.textContent) !== pulisci(sec.description)) {
+          diversi++; console.error("selfcheck TESTO DIVERSO:", sec.title);
+        }
+      }));
+      console.log("selfcheck:", casi.length - rotti + "/" + casi.length,
+        "regole ok,", diversi ? diversi + " blocchi alterati" : "testo integro su tutti i blocchi");
+    }
+
     function renderTv() {
       els.stage.textContent = "";
       const blocks = curBlocks();
@@ -949,7 +1131,7 @@
       readerScrollEl.setAttribute("role", "tabpanel");
       const body = document.createElement("div");
       body.className = "reader-body";
-      body.textContent = sec.description || "";
+      fillDescription(body, sec.description);
       readerScrollEl.appendChild(body);
       const media = buildMedia(sec);
       if (media) readerScrollEl.appendChild(media);
@@ -1061,7 +1243,7 @@
         inner.className = "sc-inner";
         const body = document.createElement("div");
         body.className = "section-body";
-        body.textContent = s.description || "";
+        fillDescription(body, s.description);
         inner.appendChild(body);
         const media = buildMedia(s);
         if (media) inner.appendChild(media);
@@ -1369,6 +1551,7 @@
         state.dayPicked = true;
       }
       render();
+      lvSelfCheck();
       updateFooter(fromCache);
       return true;
     }
