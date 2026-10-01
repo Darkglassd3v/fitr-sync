@@ -287,12 +287,32 @@
           white-space:pre-wrap; overflow-wrap:anywhere;
           max-width:68ch;
         }
+        /* Con i gruppi la misura si decide per gruppo, non per pannello:
+           il cap scende sul .grp e il contenitore lo lascia libero. La classe
+           la mette fillDescription: :has() non e' affidabile su Silk. */
+        .reader-body.a-gruppi, .section-body.a-gruppi { max-width:none; }
         /* ─── Evidenza di livelli e carichi ──────────────────────
            Il testo resta esattamente com'e': stesso corpo, stessi a capo,
            stessa misura. Cambiano solo i colori. Il gruppo e' delimitato da
            una riga vuota o da un marcatore di livello, entrambi gia' scritti
            nel testo a monte: niente viene dedotto, niente viene nascosto. */
-        .grp { white-space:pre-wrap; overflow-wrap:anywhere; }
+        .grp { white-space:pre-wrap; overflow-wrap:anywhere; max-width:68ch; }
+        /* La prosa senza carichi ne' livelli usa la larghezza piena: li' gli
+           a capo sono del renderer, non dell'autore, quindi rifluisce senza
+           perdere significato.
+           88ch sono 1144px, cioe' ~119 caratteri reali: 1ch e' la larghezza
+           dello zero (12.99px) mentre il carattere medio di prosa ne misura
+           9.62, quindi 'ch' sottostima del 35%. Il numero non e' scelto per
+           la leggibilita' ma per le schermate: sulla settimana pubblicata lo
+           scroll totale scende da 81 a 74 e tocca il minimo a ~116 caratteri
+           reali. Oltre, le schermate restano 74 e si risparmiano solo pixel
+           dentro pagine che vanno comunque scorse. Sotto si paga subito: 110
+           caratteri costano una schermata, 104 ne costano tre.
+           Nessuna misura prende il minimo di schermate restando vicina ai 75
+           caratteri consigliati: per arrivare a 74 schermate ne servono 116.
+           ponytail: tarato su un pannello da 1539px. Se cambia il layout,
+           rimisurare il ginocchio invece di spostare il numero a occhio. */
+        .grp.wide { max-width:var(--prose-ch, 88ch); }
         .grp + .grp { margin-top:1.5em; }   /* la riga vuota che c'era */
         .grp + .grp.tight { margin-top:0; } /* qui la riga vuota non c'era */
         /* La barra sta sul bordo interno del pannello e il testo non si
@@ -944,6 +964,18 @@
     // verrebbe acceso come se fosse una prescrizione.
     const PCT_PRESCR = /\d+\s*RM\b|%\s*of\b|\b(?:kg|lbs?)\b/i;
 
+    // Un gruppo e' operativo se porta un carico, una percentuale, uno schema
+    // di ripetizioni o un recupero: li' gli a capo sono dell'autore e la
+    // misura non si tocca. Copie non globali: .test() su una /g sposterebbe
+    // lastIndex e il secondo giro darebbe un risultato diverso.
+    const OPS_RE = [
+      /\b\d[\d.,]*\+?(?:\s*[-\u2013\/x\u00D7]\s*\d[\d.,]*\+?)*\s*(?:kg|lbs?)\b/i,
+      /\d+\s*%/,
+      /\b\d+\s*x\s*\d+\b|\b\d+\s*(?:reps?|sets?|rounds?)\b/i,
+      /\b\d{1,2}:\d{2}\b|\b\d+\s*(?:min|sec)\b/i,
+    ];
+    const lvOperativo = t => OPS_RE.some(re => re.test(t));
+
     function lvChiave(nome) {
       const t = String(nome).replace(/[\[\]():]/g, "").trim().toLowerCase();
       if (t.indexOf("elite") === 0) return "elite";
@@ -1007,12 +1039,15 @@
     // e' il comportamento di prima.
     function fillDescription(host, desc) {
       host.textContent = "";
+      host.classList.remove("a-gruppi");
       const gs = lvGruppi(desc);
       if (gs.length < 2) { host.textContent = desc || ""; return; }
+      host.classList.add("a-gruppi");
       gs.forEach(g => {
         const testo = g.righe.join("\n");
         const d = document.createElement("div");
-        d.className = "grp" + (g.lv ? " lv" : "") + (g.attaccato ? " tight" : "");
+        d.className = "grp" + (g.lv ? " lv" : "") + (g.attaccato ? " tight" : "") +
+          (!g.lv && !lvOperativo(testo) ? " wide" : "");
         if (g.lv) {
           const nome = g.righe[0].trim();
           d.dataset.l = lvChiave(nome);
