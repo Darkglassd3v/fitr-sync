@@ -315,23 +315,41 @@
         .grp.wide { max-width:var(--prose-ch, 88ch); }
         .grp + .grp { margin-top:1.5em; }   /* la riga vuota che c'era */
         .grp + .grp.tight { margin-top:0; } /* qui la riga vuota non c'era */
-        /* La barra sta sul bordo interno del pannello e il testo non si
-           muove di un pixel: il rientro negativo vale esattamente quanto
-           il padding del contenitore piu' lo spessore della barra. */
-        /* La barra entra nel padding del contenitore (0.7em a 16px = 11px)
-           invece di sbordare: il testo resta allineato a quello dei gruppi
-           senza livello. In px perche' l'em qui vale 23, non 16. */
+        /* Dorso continuo, rientrato dal bordo. La versione precedente lo
+           teneva a filo (margin-left:-11px) e in palestra spariva dentro il
+           contorno giallo del focus, che sul reader c'e' sempre: le due
+           righe verticali si fondevano. Rientrato di 4px non si toccano. */
         .grp.lv {
-          border-left:5px solid var(--lv);
-          padding-left:6px; margin-left:-11px;
+          border-left:6px solid var(--lv);
+          padding-left:14px; margin-left:4px;
         }
-        .grp.lv[data-l="elite"],  .hl-lvm[data-l="elite"]  { --lv:var(--lv-elite); }
-        .grp.lv[data-l="rx"],     .hl-lvm[data-l="rx"]     { --lv:var(--lv-rx); }
-        .grp.lv[data-l="inter"],  .hl-lvm[data-l="inter"]  { --lv:var(--lv-inter); }
-        .grp.lv[data-l="scaled"], .hl-lvm[data-l="scaled"] { --lv:var(--lv-scaled); }
-        .lvname, .hl-lvm { color:var(--lv); font-weight:700; }
-        .hl-load { color:var(--load); font-weight:700; font-variant-numeric:tabular-nums; }
-        .hl-pct  { color:var(--pct);  font-weight:700; font-variant-numeric:tabular-nums; }
+        .grp.lv[data-l="elite"],  .hl-lvm[data-l="elite"],  .lv-eco[data-l="elite"]  { --lv:var(--lv-elite); }
+        .grp.lv[data-l="rx"],     .hl-lvm[data-l="rx"],     .lv-eco[data-l="rx"]     { --lv:var(--lv-rx); }
+        .grp.lv[data-l="inter"],  .hl-lvm[data-l="inter"],  .lv-eco[data-l="inter"]  { --lv:var(--lv-inter); }
+        .grp.lv[data-l="scaled"], .hl-lvm[data-l="scaled"], .lv-eco[data-l="scaled"] { --lv:var(--lv-scaled); }
+        /* Il nome del livello e' una pastiglia piena, non testo colorato: il
+           colore fa da sfondo invece che da inchiostro, quindi il contrasto
+           passa da 5.9:1 a 13:1 e resta una forma riconoscibile anche per
+           chi il colore non lo distingue. */
+        .lvname, .lv-eco {
+          display:inline-block; background:var(--lv); color:#0a0a0b;
+          font-family:'Barlow Condensed',sans-serif; font-weight:800;
+          text-transform:uppercase; letter-spacing:0.06em; line-height:1;
+          padding:0.18em 0.55em 0.22em; border-radius:4px;
+        }
+        .lvname { font-size:27px; margin-bottom:0.15em; }
+        /* L'eco nell'intestazione: dice dentro quale livello sei quando il
+           titolo e' gia' scorso via oltre il bordo superiore. Vive fuori
+           dall'area che scorre, quindi non copre mai il testo. */
+        .lv-eco { font-size:25px; }
+        /* Serve esplicitamente: display:inline-block qui sopra batte il
+           display:none che il browser da' agli elementi con [hidden]. */
+        .lv-eco[hidden] { display:none; }
+        .hl-lvm { color:var(--lv); font-weight:700; }
+        .hl-load { color:var(--load); font-weight:700; font-variant-numeric:tabular-nums;
+                   font-size:1.15em; }
+        .hl-pct  { color:var(--pct);  font-weight:700; font-variant-numeric:tabular-nums;
+                   font-size:1.15em; }
 
         .reader-fade {
           position:absolute; left:0; right:0; bottom:0; height:4.5rem;
@@ -938,7 +956,7 @@
       return rest;
     }
 
-    let readerScrollEl = null, readerPosEl = null, readerEl = null;
+    let readerScrollEl = null, readerPosEl = null, readerEl = null, lvEcoEl = null;
 
     // ═══ Livelli e carichi ══════════════════════════════════════
     // Il testo FITR porta gia' i suoi confini: righe vuote e marcatori di
@@ -1156,9 +1174,15 @@
       const title = document.createElement("div");
       title.className = "reader-title";
       title.textContent = sec.title || "";
+      // Dice dentro quale livello sei: il titolo del livello puo' essere
+      // scorso via oltre il bordo, questo no perche' sta fuori dall'area
+      // che scorre.
+      lvEcoEl = document.createElement("span");
+      lvEcoEl.className = "lv-eco";
+      lvEcoEl.hidden = true;
       readerPosEl = document.createElement("div");
       readerPosEl.className = "reader-pos";
-      head.append(title, readerPosEl);
+      head.append(title, lvEcoEl, readerPosEl);
 
       readerScrollEl = document.createElement("div");
       readerScrollEl.className = "reader-scroll";
@@ -1187,8 +1211,37 @@
       setTimeout(updateReaderPos, 120);
     }
 
+    // Il livello vale solo dentro il proprio gruppo, che va dal marcatore
+    // alla riga vuota successiva: un confine gia' scritto nel testo. Finito
+    // quello si torna a vuoto, perche' cio' che segue (carichi suggeriti,
+    // progressione) vale per tutti e marcarlo direbbe il falso.
+    function updateLvEco() {
+      if (!lvEcoEl || !readerScrollEl) return;
+      // Posizioni sullo schermo, non offsetTop: il genitore posizionato e'
+      // .reader, non .reader-scroll, quindi offsetTop e scrollTop non sono
+      // confrontabili. La soglia e' mezza riga sotto il bordo superiore,
+      // cosi' un gruppo che finisce appena dopo la piega non si prende la
+      // pagina seguente, dove di suo non si vede piu' niente.
+      const alto = readerScrollEl.getBoundingClientRect().top + 24;
+      let cur = null;
+      readerScrollEl.querySelectorAll(".grp.lv").forEach(g => {
+        const r = g.getBoundingClientRect();
+        if (r.top <= alto && alto < r.bottom) cur = g;
+      });
+      if (cur) {
+        const nome = cur.querySelector(".lvname");
+        lvEcoEl.textContent = nome ? nome.textContent : "";
+        lvEcoEl.dataset.l = cur.dataset.l || "";
+        lvEcoEl.hidden = !lvEcoEl.textContent;
+      } else {
+        lvEcoEl.textContent = "";
+        lvEcoEl.hidden = true;
+      }
+    }
+
     function updateReaderPos() {
       if (!readerScrollEl || !readerPosEl) return;
+      updateLvEco();
       const sc = readerScrollEl;
       const h  = sc.clientHeight || 1;
       const pages = Math.max(1, Math.ceil(sc.scrollHeight / h));
