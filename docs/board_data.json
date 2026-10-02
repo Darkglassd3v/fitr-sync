@@ -1,8 +1,8 @@
 {
   "week_start": "2026-09-28",
   "week_end": "2026-10-04",
-  "today": "2026-10-01",
-  "generated_at": "2026-10-01T03:33:02.581121",
+  "today": "2026-10-02",
+  "generated_at": "2026-10-02T03:35:23.454061",
   "days": [
     {
       "date": "2026-09-28",
@@ -420,7 +420,7 @@
       "weekday": "GIO",
       "day_number": 1,
       "date_label": "Giovedi 1 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -455,7 +455,7 @@
       "weekday": "VEN",
       "day_number": 2,
       "date_label": "Venerdi 2 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "TRANSITION WEEK",
