@@ -1,15 +1,15 @@
 {
   "week_start": "2026-10-05",
   "week_end": "2026-10-11",
-  "today": "2026-10-05",
-  "generated_at": "2026-10-05T03:29:45.322968",
+  "today": "2026-10-06",
+  "generated_at": "2026-10-06T04:16:18.917749",
   "days": [
     {
       "date": "2026-10-05",
       "weekday": "LUN",
       "day_number": 5,
       "date_label": "Lunedi 5 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "NEW TRAINING BLOCK W1/4",
@@ -197,7 +197,7 @@
       "weekday": "MAR",
       "day_number": 6,
       "date_label": "Martedi 6 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM-UP",
@@ -207,6 +207,11 @@
               "title": "Crab extensions",
               "kind": "youtube",
               "src": "https://youtu.be/q50xrR3FmVo"
+            },
+            {
+              "title": "Rowing",
+              "kind": "youtube",
+              "src": "https://youtu.be/nNakTNFlnQY"
             },
             {
               "title": "Top of ring dips",
@@ -222,6 +227,11 @@
               "title": "3 way wrist warm up",
               "kind": "youtube",
               "src": "https://youtu.be/OWjsM7rqtlY"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
             },
             {
               "title": "Push ups",
@@ -262,16 +272,6 @@
               "title": "Ring Rows",
               "kind": "youtube",
               "src": "https://youtu.be/TY4jHSrPTdg"
-            },
-            {
-              "title": "Rowing",
-              "kind": "youtube",
-              "src": "https://youtu.be/nNakTNFlnQY"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
             }
           ]
         },
@@ -683,6 +683,11 @@
           "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n3 ways Wrist Matrix (10 in each direction)\n\nb. 4 min Ski (Performed as 20 sec Easy / 10 sec Hard)\n\nc. 1-2 rounds of:\n30 sec Anterior-chain barbell stretch\n10 Double DB Pull overs\n5 Shoulder CARs with head off the floor\n\nd. Jerk barbell prep:\n10 Strict Press (Alt. between pressing from the front and from the back on each rep) (empty bar)\n10 Push Press (Alt. between pressing from the front and from the back on each rep) (empty bar)\n10 Push Jerk (Alt. between pressing from the front and from the back on each rep) (empty bar)\n10 Split Jerk (Alt. between pressing from the front and from the back on each rep) (empty bar)",
           "attachments": [
             {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
+            },
+            {
               "title": "Anterior stretch",
               "kind": "youtube",
               "src": "https://youtu.be/KIm_x7dpQAc"
@@ -731,11 +736,6 @@
               "title": "Dynamic bent arm pec opener",
               "kind": "youtube",
               "src": "https://youtu.be/Fv0KnjRiLf8"
-            },
-            {
-              "title": "Lat pulsed stretching with reach through",
-              "kind": "youtube",
-              "src": "https://youtu.be/P7scr-51piE"
             }
           ]
         },
@@ -802,14 +802,14 @@
               "src": "https://youtu.be/eaHyyvVEaWU"
             },
             {
-              "title": "Line facing burpees",
-              "kind": "youtube",
-              "src": "https://youtu.be/-VrrOcv6x3I"
-            },
-            {
               "title": "Echo bike",
               "kind": "youtube",
               "src": "https://youtu.be/mWQCkhNZwo4"
+            },
+            {
+              "title": "Line facing burpees",
+              "kind": "youtube",
+              "src": "https://youtu.be/-VrrOcv6x3I"
             }
           ]
         },
@@ -875,6 +875,16 @@
           "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n60/60 sec Dynamic Anterior hip stretch \n60/60 sec Dynamic Posterior hip stretch\n \nb. 4 min Rowing (Easy-Moderate tempo)\n\nc. 1-2 rounds of:\n10/10 Banded Clamshell Abduction\n20 Alt. Front rack shoot throughs\n10 Good-mornings\n\nd. Clean barbell prep:\n3 Strict Clean + 3 Hang Muscle Clean + 3 Low Hang Muscle Clean (empty bar)\n-rest as needed-\n3 Strict Clean + 3 Hang Power Clean + 3 Low Hang Power Clean (empty bar)\n-rest as needed-\n3 Strict Clean + 3 Hang Deep Power Clean + 3 Low Hang Deep Power Clean (empty bar)\n-rest as needed-\nBuild up to the starting weight for the Power clean piece below.",
           "attachments": [
             {
+              "title": "Dynamic posterior hip box stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/fcojabIIwNA"
+            },
+            {
+              "title": "Dynamic anterior hip stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
               "title": "Front rack shoot through",
               "kind": "youtube",
               "src": "https://youtu.be/8Fg4OIGfV8U"
@@ -900,29 +910,19 @@
               "src": "https://youtu.be/cjPyNhBUazY"
             },
             {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
+            },
+            {
               "title": "Goodmornings",
               "kind": "youtube",
               "src": "https://youtu.be/BbjXUrQlXLg"
             },
             {
-              "title": "Dynamic posterior hip box stretch",
-              "kind": "youtube",
-              "src": "https://youtu.be/fcojabIIwNA"
-            },
-            {
-              "title": "Dynamic anterior hip stretch",
-              "kind": "youtube",
-              "src": "https://youtu.be/M5nRWGwU_f0"
-            },
-            {
               "title": "Dynamic bent arm pec opener",
               "kind": "youtube",
               "src": "https://youtu.be/Fv0KnjRiLf8"
-            },
-            {
-              "title": "Lat pulsed stretching with reach through",
-              "kind": "youtube",
-              "src": "https://youtu.be/P7scr-51piE"
             }
           ]
         },
