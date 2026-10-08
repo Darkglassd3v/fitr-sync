@@ -1,8 +1,8 @@
 {
   "week_start": "2026-10-05",
   "week_end": "2026-10-11",
-  "today": "2026-10-07",
-  "generated_at": "2026-10-07T03:45:13.904675",
+  "today": "2026-10-08",
+  "generated_at": "2026-10-08T04:00:09.489699",
   "days": [
     {
       "date": "2026-10-05",
@@ -423,7 +423,7 @@
       "weekday": "MER",
       "day_number": 7,
       "date_label": "Mercoledi 7 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM-UP - Deadlift",
@@ -620,7 +620,7 @@
       "weekday": "GIO",
       "day_number": 8,
       "date_label": "Giovedi 8 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "OPTION 1: FULL REST / BODYWORK",
@@ -890,6 +890,11 @@
               "src": "https://youtu.be/8Fg4OIGfV8U"
             },
             {
+              "title": "Goodmornings",
+              "kind": "youtube",
+              "src": "https://youtu.be/BbjXUrQlXLg"
+            },
+            {
               "title": "Strict Clean + Deep Hang Power Clean + Deep Low Hang Power Clean",
               "kind": "youtube",
               "src": "https://youtu.be/q82-SBUzsy8"
@@ -918,11 +923,6 @@
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
-            },
-            {
-              "title": "Goodmornings",
-              "kind": "youtube",
-              "src": "https://youtu.be/BbjXUrQlXLg"
             }
           ]
         },
