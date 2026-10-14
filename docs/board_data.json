@@ -1,8 +1,8 @@
 {
   "week_start": "2026-10-12",
   "week_end": "2026-10-18",
-  "today": "2026-10-13",
-  "generated_at": "2026-10-13T04:59:54.785903",
+  "today": "2026-10-14",
+  "generated_at": "2026-10-14T03:05:54.283292",
   "days": [
     {
       "date": "2026-10-12",
@@ -212,7 +212,7 @@
       "weekday": "MAR",
       "day_number": 13,
       "date_label": "Martedi 13 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM-UP",
@@ -433,7 +433,7 @@
       "weekday": "MER",
       "day_number": 14,
       "date_label": "Mercoledi 14 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM-UP - Deadlift",
@@ -698,6 +698,16 @@
           "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n3 ways Wrist Matrix (10 in each direction)\n\nb. 4 min Ski (Performed as 20 sec Easy / 10 sec Hard)\n\nc. 1-2 rounds of:\n30 sec Anterior-chain barbell stretch\n10 Double DB Pull overs\n5 Shoulder CARs with head off the floor\n\nd. Jerk barbell prep:\n10 Strict Press (Alt. between pressing from the front and from the back on each rep) (empty bar)\n10 Push Press (Alt. between pressing from the front and from the back on each rep) (empty bar)\n10 Push Jerk (Alt. between pressing from the front and from the back on each rep) (empty bar)\n10 Split Jerk (Alt. between pressing from the front and from the back on each rep) (empty bar)",
           "attachments": [
             {
+              "title": "3 way wrist warm up",
+              "kind": "youtube",
+              "src": "https://youtu.be/OWjsM7rqtlY"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
@@ -741,16 +751,6 @@
               "title": "Strict Press (Alt. between pressing from the front and from the back on each rep)",
               "kind": "youtube",
               "src": "https://youtu.be/lLmk_fM7nG0"
-            },
-            {
-              "title": "3 way wrist warm up",
-              "kind": "youtube",
-              "src": "https://youtu.be/OWjsM7rqtlY"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
             }
           ]
         },
@@ -940,6 +940,11 @@
               "src": "https://youtu.be/cjPyNhBUazY"
             },
             {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
@@ -948,11 +953,6 @@
               "title": "Goodmornings",
               "kind": "youtube",
               "src": "https://youtu.be/BbjXUrQlXLg"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
             }
           ]
         },
@@ -993,6 +993,11 @@
           "description": "Conditioning, “Lifting the roof” (V02 max intervals │ 90+% Effort │ Severe-Extreme intensity domain │ Z4-5) \n\nElite:\na. 3 sets, \n4 minutes AMRAP / 2 minutes Rest\n2 rounds of:\n5 Ring MU\n10 Shuttle runs (1 rep = 25ft/7.62m out + 25ft/7.62m back)\n-Into-\nMax calories row in the remaining time\n\nRX \na. 3 sets, \n4 minutes AMRAP / 2 minutes Rest\n2 rounds of:\n3 Ring MU\n10 Shuttle runs (1 rep = 25ft/7.62m out + 25ft/7.62m back)\n-Into-\nMax calories row in the remaining time\n\nIntermediate\na. 3 sets, \n4 minutes AMRAP / 2 minutes Rest\n2 rounds of:\n5 Bar MU \n10 Shuttle runs (1 rep = 25ft/7.62m out + 25ft/7.62m back)\n-Into-\nMax calories row in the remaining time\n\nScaled\n(Option #1)\na. 3 sets, \n4 minutes AMRAP / 2 minutes Rest\n2 rounds of:\n10 Kipping Chest to Bar \n10 Shuttle runs (1 rep = 25ft/7.62m out + 25ft/7.62m back)\n-Into-\nMax calories row in the remaining time\n\n(Option #2)\nSpend 20 minutes working through our Ring MU or Bar MU progressions found in the attached files.\n\nIntensity: “Lifting the roof” (RPE 9 / “VO2max” / Max effort / Severe-Extreme Intensity domain / Z4-5.)\n\nScore: Accumulated amount of calories row performed over the 3 sets (Make sure to put a comment with what level you completed the workout at).\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
           "attachments": [
             {
+              "title": "Ring Muscle ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/17WLm-M4_hk"
+            },
+            {
               "title": "Shuttle run",
               "kind": "youtube",
               "src": "https://youtu.be/3woWx1Xd57g"
@@ -1011,11 +1016,6 @@
               "title": "Row",
               "kind": "youtube",
               "src": "https://youtu.be/go-Vwzo1RDY"
-            },
-            {
-              "title": "Ring Muscle ups",
-              "kind": "youtube",
-              "src": "https://youtu.be/17WLm-M4_hk"
             }
           ]
         },
