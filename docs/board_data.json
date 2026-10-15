@@ -1,8 +1,8 @@
 {
   "week_start": "2026-10-12",
   "week_end": "2026-10-18",
-  "today": "2026-10-14",
-  "generated_at": "2026-10-14T03:05:54.283292",
+  "today": "2026-10-15",
+  "generated_at": "2026-10-15T02:43:55.595621",
   "days": [
     {
       "date": "2026-10-12",
@@ -433,7 +433,7 @@
       "weekday": "MER",
       "day_number": 14,
       "date_label": "Mercoledi 14 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM-UP - Deadlift",
@@ -635,7 +635,7 @@
       "weekday": "GIO",
       "day_number": 15,
       "date_label": "Giovedi 15 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "OPTION 1: FULL REST / BODYWORK",
@@ -920,6 +920,11 @@
               "src": "https://youtu.be/8Fg4OIGfV8U"
             },
             {
+              "title": "Goodmornings",
+              "kind": "youtube",
+              "src": "https://youtu.be/BbjXUrQlXLg"
+            },
+            {
               "title": "Strict Clean + Deep Hang Power Clean + Deep Low Hang Power Clean",
               "kind": "youtube",
               "src": "https://youtu.be/q82-SBUzsy8"
@@ -948,17 +953,12 @@
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
-            },
-            {
-              "title": "Goodmornings",
-              "kind": "youtube",
-              "src": "https://youtu.be/BbjXUrQlXLg"
             }
           ]
         },
         {
           "title": "S1: STRENGTH-SPEED (Clean)",
-          "description": "Strength-Speed / \"Power\" / Weightlifting, Power Clean\n\nNote: Today we are reducing to one pause — last week focused on positional strength. Removing one pause should allow for heavier loads on the bar.\n----------------------------------\na. 6 sets, going every 90-120 sec\n3 (1.1.1) Power Clean (2 sec pause at the knees)\n\n(Suggested) Load : Only increase weight if you nailed the previous set perfectly. Technique and positions are more important than the weight on the bar. Suggested load below (2.5% increase from last week):\nSet 1: 52.5-57.5% of 1RM Power Clean (@52.5%1RM_PCLEAN  - @57.5%1RM_PCLEAN)\nSet 2: 57.5-62.5% of 1RM Power Clean (@57.5%1RM_PCLEAN  - @62.5%1RM_PCLEAN)\nSet 3: 62.5-67.5% of 1RM Power Clean (@62.5%1RM_PCLEAN  - @67.5%1RM_PCLEAN)\nSet 4: 67.5-72.5% of 1RM Power Clean (@67.5%1RM_PCLEAN  - @72.5%1RM_PCLEAN)\nSet 1: 72.5-77.5% of 1RM Power Clean (@72.5%1RM_PCLEAN  - @77.5%1RM_PCLEAN)\nSet 2: 77.5-82.5% of 1RM Power Clean (@77.5%1RM_PCLEAN  - @82.5%1RM_PCLEAN)\n\n1.1.1: means that the reps are performed one by one and not in Touch & Go. \n\nProgression:\nW1: 6 sets of 3 Power Clean (2 pauses). \nW2: 6 sets of 3 Power Clean (1 pause), aim to progress loads. (Current)\nW3: 6 sets of 3 Power Clean (no pause), aim to progress loads.\nW4: Transition week\n----------------------------------\nRead more about how weightlifting is developed in our program in attached document.",
+          "description": "Strength-Speed / \"Power\" / Weightlifting, Power Clean\n\nNote: Today we are reducing to one pause — last week focused on positional strength. Removing one pause should allow for heavier loads on the bar.\n----------------------------------\na. 6 sets, going every 90-120 sec\n3 (1.1.1) Power Clean (2 sec pause at the knees)\n\n(Suggested) Load : Only increase weight if you nailed the previous set perfectly. Technique and positions are more important than the weight on the bar. Suggested load below (2.5% increase from last week):\nSet 1: 52.5-57.5% of 1RM Power Clean (@52.5%1RM_PCLEAN  - @57.5%1RM_PCLEAN)\nSet 2: 57.5-62.5% of 1RM Power Clean (@57.5%1RM_PCLEAN  - @62.5%1RM_PCLEAN)\nSet 3: 62.5-67.5% of 1RM Power Clean (@62.5%1RM_PCLEAN  - @67.5%1RM_PCLEAN)\nSet 4: 67.5-72.5% of 1RM Power Clean (@67.5%1RM_PCLEAN  - @72.5%1RM_PCLEAN)\nSet 5: 72.5-77.5% of 1RM Power Clean (@72.5%1RM_PCLEAN  - @77.5%1RM_PCLEAN)\nSet 6: 77.5-82.5% of 1RM Power Clean (@77.5%1RM_PCLEAN  - @82.5%1RM_PCLEAN)\n\n1.1.1: means that the reps are performed one by one and not in Touch & Go. \n\nProgression:\nW1: 6 sets of 3 Power Clean (2 pauses). \nW2: 6 sets of 3 Power Clean (1 pause), aim to progress loads. (Current)\nW3: 6 sets of 3 Power Clean (no pause), aim to progress loads.\nW4: Transition week\n----------------------------------\nRead more about how weightlifting is developed in our program in attached document.",
           "attachments": []
         },
         {
