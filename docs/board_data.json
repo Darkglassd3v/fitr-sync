@@ -1,8 +1,8 @@
 {
   "week_start": "2026-10-12",
   "week_end": "2026-10-18",
-  "today": "2026-10-17",
-  "generated_at": "2026-10-17T02:32:02.154349",
+  "today": "2026-10-18",
+  "generated_at": "2026-10-18T02:39:27.187961",
   "days": [
     {
       "date": "2026-10-12",
@@ -898,7 +898,7 @@
       "weekday": "SAB",
       "day_number": 17,
       "date_label": "Sabato 17 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM-UP - Clean",
@@ -1048,7 +1048,7 @@
       "weekday": "DOM",
       "day_number": 18,
       "date_label": "Domenica 18 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "FULL REST DAY",
