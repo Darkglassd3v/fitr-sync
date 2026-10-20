@@ -21,8 +21,8 @@ jobs:
       matrix:
         account:
           - "Account 1"
-          - "Account 2"
-          - "Account 3"
+          # Account 2 e 3 disabilitati: consumavano minuti Actions.
+          # Per riattivarli, rimetterli qui.
     name: Sync ${{ matrix.account }}
     steps:
       - uses: actions/checkout@v4
