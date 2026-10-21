@@ -316,6 +316,13 @@
         .grp.wide { max-width:var(--prose-ch, 88ch); }
         .grp + .grp { margin-top:1.5em; }   /* la riga vuota che c'era */
         .grp + .grp.tight { margin-top:0; } /* qui la riga vuota non c'era */
+        /* Sulla TV il pannello tiene poche righe: la riga vuota resta
+           visibile come stacco ma costa mezza riga invece di una e mezza. */
+        body.tv .grp + .grp, body.tv .fase + .grp, body.tv .grp + .fase,
+        body.tv .fase + .fase { margin-top:0.6em; }
+        body.tv .grp + .grp.tight { margin-top:0; }
+        body.tv .fase { padding:0.35em 0.6em 0.45em; }
+        body.tv .fasename, body.tv .lvname { margin-bottom:0.05em; }
         /* Dorso continuo, rientrato dal bordo. La versione precedente lo
            teneva a filo (margin-left:-11px) e in palestra spariva dentro il
            contorno giallo del focus, che sul reader c'e' sempre: le due
@@ -1348,12 +1355,65 @@
       state.readerScroll = sc.scrollTop;
     }
 
+    // Righe del pannello in coordinate di scroll. Ogni riga sa dove inizia
+    // il suo gruppo; il primo gruppo di una fase parte dal filo della fase,
+    // cosi' la pastiglia non resta tagliata sopra il bordo.
+    function readerRighe(sc) {
+      const base = sc.getBoundingClientRect().top - sc.scrollTop;
+      const out = [];
+      sc.querySelectorAll(".reader-body .grp, .reader-body:not(.a-gruppi), .media").forEach(g => {
+        let inizio = g.getBoundingClientRect().top - base;
+        const f = g.parentElement;
+        if (f && f.classList.contains("fase") && f.firstElementChild === g)
+          inizio = f.getBoundingClientRect().top - base;
+        const r = document.createRange();
+        r.selectNodeContents(g);
+        let ultima = null;
+        [...r.getClientRects()].sort((a, b) => a.top - b.top).forEach(q => {
+          if (!q.height) return;
+          const top = q.top - base, bot = q.bottom - base;
+          if (ultima && top < ultima.bot - 2) { ultima.bot = Math.max(ultima.bot, bot); return; }
+          ultima = { top: top, bot: bot, gruppo: inizio };
+          out.push(ultima);
+        });
+      });
+      return out.sort((a, b) => a.top - b.top);
+    }
+
+    // Pagina a righe intere: la pagina dopo comincia dalla prima riga che
+    // non si vedeva tutta. Se quella riga e' dentro un gruppo iniziato
+    // nella meta' bassa del pannello, si porta giu' il gruppo intero invece
+    // di spezzarlo. Indietro e' lo stesso al contrario.
     function readerPage(dir) {
       if (!readerScrollEl) return false;
       const sc = readerScrollEl;
       const before = sc.scrollTop;
-      const max = Math.max(0, sc.scrollHeight - sc.clientHeight);
-      const next = Math.min(Math.max(before + dir * sc.clientHeight * 0.8, 0), max);
+      const h = sc.clientHeight;
+      const max = Math.max(0, sc.scrollHeight - h);
+      // Respiro sopra la prima riga: dentro l'interlinea, cosi' della riga
+      // precedente non si vede niente.
+      const aria = 4;
+      // La sfumatura in fondo copre le ultime righe: quelle non contano
+      // come lette, altrimenti la pagina dopo le salterebbe.
+      const fondo = before + h - (readerEl && readerEl.classList.contains("more") ? 48 : 2);
+      let next = null;
+      try {
+        const righe = readerRighe(sc);
+        if (dir > 0) {
+          const taglio = righe.find(r => r.bot > fondo);
+          if (taglio) {
+            next = taglio.gruppo > before + h * 0.45 ? taglio.gruppo : taglio.top;
+            next -= aria;
+          }
+        } else {
+          const da = before - h + aria * 2;
+          const prima = righe.find(r => r.top >= da);
+          if (prima) next = (prima.gruppo >= da ? prima.gruppo : prima.top) - aria;
+        }
+      } catch (e) { next = null; }
+      if (next === null || (next - before) * dir < 20)
+        next = before + dir * h * 0.8;
+      next = Math.min(Math.max(next, 0), max);
       if (Math.abs(next - before) < 2) return false;
       sc.scrollTop = next;
       updateReaderPos();
