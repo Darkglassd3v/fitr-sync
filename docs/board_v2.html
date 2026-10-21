@@ -39,6 +39,7 @@
           --lv-elite:#ff5a4d; --lv-rx:#5bc8ff;
           --lv-inter:#c08cff;  --lv-scaled:#5fd49b;
           --load:#ff8a3d; --pct:#d8ff00;
+          --fs-warm:#ffb547; --fs-main:#f2f2f2; --fs-cool:#9aa0a6;
 
           --ring:3px;
           --dur:0.18s;
@@ -346,6 +347,29 @@
            display:none che il browser da' agli elementi con [hidden]. */
         .lv-eco[hidden] { display:none; }
         .hl-lvm { color:var(--lv); font-weight:700; }
+        /* ─── Fasi del blocco: Warm-Up / Main set / Cool-down ────
+           Stesso principio dei livelli: il confine e' gia' scritto nel testo
+           ("a. Warm-Up", "b. Main set"). Forma diversa dai livelli, cosi' i
+           due non si confondono quando stanno uno dentro l'altro: il livello
+           e' un dorso a sinistra, la fase una fascia di fondo con un filo
+           in alto. */
+        .fase {
+          border-top:3px solid var(--fs); background:var(--fs-bg);
+          padding:0.5em 0.7em 0.7em; border-radius:4px;
+        }
+        .fase[data-f="warm"], .fase-eco[data-f="warm"] { --fs:var(--fs-warm); --fs-bg:rgba(255,181,71,0.07); }
+        .fase[data-f="main"], .fase-eco[data-f="main"] { --fs:var(--fs-main); --fs-bg:rgba(255,255,255,0.05); }
+        .fase[data-f="cool"], .fase-eco[data-f="cool"] { --fs:var(--fs-cool); --fs-bg:rgba(154,160,166,0.07); }
+        .fase + .grp, .grp + .fase, .fase + .fase { margin-top:1.5em; }
+        .fasename, .fase-eco {
+          display:inline-block; background:var(--fs); color:#0a0a0b;
+          font-family:'Barlow Condensed',sans-serif; font-weight:800;
+          text-transform:uppercase; letter-spacing:0.06em; line-height:1;
+          padding:0.18em 0.55em 0.22em; border-radius:4px;
+        }
+        .fasename { font-size:27px; margin-bottom:0.15em; }
+        .fase-eco { font-size:25px; }
+        .fase-eco[hidden] { display:none; }
         .hl-load { color:var(--load); font-weight:700; font-variant-numeric:tabular-nums;
                    font-size:1.15em; }
         .hl-pct  { color:var(--pct);  font-weight:700; font-variant-numeric:tabular-nums;
@@ -956,7 +980,7 @@
       return rest;
     }
 
-    let readerScrollEl = null, readerPosEl = null, readerEl = null, lvEcoEl = null;
+    let readerScrollEl = null, readerPosEl = null, readerEl = null, lvEcoEl = null, faseEcoEl = null;
 
     // ═══ Livelli e carichi ══════════════════════════════════════
     // Il testo FITR porta gia' i suoi confini: righe vuote e marcatori di
@@ -994,6 +1018,22 @@
     ];
     const lvOperativo = t => OPS_RE.some(re => re.test(t));
 
+    // Fasi: "a. Warm-Up", "b. Main set (Progressive tempo work)". La lettera
+    // serve a capire dove finisce la fase: alla lettera successiva ("c.
+    // (Optional) ..."), alla progressione o al separatore finale. Le note
+    // "a./b." dentro il main set non la chiudono, perche' non sono la
+    // lettera che segue.
+    const FASE_RE   = /^\s*([a-z])\.\s*(warm[\s-]*up|main\s+set|cool[\s-]*down)\b/i;
+    const FASE_FINE = /^\s*(?:progression\b|-{5,}\s*$)/i;
+    const LETTERA_RE = /^\s*([a-z])\.\s/i;
+
+    function faseChiave(nome) {
+      const t = nome.toLowerCase();
+      if (t.indexOf("warm") === 0) return "warm";
+      if (t.indexOf("cool") === 0) return "cool";
+      return "main";
+    }
+
     function lvChiave(nome) {
       const t = String(nome).replace(/[\[\]():]/g, "").trim().toLowerCase();
       if (t.indexOf("elite") === 0) return "elite";
@@ -1002,15 +1042,33 @@
       return "inter";
     }
 
-    // Un gruppo finisce su una riga vuota o su un marcatore di livello.
+    // Un gruppo finisce su una riga vuota, su un marcatore di livello o
+    // su un confine di fase. La fase invece attraversa le righe vuote.
     function lvGruppi(desc) {
       const out = [];
-      let cur = null;
+      let cur = null, fase = null;
       const chiudi = () => { if (cur && cur.righe.some(l => l.trim())) out.push(cur); };
+      const nuovo = (lv, extra) => Object.assign(
+        { righe:[], lv:lv, attaccato: !!cur, fase: fase ? fase.k : null }, extra);
       String(desc || "").split("\n").forEach(l => {
         if (!l.trim())      { chiudi(); cur = null; return; }
-        if (LV_SOLO.test(l)) { chiudi(); cur = { righe:[l], lv:true, attaccato: !!cur }; return; }
-        if (!cur) cur = { righe:[], lv:false, attaccato:false };
+        const mf = FASE_RE.exec(l);
+        if (mf) {
+          chiudi();
+          fase = { k: faseChiave(mf[2]), lettera: mf[1].toLowerCase() };
+          cur = nuovo(false, { testa: mf[0].trim() });
+          cur.righe.push(l);
+          return;
+        }
+        if (fase) {
+          const ml = LETTERA_RE.exec(l);
+          const dopo = String.fromCharCode(fase.lettera.charCodeAt(0) + 1);
+          if (FASE_FINE.test(l) || (ml && ml[1].toLowerCase() === dopo)) {
+            chiudi(); fase = null; cur = nuovo(false); cur.righe.push(l); return;
+          }
+        }
+        if (LV_SOLO.test(l)) { chiudi(); cur = nuovo(true); cur.righe.push(l); return; }
+        if (!cur) cur = nuovo(false);
         cur.righe.push(l);
       });
       chiudi();
@@ -1061,7 +1119,17 @@
       const gs = lvGruppi(desc);
       if (gs.length < 2) { host.textContent = desc || ""; return; }
       host.classList.add("a-gruppi");
+      let fase = null, dove = host;
       gs.forEach(g => {
+        if (g.fase !== fase) {
+          fase = g.fase;
+          if (fase) {
+            dove = document.createElement("div");
+            dove.className = "fase";
+            dove.dataset.f = fase;
+            host.appendChild(dove);
+          } else dove = host;
+        }
         const testo = g.righe.join("\n");
         const d = document.createElement("div");
         d.className = "grp" + (g.lv ? " lv" : "") + (g.attaccato ? " tight" : "") +
@@ -1074,10 +1142,18 @@
           h.textContent = nome;
           d.appendChild(h);
           d.appendChild(lvRich(testo.slice(testo.indexOf(nome) + nome.length)));
+        } else if (g.testa) {
+          const i = testo.indexOf(g.testa);
+          if (i > 0) d.appendChild(document.createTextNode(testo.slice(0, i)));
+          const h = document.createElement("span");
+          h.className = "fasename";
+          h.textContent = g.testa;
+          d.appendChild(h);
+          d.appendChild(lvRich(testo.slice(i + g.testa.length)));
         } else {
           d.appendChild(lvRich(testo));
         }
-        host.appendChild(d);
+        dove.appendChild(d);
       });
     }
 
@@ -1099,6 +1175,9 @@
         ["Week 4/4 will be what I call a transition week.", "load", []],
         ["Set 1: 5 Bench press at 85% of 5RM", "pct", true],
         ["Rather keep 5% in the tank instead of overreaching.", "pct", false],
+        ["a. Warm-Up ", "fase", true], ["b. Main set (Progressive tempo work)", "fase", true],
+        ["a. Warm up", "fase", true], ["Warm up ", "fase", false],
+        ["a. The goal is to hit the same number of rounds", "fase", false],
       ];
       let rotti = 0;
       casi.forEach(c => {
@@ -1108,7 +1187,8 @@
         else if (tipo === "load") {
           LOAD_RE.lastIndex = 0;
           ok = (riga.match(LOAD_RE) || []).join("|") === atteso.join("|");
-        } else ok = PCT_PRESCR.test(riga) === atteso;
+        } else if (tipo === "fase") ok = FASE_RE.test(riga) === atteso;
+        else ok = PCT_PRESCR.test(riga) === atteso;
         if (!ok) { rotti++; console.error("selfcheck FALLITO:", tipo, riga); }
       });
       // nessun carattere perso: il testo reso deve coincidere con l'originale
@@ -1180,9 +1260,12 @@
       lvEcoEl = document.createElement("span");
       lvEcoEl.className = "lv-eco";
       lvEcoEl.hidden = true;
+      faseEcoEl = document.createElement("span");
+      faseEcoEl.className = "fase-eco";
+      faseEcoEl.hidden = true;
       readerPosEl = document.createElement("div");
       readerPosEl.className = "reader-pos";
-      head.append(title, lvEcoEl, readerPosEl);
+      head.append(title, faseEcoEl, lvEcoEl, readerPosEl);
 
       readerScrollEl = document.createElement("div");
       readerScrollEl.className = "reader-scroll";
@@ -1237,6 +1320,17 @@
         lvEcoEl.textContent = "";
         lvEcoEl.hidden = true;
       }
+      // La fase si ripete nell'intestazione per la stessa ragione.
+      if (!faseEcoEl) return;
+      let fase = null;
+      readerScrollEl.querySelectorAll(".fase").forEach(f => {
+        const r = f.getBoundingClientRect();
+        if (r.top <= alto && alto < r.bottom) fase = f;
+      });
+      const nomeFase = fase && fase.querySelector(".fasename");
+      faseEcoEl.textContent = nomeFase ? nomeFase.textContent : "";
+      faseEcoEl.dataset.f = fase ? fase.dataset.f : "";
+      faseEcoEl.hidden = !faseEcoEl.textContent;
     }
 
     function updateReaderPos() {
