@@ -1,8 +1,8 @@
 {
   "week_start": "2026-10-19",
   "week_end": "2026-10-25",
-  "today": "2026-10-21",
-  "generated_at": "2026-10-21T02:53:08.632842",
+  "today": "2026-10-22",
+  "generated_at": "2026-10-22T02:49:36.973856",
   "days": [
     {
       "date": "2026-10-19",
@@ -418,7 +418,7 @@
       "weekday": "MER",
       "day_number": 21,
       "date_label": "Mercoledi 21 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM-UP - Deadlift",
@@ -609,7 +609,7 @@
       "weekday": "GIO",
       "day_number": 22,
       "date_label": "Giovedi 22 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "OPTION 1: FULL REST / BODYWORK",
@@ -697,6 +697,11 @@
               "src": "https://youtu.be/wuegk_Qh4Xk"
             },
             {
+              "title": "Ski erg",
+              "kind": "youtube",
+              "src": "https://youtu.be/WUiGW3wLp4w"
+            },
+            {
               "title": "Split Jerk (Alt. between pressing from the front and from the back on each rep)",
               "kind": "youtube",
               "src": "https://youtu.be/WZ2lhKdQEYs"
@@ -720,11 +725,6 @@
               "title": "Strict Press (Alt. between pressing from the front and from the back on each rep)",
               "kind": "youtube",
               "src": "https://youtu.be/lLmk_fM7nG0"
-            },
-            {
-              "title": "Ski erg",
-              "kind": "youtube",
-              "src": "https://youtu.be/WUiGW3wLp4w"
             }
           ]
         },
@@ -874,6 +874,11 @@
               "src": "https://youtu.be/8Fg4OIGfV8U"
             },
             {
+              "title": "Goodmornings",
+              "kind": "youtube",
+              "src": "https://youtu.be/BbjXUrQlXLg"
+            },
+            {
               "title": "Strict Clean + Deep Hang Power Clean + Deep Low Hang Power Clean",
               "kind": "youtube",
               "src": "https://youtu.be/q82-SBUzsy8"
@@ -902,11 +907,6 @@
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
-            },
-            {
-              "title": "Goodmornings",
-              "kind": "youtube",
-              "src": "https://youtu.be/BbjXUrQlXLg"
             }
           ]
         },
