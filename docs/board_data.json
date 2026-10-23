@@ -1,8 +1,8 @@
 {
   "week_start": "2026-10-19",
   "week_end": "2026-10-25",
-  "today": "2026-10-22",
-  "generated_at": "2026-10-22T02:49:36.973856",
+  "today": "2026-10-23",
+  "generated_at": "2026-10-23T02:54:02.571788",
   "days": [
     {
       "date": "2026-10-19",
@@ -609,7 +609,7 @@
       "weekday": "GIO",
       "day_number": 22,
       "date_label": "Giovedi 22 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "OPTION 1: FULL REST / BODYWORK",
@@ -665,7 +665,7 @@
       "weekday": "VEN",
       "day_number": 23,
       "date_label": "Venerdi 23 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM-UP",
