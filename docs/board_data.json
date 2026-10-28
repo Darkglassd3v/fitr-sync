@@ -1,8 +1,8 @@
 {
   "week_start": "2026-10-26",
   "week_end": "2026-11-01",
-  "today": "2026-10-27",
-  "generated_at": "2026-10-27T03:17:09.229864",
+  "today": "2026-10-28",
+  "generated_at": "2026-10-28T03:28:12.552432",
   "days": [
     {
       "date": "2026-10-26",
@@ -166,7 +166,7 @@
       "weekday": "MAR",
       "day_number": 27,
       "date_label": "Martedi 27 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -382,7 +382,7 @@
       "weekday": "MER",
       "day_number": 28,
       "date_label": "Mercoledi 28 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -631,6 +631,16 @@
           "description": "Warm up \n\na. 1 round of:\n60/60 sec Dynamic Pec stretch \n60/60 sec Dynamic Lat stretch \n3 ways Wrist Matrix (10 in each direction)\n\nb. 4 min Ski (Performed as 20 sec Easy / 10 sec Hard)\n\nc. 1-2 rounds of:\n30 sec Anterior-chain barbell stretch\n10 Double DB Pull overs\n5 Shoulder CARs with head off the floor\n\nd. DB Jerk prep:\n5/5 Single DB Strict Press  \n-rest as needed-\n5/5 Single DB Push Press (pause in the dip)\n-rest as needed-\n5/5 Single DB Push Jerk (pause in the catch)\n-rest as needed-\n5/5 Single DB Split Jerk",
           "attachments": [
             {
+              "title": "3 way wrist warm up",
+              "kind": "youtube",
+              "src": "https://youtu.be/OWjsM7rqtlY"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
@@ -654,16 +664,6 @@
               "title": "Prone Shoulder CARs",
               "kind": "youtube",
               "src": "https://youtu.be/VSpt6i1C-AQ"
-            },
-            {
-              "title": "3 way wrist warm up",
-              "kind": "youtube",
-              "src": "https://youtu.be/OWjsM7rqtlY"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
             }
           ]
         },
@@ -720,14 +720,14 @@
           "description": "Conditioning, “Raising the ceiling” (Threshold intervals │ 80-85% effort │ Heavy-Severe intensity domain)\n\na. 4 sets,\n15/11 Calorie Ski \n15/11 Calorie Row \n-1 minute rest-\n30/22 Calorie Ski \n30/22 Calorie Row \n-2 minutes rest between sets-\n\nIntensity: RPE 8 │ “Threshold” │ “Highest sustainable effort” │ Heavy-Severe intensity domain │  Z4\n\nScore: Total time, rest included (Make sure to put a comment with what level you completed the workout at).\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
           "attachments": [
             {
-              "title": "Ski erg",
-              "kind": "youtube",
-              "src": "https://youtu.be/WUiGW3wLp4w"
-            },
-            {
               "title": "Rowing",
               "kind": "youtube",
               "src": "https://youtu.be/zfl28GvOtWk"
+            },
+            {
+              "title": "Ski erg",
+              "kind": "youtube",
+              "src": "https://youtu.be/WUiGW3wLp4w"
             }
           ]
         },
@@ -807,6 +807,11 @@
               "src": "https://youtu.be/cjPyNhBUazY"
             },
             {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
               "title": "Lat pulsed stretching with reach through",
               "kind": "youtube",
               "src": "https://youtu.be/P7scr-51piE"
@@ -815,11 +820,6 @@
               "title": "Goodmornings",
               "kind": "youtube",
               "src": "https://youtu.be/BbjXUrQlXLg"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
             }
           ]
         },
@@ -871,6 +871,11 @@
           "description": "Conditioning, “Lifting the roof” (V02 max intervals │ 90+% Effort │ Severe-Extreme intensity domain │ Z4-5)  + Gymnastics (Pull)\n\nElite:\na. 5 sets, going every 5th minutes :\n10/8 calories Echo Bike\n6/4 Ring MU\n10/8 calories Echo Bike\n6 Alt. Sandbag to Shoulder (150/100lbs ⎸ 70/45kg)\n\nRX \na. 5 sets, going every 5th minutes :\n10/8 calories Echo Bike\n2-4 Ring MU or 4-6 Bar MU\n10/8 calories Echo Bike\n4 Alt. Sandbag to Shoulder (150/100lbs ⎸ 70/45kg)\n\nIntermediate\n(Option #1)\na. 5 sets, going every 5th minutes :\n10/8 calories Echo Bike\n2-4 Bar MU or 6-8 Chest to Bar\n10/8 calories Echo Bike\n6 Alt. Sandbag to Shoulder (100/70lbs ⎸ 45/30kg)\n\n(Option #2)\nSpend 20 minutes working through our Bar MU or Ring MU progressions found in the attached files.\n\nIntensity: “Lifting the roof” (RPE 9 / “VO2max” / Max effort / Severe-Extreme Intensity domain / Z4-5.)\n\nScore: Cumulated times across the 5 sets (Make sure to put a comment with what level you completed the workout at).\n---------------------------------\nRead more about how endurance and gymnastics is developed in our program in attached document.",
           "attachments": [
             {
+              "title": "Ring Muscle ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/17WLm-M4_hk"
+            },
+            {
               "title": "Kipping Chest to bar (Classic kip)",
               "kind": "youtube",
               "src": "https://youtu.be/MIcu1-4mGDU"
@@ -889,11 +894,6 @@
               "title": "Echo bike",
               "kind": "youtube",
               "src": "https://youtu.be/mWQCkhNZwo4"
-            },
-            {
-              "title": "Ring Muscle ups",
-              "kind": "youtube",
-              "src": "https://youtu.be/17WLm-M4_hk"
             }
           ]
         },
