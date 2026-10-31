@@ -1,8 +1,8 @@
 {
   "week_start": "2026-10-26",
   "week_end": "2026-11-01",
-  "today": "2026-10-30",
-  "generated_at": "2026-10-30T03:54:17.249210",
+  "today": "2026-10-31",
+  "generated_at": "2026-10-31T03:38:28.146286",
   "days": [
     {
       "date": "2026-10-26",
@@ -619,7 +619,7 @@
       "weekday": "VEN",
       "day_number": 30,
       "date_label": "Venerdi 30 Ottobre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -760,7 +760,7 @@
       "weekday": "SAB",
       "day_number": 31,
       "date_label": "Sabato 31 Ottobre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "TRANSITION WEEK",
@@ -777,9 +777,19 @@
               "src": "https://youtu.be/fcojabIIwNA"
             },
             {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
               "title": "Dynamic anterior hip stretch",
               "kind": "youtube",
               "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
             },
             {
               "title": "Front rack shoot through",
@@ -810,16 +820,6 @@
               "title": "Strict Clean + Hang Muscle Clean + Low Hang Muscle Clean",
               "kind": "youtube",
               "src": "https://youtu.be/cjPyNhBUazY"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
-            },
-            {
-              "title": "Lat pulsed stretching with reach through",
-              "kind": "youtube",
-              "src": "https://youtu.be/P7scr-51piE"
             }
           ]
         },
