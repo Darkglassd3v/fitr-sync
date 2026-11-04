@@ -331,6 +331,18 @@
           border-left:6px solid var(--lv);
           padding-left:14px; margin-left:4px;
         }
+        /* La linea riempie lo stacco fra due gruppi dello stesso livello senza
+           cambiarne le misure: margine e altezza dei gruppi restano quelli di
+           prima, quindi l'impaginazione a righe intere della TV non si sposta.
+           E' un bordo come quello del gruppo, non uno sfondo largo 6px: il
+           browser arrotonda i bordi ai pixel del display e i due tratti devono
+           arrotondare allo stesso modo per restare allineati. */
+        .grp.lv.segue { position:relative; }
+        .grp.lv.segue::before {
+          content:""; position:absolute; right:100%;
+          top:-1.5em; bottom:100%; border-left:6px solid var(--lv);
+        }
+        body.tv .grp.lv.segue::before { top:-0.6em; }
         .grp.lv[data-l="elite"],  .hl-lvm[data-l="elite"],  .lv-eco[data-l="elite"]  { --lv:var(--lv-elite); }
         .grp.lv[data-l="rx"],     .hl-lvm[data-l="rx"],     .lv-eco[data-l="rx"]     { --lv:var(--lv-rx); }
         .grp.lv[data-l="inter"],  .hl-lvm[data-l="inter"],  .lv-eco[data-l="inter"]  { --lv:var(--lv-inter); }
@@ -993,8 +1005,10 @@
     // Il testo FITR porta gia' i suoi confini: righe vuote e marcatori di
     // livello. Qui non si deduce niente, non si nasconde niente e non si
     // riordina niente: il testo reso e' carattere per carattere l'originale.
-    const LV_NOMI = "Elite|Rx|RX|Scaled|Regular|Intermediate|Beginner|Advanced|Masters|Teens";
-    // marcatore da solo su una riga: "Elite", "(Rx)", "[Intermediate]", "Elite + RX:"
+    // L'unica deduzione riguarda la linea del livello oltre le righe vuote:
+    // le sue regole sono descritte sopra lvGruppi.
+    const LV_NOMI = "Elite|Rx\\s*\\d+|Rx|RX|Scaled|Regular|Intermediate|Beginner|Advanced|Masters|Teens";
+    // marcatore da solo su una riga: "Elite", "(Rx)", "[Intermediate]", "Elite + RX:", "RX1:"
     const LV_SOLO = new RegExp(
       "^\\s*[\\[(]?(?:" + LV_NOMI + ")(?:\\s*[/+&]\\s*(?:" + LV_NOMI + "))*[\\])]?\\s*:?\\s*$", "i");
     // marcatore a inizio riga seguito da contenuto: "[RX] Body weight."
@@ -1049,19 +1063,34 @@
       return "inter";
     }
 
+    // Forme di workout che, dopo l'ultimo marcatore, appartengono ancora a
+    // quel livello: "b. 4 rounds:", "(Option 2)", "- 2 minutes rest-",
+    // "3 rounds of:", "10 min EMOM", "21-15-9 reps of:". L'elenco e' chiuso
+    // di proposito: una forma sconosciuta ferma la linea invece di estenderla.
+    const LV_SEGUITO = /^\s*(?:[a-z]\.\s|\(option\b|-\s*\d+\s*min|\d+(?:-\d+)*\s+(?:rounds?|min|reps?)\b)/i;
+
     // Un gruppo finisce su una riga vuota, su un marcatore di livello o
     // su un confine di fase. La fase invece attraversa le righe vuote.
+    // Il livello attraversa le righe vuote con due regole diverse. Fra due
+    // marcatori continua sempre: su tutto lo storico, cio' che sta in mezzo
+    // appartiene al livello che lo precede. Dopo l'ultimo marcatore continua
+    // solo sulle forme di LV_SEGUITO, perche' li' arriva il testo comune a
+    // tutti i livelli (Score, Intensity, note). Una volta interrotta, la linea
+    // riparte solo dal marcatore successivo.
     function lvGruppi(desc) {
       const out = [];
-      let cur = null, fase = null;
+      let cur = null, fase = null, lvCor = null;
       const chiudi = () => { if (cur && cur.righe.some(l => l.trim())) out.push(cur); };
       const nuovo = (lv, extra) => Object.assign(
         { righe:[], lv:lv, attaccato: !!cur, fase: fase ? fase.k : null }, extra);
-      String(desc || "").split("\n").forEach(l => {
+      const righe = String(desc || "").split("\n");
+      const ultimo = righe.reduce((u, l, i) => LV_SOLO.test(l) ? i : u, -1);
+      righe.forEach((l, i) => {
         if (!l.trim())      { chiudi(); cur = null; return; }
         const mf = FASE_RE.exec(l);
         if (mf) {
           chiudi();
+          lvCor = null;
           fase = { k: faseChiave(mf[2]), lettera: mf[1].toLowerCase() };
           cur = nuovo(false, { testa: mf[0].trim() });
           cur.righe.push(l);
@@ -1071,11 +1100,16 @@
           const ml = LETTERA_RE.exec(l);
           const dopo = String.fromCharCode(fase.lettera.charCodeAt(0) + 1);
           if (FASE_FINE.test(l) || (ml && ml[1].toLowerCase() === dopo)) {
-            chiudi(); fase = null; cur = nuovo(false); cur.righe.push(l); return;
+            chiudi(); fase = null; lvCor = null; cur = nuovo(false); cur.righe.push(l); return;
           }
         }
-        if (LV_SOLO.test(l)) { chiudi(); cur = nuovo(true); cur.righe.push(l); return; }
-        if (!cur) cur = nuovo(false);
+        if (LV_SOLO.test(l)) { chiudi(); lvCor = l.trim(); cur = nuovo(true); cur.righe.push(l); return; }
+        // Progressione e separatore aprono il testo comune anche senza riga vuota.
+        if (lvCor && FASE_FINE.test(l)) { chiudi(); lvCor = null; cur = nuovo(false); cur.righe.push(l); return; }
+        if (!cur) {
+          if (lvCor && i > ultimo && !LV_SEGUITO.test(l)) lvCor = null;
+          cur = nuovo(false, lvCor ? { segue: lvCor } : null);
+        }
         cur.righe.push(l);
       });
       chiudi();
@@ -1139,11 +1173,16 @@
         }
         const testo = g.righe.join("\n");
         const d = document.createElement("div");
-        d.className = "grp" + (g.lv ? " lv" : "") + (g.attaccato ? " tight" : "") +
-          (!g.lv && !lvOperativo(testo) ? " wide" : "");
+        d.className = "grp" + (g.lv || g.segue ? " lv" : "") + (g.segue ? " segue" : "") +
+          (g.attaccato ? " tight" : "") + (!g.lv && !lvOperativo(testo) ? " wide" : "");
+        if (g.segue) {
+          d.dataset.l = lvChiave(g.segue);
+          d.dataset.nome = g.segue;
+        }
         if (g.lv) {
           const nome = g.righe[0].trim();
           d.dataset.l = lvChiave(nome);
+          d.dataset.nome = nome;
           const h = document.createElement("span");
           h.className = "lvname";
           h.textContent = nome;
@@ -1172,6 +1211,7 @@
       const casi = [
         ["[Elite]", "lv-solo", true],  ["(Rx)", "lv-solo", true],
         ["Elite + RX:", "lv-solo", true], ["Progression:", "lv-solo", false],
+        ["RX1:", "lv-solo", true], ["RX1 athletes go heavier", "lv-solo", false],
         ["Pendlay rows: 80/55kg - 185/125lbs", "lv-solo", false],
         ["10 Cuban Press (2x7.5-10/4-6kg | 2x15-25/10-15lbs)", "load",
           ["2x7.5-10/4-6kg", "2x15-25/10-15lbs"]],
@@ -1301,10 +1341,10 @@
       setTimeout(updateReaderPos, 120);
     }
 
-    // Il livello vale solo dentro il proprio gruppo, che va dal marcatore
-    // alla riga vuota successiva: un confine gia' scritto nel testo. Finito
-    // quello si torna a vuoto, perche' cio' che segue (carichi suggeriti,
-    // progressione) vale per tutti e marcarlo direbbe il falso.
+    // Il livello vale dal marcatore fin dove arriva la sua linea (vedi
+    // lvGruppi). Finita quella si torna a vuoto, perche' cio' che segue
+    // (carichi suggeriti, progressione) vale per tutti e marcarlo direbbe il
+    // falso.
     function updateLvEco() {
       if (!lvEcoEl || !readerScrollEl) return;
       // Posizioni sullo schermo, non offsetTop: il genitore posizionato e'
@@ -1319,8 +1359,7 @@
         if (r.top <= alto && alto < r.bottom) cur = g;
       });
       if (cur) {
-        const nome = cur.querySelector(".lvname");
-        lvEcoEl.textContent = nome ? nome.textContent : "";
+        lvEcoEl.textContent = cur.dataset.nome || "";
         lvEcoEl.dataset.l = cur.dataset.l || "";
         lvEcoEl.hidden = !lvEcoEl.textContent;
       } else {
