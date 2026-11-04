@@ -1,8 +1,8 @@
 {
   "week_start": "2026-11-02",
   "week_end": "2026-11-08",
-  "today": "2026-11-03",
-  "generated_at": "2026-11-03T04:55:11.725488",
+  "today": "2026-11-04",
+  "generated_at": "2026-11-04T04:18:36.398251",
   "days": [
     {
       "date": "2026-11-02",
@@ -220,7 +220,7 @@
       "weekday": "MAR",
       "day_number": 3,
       "date_label": "Martedi 3 Novembre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM UP - Gymnastics",
@@ -385,7 +385,7 @@
       "weekday": "MER",
       "day_number": 4,
       "date_label": "Mercoledi 4 Novembre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM UP - Jerk",
@@ -527,6 +527,11 @@
               "src": "https://youtu.be/tdDrAvtAk1Y"
             },
             {
+              "title": "C2 bike",
+              "kind": "youtube",
+              "src": "https://youtu.be/bgYN2mpXIls"
+            },
+            {
               "title": "Legs Only Rowing (Rowing Technique work)",
               "kind": "youtube",
               "src": "https://youtu.be/usjjCUrp_tQ"
@@ -540,11 +545,6 @@
               "title": "Legs + Hips (Rowing Technique work)",
               "kind": "youtube",
               "src": "https://youtu.be/u_UYcyKfGGo"
-            },
-            {
-              "title": "C2 bike",
-              "kind": "youtube",
-              "src": "https://youtu.be/bgYN2mpXIls"
             }
           ]
         }
@@ -805,14 +805,14 @@
               "src": "https://youtu.be/uXpw93xRBpY"
             },
             {
-              "title": "DB Snatch",
-              "kind": "youtube",
-              "src": "https://youtu.be/jHtY8-lM__8"
-            },
-            {
               "title": "Ski",
               "kind": "youtube",
               "src": "https://youtu.be/wunfbZl354o"
+            },
+            {
+              "title": "DB Snatch",
+              "kind": "youtube",
+              "src": "https://youtu.be/jHtY8-lM__8"
             }
           ]
         },
