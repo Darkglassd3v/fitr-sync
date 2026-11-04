@@ -1,0 +1,19 @@
+name: Test board
+
+on:
+  pull_request:
+    paths:
+      - docs/board_v2.html
+      - tests/**
+      - .github/workflows/test.yml
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node --test tests/board_lv_gruppi.test.js
