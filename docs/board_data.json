@@ -1,8 +1,8 @@
 {
   "week_start": "2026-11-02",
   "week_end": "2026-11-08",
-  "today": "2026-11-06",
-  "generated_at": "2026-11-06T04:36:51.112909",
+  "today": "2026-11-07",
+  "generated_at": "2026-11-07T04:04:22.595294",
   "days": [
     {
       "date": "2026-11-02",
@@ -586,7 +586,7 @@
       "weekday": "VEN",
       "day_number": 6,
       "date_label": "Venerdi 6 Novembre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "S1: WARM UP - Clean",
@@ -732,7 +732,7 @@
       "weekday": "SAB",
       "day_number": 7,
       "date_label": "Sabato 7 Novembre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM UP - Gymnastics",
