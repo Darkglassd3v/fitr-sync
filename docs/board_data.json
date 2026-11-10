@@ -1,15 +1,15 @@
 {
   "week_start": "2026-11-09",
   "week_end": "2026-11-15",
-  "today": "2026-11-09",
-  "generated_at": "2026-11-09T04:01:23.258785",
+  "today": "2026-11-10",
+  "generated_at": "2026-11-10T05:36:00.411304",
   "days": [
     {
       "date": "2026-11-09",
       "weekday": "LUN",
       "day_number": 9,
       "date_label": "Lunedi 9 Novembre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "CURRENT TRAINING BLOCK W2/4",
@@ -220,7 +220,7 @@
       "weekday": "MAR",
       "day_number": 10,
       "date_label": "Martedi 10 Novembre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM UP - Gymnastics",
@@ -367,6 +367,21 @@
               "src": "https://youtu.be/vIcVzjyGnZA"
             },
             {
+              "title": "Dynamic posterior hip box stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/fcojabIIwNA"
+            },
+            {
+              "title": "Dynamic bent arm pec opener",
+              "kind": "youtube",
+              "src": "https://youtu.be/Fv0KnjRiLf8"
+            },
+            {
+              "title": "Dynamic anterior hip stretch",
+              "kind": "youtube",
+              "src": "https://youtu.be/M5nRWGwU_f0"
+            },
+            {
               "title": "Ski erg",
               "kind": "youtube",
               "src": "https://youtu.be/WUiGW3wLp4w"
@@ -395,21 +410,6 @@
               "title": "Strict Press (Alt. between pressing from the front and from the back on each rep)",
               "kind": "youtube",
               "src": "https://youtu.be/lLmk_fM7nG0"
-            },
-            {
-              "title": "Dynamic posterior hip box stretch",
-              "kind": "youtube",
-              "src": "https://youtu.be/fcojabIIwNA"
-            },
-            {
-              "title": "Dynamic bent arm pec opener",
-              "kind": "youtube",
-              "src": "https://youtu.be/Fv0KnjRiLf8"
-            },
-            {
-              "title": "Dynamic anterior hip stretch",
-              "kind": "youtube",
-              "src": "https://youtu.be/M5nRWGwU_f0"
             }
           ]
         },
@@ -588,6 +588,11 @@
               "src": "https://youtu.be/9UCPisFXMfg"
             },
             {
+              "title": "Lat pulsed stretching with reach through",
+              "kind": "youtube",
+              "src": "https://youtu.be/P7scr-51piE"
+            },
+            {
               "title": "Goodmornings",
               "kind": "youtube",
               "src": "https://youtu.be/DDaxFsIaHDI"
@@ -611,11 +616,6 @@
               "title": "Dynamic anterior hip stretch",
               "kind": "youtube",
               "src": "https://youtu.be/M5nRWGwU_f0"
-            },
-            {
-              "title": "Lat pulsed stretching with reach through",
-              "kind": "youtube",
-              "src": "https://youtu.be/P7scr-51piE"
             }
           ]
         },
@@ -709,6 +709,11 @@
           "description": "Gymnastics, Warm up \n\na.  4 minute Row performed as 20 sec Easy + 10 sec Hard\n-Into-\n2 rounds of:\n30 Walking Lunges\n20 Sit ups\n15 Ring rows\n10 Push ups\n-Into-\nPractice a few RMU, GHD sit ups and build to working weight for the single arm OH walking lunges.",
           "attachments": [
             {
+              "title": "Push ups",
+              "kind": "youtube",
+              "src": "https://youtu.be/RhX1qB0G-iI"
+            },
+            {
               "title": "Bent leg (hands behind the head) old school sit ups",
               "kind": "youtube",
               "src": "https://youtu.be/QJZ9Gt8JPaM"
@@ -722,11 +727,6 @@
               "title": "Ring Rows",
               "kind": "youtube",
               "src": "https://youtu.be/TY4jHSrPTdg"
-            },
-            {
-              "title": "Push ups",
-              "kind": "youtube",
-              "src": "https://youtu.be/RhX1qB0G-iI"
             },
             {
               "title": "Rowing",
