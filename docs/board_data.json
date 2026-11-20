@@ -1,8 +1,8 @@
 {
   "week_start": "2026-11-16",
   "week_end": "2026-11-22",
-  "today": "2026-11-19",
-  "generated_at": "2026-11-19T05:25:23.688325",
+  "today": "2026-11-20",
+  "generated_at": "2026-11-20T05:11:10.048173",
   "days": [
     {
       "date": "2026-11-16",
@@ -541,7 +541,7 @@
       "weekday": "GIO",
       "day_number": 19,
       "date_label": "Giovedi 19 Novembre",
-      "is_today": true,
+      "is_today": false,
       "sections": [
         {
           "title": "OPTION 1: FULL REST / BODYWORK",
@@ -571,7 +571,7 @@
       "weekday": "VEN",
       "day_number": 20,
       "date_label": "Venerdi 20 Novembre",
-      "is_today": false,
+      "is_today": true,
       "sections": [
         {
           "title": "S1: WARM UP - Clean",
